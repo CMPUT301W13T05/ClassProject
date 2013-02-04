@@ -1,5 +1,6 @@
 package cmput301.cmput301w13t05;
 
+import android.R;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
