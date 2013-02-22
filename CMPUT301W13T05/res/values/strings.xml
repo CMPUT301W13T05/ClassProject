@@ -1,8 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">CMPUT301W13T05</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">EasyCooking</string>
+    <string name="Greeting">Welcome!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
-
+    <string name="email">Enter your email</string>
+	<string name="search">Search</string>
+	<string name="profile">profile</string>
+	<string name="search_hint">Ingradints/dish name</string>
+	<string name="record_recipe">Recorded Recipes</string>
+	<string name="my_download">Downloaded Recipes</string>
+	<string name="my_upload">Uploaded Recipes</string>
+	<string name="local_recipe">All Local Recipes</string>
+	<string name="back_to_main">BACK TO MAIN PAGE</string>
+	<string name="Setup">Setup up search"</string>
+	
 </resources>
