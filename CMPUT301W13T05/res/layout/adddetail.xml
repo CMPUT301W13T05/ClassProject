@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_x="0dp"
         android:layout_y="6dp"
-        android:text="Add" />
+        android:text="@string/Add" />
 
     <Button
         android:id="@+id/button3"
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_x="216dp"
         android:layout_y="6dp"
-        android:text="Delete" />
+        android:text="@string/Delete" />
 
     <Button
         android:id="@+id/button1"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_x="110dp"
         android:layout_y="6dp"
-        android:text="Save" />
+        android:text="@string/Save" />
 
     <TextView
         android:id="@+id/textView1"
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_x="6dp"
         android:layout_y="64dp"
-        android:text="Ingredient:"
+        android:text="@string/Ingredient:"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
@@ -43,7 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_x="6dp"
         android:layout_y="91dp"
-        android:ems="10" >
+        android:ems="10"
+        android:inputType="text" >
 
         <requestFocus />
     </EditText>

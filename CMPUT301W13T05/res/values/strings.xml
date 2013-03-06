@@ -14,5 +14,12 @@
 	<string name="local_recipe">All Local Recipes</string>
 	<string name="back_to_main">BACK TO MAIN PAGE</string>
 	<string name="Setup">Custom Search"</string>
+	<string name="MyIngredient">MyIngredient</string>
+	<string name="CreatRecipe">CreatRecipe</string>
+	<string name="Ingredient:">Ingredient:</string>
+	<string name="Add">Add</string>
+	<string name="Save">Save</string>
+	<string name="Delete">Delete</string>
+	
 	
 </resources>

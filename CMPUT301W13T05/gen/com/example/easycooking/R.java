@@ -50,7 +50,13 @@ public final class R {
         public static final int activity_main=0x7f060000;
     }
     public static final class string {
+        public static final int Add=0x7f040010;
+        public static final int CreatRecipe=0x7f04000e;
+        public static final int Delete=0x7f040012;
         public static final int Greeting=0x7f040001;
+        public static final int Ingredient_=0x7f04000f;
+        public static final int MyIngredient=0x7f04000d;
+        public static final int Save=0x7f040011;
         public static final int Setup=0x7f04000c;
         public static final int app_name=0x7f040000;
         public static final int back_to_main=0x7f04000b;
