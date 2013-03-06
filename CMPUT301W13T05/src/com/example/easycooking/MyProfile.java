@@ -8,21 +8,19 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
-public class mainpage extends Activity {
+public class MyProfile extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.my_profile);
 		 Button b1 = (Button) findViewById(R.id.button1);
 	        b1.setOnClickListener(new Button.OnClickListener() {
 	        	public void onClick(View v) {
 	        		Intent intent = new Intent();
-	        		intent.setClass(MainActivity.this, MyProfile.class);
-	        		//start a add entry activity
+	        		intent.setClass(MyProfile.this, RecipeDisplay.class);
 	        		startActivity(intent);
-	        		//close the old activity
-	        		MainActivity.this.finish();
+	        		MyProfile.this.finish();
 	        	}
 	        });
 	}
