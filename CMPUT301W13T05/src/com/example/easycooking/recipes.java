@@ -1,6 +1,6 @@
 package com.example.easycooking;
 
 
-public class recipes {
+public class Recipes {
 
 }

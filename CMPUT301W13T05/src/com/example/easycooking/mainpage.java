@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
-public class mainpage extends Activity {
+public class MainPage extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,11 +18,11 @@ public class mainpage extends Activity {
 	        b1.setOnClickListener(new Button.OnClickListener() {
 	        	public void onClick(View v) {
 	        		Intent intent = new Intent();
-	        		intent.setClass(MainActivity.this, MyProfile.class);
+	        		intent.setClass(MainPage.this, MyProfile.class);
 	        		//start a add entry activity
 	        		startActivity(intent);
 	        		//close the old activity
-	        		MainActivity.this.finish();
+	        		MainPage.this.finish();
 	        	}
 	        });
 	}

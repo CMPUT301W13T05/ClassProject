@@ -1,6 +1,6 @@
 package com.example.easycooking;
 
 
-public class customsearch {
+public class CustomSearch {
 
 }
