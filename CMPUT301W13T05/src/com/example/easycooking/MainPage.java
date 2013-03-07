@@ -40,8 +40,8 @@ public class MainPage extends Activity {
 		        	}
 		        });
 		 //Create Recipe
-		 Button main_creat = (Button)findViewById(R.id.creat);
-		 main_creat.setOnClickListener(new Button.OnClickListener() {
+		 Button main_create = (Button)findViewById(R.id.creat);
+		 main_create.setOnClickListener(new Button.OnClickListener() {
 		        public void onClick(View v) {
 		        		Intent intent = new Intent();
 		        		intent.setClass(MainPage.this, CreateRecipe.class);
@@ -61,9 +61,6 @@ public class MainPage extends Activity {
 	}
 		 
 		 
-	        
-	
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

@@ -25,5 +25,7 @@
     <string name="title_activity_itisatry">Itisatry</string>
     <string name="share">Share</string>
     <string name="download">Download</string>
+    <string name="modify">Modify</string>
+    <string name="Upload">Upload</string>
 
 </resources>

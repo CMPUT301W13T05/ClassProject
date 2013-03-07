@@ -57,7 +57,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignTop="@+id/modify"
         android:layout_toLeftOf="@+id/upload"
-        android:text="Share" />
+        android:text="@string/share" />
 
     <Button
         android:id="@+id/delete"
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="Delete" />
+        android:text="@string/Delete" />
 
     <Button
         android:id="@+id/modify"
@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/delete"
-        android:text="Modify" />
+        android:text="@string/modify" />
 
     <Button
         android:id="@+id/upload"
@@ -81,6 +81,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/modify"
-        android:text="Upload" />
+        android:text="@string/Upload" />
 
 </RelativeLayout>

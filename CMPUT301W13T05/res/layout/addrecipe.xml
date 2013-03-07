@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -13,40 +13,40 @@
         android:text="Save" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button5"
+        android:layout_above="@+id/save"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:text="Home" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button4"
-        android:layout_alignLeft="@+id/button2"
+        android:layout_above="@+id/home"
+        android:layout_alignLeft="@+id/Ingredients"
         android:layout_marginBottom="68dp"
         android:text="Description" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/Ingredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button3"
+        android:layout_above="@+id/description"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="29dp"
         android:layout_marginLeft="32dp"
         android:text="Ingredients" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/photo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button2"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_alignRight="@+id/button3"
+        android:layout_above="@+id/Ingredients"
+        android:layout_alignLeft="@+id/Ingredients"
+        android:layout_alignRight="@+id/description"
         android:layout_marginBottom="24dp"
         android:text="Photo" />
 
@@ -54,7 +54,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
+        android:layout_alignLeft="@+id/photo"
         android:layout_alignParentTop="true"
         android:layout_marginTop="35dp"
         android:text="Name:"
@@ -75,8 +75,8 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
+        android:layout_alignBaseline="@+id/photo"
+        android:layout_alignBottom="@+id/photo"
         android:layout_alignParentRight="true"
         android:layout_marginRight="24dp"
         android:text="0 uploaded"
@@ -86,8 +86,8 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
+        android:layout_alignBaseline="@+id/Ingredients"
+        android:layout_alignBottom="@+id/Ingredients"
         android:layout_alignRight="@+id/textView2"
         android:text="3 ingredients"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -96,8 +96,8 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button3"
-        android:layout_alignBottom="@+id/button3"
+        android:layout_alignBaseline="@+id/description"
+        android:layout_alignBottom="@+id/description"
         android:layout_alignRight="@+id/textView3"
         android:text="3 steps"
         android:textAppearance="?android:attr/textAppearanceMedium" />
