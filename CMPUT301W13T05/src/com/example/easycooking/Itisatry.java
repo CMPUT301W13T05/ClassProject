@@ -2,14 +2,14 @@ package com.example.easycooking;
 
 import android.os.Bundle;
 import android.app.Activity;
+//import android.view.Menu;
 
-
-public class CreateRecipe extends Activity {
+public class Itisatry extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.addrecipe);
+		setContentView(R.layout.activity_itisatry);
 	}
 
 	

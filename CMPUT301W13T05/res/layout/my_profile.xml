@@ -4,38 +4,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/button2"
-        android:layout_marginTop="15dp"
-        android:text="@string/my_upload" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="32dp"
         android:text="@string/Greeting"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/button3"
-        android:layout_marginTop="15dp"
-        android:text="@string/local_recipe" />
-
-    <Button
-        android:id="@+id/button4"
+        android:id="@+id/backtomain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -43,33 +23,53 @@
         android:text="@string/back_to_main" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/share_with_me"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="22dp"
-        android:text="@string/record_recipe" />
+        android:layout_marginBottom="14dp"
+        android:text="@string/my_upload" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/share_with_me"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/backtomain"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/button5"
-        android:layout_marginTop="17dp"
-        android:text="Recipe Share to me" />
+        android:layout_marginBottom="18dp"
+        android:text="@string/recipe_share_with_me" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/check_download"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/upload"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/button1"
-        android:layout_marginTop="18dp"
+        android:layout_marginBottom="14dp"
         android:text="@string/my_download" />
+
+    <Button
+        android:id="@+id/checklocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/check_download"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="21dp"
+        android:text="@string/local_recipe" />
+
+    <Button
+        android:id="@+id/record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/checklocal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/record_recipe" />
 
 </RelativeLayout>
