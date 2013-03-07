@@ -50,17 +50,17 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/button2"
-        android:layout_toLeftOf="@+id/button3"
+        android:layout_alignTop="@+id/modify"
+        android:layout_toLeftOf="@+id/upload"
         android:text="Share" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -68,19 +68,19 @@
         android:text="Delete" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/modify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/button4"
+        android:layout_toLeftOf="@+id/delete"
         android:text="Modify" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/button2"
+        android:layout_toLeftOf="@+id/modify"
         android:text="Upload" />
 
 </RelativeLayout>

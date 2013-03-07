@@ -23,5 +23,7 @@
     <string name="recipe_share_with_me">Recipe Share to me</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_itisatry">Itisatry</string>
+    <string name="share">Share</string>
+    <string name="download">Download</string>
 
 </resources>

@@ -31,15 +31,18 @@ public final class R {
         public static final int checklocal=0x7f070017;
         public static final int creat=0x7f070001;
         public static final int delete=0x7f070007;
+        public static final int download=0x7f070021;
         public static final int editText1=0x7f070000;
         public static final int listView1=0x7f07000a;
-        public static final int menu_settings=0x7f07001f;
+        public static final int menu_settings=0x7f070022;
+        public static final int modify=0x7f070020;
         public static final int modifyingre=0x7f070003;
         public static final int profile=0x7f070004;
         public static final int record=0x7f070018;
         public static final int save=0x7f070008;
         public static final int search=0x7f070005;
         public static final int setup_search=0x7f070002;
+        public static final int share=0x7f07001f;
         public static final int share_with_me=0x7f070015;
         public static final int textView1=0x7f070009;
         public static final int textView2=0x7f070010;
@@ -58,7 +61,8 @@ public final class R {
         public static final int popwindow=0x7f030006;
         public static final int result=0x7f030007;
         public static final int selection=0x7f030008;
-        public static final int sharepopwindow=0x7f030009;
+        public static final int selection_web=0x7f030009;
+        public static final int sharepopwindow=0x7f03000a;
     }
     public static final class menu {
         public static final int activity_itisatry=0x7f060000;
@@ -75,6 +79,7 @@ public final class R {
         public static final int Setup=0x7f04000c;
         public static final int app_name=0x7f040000;
         public static final int back_to_main=0x7f04000b;
+        public static final int download=0x7f040017;
         public static final int email=0x7f040003;
         public static final int hello_world=0x7f040014;
         public static final int local_recipe=0x7f04000a;
@@ -86,6 +91,7 @@ public final class R {
         public static final int record_recipe=0x7f040007;
         public static final int search=0x7f040004;
         public static final int search_hint=0x7f040006;
+        public static final int share=0x7f040016;
         public static final int title_activity_itisatry=0x7f040015;
     }
     public static final class style {
