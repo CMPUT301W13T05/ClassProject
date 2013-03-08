@@ -57,14 +57,15 @@ public final class R {
         public static final int activity_itisatry=0x7f030000;
         public static final int activity_main=0x7f030001;
         public static final int adddetail=0x7f030002;
-        public static final int addrecipe=0x7f030003;
-        public static final int modifyimage=0x7f030004;
-        public static final int my_profile=0x7f030005;
-        public static final int popwindow=0x7f030006;
-        public static final int result=0x7f030007;
-        public static final int selection=0x7f030008;
-        public static final int selection_web=0x7f030009;
-        public static final int sharepopwindow=0x7f03000a;
+        public static final int adddetail_steps=0x7f030003;
+        public static final int addrecipe=0x7f030004;
+        public static final int modifyimage=0x7f030005;
+        public static final int my_profile=0x7f030006;
+        public static final int popwindow=0x7f030007;
+        public static final int result=0x7f030008;
+        public static final int selection=0x7f030009;
+        public static final int selection_web=0x7f03000a;
+        public static final int sharepopwindow=0x7f03000b;
     }
     public static final class menu {
         public static final int activity_itisatry=0x7f060000;
@@ -96,6 +97,7 @@ public final class R {
         public static final int search=0x7f040004;
         public static final int search_hint=0x7f040006;
         public static final int share=0x7f040016;
+        public static final int steps=0x7f04001a;
         public static final int title_activity_itisatry=0x7f040015;
     }
     public static final class style {
