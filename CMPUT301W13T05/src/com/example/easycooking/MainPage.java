@@ -14,8 +14,7 @@ public class MainPage extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-	
-		//search button 
+		/////////////////////////////////Search button 
 		 Button main_search = (Button)findViewById(R.id.search);
 		 main_search.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
@@ -27,7 +26,7 @@ public class MainPage extends Activity {
 	        		MainPage.this.finish();
 	        	}
 	        });
-		 //Profile button
+		 ////////////////////////////////Profile button
 		 Button main_profile =(Button)findViewById(R.id.profile);
 		 main_profile.setOnClickListener(new Button.OnClickListener() {
 		        public void onClick(View v) {
@@ -39,7 +38,7 @@ public class MainPage extends Activity {
 		        		MainPage.this.finish();
 		        	}
 		        });
-		 //Create Recipe
+		 ////////////////////////////////Create Recipe
 		 Button main_create = (Button)findViewById(R.id.creat);
 		 main_create.setOnClickListener(new Button.OnClickListener() {
 		        public void onClick(View v) {
@@ -51,11 +50,23 @@ public class MainPage extends Activity {
 		        		MainPage.this.finish();
 		        	}
 		        });
-		 //Custom Search
+		 ////////////////////////////////Custom Search
 		 Button main_custom = (Button)findViewById(R.id.setup_search);
 		 main_custom.setOnClickListener(new Button.OnClickListener() {
 		        public void onClick(View v) {
 		        		//To be implemented
+		        	}
+		        });
+		 ///////////////////////////////ModifyIngredients
+		 Button main_ingredients = (Button)findViewById(R.id.modifyingre);
+		 main_ingredients.setOnClickListener(new Button.OnClickListener() {
+		        public void onClick(View v) {
+		        		Intent intent = new Intent();
+		        		intent.setClass(MainPage.this, ModifyIngredients.class);
+		        		//start a add entry activity
+		        		startActivity(intent);
+		        		//close the old activity
+		        		MainPage.this.finish();
 		        	}
 		        });
 	}

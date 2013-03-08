@@ -4,27 +4,27 @@
     android:layout_height="match_parent" >
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_x="1dp"
         android:layout_y="410dp"
-        android:text="SAVE" />
+        android:text="@string/Save" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/takephoto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_x="1dp"
         android:layout_y="367dp"
-        android:text="TakePhoto" />
+        android:text="@string/TakePhoto" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_x="1dp"
         android:layout_y="324dp"
-        android:text="DELETE" />
+        android:text="@string/Delete" />
 
 </AbsoluteLayout>

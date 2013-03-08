@@ -30,6 +30,7 @@
         <activity android:name="com.example.easycooking.MyProfile"></activity>
         <activity android:name="com.example.easycooking.SelectionLocal"></activity>
         <activity android:name="com.example.easycooking.SelectionWeb"></activity>
+        <activity android:name="com.example.easycooking.RecipeResult"></activity>
     </application>
 
 </manifest>

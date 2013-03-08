@@ -28,5 +28,6 @@
     <string name="modify">Modify</string>
     <string name="Upload">Upload</string>
     <string name="steps">Steps:</string>
+    <string name="TakePhoto">TakePhoto</string>
 
 </resources>
