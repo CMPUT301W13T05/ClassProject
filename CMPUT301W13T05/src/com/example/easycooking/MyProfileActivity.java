@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
-public class MyProfile extends Activity {
+public class MyProfileActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +19,11 @@ public class MyProfile extends Activity {
 		profile_record.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
 	        		Intent intent = new Intent();
-	        		intent.setClass(MyProfile.this, RecipeResult.class);
+	        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
 	        		//start a add entry activity
 	        		startActivity(intent);
 	        		//close the old activity
-	        		MyProfile.this.finish();
+	        		MyProfileActivity.this.finish();
 	        	}
 	        });
 		// local recipes
@@ -31,11 +31,11 @@ public class MyProfile extends Activity {
 		profile_local.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
 	        		Intent intent = new Intent();
-	        		intent.setClass(MyProfile.this, RecipeResult.class);
+	        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
 	        		//start a add entry activity
 	        		startActivity(intent);
 	        		//close the old activity
-	        		MyProfile.this.finish();
+	        		MyProfileActivity.this.finish();
 	        	}
 	        });
 		// upload recipes
@@ -43,11 +43,11 @@ public class MyProfile extends Activity {
 		profile_upload.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
 	        		Intent intent = new Intent();
-	        		intent.setClass(MyProfile.this, RecipeResult.class);
+	        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
 	        		//start a add entry activity
 	        		startActivity(intent);
 	        		//close the old activity
-	        		MyProfile.this.finish();
+	        		MyProfileActivity.this.finish();
 	        	}
 	        });
 		// downloaded recipes
@@ -55,11 +55,11 @@ public class MyProfile extends Activity {
 		profile_downloaded.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
 	        		Intent intent = new Intent();
-	        		intent.setClass(MyProfile.this, RecipeResult.class);
+	        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
 	        		//start a add entry activity
 	        		startActivity(intent);
 	        		//close the old activity
-	        		MyProfile.this.finish();
+	        		MyProfileActivity.this.finish();
 	        	}
 	        });
 		// back to the main
@@ -67,11 +67,11 @@ public class MyProfile extends Activity {
 		profile_back_main.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
 	        		Intent intent = new Intent();
-	        		intent.setClass(MyProfile.this, MainPage.class);
+	        		intent.setClass(MyProfileActivity.this, MainPageActivity.class);
 	        		//start a add entry activity
 	        		startActivity(intent);
 	        		//close the old activity
-	        		MyProfile.this.finish();
+	        		MyProfileActivity.this.finish();
 	        	}
 	        });
 		// share with me button

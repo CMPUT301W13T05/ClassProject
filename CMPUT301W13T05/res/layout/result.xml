@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
     <ListView
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="398dp"
-        android:layout_x="-3dp"
-        android:layout_y="-2dp" >
+        android:layout_above="@+id/search"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+
     </ListView>
 
     <Button
         android:id="@+id/search"
         android:layout_width="310dp"
         android:layout_height="62dp"
-        android:layout_x="6dp"
-        android:layout_y="397dp"
-        android:text="New search" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/Newsearch" />
 
-</AbsoluteLayout>
+</RelativeLayout>

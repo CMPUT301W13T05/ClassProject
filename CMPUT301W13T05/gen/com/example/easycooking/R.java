@@ -13,12 +13,14 @@ public final class R {
     public static final class drawable {
         public static final int ic_action_search=0x7f020000;
         public static final int ic_launcher=0x7f020001;
+        public static final int wp=0x7f020002;
     }
     public static final class id {
         public static final int Ingredients=0x7f07000d;
+        public static final int RelativeLayout1=0x7f07001e;
         public static final int add=0x7f070006;
-        public static final int backtomain=0x7f070013;
-        public static final int button1=0x7f070022;
+        public static final int backtomain=0x7f070015;
+        public static final int button1=0x7f070023;
         public static final int checkBox1=0x7f070019;
         public static final int checkBox2=0x7f07001a;
         public static final int checkBox3=0x7f07001b;
@@ -29,12 +31,12 @@ public final class R {
         public static final int creat=0x7f070001;
         public static final int delete=0x7f070007;
         public static final int description=0x7f07000c;
-        public static final int download=0x7f070021;
+        public static final int download=0x7f070022;
         public static final int editText1=0x7f070000;
         public static final int home=0x7f07000b;
         public static final int listView1=0x7f07000a;
-        public static final int menu_settings=0x7f070023;
-        public static final int modify=0x7f070020;
+        public static final int menu_settings=0x7f070024;
+        public static final int modify=0x7f070021;
         public static final int modifyingre=0x7f070003;
         public static final int photo=0x7f07000e;
         public static final int profile=0x7f070004;
@@ -42,15 +44,15 @@ public final class R {
         public static final int save=0x7f070008;
         public static final int search=0x7f070005;
         public static final int setup_search=0x7f070002;
-        public static final int share=0x7f07001f;
-        public static final int share_with_me=0x7f070015;
+        public static final int share=0x7f070020;
+        public static final int share_with_me=0x7f070014;
         public static final int takephoto=0x7f070012;
         public static final int textView1=0x7f070009;
         public static final int textView2=0x7f07000f;
         public static final int textView3=0x7f070010;
         public static final int textView4=0x7f070011;
-        public static final int textView5=0x7f07001e;
-        public static final int upload=0x7f070014;
+        public static final int textView5=0x7f07001f;
+        public static final int upload=0x7f070013;
     }
     public static final class layout {
         public static final int activity_itisatry=0x7f030000;
@@ -77,6 +79,7 @@ public final class R {
         public static final int Greeting=0x7f040001;
         public static final int Ingredient_=0x7f04000f;
         public static final int MyIngredient=0x7f04000d;
+        public static final int Newsearch=0x7f04001c;
         public static final int Save=0x7f040011;
         public static final int Setup=0x7f04000c;
         public static final int TakePhoto=0x7f04001b;
@@ -127,5 +130,6 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f050001;
+        public static final int Dialog=0x7f050002;
     }
 }

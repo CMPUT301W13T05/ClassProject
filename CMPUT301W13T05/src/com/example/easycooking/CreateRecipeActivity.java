@@ -7,7 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 
 
-public class CreateRecipe extends Activity {
+public class CreateRecipeActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,11 +18,11 @@ public class CreateRecipe extends Activity {
 		add_modify_home.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(CreateRecipe.this, MainPage.class);
+				intent.setClass(CreateRecipeActivity.this, MainPageActivity.class);
 				//start a add entry activity
 				startActivity(intent);
 				//close the old activity
-				CreateRecipe.this.finish();
+				CreateRecipeActivity.this.finish();
 			}
 		});	
 		//button home
@@ -38,11 +38,11 @@ public class CreateRecipe extends Activity {
 			public void onClick(View v) {
 				//TO BE IMPLEMENTED
 				Intent intent = new Intent();
-				intent.setClass(CreateRecipe.this, Itisatry.class);// should be jump to the modify image
+				intent.setClass(CreateRecipeActivity.this, Itisatry.class);// should be jump to the modify image
 				//start a add entry activity
 				startActivity(intent);
 				//close the old activity
-				CreateRecipe.this.finish();
+				CreateRecipeActivity.this.finish();
 			
 			}
 		});
@@ -52,11 +52,11 @@ public class CreateRecipe extends Activity {
 			public void onClick(View v) {
 				//TO BE IMPLEMENTED
 				Intent intent = new Intent();
-				intent.setClass(CreateRecipe.this, ModifyIngredients.class);// should be jump to the modify 
+				intent.setClass(CreateRecipeActivity.this, ModifyIngredientsActivity.class);// should be jump to the modify 
 				//start a add entry activity
 				startActivity(intent);
 				//close the old activity
-				CreateRecipe.this.finish();
+				CreateRecipeActivity.this.finish();
 			
 			}
 		});	
@@ -66,11 +66,11 @@ public class CreateRecipe extends Activity {
 			public void onClick(View v) {
 				//TO BE IMPLEMENTED
 				Intent intent = new Intent();
-				intent.setClass(CreateRecipe.this, Itisatry.class);// should be jump to the modify 
+				intent.setClass(CreateRecipeActivity.this, Itisatry.class);// should be jump to the modify 
 				//start a add entry activity
 				startActivity(intent);
 				//close the old activity
-				CreateRecipe.this.finish();
+				CreateRecipeActivity.this.finish();
 			
 			}
 		});	

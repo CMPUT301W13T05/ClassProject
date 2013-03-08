@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 
-public class MainPage extends Activity {
+public class MainPageActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +19,11 @@ public class MainPage extends Activity {
 		 main_search.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
 	        		Intent intent = new Intent();
-	        		intent.setClass(MainPage.this, RecipeResult.class);
+	        		intent.setClass(MainPageActivity.this, RecipeResultActivity.class);
 	        		//start a add entry activity
 	        		startActivity(intent);
 	        		//close the old activity
-	        		MainPage.this.finish();
+	        		MainPageActivity.this.finish();
 	        	}
 	        });
 		 ////////////////////////////////Profile button
@@ -31,11 +31,11 @@ public class MainPage extends Activity {
 		 main_profile.setOnClickListener(new Button.OnClickListener() {
 		        public void onClick(View v) {
 		        		Intent intent = new Intent();
-		        		intent.setClass(MainPage.this, MyProfile.class);
+		        		intent.setClass(MainPageActivity.this, MyProfileActivity.class);
 		        		//start a add entry activity
 		        		startActivity(intent);
 		        		//close the old activity
-		        		MainPage.this.finish();
+		        		MainPageActivity.this.finish();
 		        	}
 		        });
 		 ////////////////////////////////Create Recipe
@@ -43,11 +43,11 @@ public class MainPage extends Activity {
 		 main_create.setOnClickListener(new Button.OnClickListener() {
 		        public void onClick(View v) {
 		        		Intent intent = new Intent();
-		        		intent.setClass(MainPage.this, CreateRecipe.class);
+		        		intent.setClass(MainPageActivity.this, CreateRecipeActivity.class);
 		        		//start a add entry activity
 		        		startActivity(intent);
 		        		//close the old activity
-		        		MainPage.this.finish();
+		        		MainPageActivity.this.finish();
 		        	}
 		        });
 		 ////////////////////////////////Custom Search
@@ -57,16 +57,16 @@ public class MainPage extends Activity {
 		        		//To be implemented
 		        	}
 		        });
-		 ///////////////////////////////ModifyIngredients
+		 ///////////////////////////////ModifyIngredientsActivityAcitivty
 		 Button main_ingredients = (Button)findViewById(R.id.modifyingre);
 		 main_ingredients.setOnClickListener(new Button.OnClickListener() {
 		        public void onClick(View v) {
 		        		Intent intent = new Intent();
-		        		intent.setClass(MainPage.this, ModifyIngredients.class);
+		        		intent.setClass(MainPageActivity.this, ModifyIngredientsActivity.class);
 		        		//start a add entry activity
 		        		startActivity(intent);
 		        		//close the old activity
-		        		MainPage.this.finish();
+		        		MainPageActivity.this.finish();
 		        	}
 		        });
 	}
@@ -78,10 +78,10 @@ public class MainPage extends Activity {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
-	@Override
-	//back button pressed
-	public void onBackPressed() {
-	return;
-	}
+//	@Override
+//	//back button pressed
+//	public void onBackPressed() {
+//	return;
+//	}
 
 }

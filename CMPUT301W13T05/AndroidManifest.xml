@@ -12,9 +12,9 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Dialog" >
         <activity
-            android:name="com.example.easycooking.MainPage"
+            android:name="com.example.easycooking.MainPageActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,11 +26,13 @@
             android:name="com.example.easycooking.Itisatry"
             android:label="@string/title_activity_itisatry" >
         </activity>
-        <activity android:name="com.example.easycooking.CreateRecipe"></activity>
-        <activity android:name="com.example.easycooking.MyProfile"></activity>
-        <activity android:name="com.example.easycooking.SelectionLocal"></activity>
-        <activity android:name="com.example.easycooking.SelectionWeb"></activity>
-        <activity android:name="com.example.easycooking.RecipeResult"></activity>
+        <activity android:name="com.example.easycooking.CreateRecipeActivity"></activity>
+        <activity android:name="com.example.easycooking.MyProfileActivity"></activity>
+        <activity android:name="com.example.easycooking.SelectionLocalActivity"></activity>
+        <activity android:name="com.example.easycooking.SelectionWebActivity"></activity>
+        <activity android:name="com.example.easycooking.RecipeResultActivity"></activity>
+        <activity android:name="com.example.easycooking.ModifyIngredientsActivity"></activity>
+        <activity android:name="com.example.easycooking.ModifyImageActivity"></activity>
     </application>
 
 </manifest>

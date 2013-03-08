@@ -7,7 +7,7 @@ import android.app.Activity;
 //import android.view.Menu;
 import android.content.Intent;
 
-public class SelectionLocal extends Activity {
+public class SelectionLocalActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,11 +18,11 @@ public class SelectionLocal extends Activity {
 		selection_share.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
 	        		Intent intent = new Intent();
-	        		intent.setClass(SelectionLocal.this, Itisatry.class);
+	        		intent.setClass(SelectionLocalActivity.this, Itisatry.class);
 	        		//start a add entry activity
 	        		startActivity(intent);
 	        		//close the old activity
-	        		SelectionLocal.this.finish();
+	        		SelectionLocalActivity.this.finish();
 	        	}
 	        });
 		
@@ -31,11 +31,11 @@ public class SelectionLocal extends Activity {
 		selection_modify.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 			        Intent intent = new Intent();
-			        intent.setClass(SelectionLocal.this, Itisatry.class);// should change to the RecipeDetails.java
+			        intent.setClass(SelectionLocalActivity.this, Itisatry.class);// should change to the RecipeDetails.java
 			        //start a add entry activity
 			        startActivity(intent);
 			        //close the old activity
-			        SelectionLocal.this.finish();
+			        SelectionLocalActivity.this.finish();
 			      }
 			});
 		//button delete

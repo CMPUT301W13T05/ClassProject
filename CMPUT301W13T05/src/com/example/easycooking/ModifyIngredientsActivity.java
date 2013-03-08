@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.app.Activity;
 //import android.view.Menu;
 
-public class ModifyIngredients extends Activity {
+public class ModifyIngredientsActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/wp"
     tools:context=".MainActivity" >
 
     <EditText
@@ -50,15 +51,6 @@
         android:text="@string/Setup" />
 
     <Button
-        android:id="@+id/search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp"
-        android:text="@string/search" />
-
-    <Button
         android:id="@+id/modifyingre"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
@@ -66,5 +58,14 @@
         android:layout_below="@+id/setup_search"
         android:layout_centerHorizontal="true"
         android:text="@string/MyIngredient" />
+
+    <Button
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp"
+        android:text="@string/search" />
 
 </RelativeLayout>

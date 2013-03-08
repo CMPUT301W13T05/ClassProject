@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
-public class RecipeResult extends Activity {
+public class RecipeResultActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,11 +19,11 @@ public class RecipeResult extends Activity {
 		result_search.setOnClickListener(new Button.OnClickListener() {
 		       public void onClick(View v) {
 		        	Intent intent = new Intent();
-		        	intent.setClass(RecipeResult.this, MainPage.class);
+		        	intent.setClass(RecipeResultActivity.this, MainPageActivity.class);
 		        	//start a add entry activity
 		        	startActivity(intent);
 		        	//close the old activity
-		        	RecipeResult.this.finish();
+		        	RecipeResultActivity.this.finish();
 		        }
 		       });
 	}

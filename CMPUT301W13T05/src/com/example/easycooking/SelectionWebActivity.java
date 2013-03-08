@@ -7,7 +7,7 @@ import android.app.Activity;
 //import android.view.Menu;
 import android.content.Intent;
 
-public class SelectionWeb extends Activity {
+public class SelectionWebActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,11 +18,11 @@ public class SelectionWeb extends Activity {
 		selection_share.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
 	        		Intent intent = new Intent();
-	        		intent.setClass(SelectionWeb.this, Itisatry.class);// to share pop layout
+	        		intent.setClass(SelectionWebActivity.this, Itisatry.class);// to share pop layout
 	        		//start a add entry activity
 	        		startActivity(intent);
 	        		//close the old activity
-	        		SelectionWeb.this.finish();
+	        		SelectionWebActivity.this.finish();
 	        	}
 	        });
 		
