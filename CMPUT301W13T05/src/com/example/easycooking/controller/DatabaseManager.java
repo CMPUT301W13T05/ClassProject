@@ -1,7 +1,9 @@
 package com.example.easycooking.controller;
 
 
+import com.example.easycooking.model.Ingredient;
 import com.example.easycooking.model.Recipe;
+import com.example.easycooking.model.Step;
 
 import android.view.Menu;
 import android.content.ContentValues;  
@@ -46,15 +48,27 @@ public class DatabaseManager {
 			return instance; 
 		}
 		
-//		//Add recipe
-//		public void add_recipe(Recipe recipe) {
-//			ContentValues values = new ContentValues();
-//			values.put("rid", rid);
-//			values.put("name",name);
-//			values.put("download", download);
-//			values.put("upload", upload);
-//			db.insert("localrecipe", null, values);
-//
-//		}
+		//insert an recipe
+		public void add_recipe(Recipe recipe ) {
+			ContentValues values = new ContentValues();
+			values.put("rid", recipe.getId());
+			values.put("name",recipe.getName());
+			values.put("download_upload_own", recipe.get_download_upload_own());
+			db.insert("localrecipe", null, values);
 
+		}
+		public void add_step(Step step){
+			ContentValues values = new ContentValues();
+			values.put("recipe_step", step.get_recipe_step());
+			values.put("rid", step.get_belong());
+			values.put("steps", step.get_detail());
+			db.insert("step", null, values);
+		}
+		public void add_ingrdient(Ingredient ingredient){
+			//TODO
+		}
+		public void delete_recipe(String rid){	
+			db.delete("localrecipe","rid =" + rid, null);
+		}
+		
 }

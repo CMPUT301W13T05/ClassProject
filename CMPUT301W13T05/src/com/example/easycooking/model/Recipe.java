@@ -11,6 +11,7 @@ public class Recipe implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String id;
 	private String name;
+	private int download_upload_own;
 	private ArrayList<Ingredient> ingredients;
 	private ArrayList<Image> images;
 	public Recipe(){
@@ -34,6 +35,12 @@ public class Recipe implements Serializable {
 	
 	public String getName() {
 		return name;
+	}
+	public int get_download_upload_own(){
+		return download_upload_own;
+	}
+	public void set_download_upload_own(int download_upload_own){
+		this.download_upload_own = download_upload_own;
 	}
 
 	public void setName(String name) {
