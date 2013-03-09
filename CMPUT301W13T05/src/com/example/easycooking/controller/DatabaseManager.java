@@ -1,4 +1,7 @@
-package com.example.easycooking;
+package com.example.easycooking.controller;
+
+
+import com.example.easycooking.model.Recipe;
 
 import android.view.Menu;
 import android.content.ContentValues;  
@@ -43,15 +46,15 @@ public class DatabaseManager {
 			return instance; 
 		}
 		
-		//Add recipe
-		public void add_recipe(Recipe recipe) {
-			ContentValues values = new ContentValues();
-			values.put("rid", rid);
-			values.put("name",name);
-			values.put("download", download);
-			values.put("upload", upload);
-			db.insert("localrecipe", null, values);
-
-		}
+//		//Add recipe
+//		public void add_recipe(Recipe recipe) {
+//			ContentValues values = new ContentValues();
+//			values.put("rid", rid);
+//			values.put("name",name);
+//			values.put("download", download);
+//			values.put("upload", upload);
+//			db.insert("localrecipe", null, values);
+//
+//		}
 
 }

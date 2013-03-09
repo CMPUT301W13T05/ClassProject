@@ -6,9 +6,7 @@ import android.widget.Button;
 import android.app.Activity;
 import android.content.Intent;
 
-
 public class CreateRecipeActivity extends Activity {
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
