@@ -50,7 +50,6 @@ public class CopyOfDatabaseManager {
 			}
 			return instance; 
 		}
-		
 		//insert an recipe
 		public void add_recipe(Recipe recipe ) {
 			ContentValues values = new ContentValues();
