@@ -24,6 +24,7 @@ import android.view.View;
  *
  */
 public class CopyOfDatabaseManager {
+	private static String recipe_id = null;
 	private static CopyOfDatabaseManager instance = null;
 
 		private SQLiteDatabase db ;
@@ -73,9 +74,11 @@ public class CopyOfDatabaseManager {
 		public void delete_recipe(String rid){	
 			db.delete("localrecipe","rid =" + rid, null);
 		}
-		public ArrayList<Recipe> loadRecipes(){
+		public ArrayList<Recipe> searchRecipes(String name){
 			ArrayList<Recipe> recipes = new ArrayList<Recipe>();
-			Cursor cursor_r = db.query("recipes", null, null, null, null, null, null);
+			Cursor cursor_r;
+			if(name==null) {cursor_r = db.query("recipes", null, null, null, null, null, null);}
+			else {cursor_r = db.query("recipes", null, "name ="+name, null, null, null, null);}
 			cursor_r.moveToFirst();
 			while(!cursor_r.isAfterLast()){
 				Recipe recipe = rebuildRecipe(cursor_r);
@@ -85,18 +88,24 @@ public class CopyOfDatabaseManager {
 			cursor_r.close();
 			return recipes;
 		}
-		public ArrayList<Image> loadImages(){
+		public ArrayList<Image> searchImages(String rid){
 			ArrayList<Image> images = new ArrayList<Image>();
-			Cursor cursor_p = db.query("picture", null, null, null, null, null, null);
+			/*Cursor cursor_p = db.query("picture", null, null, null, null, null, null);
 			cursor_p.moveToFirst();
 			while(!cursor_p.isAfterLast()){
+				Image image = rebuildImage(cursor_p);
+				images.add(image);	
+				cursor_p.moveToNext();
 			}
-			cursor_p.close();
+			cursor_p.close();*/
 			return images;
 		}
-		public ArrayList<Ingredient> loadIngredients(){
+		public ArrayList<Ingredient> searchIngredients(String name, String rid){
 			ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
-			Cursor cursor_i = db.query("ingredient", null, null, null, null, null, null);
+			Cursor cursor_i;
+			if(name == null && rid == null) {cursor_i = db.query("ingredient", null, null, null, null, null, null);}
+			else if(name == null && rid != null) {cursor_i = db.query("ingredient", null, "rid="+rid, null, null, null, null);}
+			else {cursor_i = db.query("ingredient", null, "name="+name, null, null, null, null);}
 			cursor_i.moveToFirst();
 			while(!cursor_i.isAfterLast()){
 				Ingredient ingredient = rebuildIngredient(cursor_i);
@@ -106,9 +115,11 @@ public class CopyOfDatabaseManager {
 			cursor_i.close();
 			return ingredients;
 		}
-		public ArrayList<Step> loadSteps(){
+		public ArrayList<Step> searchSteps(String rid){
 			ArrayList<Step> steps = new ArrayList<Step>();
-			Cursor cursor_s = db.query("step", null, null, null, null, null, null);
+			Cursor cursor_s;
+			if(rid == null) {cursor_s = db.query("step", null, null, null, null, null, null);}
+			else {cursor_s = db.query("step", null, "rid ="+rid, null, null, null, null);}
 			cursor_s.moveToFirst();
 			while(!cursor_s.isAfterLast()){
 				Step step = rebuildStep(cursor_s);
@@ -118,16 +129,15 @@ public class CopyOfDatabaseManager {
 			cursor_s.close();
 			return steps;
 		}
+		//rebuild a full recipe object
 		private Recipe rebuildRecipe(Cursor cursor){
-			ArrayList<Image> image_arraylist = loadImages();
-			ArrayList<Ingredient> ingredient_arraylist = loadIngredients();
-			ArrayList<Step>	step_arraylist = loadSteps();
+			ArrayList<Image> image_arraylist = searchImages(cursor.getString(0));
+			ArrayList<Ingredient> ingredient_arraylist = searchIngredients(null,cursor.getString(0));
+			ArrayList<Step>	step_arraylist = searchSteps(cursor.getString(0));
 			Recipe recipes = new Recipe(cursor.getString(0),cursor.getString(1),image_arraylist,ingredient_arraylist,step_arraylist);
-			//recipes.setID(cursor.getString(0));
-			//recipes.setName(cursor.getString(1));
 			return recipes;
 		}
-		/*private Image rebuleImage(Cursor cursor){
+		/*private Image rebuildImage(Cursor cursor){
 			Image images = new Image();
 			return images;
 		}*/
@@ -139,6 +149,5 @@ public class CopyOfDatabaseManager {
 			Step steps = new Step(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3));
 			return steps;
 		}
-		
 		
 }
