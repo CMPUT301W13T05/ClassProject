@@ -68,7 +68,11 @@ public class DatabaseManager {
 		}
 		public void add_ingrdient(Ingredient ingredient){
 			//TODO
-		}
+			ContentValues values = new ContentValues();
+			values.put("name", ingredient.get_name());
+			values.put("rid", ingredient.get_belongto());
+			values.put("amount", ingredient.get_amount());
+			}
 		public void delete_recipe(String rid){	
 			db.delete("localrecipe","rid =" + rid, null);
 		}

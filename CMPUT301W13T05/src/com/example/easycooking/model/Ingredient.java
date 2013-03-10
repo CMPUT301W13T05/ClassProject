@@ -10,14 +10,15 @@ public class Ingredient implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String ingredients_name, ingredients_amount;
+	private String ingredients_name, ingredients_amount,ingredients_belongto;
 	public Ingredient(){
 		
 	}
-	public Ingredient(String name,String amount){
+	public Ingredient(String name,String amount,String ingredients_belongto){
 		super();
 		this.ingredients_name = name;
 		this.ingredients_amount = amount;
+		this.ingredients_belongto = ingredients_belongto;
 				
 	}
 	public String get_name(){
@@ -32,7 +33,10 @@ public class Ingredient implements Serializable {
 	public void set_amount(String amount){
 		this.ingredients_amount = amount;
 	}
-	public String to_String(){
-		return this.ingredients_amount + "-" + this.ingredients_name;
+	public String get_belongto(){
+		return this.ingredients_belongto;
+	}
+	public void set_belongto(String belongto){
+		this.ingredients_belongto = belongto;
 	}
 }

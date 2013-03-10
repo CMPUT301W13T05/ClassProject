@@ -14,16 +14,17 @@ public class Recipe implements Serializable {
 	private int download_upload_own;
 	private ArrayList<Ingredient> ingredients;
 	private ArrayList<Image> images;
+	private ArrayList<Step> steps;
 	public Recipe(){
 		
 	}
-	public Recipe(String id , String name, ArrayList<Image> image_list, ArrayList<Ingredient> ingredient_list){
+	public Recipe(String id , String name, ArrayList<Image> image_list, ArrayList<Ingredient> ingredient_list,ArrayList<Step> step_list){
 		super();
 		this.id = id;
 		this.name = name;
 		this.ingredients = ingredient_list;
 		this.images = image_list;
-		
+		this.steps = step_list;
 	}
 	public String getID() {
 		return id;
@@ -56,7 +57,13 @@ public class Recipe implements Serializable {
 	public ArrayList<Image> getImages() {
 		return images;
 	}
-
+	
+	public ArrayList<Step> getSteps(){
+		return steps;
+	}
+	public void setSteps(ArrayList<Step> steps){
+		this.steps = steps;
+	}
 	public void setImages(ArrayList<Image> images) {
 		this.images = images;
 	}

@@ -46,8 +46,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				"steps TEXT," +
 				"FOREIGN KEY(rid) REFERENCES localrecipe(rid))");
 		db.execSQL("create table ingredient(" +
+				"iid INTEGER PRIMAY KEY AUTOINCREMENT" +
 				"name TEXT," +
 				"rid STRING," +
+				"amount STRING, " +
 				"FOREIGN KEY(rid) REFERENCES localrecipe(rid))");
 	}     
 	
