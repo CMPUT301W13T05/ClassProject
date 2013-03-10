@@ -73,10 +73,17 @@ public class CopyOfDatabaseManager {
 		public void delete_recipe(String rid){	
 			db.delete("localrecipe","rid =" + rid, null);
 		}
-		public ArrayList<Recipe> searchRecipes(String name){
+		/**
+		 * searchRecipes(String name, String rid is a function that search recipes from database
+		 * by using recipe name and recipe ID as constraints
+		 * @param name
+		 * @return an ArrayList contains recipe objects
+		 */
+		public ArrayList<Recipe> searchRecipes(String name, String rid){
 			ArrayList<Recipe> recipes = new ArrayList<Recipe>();
 			Cursor cursor_r;
-			if(name==null) {cursor_r = db.query("recipes", null, null, null, null, null, null);}
+			if(name == null && rid == null) {cursor_r = db.query("recipes", null, null, null, null, null, null);}
+			else if(name == null && rid != null) {cursor_r = db.query("recipes", null, "rid ="+rid, null, null, null, null);}
 			else {cursor_r = db.query("recipes", null, "name ="+name, null, null, null, null);}
 			cursor_r.moveToFirst();
 			while(!cursor_r.isAfterLast()){
@@ -87,6 +94,11 @@ public class CopyOfDatabaseManager {
 			cursor_r.close();
 			return recipes;
 		}
+		/**
+		 * searchImages(String rid) is a function that search images with giving recipe ID from database
+		 * @param rid
+		 * @return an ArrayList contains image objects
+		 */
 		public ArrayList<Image> searchImages(String rid){
 			ArrayList<Image> images = new ArrayList<Image>();
 			/*Cursor cursor_p = db.query("picture", null, null, null, null, null, null);
@@ -99,6 +111,13 @@ public class CopyOfDatabaseManager {
 			cursor_p.close();*/
 			return images;
 		}
+		/**
+		 * searchIngredients(String name, String rid) is a function that search ingredients 
+		 * with giving recipe ID and ingredient name from database
+		 * @param name
+		 * @param rid
+		 * @return an ArrayList contains ingredients objects
+		 */
 		public ArrayList<Ingredient> searchIngredients(String name, String rid){
 			ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
 			Cursor cursor_i;
@@ -114,6 +133,12 @@ public class CopyOfDatabaseManager {
 			cursor_i.close();
 			return ingredients;
 		}
+		/**
+		 * searchSteps(String rid) is a function that search steps of making a dish
+		 * with giving recipe ID from database
+		 * @param rid
+		 * @return an ArrayList contains steps objects
+		 */
 		public ArrayList<Step> searchSteps(String rid){
 			ArrayList<Step> steps = new ArrayList<Step>();
 			Cursor cursor_s;
@@ -128,7 +153,12 @@ public class CopyOfDatabaseManager {
 			cursor_s.close();
 			return steps;
 		}
-		//rebuild a full recipe object
+		/**
+		 * rebuildRecipe(Cursor cursor) takes a bunch of strings and ArrayList
+		 * and makes them to a recipe object
+		 * @param cursor
+		 * @return recipe object
+		 */
 		private Recipe rebuildRecipe(Cursor cursor){
 			ArrayList<Image> image_arraylist = searchImages(cursor.getString(0));
 			ArrayList<Ingredient> ingredient_arraylist = searchIngredients(null,cursor.getString(0));
@@ -136,14 +166,31 @@ public class CopyOfDatabaseManager {
 			Recipe recipes = new Recipe(cursor.getString(0),cursor.getString(1),image_arraylist,ingredient_arraylist,step_arraylist);
 			return recipes;
 		}
+		/**
+		 * rebuildImage(Cursor cursor) 
+		 * @param cursor
+		 * @return image object
+		 */
 		/*private Image rebuildImage(Cursor cursor){
 			Image images = new Image();
 			return images;
 		}*/
+		/**
+		 * rebuildIngredient(Cursor cursor) takes strings from database
+		 * and makes them an ingredient object
+		 * @param cursor
+		 * @return ingredient object
+		 */
 		private Ingredient rebuildIngredient(Cursor cursor){
 			Ingredient ingredients = new Ingredient(cursor.getString(0),cursor.getString(1),cursor.getString(2));
 			return ingredients;
 		}
+		/**
+		 * rebuildStep(Cursor cursor) takes strings from database
+		 * and makes them a step object
+		 * @param cursor
+		 * @return step object
+		 */
 		private Step rebuildStep(Cursor cursor){
 			Step steps = new Step(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3));
 			return steps;
