@@ -27,7 +27,7 @@ public class MainPageActivity extends Activity {
 	        		//TODO get ArrayList<Recipe>
 	        		dB_LocalDatabaseManager.open();
 	        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-	        		result_recipe=dB_LocalDatabaseManager.searchRecipes(null, null);
+	        		result_recipe=dB_LocalDatabaseManager.searchRecipes("potato", null);
 	        		dB_LocalDatabaseManager.close();
 	        		Intent intent = new Intent();
 	        		Bundle mbundle = new Bundle();
