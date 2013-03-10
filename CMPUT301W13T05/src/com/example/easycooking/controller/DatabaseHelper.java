@@ -31,25 +31,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		System.out.println("create a database");
 		//execSQL to execute sql statement
 		db.execSQL("create table localrecipe(" +
-				"rid STRING PRIMARY KEY" +
+				"rid CHAR PRIMARY KEY" +
 				"name TEXT," +
 				"downloaded_upload_own INTEGER)"); 
 		db.execSQL("create table picture(" +
-				"pid STRING PRIMARY KEY," +
-				"rid STRING," +
+				"pid CHAR PRIMARY KEY," +
+				"rid CHAR," +
 				"image blob," +
 				"FOREIGN KEY(rid) REFERENCES localrecipe(rid))");
 		db.execSQL("create table step(" +
-				"sid STRING PRIMARY KEY AUTOINCREMENT," +
-				"recipe_step STRING," +
-				"rid STRING," +
+				"sid CHAR PRIMARY KEY AUTOINCREMENT," +
+				"recipe_step CHAR," +
+				"rid CHAR," +
 				"steps TEXT," +
 				"FOREIGN KEY(rid) REFERENCES localrecipe(rid))");
 		db.execSQL("create table ingredient(" +
 				"iid INTEGER PRIMAY KEY AUTOINCREMENT" +
 				"name TEXT," +
-				"rid STRING," +
-				"amount STRING, " +
+				"rid CHAR," +
+				"amount CHAR, " +
 				"FOREIGN KEY(rid) REFERENCES localrecipe(rid))");
 	}     
 	
