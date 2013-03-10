@@ -12,14 +12,17 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainPageActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		final DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		final EditText serching_text = (EditText)findViewById(R.id.editText1);
 		/////////////////////////////////Search button 
 		 Button main_search = (Button)findViewById(R.id.search);
 		 main_search.setOnClickListener(new Button.OnClickListener() {
@@ -27,7 +30,7 @@ public class MainPageActivity extends Activity {
 	        		//TODO get ArrayList<Recipe>
 	        		dB_LocalDatabaseManager.open();
 	        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-	        		result_recipe=dB_LocalDatabaseManager.searchRecipes("potato", null);
+	        		result_recipe=dB_LocalDatabaseManager.searchRecipes(serching_text.getText().toString(), 1);
 	        		dB_LocalDatabaseManager.close();
 	        		Intent intent = new Intent();
 	        		Bundle mbundle = new Bundle();

@@ -7,6 +7,7 @@ import com.example.easycooking.model.Recipe;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,8 +18,6 @@ import android.content.Intent;
 
 public class ModifyIngredientsActivity extends Activity {
 	private static Recipe mrecipe = new Recipe();
-	//set up all view
-	
 	private static ArrayList<String> ingredient_list = new ArrayList<String>();
 	private static ArrayList<Ingredient> ingredient_obj_list = new ArrayList<Ingredient>();
 	
@@ -27,7 +26,9 @@ public class ModifyIngredientsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.adddetail);
 		//ingredient_list.add("");
-		//setup all view
+		/**
+		 * set up each view variable
+		 */
 		final EditText ingredient_name = (EditText)findViewById(R.id.ingredient_text);
 		final EditText ingredient_amount = (EditText)findViewById(R.id.amount_Text);
 		ListView ingredient_listView= (ListView) findViewById(R.id.listView1);
@@ -35,18 +36,14 @@ public class ModifyIngredientsActivity extends Activity {
 		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 		ingredient_obj_list = mrecipe.getIngredients();
 		update_list(ingredient_obj_list);
-		///////////////////////////
+		
 		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_single_choice , ingredient_list);
 		ingredient_listView.setAdapter(adapter);
-
 		ingredient_listView.setItemsCanFocus(false);
-
 		ingredient_listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE); 
 		
-		/////////////////////////
-		//ingredient_name.setText(mrecipe.getID());
-		/////////////////////////
+		
 		//Add button
 		Button modify_ingredients_add = (Button)findViewById(R.id.add);
 		modify_ingredients_add.setOnClickListener(new Button.OnClickListener() {
@@ -58,7 +55,6 @@ public class ModifyIngredientsActivity extends Activity {
 				ingredient_obj_list.add(new_ingredient);
 				update_list(ingredient_obj_list);
 				adapter.notifyDataSetChanged();//refressh the list View
-		        		//To be implemented
 			}
 		});
 		
@@ -77,17 +73,24 @@ public class ModifyIngredientsActivity extends Activity {
 				startActivity(intent);
 				//close the old activity
 				ModifyIngredientsActivity.this.finish();
-		        		//To be implemented
 			}
 		});
-		//delete button
-		//Save button
-		Button modify_ingredients_delete = (Button)findViewById(R.id.delete);
-		modify_ingredients_delete.setOnClickListener(new Button.OnClickListener() {
-		        public void onClick(View v) {
-		        		//To be implemented
-		        	}
-		        });
+		/////////////////////////////////////////////////////
+		ingredient_listView.setOnItemClickListener(new ListView.OnItemClickListener(){
+	        	@Override
+	        	public void onItemClick(AdapterView<?> arg0, View arg1, final int position,long id) 
+	        	{
+	        		//get the position
+	        		//delete button
+	        		Button modify_ingredients_delete = (Button)findViewById(R.id.delete);
+	        		modify_ingredients_delete.setOnClickListener(new Button.OnClickListener() {
+	        		        public void onClick(View v) {
+	        		        		//To be implemented
+	        		        	}
+	        		        });
+	        	}
+
+		});
 	}
 	
 	private void update_list(ArrayList<Ingredient> ingredients){
