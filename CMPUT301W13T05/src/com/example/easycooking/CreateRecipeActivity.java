@@ -3,6 +3,7 @@ package com.example.easycooking;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import com.example.easycooking.controller.DatabaseManager;
 import com.example.easycooking.model.Image;
 import com.example.easycooking.model.Ingredient;
 import com.example.easycooking.model.Recipe;
@@ -21,11 +22,15 @@ public class CreateRecipeActivity extends Activity {
 	private static Recipe mrecipe = new Recipe();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		final DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);
+		
+		
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.addrecipe);
 		
 		/////////Set up view
-		EditText enter_recipe_name = (EditText)findViewById(R.id.recipe_name);
+		final EditText enter_recipe_name = (EditText)findViewById(R.id.recipe_name);
 		TextView count_updated =(TextView)findViewById(R.id.uploaded_view);
 		TextView count_ingredients =(TextView)findViewById(R.id.ingredients_view);
 		TextView count_steps =(TextView)findViewById(R.id.steps_view);
@@ -67,7 +72,25 @@ public class CreateRecipeActivity extends Activity {
 		Button add_modify_save = (Button)findViewById(R.id.save);
 		add_modify_save.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
+				mrecipe.setName(enter_recipe_name.getText().toString());
+				mrecipe.set_download_upload_own(1);
+				dB_LocalDatabaseManager.open();
+				dB_LocalDatabaseManager.drop();
+				dB_LocalDatabaseManager.close();
+				dB_LocalDatabaseManager.open();
 				
+				ArrayList<Ingredient> db_input_ingredients = mrecipe.getIngredients();
+				ArrayList<Step> db_input_steps = mrecipe.getSteps();
+				dB_LocalDatabaseManager.add_recipe(mrecipe);
+				int i;
+				for (i = 0 ; i < db_input_ingredients.size(); i++ ){
+					dB_LocalDatabaseManager.add_ingrdient(mrecipe.getIngredients().get(i));
+				}
+				for (i =0 ; i < db_input_steps.size(); i++){
+					dB_LocalDatabaseManager.add_step(mrecipe.getSteps().get(i));
+				}
+				dB_LocalDatabaseManager.close();
+				enter_recipe_name.setText(mrecipe.getID());
 				//TO BE IMPLEMENTED
 			}
 		});	

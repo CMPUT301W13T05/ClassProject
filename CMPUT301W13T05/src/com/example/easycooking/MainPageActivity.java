@@ -3,6 +3,7 @@ package com.example.easycooking;
 
 import java.util.ArrayList;
 
+import com.example.easycooking.controller.DatabaseManager;
 import com.example.easycooking.model.Recipe;
 
 import android.os.Bundle;
@@ -16,18 +17,28 @@ public class MainPageActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		final DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		/////////////////////////////////Search button 
 		 Button main_search = (Button)findViewById(R.id.search);
 		 main_search.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
+	        		//TODO get ArrayList<Recipe>
+	        		dB_LocalDatabaseManager.open();
+	        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
+	        		result_recipe=dB_LocalDatabaseManager.searchRecipes(null, null);
+	        		dB_LocalDatabaseManager.close();
 	        		Intent intent = new Intent();
+	        		Bundle mbundle = new Bundle();
+	        		mbundle.putSerializable("RECIPE_RESULT", result_recipe);
+	        		intent.putExtras(mbundle);
 	        		intent.setClass(MainPageActivity.this, RecipeResultActivity.class);
 	        		//start a add entry activity
+	        		
 	        		startActivity(intent);
 	        		//close the old activity
-	        		MainPageActivity.this.finish();
+	        		//MainPageActivity.this.finish();
 	        	}
 	        });
 		 ////////////////////////////////Profile button

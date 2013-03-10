@@ -18,13 +18,15 @@ public class Recipe implements Serializable {
 	public Recipe(){
 		
 	}
-	public Recipe(String id , String name, ArrayList<Image> image_list, ArrayList<Ingredient> ingredient_list,ArrayList<Step> step_list){
+	public Recipe(String id , String name, ArrayList<Image> image_list, ArrayList<Ingredient> ingredient_list,ArrayList<Step> step_list,
+			int download_upload_own){
 		super();
 		this.id = id;
 		this.name = name;
 		this.ingredients = ingredient_list;
 		this.images = image_list;
 		this.steps = step_list;
+		this.download_upload_own = download_upload_own;
 	}
 	public String getID() {
 		return id;

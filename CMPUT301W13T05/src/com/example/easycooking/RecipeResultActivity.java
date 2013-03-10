@@ -1,6 +1,11 @@
 package com.example.easycooking;
 
 
+import java.util.ArrayList;
+
+import com.example.easycooking.model.Ingredient;
+import com.example.easycooking.model.Recipe;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -9,11 +14,16 @@ import android.view.View;
 import android.widget.Button;
 
 public class RecipeResultActivity extends Activity {
-
+	private static ArrayList<Recipe> result = new ArrayList<Recipe>();
+	private static ArrayList<String> result_string = new ArrayList<String>();
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.result);
+		result = (ArrayList<Recipe>)getIntent().getSerializableExtra("RECIPE_RESULT");
+		update_list(result);
 		////////////////////////////////Profile button
 		Button result_search =(Button)findViewById(R.id.search);
 		result_search.setOnClickListener(new Button.OnClickListener() {
@@ -26,6 +36,17 @@ public class RecipeResultActivity extends Activity {
 		        	RecipeResultActivity.this.finish();
 		        }
 		       });
+		
+	}
+	private void update_list(ArrayList<Recipe> recipes){
+		result_string.clear();
+		Recipe recipe = new Recipe();
+		int i;
+		for (i=0; i< recipes.size();i++){
+			recipe = recipes.get(i);
+			result_string.add(recipe.getName());
+		}
+		return;
 	}
 	
 	/*@Override
@@ -36,8 +57,9 @@ public class RecipeResultActivity extends Activity {
 	}*/
 	@Override
 	//back button pressed
+	
 	public void onBackPressed() {
 	return;
 	}
-
+	
 }

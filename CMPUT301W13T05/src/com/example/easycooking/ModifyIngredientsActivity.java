@@ -90,7 +90,7 @@ public class ModifyIngredientsActivity extends Activity {
 		        });
 	}
 	
-	public void update_list(ArrayList<Ingredient> ingredients){
+	private void update_list(ArrayList<Ingredient> ingredients){
 		ingredient_list.clear();
 		Ingredient mingredient = new Ingredient();
 		int i;

@@ -163,7 +163,7 @@ public class CopyOfDatabaseManager {
 			ArrayList<Image> image_arraylist = searchImages(cursor.getString(0));
 			ArrayList<Ingredient> ingredient_arraylist = searchIngredients(null,cursor.getString(0));
 			ArrayList<Step>	step_arraylist = searchSteps(cursor.getString(0));
-			Recipe recipes = new Recipe(cursor.getString(0),cursor.getString(1),image_arraylist,ingredient_arraylist,step_arraylist);
+			Recipe recipes = new Recipe(cursor.getString(0),cursor.getString(1),image_arraylist,ingredient_arraylist,step_arraylist,cursor.getInt(2));
 			return recipes;
 		}
 		/**
