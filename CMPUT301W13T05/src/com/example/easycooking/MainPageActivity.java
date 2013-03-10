@@ -1,6 +1,10 @@
 package com.example.easycooking;
 
 
+import java.util.ArrayList;
+
+import com.example.easycooking.model.Recipe;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -45,6 +49,8 @@ public class MainPageActivity extends Activity {
 		        		Intent intent = new Intent();
 		        		Bundle mbundle = new Bundle();
 		        		mbundle.putString("FromWhere", "MAIN");
+		        		//ArrayList<Recipe> mrecipe = new ArrayList<Recipe>();
+		        		//mbundle.putSerializable("ArrayList", mrecipe);
 		        		intent.putExtras(mbundle);
 		        		intent.setClass(MainPageActivity.this, CreateRecipeActivity.class);
 		        		//start a add entry activity
