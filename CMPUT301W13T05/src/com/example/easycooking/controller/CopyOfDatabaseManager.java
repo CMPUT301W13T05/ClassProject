@@ -94,7 +94,7 @@ public class CopyOfDatabaseManager {
 			cursor_p.close();
 			return images;
 		}
-		public ArrayList<Ingredient> loadIngredient(){
+		public ArrayList<Ingredient> loadIngredients(){
 			ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
 			Cursor cursor_i = db.query("ingredient", null, null, null, null, null, null);
 			cursor_i.moveToFirst();
@@ -106,7 +106,7 @@ public class CopyOfDatabaseManager {
 			cursor_i.close();
 			return ingredients;
 		}
-		public ArrayList<Step> loadStep(){
+		public ArrayList<Step> loadSteps(){
 			ArrayList<Step> steps = new ArrayList<Step>();
 			Cursor cursor_s = db.query("step", null, null, null, null, null, null);
 			cursor_s.moveToFirst();
@@ -119,7 +119,10 @@ public class CopyOfDatabaseManager {
 			return steps;
 		}
 		private Recipe rebuildRecipe(Cursor cursor){
-			Recipe recipes = new Recipe(cursor.getString(0),cursor.getString(1),null,null);
+			ArrayList<Image> image_arraylist = loadImages();
+			ArrayList<Ingredient> ingredient_arraylist = loadIngredients();
+			ArrayList<Step>	step_arraylist = loadSteps();
+			Recipe recipes = new Recipe(cursor.getString(0),cursor.getString(1),image_arraylist,ingredient_arraylist,step_arraylist);
 			//recipes.setID(cursor.getString(0));
 			//recipes.setName(cursor.getString(1));
 			return recipes;
@@ -129,7 +132,7 @@ public class CopyOfDatabaseManager {
 			return images;
 		}*/
 		private Ingredient rebuildIngredient(Cursor cursor){
-			Ingredient ingredients = new Ingredient(cursor.getString(0),cursor.getString(1));
+			Ingredient ingredients = new Ingredient(cursor.getString(0),cursor.getString(1),cursor.getString(2));
 			return ingredients;
 		}
 		private Step rebuildStep(Cursor cursor){
