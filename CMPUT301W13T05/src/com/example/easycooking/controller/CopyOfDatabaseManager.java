@@ -24,7 +24,6 @@ import android.view.View;
  *
  */
 public class CopyOfDatabaseManager {
-	private static String recipe_id = null;
 	private static CopyOfDatabaseManager instance = null;
 
 		private SQLiteDatabase db ;
