@@ -53,8 +53,12 @@ public class DatabaseManager {
 			return instance; 
 		}
 		
-		//insert an recipe
-		public void add_recipe(Recipe recipe ) {
+		/**
+		 * add_recipe(Recipe recipe) is a function 
+		 * that insert a recipe object into database
+		 * @param recipe
+		 */
+		public void add_recipe(Recipe recipe) {
 			ContentValues values = new ContentValues();
 			values.put("rid", recipe.getID());
 			values.put("name",recipe.getName());
@@ -62,7 +66,11 @@ public class DatabaseManager {
 			db.insert("localrecipe", null, values);
 
 		}
-		//insert an step 
+		/**
+		 * add_step(Step step) is a function
+		 * that insert a step object into database 
+		 * @param step
+		 */
 		public void add_step(Step step){
 			ContentValues values = new ContentValues();
 			values.put("recipe_step", step.get_recipe_step());
@@ -70,7 +78,11 @@ public class DatabaseManager {
 			values.put("steps", step.get_detail());
 			db.insert("step", null, values);
 		}
-		//insert an ingredient
+		/**
+		 * add_ingrdient(Ingredient ingredient) is a function
+		 * that insert a ingredient function into database
+		 * @param ingredient
+		 */
 		public void add_ingrdient(Ingredient ingredient){
 			
 			ContentValues values = new ContentValues();
@@ -79,7 +91,11 @@ public class DatabaseManager {
 			values.put("amount", ingredient.get_amount());
 			db.insert("ingredient", null, values);
 			}
-		//update an recipe
+		/**
+		 * update_recipe(Recipe recipe) can update the row
+		 * contains the old recipe object in all tables
+		 * @param recipe
+		 */
 		public void update_recipe(Recipe recipe) {
 			ContentValues values = new ContentValues();
 			values.put("rid", recipe.getID());
@@ -87,6 +103,11 @@ public class DatabaseManager {
 			values.put("download_upload_own",recipe.get_download_upload_own());
 			db.update("localrecipe", values, "rid ='" + recipe.getID()+"'", null);
 		}
+		/**
+		 * update_ingredient(Ingredient ingredient) can update the row
+		 * contains the old ingredients object in ingredient table
+		 * @param ingredient
+		 */
 		public void update_ingredient(Ingredient ingredient){
 			ContentValues values = new ContentValues();
 			values.put("name", ingredient.get_name());
@@ -94,20 +115,39 @@ public class DatabaseManager {
 			values.put("amount", ingredient.get_amount());
 			db.update("ingredient", values, "rid ='"+ ingredient.get_belongto()+"' and name = '"+ingredient.get_name()+"'", null);
 		}
-		
+		/**
+		 * update_steps(Step step) can update the row
+		 * contains the old step object in step table
+		 * @param step
+		 */
 		public void update_steps(Step step){
 			ContentValues values = new ContentValues();
 			values.put("recipe_step", step.get_recipe_step());
 			values.put("rid", step.get_belong());
 			values.put("steps", step.get_detail());
 			db.update("step", values, "rid ='" +step.get_belong()+"' and recipe_step ='" + step.get_recipe_step()+"'", null);
-		}			
+		}	
+		/**
+		 * delete_steps(Step step) deletes the row 
+		 * contains the current step object in the step table
+		 * @param step
+		 */
 		public void delete_steps(Step step){
 			db.delete("step", "rid = '"+step.get_belong()+"'", null);
 		}
+		/**
+		 * delete_ingredient(Ingredient ingredient) deletes the row 
+		 * contains the current ingredient object in ingredient table
+		 * @param ingredient
+		 */
 		public void delete_ingredient(Ingredient ingredient){
 			db.delete("ingredient", "rid ='"+ingredient.get_belongto()+"'and name ='"+ ingredient.get_name()+"'", null);
 		}
+		/**
+		 * delete_recipe(Recipe recipe) deletes the row
+		 * contains the current recipe object in all tables
+		 * @param recipe
+		 */
 		public void delete_recipe(Recipe recipe){	
 			ArrayList<Ingredient> de_Ingredient = new ArrayList<Ingredient>();
 			de_Ingredient = recipe.getIngredients();
