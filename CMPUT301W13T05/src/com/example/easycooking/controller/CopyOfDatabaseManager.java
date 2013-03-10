@@ -96,7 +96,7 @@ public class CopyOfDatabaseManager {
 		}
 		public ArrayList<Ingredient> loadIngredient(){
 			ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
-			Cursor cursor_i = db.query("ingredient",  null, null, null, null, null, null);
+			Cursor cursor_i = db.query("ingredient", null, null, null, null, null, null);
 			cursor_i.moveToFirst();
 			while(!cursor_i.isAfterLast()){
 				Ingredient ingredient = rebuildIngredient(cursor_i);
@@ -136,5 +136,6 @@ public class CopyOfDatabaseManager {
 			Step steps = new Step(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3));
 			return steps;
 		}
+		
 		
 }
