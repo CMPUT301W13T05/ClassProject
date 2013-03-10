@@ -11,7 +11,9 @@ import android.app.Activity;
 import android.content.Intent;
 //import android.view.Menu;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 public class RecipeResultActivity extends Activity {
 	private static ArrayList<Recipe> result = new ArrayList<Recipe>();
@@ -24,6 +26,15 @@ public class RecipeResultActivity extends Activity {
 		setContentView(R.layout.result);
 		result = (ArrayList<Recipe>)getIntent().getSerializableExtra("RECIPE_RESULT");
 		update_list(result);
+		//set up view 
+		ListView result_listView= (ListView) findViewById(R.id.listView1);
+		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_single_choice , result_string);
+		result_listView.setAdapter(adapter);
+
+		result_listView.setItemsCanFocus(false);
+
+		result_listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE); 
 		////////////////////////////////Profile button
 		Button result_search =(Button)findViewById(R.id.search);
 		result_search.setOnClickListener(new Button.OnClickListener() {
@@ -55,11 +66,11 @@ public class RecipeResultActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}*/
-	@Override
+	
 	//back button pressed
 	
-	public void onBackPressed() {
-	return;
-	}
+	//public void onBackPressed() {
+	//return;
+	//}
 	
 }
