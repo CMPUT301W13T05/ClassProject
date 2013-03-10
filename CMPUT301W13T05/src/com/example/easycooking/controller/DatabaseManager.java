@@ -25,7 +25,6 @@ import android.view.View;
  */
 public class DatabaseManager {
 	private static DatabaseManager instance = null;
-
 		private SQLiteDatabase db ;
 		private DatabaseHelper dbHelper;
 		
@@ -132,21 +131,21 @@ public class DatabaseManager {
 		 * @param name
 		 * @return an ArrayList contains recipe objects
 		 */
-		public ArrayList<Recipe> searchRecipes(String name, String ingredient){
+		public ArrayList<Recipe> searchRecipes(String var, int condition) {
 			ArrayList<Recipe> recipes = new ArrayList<Recipe>();
 			Cursor cursor_r;
 			Cursor cursor_d;
 			Cursor cursor_a;
-			if(name == null && ingredient == null) {cursor_r = db.query("localrecipe", null, null, null, null, null, null);}
-			else if(name == null && ingredient != null) {
-				cursor_d = db.query(ingredient, null, "ingredient = '"+ingredient+"'", null, null, null, null);
+			if(condition == -1) {cursor_r = db.query("localrecipe", null, null, null, null, null, null);}
+			else if(condition == 0) {
+				cursor_d = db.query("ingredient", null, "ingredient = '"+var+"'", null, null, null, null);
 				cursor_r = db.query("localrecipe", null, "rid ='"+cursor_d.getString(2)+"'", null, null, null, null);
 				cursor_d.close();
 				}
-			else if(name != null && ingredient == null){cursor_r = db.query("localrecipe", null, "name ='"+name+"'", null, null, null, null);}
+			else if(condition == 1){cursor_r = db.query("localrecipe", null, "name ='"+var+"'", null, null, null, null);}
 			else {	
-				cursor_a = db.query(ingredient, null, "ingredient = '"+ingredient+"'", null, null, null, null);
-				cursor_r = db.query("localrecipe", null, "rid ='"+cursor_a.getString(2)+"'and name = '"+name+"'", null, null, null, null);
+				cursor_a = db.query("ingredient", null, "ingredient = '"+var+"'", null, null, null, null);
+				cursor_r = db.query("localrecipe", null, "rid ='"+cursor_a.getString(2)+"'and name = '"+var+"'", null, null, null, null);
 				cursor_a.close();
 				}
 			cursor_r.moveToFirst();
