@@ -132,12 +132,23 @@ public class DatabaseManager {
 		 * @param name
 		 * @return an ArrayList contains recipe objects
 		 */
-		public ArrayList<Recipe> searchRecipes(String name, String rid){
+		public ArrayList<Recipe> searchRecipes(String name, String ingredient){
 			ArrayList<Recipe> recipes = new ArrayList<Recipe>();
 			Cursor cursor_r;
-			if(name == null && rid == null) {cursor_r = db.query("localrecipe", null, null, null, null, null, null);}
-			else if(name == null && rid != null) {cursor_r = db.query("localrecipe", null, "rid ='"+rid+"'", null, null, null, null);}
-			else {cursor_r = db.query("localrecipe", null, "name ='"+name+"'", null, null, null, null);}
+			Cursor cursor_d;
+			Cursor cursor_a;
+			if(name == null && ingredient == null) {cursor_r = db.query("localrecipe", null, null, null, null, null, null);}
+			else if(name == null && ingredient != null) {
+				cursor_d = db.query(ingredient, null, "ingredient = '"+ingredient+"'", null, null, null, null);
+				cursor_r = db.query("localrecipe", null, "rid ='"+cursor_d.getString(2)+"'", null, null, null, null);
+				cursor_d.close();
+				}
+			else if(name != null && ingredient == null){cursor_r = db.query("localrecipe", null, "name ='"+name+"'", null, null, null, null);}
+			else {	
+				cursor_a = db.query(ingredient, null, "ingredient = '"+ingredient+"'", null, null, null, null);
+				cursor_r = db.query("localrecipe", null, "rid ='"+cursor_a.getString(2)+"'and name = '"+name+"'", null, null, null, null);
+				cursor_a.close();
+				}
 			cursor_r.moveToFirst();
 			while(!cursor_r.isAfterLast()){
 				Recipe recipe = rebuildRecipe(cursor_r);
