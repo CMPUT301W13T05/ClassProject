@@ -3,6 +3,7 @@ package com.example.easycooking.controller;
 
 import java.util.ArrayList;
 
+import com.example.easycooking.model.Image;
 import com.example.easycooking.model.Ingredient;
 import com.example.easycooking.model.Recipe;
 import com.example.easycooking.model.Step;
@@ -125,14 +126,68 @@ public class DatabaseManager {
 		public ArrayList<Recipe> loadRecipes(){
 			ArrayList<Recipe> recipes = new ArrayList<Recipe>();
 			Cursor cursor_r = db.query("recipes", null, null, null, null, null, null);
-			
+			cursor_r.moveToFirst();
+			while(!cursor_r.isAfterLast()){
+				Recipe recipe = rebuildRecipe(cursor_r);
+				recipes.add(recipe);
+				cursor_r.moveToNext();
+			}
+			cursor_r.close();
 			return recipes;
 		}
-		private Recipe make_recipe_object(Cursor cursor){
-			Recipe recipes = new Recipe();
-			recipes.setID(cursor.getString(0));
-			recipes.setName(cursor.getString(1));
+		public ArrayList<Image> loadImages(){
+			ArrayList<Image> images = new ArrayList<Image>();
+			Cursor cursor_p = db.query("picture", null, null, null, null, null, null);
+			cursor_p.moveToFirst();
+			while(!cursor_p.isAfterLast()){
+			}
+			cursor_p.close();
+			return images;
+		}
+		public ArrayList<Ingredient> loadIngredients(){
+			ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
+			Cursor cursor_i = db.query("ingredient", null, null, null, null, null, null);
+			cursor_i.moveToFirst();
+			while(!cursor_i.isAfterLast()){
+				Ingredient ingredient = rebuildIngredient(cursor_i);
+				ingredients.add(ingredient);	
+				cursor_i.moveToNext();
+			}
+			cursor_i.close();
+			return ingredients;
+		}
+		public ArrayList<Step> loadSteps(){
+			ArrayList<Step> steps = new ArrayList<Step>();
+			Cursor cursor_s = db.query("step", null, null, null, null, null, null);
+			cursor_s.moveToFirst();
+			while(!cursor_s.isAfterLast()){
+				Step step = rebuildStep(cursor_s);
+				steps.add(step);
+				cursor_s.moveToNext();
+			}
+			cursor_s.close();
+			return steps;
+		}
+		private Recipe rebuildRecipe(Cursor cursor){
+			ArrayList<Image> image_arraylist = loadImages();
+			ArrayList<Ingredient> ingredient_arraylist = loadIngredients();
+			ArrayList<Step>	step_arraylist = loadSteps();
+			Recipe recipes = new Recipe(cursor.getString(0),cursor.getString(1),image_arraylist,ingredient_arraylist,step_arraylist);
+			//recipes.setID(cursor.getString(0));
+			//recipes.setName(cursor.getString(1));
 			return recipes;
+		}
+		/*private Image rebuleImage(Cursor cursor){
+			Image images = new Image();
+			return images;
+		}*/
+		private Ingredient rebuildIngredient(Cursor cursor){
+			Ingredient ingredients = new Ingredient(cursor.getString(0),cursor.getString(1),cursor.getString(2));
+			return ingredients;
+		}
+		private Step rebuildStep(Cursor cursor){
+			Step steps = new Step(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3));
+			return steps;
 		}
 		
 }

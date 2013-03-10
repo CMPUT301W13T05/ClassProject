@@ -43,11 +43,14 @@ public class MainPageActivity extends Activity {
 		 main_create.setOnClickListener(new Button.OnClickListener() {
 		        public void onClick(View v) {
 		        		Intent intent = new Intent();
+		        		Bundle mbundle = new Bundle();
+		        		mbundle.putString("FromWhere", "MAIN");
+		        		intent.putExtras(mbundle);
 		        		intent.setClass(MainPageActivity.this, CreateRecipeActivity.class);
 		        		//start a add entry activity
 		        		startActivity(intent);
 		        		//close the old activity
-		        		MainPageActivity.this.finish();
+		        		//MainPageActivity.this.finish();
 		        	}
 		        });
 		 ////////////////////////////////Custom Search
