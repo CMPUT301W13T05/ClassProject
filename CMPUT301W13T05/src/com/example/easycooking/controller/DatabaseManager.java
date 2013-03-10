@@ -1,8 +1,6 @@
 package com.example.easycooking.controller;
 
 
-import java.util.ArrayList;
-
 import com.example.easycooking.model.Ingredient;
 import com.example.easycooking.model.Recipe;
 import com.example.easycooking.model.Step;
@@ -53,7 +51,7 @@ public class DatabaseManager {
 		//insert an recipe
 		public void add_recipe(Recipe recipe ) {
 			ContentValues values = new ContentValues();
-			values.put("rid", recipe.getID());
+			values.put("rid", recipe.getId());
 			values.put("name",recipe.getName());
 			values.put("download_upload_own", recipe.get_download_upload_own());
 			db.insert("localrecipe", null, values);
@@ -71,18 +69,6 @@ public class DatabaseManager {
 		}
 		public void delete_recipe(String rid){	
 			db.delete("localrecipe","rid =" + rid, null);
-		}
-		public ArrayList<Recipe> loadRecipes(){
-			ArrayList<Recipe> recipes = new ArrayList<Recipe>();
-			Cursor cursor_r = db.query("recipes", null, null, null, null, null, null);
-			
-			return recipes;
-		}
-		private Recipe make_recipe_object(Cursor cursor){
-			Recipe recipes = new Recipe();
-			recipes.setID(cursor.getString(0));
-			recipes.setName(cursor.getString(1));
-			return recipes;
 		}
 		
 }
