@@ -74,7 +74,7 @@ public class CreateRecipeActivity extends Activity {
 		});	
 		//button save
 		/**
-		 * 
+		 * The save button and handle the uncomplete information
 		 */
 		Button add_modify_save = (Button)findViewById(R.id.save);
 		add_modify_save.setOnClickListener(new Button.OnClickListener() {
@@ -82,7 +82,6 @@ public class CreateRecipeActivity extends Activity {
 				mrecipe.setName(enter_recipe_name.getText().toString());
 				mrecipe.set_download_upload_own(1);
 				dB_LocalDatabaseManager.open();
-				
 				ArrayList<Ingredient> db_input_ingredients = mrecipe.getIngredients();
 				//Step db_input_steps = mrecipe.getSteps();
 				dB_LocalDatabaseManager.add_recipe(mrecipe);
@@ -95,7 +94,6 @@ public class CreateRecipeActivity extends Activity {
 				
 				dB_LocalDatabaseManager.close();
 				enter_recipe_name.setText(mrecipe.getID());
-				//TO BE IMPLEMENTED
 				Intent intent = new Intent();
 				intent.setClass(CreateRecipeActivity.this, MainPageActivity.class);
 				//start a add entry activity
