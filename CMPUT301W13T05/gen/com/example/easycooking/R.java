@@ -20,7 +20,7 @@ public final class R {
     public static final class id {
         public static final int Ingredients=0x7f070012;
         public static final int RelativeLayout1=0x7f070008;
-        public static final int accept=0x7f070019;
+        public static final int accept=0x7f07001b;
         public static final int add=0x7f070009;
         public static final int amount_Text=0x7f07000e;
         public static final int backtomain=0x7f07001e;
@@ -32,7 +32,7 @@ public final class R {
         public static final int checkBox5=0x7f070026;
         public static final int check_download=0x7f07001f;
         public static final int checklocal=0x7f070020;
-        public static final int continue_to=0x7f070018;
+        public static final int continue_to=0x7f07001a;
         public static final int creat=0x7f070003;
         public static final int delete=0x7f07000a;
         public static final int description=0x7f070011;
@@ -40,7 +40,7 @@ public final class R {
         public static final int editText1=0x7f070002;
         public static final int gallery1=0x7f070001;
         public static final int home=0x7f070010;
-        public static final int imageButton1=0x7f07001b;
+        public static final int imageButton1=0x7f070018;
         public static final int ingredient_text=0x7f07000c;
         public static final int ingredients_view=0x7f070016;
         public static final int listView1=0x7f07000d;
@@ -57,7 +57,7 @@ public final class R {
         public static final int share=0x7f07002a;
         public static final int share_with_me=0x7f07001d;
         public static final int steps_view=0x7f070017;
-        public static final int takephoto=0x7f07001a;
+        public static final int takephoto=0x7f070019;
         public static final int textView1=0x7f070000;
         public static final int textView2=0x7f07000f;
         public static final int textView3=0x7f070027;

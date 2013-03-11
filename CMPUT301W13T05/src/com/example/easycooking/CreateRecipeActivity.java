@@ -179,7 +179,7 @@ public class CreateRecipeActivity extends Activity {
 		Button add_modify_description = (Button)findViewById(R.id.description);
 		add_modify_description.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				//TO BE IMPLEMENTED
+				
 				mrecipe.setName(enter_recipe_name.getText().toString());
 				Intent intent = new Intent();
 				Bundle mbundle = new Bundle();
