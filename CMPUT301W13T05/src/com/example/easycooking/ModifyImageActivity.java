@@ -80,7 +80,7 @@ public class ModifyImageActivity extends Activity {
         Uri uri = (Uri) intent.getExtras().get(MediaStore.EXTRA_OUTPUT);
         return new File(uri.getPath());
     }	
-    private void processIntent(boolean cancel) {
+    private void processIntent() {
     	Intent intent = getIntent();
     	if (intent == null) {
     		return;
