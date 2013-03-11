@@ -1,6 +1,12 @@
 package com.example.easycooking.model;
 
-public class Step {
+import java.io.Serializable;
+
+public class Step implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer step_id;
 	private String belong_to;
 	private String Detail;
