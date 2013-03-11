@@ -2,7 +2,12 @@ package com.example.easycooking.model;
 
 import java.io.Serializable;
 
-
+/**
+ * This class initial a model of image object
+ * image object contains image_id, image_belongto, and image_uri
+ * @author HongZu
+ *
+ */
 public class Image implements Serializable{
 
 	private static final long serialVersionUID = 1L;
