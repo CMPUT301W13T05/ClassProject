@@ -67,6 +67,18 @@ public class DatabaseManager {
 
 		}
 		/**
+		 * add_image(Image image) is a function
+		 * that insert a image object into databse
+		 * @param image
+		 */
+		public void add_image(Image image) {
+			ContentValues values = new ContentValues();
+			values.put("pid", image.get_IMAGE_ID());
+			values.put("rid", image.get_image_belongto());
+			values.put("image_uri", image.get_imageUri());
+			db.insert("picture", null, values);
+		}
+		/**
 		 * add_step(Step step) is a function
 		 * that insert a step object into database 
 		 * @param step
@@ -125,6 +137,9 @@ public class DatabaseManager {
 			values.put("steps", step.get_detail());
 			db.update("step", values, "rid ='" +step.get_belong(), null);
 		}	
+		public void delete_images(Image image) {
+			db.delete("picture", "rid = '"+image.get_image_belongto()+"'", null);
+		}
 		/**
 		 * delete_steps(Step step) deletes the row 
 		 * contains the current step object in the step table
@@ -147,6 +162,11 @@ public class DatabaseManager {
 		 * @param recipe
 		 */
 		public void delete_recipe(Recipe recipe){	
+			ArrayList<Image> de_Image = new ArrayList<Image>();
+			de_Image = recipe.getImages();
+			for (int n = 0;n<de_Image.size();n++){
+				delete_images(de_Image.get(n));
+			}
 			ArrayList<Ingredient> de_Ingredient = new ArrayList<Ingredient>();
 			de_Ingredient = recipe.getIngredients();
 			// delete ingredient belong to the given recipe from ingredient table
@@ -154,9 +174,9 @@ public class DatabaseManager {
 			for (i = 0;i < de_Ingredient.size();i++){
 				delete_ingredient(de_Ingredient.get(i));
 			}
-			Step de_Step = new Step();
-			de_Step = recipe.getSteps();
-		
+			//Step de_Step = new Step();
+			Step de_Step = recipe.getSteps();
+			delete_steps(de_Step);
 			// delete recipe from recipe table
 			db.delete("localrecipe","rid ='" + recipe.getID()+"'", null);
 		}
@@ -199,14 +219,16 @@ public class DatabaseManager {
 		 */
 		public ArrayList<Image> searchImages(String rid){
 			ArrayList<Image> images = new ArrayList<Image>();
-			/*Cursor cursor_p = db.query("picture", null, null, null, null, null, null);
+			Cursor cursor_p;
+			if(rid==null) { cursor_p = db.query("picture", null, null, null, null, null, null);}
+			else { cursor_p = db.query("picture", null, "rid = '"+rid+"'", null, null, null, null);}
 			cursor_p.moveToFirst();
 			while(!cursor_p.isAfterLast()){
 				Image image = rebuildImage(cursor_p);
 				images.add(image);	
 				cursor_p.moveToNext();
 			}
-			cursor_p.close();*/
+			cursor_p.close();
 			return images;
 		}
 		/**
@@ -264,10 +286,10 @@ public class DatabaseManager {
 		 * @param cursor
 		 * @return image object
 		 */
-		/*private Image rebuildImage(Cursor cursor){
-			Image images = new Image();
+		private Image rebuildImage(Cursor cursor){
+			Image images = new Image(cursor.getString(0),cursor.getString(1),cursor.getString(2));
 			return images;
-		}*/
+		}
 		/**
 		 * rebuildIngredient(Cursor cursor) takes strings from database
 		 * and makes them an ingredient object
