@@ -1,5 +1,9 @@
 package com.example.easycooking.test;
-
+/**
+ * This class is testing the ingredient model
+ * @author Chenkun
+ *
+ */
 import org.junit.Test;
 import junit.framework.TestCase;
 
