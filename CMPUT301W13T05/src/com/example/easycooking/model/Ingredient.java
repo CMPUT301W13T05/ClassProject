@@ -22,10 +22,10 @@ public class Ingredient implements Serializable {
 				
 	}
 	public String get_name(){
-		return this.ingredients_name;
+		return ingredients_name;
 	}
 	public String get_amount(){
-		return this.ingredients_amount;
+		return ingredients_amount;
 	}
 	public void set_name(String name){
 		this.ingredients_name = name;
@@ -34,7 +34,7 @@ public class Ingredient implements Serializable {
 		this.ingredients_amount = amount;
 	}
 	public String get_belongto(){
-		return this.ingredients_belongto;
+		return ingredients_belongto;
 	}
 	public void set_belongto(String belongto){
 		this.ingredients_belongto = belongto;

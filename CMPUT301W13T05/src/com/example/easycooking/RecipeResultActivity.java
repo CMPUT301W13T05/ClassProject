@@ -58,8 +58,7 @@ public class RecipeResultActivity extends Activity {
 			result_string.add(recipe.getName());
 		}
 		return;
-	}
-	
+	}	
 	/*@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -72,5 +71,4 @@ public class RecipeResultActivity extends Activity {
 	//public void onBackPressed() {
 	//return;
 	//}
-	
 }

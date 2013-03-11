@@ -20,6 +20,8 @@ public class ModifyIngredientsActivity extends Activity {
 	private static Recipe mrecipe = new Recipe();
 	private static ArrayList<String> ingredient_list = new ArrayList<String>();
 	private static ArrayList<Ingredient> ingredient_obj_list = new ArrayList<Ingredient>();
+	private static String _CHECK_SAVE_BUTTON = "UN_MODIFY" ;
+	private static int _CHECK_POSITION;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,8 @@ public class ModifyIngredientsActivity extends Activity {
 		 */
 		final EditText ingredient_name = (EditText)findViewById(R.id.ingredient_text);
 		final EditText ingredient_amount = (EditText)findViewById(R.id.amount_Text);
-		ListView ingredient_listView= (ListView) findViewById(R.id.listView1);
+		final ListView ingredient_listView= (ListView) findViewById(R.id.listView1);
+		
 		
 		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 		ingredient_obj_list = mrecipe.getIngredients();
@@ -45,7 +48,7 @@ public class ModifyIngredientsActivity extends Activity {
 		
 		
 		//Add button
-		Button modify_ingredients_add = (Button)findViewById(R.id.add);
+		final Button modify_ingredients_add = (Button)findViewById(R.id.add);
 		modify_ingredients_add.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Ingredient new_ingredient = new Ingredient();
@@ -59,20 +62,33 @@ public class ModifyIngredientsActivity extends Activity {
 		});
 		
 		//Save button
-		Button modify_ingredients_save = (Button)findViewById(R.id.save);
+		final Button modify_ingredients_save = (Button)findViewById(R.id.save);
 		modify_ingredients_save.setOnClickListener(new Button.OnClickListener() {
+			/* (non-Javadoc)
+			 * @see android.view.View.OnClickListener#onClick(android.view.View)
+			 */
 			public void onClick(View v) {
-				mrecipe.setIngredients(ingredient_obj_list);
-				Intent intent = new Intent();
-				intent.setClass(ModifyIngredientsActivity.this, CreateRecipeActivity.class);// should be jump to the modify 
-				//start a add entry activity
-				Bundle mbundle = new Bundle();
-				mbundle.putString("FromWhere", "MODIFY");
-				mbundle.putSerializable("RECIPE_KEY", mrecipe);
-				intent.putExtras(mbundle);
-				startActivity(intent);
-				//close the old activity
-				ModifyIngredientsActivity.this.finish();
+				if (_CHECK_SAVE_BUTTON.equals("UN_MODIFY")){
+					mrecipe.setIngredients(ingredient_obj_list);
+					Intent intent = new Intent();
+					intent.setClass(ModifyIngredientsActivity.this, CreateRecipeActivity.class);// should be jump to the modify 
+					//start a add entry activity
+					Bundle mbundle = new Bundle();
+					mbundle.putString("FromWhere", "MODIFY");
+					mbundle.putSerializable("RECIPE_KEY", mrecipe);
+					intent.putExtras(mbundle);
+					startActivity(intent);
+					//close the old activity
+					ModifyIngredientsActivity.this.finish();
+				}
+				else{
+					ingredient_obj_list.get(_CHECK_POSITION).set_name(ingredient_name.getText().toString());
+					ingredient_obj_list.get(_CHECK_POSITION).set_amount(ingredient_amount.getText().toString());
+					update_list(ingredient_obj_list);
+					adapter.notifyDataSetChanged();
+					modify_ingredients_add.setEnabled(true);
+					_CHECK_SAVE_BUTTON = "UN_MODIFY";
+				}
 			}
 		});
 		/////////////////////////////////////////////////////
@@ -82,14 +98,36 @@ public class ModifyIngredientsActivity extends Activity {
 	        	{
 	        		//get the position
 	        		//delete button
+	        		_CHECK_SAVE_BUTTON = "MODIFY";
+	        		_CHECK_POSITION = position;
+	        		ingredient_name.setText(ingredient_obj_list.get(position).get_name());
+	        		ingredient_amount.setText(ingredient_obj_list.get(position).get_amount());
+	        		modify_ingredients_add.setEnabled(false);
 	        		Button modify_ingredients_delete = (Button)findViewById(R.id.delete);
 	        		modify_ingredients_delete.setOnClickListener(new Button.OnClickListener() {
 	        		        public void onClick(View v) {
+	        		        	ingredient_obj_list.remove(position);
+	        		        	ingredient_list.remove(position);
 	        		        		//To be implemented
+	        		        	adapter.notifyDataSetChanged();
+	        		        	ingredient_listView.setSelected(false);
+	        		        	modify_ingredients_add.setEnabled(true);
+	        		        	_CHECK_SAVE_BUTTON = "UN_MODIFY";
 	        		        	}
 	        		        });
-	        	}
+//	        		modify_ingredients_save.setOnClickListener(new Button.OnClickListener() {
+//	        			public void onClick(View v) {
+//	        				if (_CHECK_SAVE_BUTTON.equals("MODIFY")){
+//	        					ingredient_obj_list.get(position).set_name(ingredient_name.getText().toString());
+//	        					ingredient_obj_list.get(position).set_amount(ingredient_amount.getText().toString());
+//	        					update_list(ingredient_obj_list);
+//	        					adapter.notifyDataSetChanged();
+//	        					modify_ingredients_add.setEnabled(true);
+//	        					_CHECK_SAVE_BUTTON = "UN_MODIFY";
+//	        				}
+//	        	}});
 
+	        	}
 		});
 	}
 	
@@ -97,11 +135,17 @@ public class ModifyIngredientsActivity extends Activity {
 		ingredient_list.clear();
 		Ingredient mingredient = new Ingredient();
 		int i;
+		String combine;
 		for (i=0; i< ingredients.size();i++){
 			mingredient = ingredients.get(i);
-			ingredient_list.add(mingredient.get_amount()+" "+ mingredient.get_name());
+			combine = mingredient.get_amount()+" "+ mingredient.get_name();
+			ingredient_list.add(combine);
 		}
 		return;
+	}
+	
+	private void clean_editText(){
+		
 	}
 	
 	//@Override
