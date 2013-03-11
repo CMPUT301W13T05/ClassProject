@@ -45,7 +45,7 @@ public class ModifyImageActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.modifyimage);
 		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
-		//image_obj_list = mrecipe.getImages();
+		image_obj_list = mrecipe.getImages();
 		
 		displayImage();
         Button takephoto = (Button)findViewById(R.id.takephoto);
@@ -64,7 +64,15 @@ public class ModifyImageActivity extends Activity {
         Button continue_to = (Button)findViewById(R.id.continue_to);
         continue_to.setOnClickListener( new OnClickListener() {
             public void onClick(View v) {
-            	
+            	mrecipe.setImages(image_obj_list);
+            	Intent intent = new Intent();
+				Bundle mbundle = new Bundle();
+				intent.setClass(ModifyImageActivity.this, CreateRecipeActivity.class);
+				mbundle.putString("FromWhere", "MODIFY");
+				mbundle.putSerializable("RECIPE_KEY", mrecipe);
+				intent.putExtras(mbundle);
+				startActivity(intent);
+				finish();
             }
         }); 
     }
@@ -78,8 +86,7 @@ public class ModifyImageActivity extends Activity {
 	}
     private void displayImage() {
     	//FileInputStream fis = new FileInputStream(image_obj_list.get(0).get_imageUri());
-    	//ourBMP = BitmapFactory.decodeFile(image_obj_list.get(0).get_imageUri());
-    	ourBMP = BitmapFactory.decodeFile("/data/data/com.example.easycooking/localimages/1363002462375.JPEG");
+    	ourBMP = BitmapFactory.decodeFile(image_obj_list.get(0).get_imageUri());
     	ImageButton old_photo = (ImageButton)findViewById(R.id.imageButton1);
     	old_photo.setImageBitmap(ourBMP);
     }
@@ -93,6 +100,7 @@ public class ModifyImageActivity extends Activity {
     		if(!file.exists()) {
     			file.mkdirs();
     		}
+    		image_obj_list.clear();
     		FileOutputStream fos = null;
     		String pic_date = Long.toString(System.currentTimeMillis());
     		String image_uri = "/data/data/com.example.easycooking/localimages/"+pic_date+".JPEG";
@@ -103,7 +111,6 @@ public class ModifyImageActivity extends Activity {
     		rimages.set_image_belongto("1");//mrecipe.getID());
     		rimages.set_imageUri(image_uri);
     		image_obj_list.add(rimages);
-    		mrecipe.setImages(image_obj_list);
     		Toast.makeText(this, "Image Saved", Toast.LENGTH_LONG).show();
     	} catch (FileNotFoundException e) {
     		Toast.makeText(this, "Couldn't Find File to Write to?", Toast.LENGTH_LONG).show();

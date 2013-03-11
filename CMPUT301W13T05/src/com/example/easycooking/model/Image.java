@@ -7,7 +7,7 @@ public class Image implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private String  IMAGE_ID,image_belongto;
-	private String IMAGE_URI;
+	private String IMAGE_URI = "";
 	public Image(){
 		
 	}
