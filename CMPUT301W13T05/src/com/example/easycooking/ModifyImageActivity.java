@@ -115,7 +115,7 @@ public class ModifyImageActivity extends Activity {
     		ourBMP.compress(Bitmap.CompressFormat.JPEG, 75, fos);
     		fos.close();
     		rimages.set_IMAGE_ID(pic_date);
-    		rimages.set_image_belongto("1");//mrecipe.getID());
+    		rimages.set_image_belongto(mrecipe.getID());
     		rimages.set_imageUri(image_uri);
     		image_obj_list.add(rimages);
     		Toast.makeText(this, "Image Saved", Toast.LENGTH_SHORT).show();
