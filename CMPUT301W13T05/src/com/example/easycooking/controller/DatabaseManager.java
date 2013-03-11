@@ -154,12 +154,9 @@ public class DatabaseManager {
 			for (i = 0;i < de_Ingredient.size();i++){
 				delete_ingredient(de_Ingredient.get(i));
 			}
-			ArrayList<Step> de_Step = new ArrayList<Step>();
+			Step de_Step = new Step();
 			de_Step = recipe.getSteps();
-			// delete steps belong to the given recipe from steps table
-			for (i = 0;i < de_Step.size();i++){
-				delete_steps(de_Step.get(i));
-			}
+		
 			// delete recipe from recipe table
 			db.delete("localrecipe","rid ='" + recipe.getID()+"'", null);
 		}
