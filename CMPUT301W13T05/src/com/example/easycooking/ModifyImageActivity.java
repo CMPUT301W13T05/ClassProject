@@ -44,11 +44,11 @@ public class ModifyImageActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.modifyimage);
 		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
-		image_obj_list = mrecipe.getImages();
+		//image_obj_list = mrecipe.getImages();
 		
 		/** Display old photos*/
-    	ImageButton old_photo = (ImageButton)findViewById(R.id.imageButton1);
-    	old_photo.setImageBitmap(ourBMP);
+    	//ImageButton old_photo = (ImageButton)findViewById(R.id.imageButton1);
+    	//old_photo.setImageBitmap(ourBMP);
 		
         Button takephoto = (Button)findViewById(R.id.takephoto);
         takephoto.setOnClickListener( new OnClickListener() {
@@ -84,20 +84,21 @@ public class ModifyImageActivity extends Activity {
     }	*/
     private void saveFile() {
     	try { 
-    		File file = new File("/sdcard/myImages/");
+    		File file = new File("/data/data/com.example.easycooking/localimages/");
     		if(!file.exists()) {
     			file.mkdirs();
     		}
     		FileOutputStream fos = null;
     		String pic_date = Long.toString(System.currentTimeMillis());
-    		String image_uri = "/sdcard/myImages/"+pic_date+".JPEG";
+    		String image_uri = "/data/data/com.example.easycooking/localimages/"+pic_date+".JPEG";
     		fos = new FileOutputStream(image_uri);
     		ourBMP.compress(Bitmap.CompressFormat.JPEG, 75, fos);
     		fos.close();
     		rimages.set_IMAGE_ID(pic_date);
-    		rimages.set_IMAGE_ID(mrecipe.getID());
+    		rimages.set_image_belongto("1");//mrecipe.getID());
     		rimages.set_imageUri(image_uri);
     		image_obj_list.add(rimages);
+    		mrecipe.setImages(image_obj_list);
     		Toast.makeText(this, "Image Saved", Toast.LENGTH_LONG).show();
     	} catch (FileNotFoundException e) {
     		Toast.makeText(this, "Couldn't Find File to Write to?", Toast.LENGTH_LONG).show();
