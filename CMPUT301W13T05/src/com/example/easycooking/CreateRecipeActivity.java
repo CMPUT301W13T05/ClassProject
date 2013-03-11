@@ -23,9 +23,7 @@ public class CreateRecipeActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		final DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);
-		
-		
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.addrecipe);
 		/////////Set up view
@@ -41,14 +39,15 @@ public class CreateRecipeActivity extends Activity {
 			mrecipe.setImages(new ArrayList<Image>());
 			mrecipe.setIngredients(new ArrayList<Ingredient>());
 			mrecipe.setSteps(new Step());
+			count_steps.setText("No steps");
 		}
 		else if (_FROM_WHERE.equals("MODIFY") ){
 			mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 			enter_recipe_name.setText(mrecipe.getName());
 			count_updated.setText(mrecipe.getImages().size() + " uploaded");
 			count_ingredients.setText(mrecipe.getIngredients().size() + " ingredients");
-			if (mrecipe.getSteps().get_detail().equals(null)){
-				count_steps.setText("No stpes");
+			if (mrecipe.getSteps().get_detail().equals("")){
+				count_steps.setText("No steps");
 			}
 			else{
 				count_steps.setText("Updated");
@@ -145,8 +144,9 @@ public class CreateRecipeActivity extends Activity {
 				Intent intent = new Intent();
 				Bundle mbundle = new Bundle();
 				intent.setClass(CreateRecipeActivity.this, ModifyStepsActivity.class);
-				intent.putExtras(mbundle);
+				
 				mbundle.putSerializable("RECIPE_KEY", mrecipe);
+				intent.putExtras(mbundle);
 				startActivity(intent);
 				//close the old activity
 				//CreateRecipeActivity.this.finish();

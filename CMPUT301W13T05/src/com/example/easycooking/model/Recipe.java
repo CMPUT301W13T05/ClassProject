@@ -3,7 +3,8 @@ package com.example.easycooking.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+import com.example.easycooking.model.Step;
+import com.example.easycooking.model.Ingredient;
 public class Recipe implements Serializable {
 	/**
 	 * 
@@ -11,10 +12,11 @@ public class Recipe implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String id;
 	private String name;
-	private int download_upload_own;
+
 	private ArrayList<Ingredient> ingredients;
 	private ArrayList<Image> images;
 	private Step steps;
+	private int download_upload_own;
 	public Recipe(){
 		
 	}
