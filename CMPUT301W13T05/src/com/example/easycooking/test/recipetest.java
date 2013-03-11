@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 import com.example.easycooking.model.Image;
+import com.example.easycooking.model.Ingredient;
 import com.example.easycooking.model.Recipe;
 import com.example.easycooking.model.Step;
 public class recipetest extends TestCase {
@@ -46,30 +47,34 @@ public class recipetest extends TestCase {
            @Test
              public void testgetImages(){
         	   Recipe recipe = new Recipe();  
+        	   
         	   assertNotNull("Recipe image is empty", recipe.getImages());      	   
            }
  
-           /**
+           
    //Test setSteps
            @Test
              public void teststeps(){
-        	   Recipe recipe = new Recipe();
-        	   java.util.ArrayList<Step>  v = new java.util.ArrayList<Step>();
-               
-        	   recipe.setSteps(v);
-        	   assertEquals("0", recipe.getSteps);                     
-           }
+				java.util.ArrayList<Ingredient>  v1 = new java.util.ArrayList<Ingredient>();
+				java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>();
+				Step step = new Step(1,"12345","test");
+        		Recipe recipe = new Recipe("12345","pizza",v2,v1,step,0);              
+        	   recipe.setSteps(step);
+        	   assertEquals("1.test", recipe.getSteps());                     
+            }
          
-           //Test setSteps
+     //Test setimages
            @Test
              public void testimages(){
-        	   Recipe recipe = new Recipe();
-        	   java.util.ArrayList<Image>  v = new java.util.ArrayList<Image>();              
-        	   recipe.setImages(v);
-        	   assertEquals("0", recipe.getImages);                     
+				java.util.ArrayList<Ingredient>  v1 = new java.util.ArrayList<Ingredient>();
+				java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>();
+				Step step = new Step();
+       		Recipe recipe = new Recipe("12345","pizza",v2,v1,step,0);              
+       	   recipe.setImages(v2);
+       	   assertEquals("1", recipe.getImages());                   
            }    
            
-      */     
+          
 }		
   
 	
