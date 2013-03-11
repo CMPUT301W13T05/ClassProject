@@ -86,7 +86,7 @@ public class ModifyImageActivity extends Activity {
 
 
     private void setBogoPic() {
-    	Toast.makeText(this, "Generating Photo", Toast.LENGTH_LONG).show();
+    	Toast.makeText(this, "Generating Photo", Toast.LENGTH_SHORT).show();
     	ImageButton button = (ImageButton)findViewById(R.id.imageButton1);
 		ourBMP = GeneratePhoto.generateBitmap(400, 400);
 		button.setImageBitmap(ourBMP);
@@ -118,7 +118,7 @@ public class ModifyImageActivity extends Activity {
     		rimages.set_image_belongto("1");//mrecipe.getID());
     		rimages.set_imageUri(image_uri);
     		image_obj_list.add(rimages);
-    		Toast.makeText(this, "Image Saved", Toast.LENGTH_LONG).show();
+    		Toast.makeText(this, "Image Saved", Toast.LENGTH_SHORT).show();
     	} catch (FileNotFoundException e) {
     		Toast.makeText(this, "Couldn't Find File to Write to?", Toast.LENGTH_LONG).show();
     	} catch (IOException e) {
