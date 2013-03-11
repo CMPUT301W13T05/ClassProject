@@ -1,5 +1,7 @@
 package com.example.easycooking.test;
 
+import static org.junit.Assert.fail;
+
 import java.util.ArrayList;
 
 import junit.framework.TestCase;
@@ -73,8 +75,34 @@ public class recipetest extends TestCase {
        	   recipe.setImages(v2);
        	   assertEquals("1", recipe.getImages());                   
            }    
+    
            
-          
+ 
+           
+           //test share recipe  
+       	@Test
+    	public void sharetest() {
+    		fail("Not yet implemented");
+    	}
+
+       	
+       	
+       	//test publish and download a recipe
+    	@Test
+    	public void webservertest() {
+    		fail("Not yet implemented");
+    	}
+
+    	
+    	
+    	// test search recipe	
+    	public void searchtest() {
+    		fail("Not yet implemented");
+    	}
+    	
+    	
+    	
+    	
 }		
   
 	
