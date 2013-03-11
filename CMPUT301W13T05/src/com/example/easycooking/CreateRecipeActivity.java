@@ -106,15 +106,18 @@ public class CreateRecipeActivity extends Activity {
 					mrecipe.set_download_upload_own(1);
 					dB_LocalDatabaseManager.open();
 					ArrayList<Ingredient> db_input_ingredients = mrecipe.getIngredients();
-					//Step db_input_steps = mrecipe.getSteps();
+					ArrayList<Image> db_input_images = mrecipe.getImages();
+					Step db_input_steps = mrecipe.getSteps();
 					dB_LocalDatabaseManager.add_recipe(mrecipe);
 					int i;
 					for (i = 0 ; i < db_input_ingredients.size(); i++ ){
 						dB_LocalDatabaseManager.add_ingrdient(mrecipe.getIngredients().get(i));
 					}
 					
-						dB_LocalDatabaseManager.add_step(mrecipe.getSteps());
-					
+						dB_LocalDatabaseManager.add_step(db_input_steps);
+					for (i = 0 ; i < db_input_images.size(); i++ ){
+						dB_LocalDatabaseManager.add_image(mrecipe.getImages().get(i));
+					}
 					dB_LocalDatabaseManager.close();
 					enter_recipe_name.setText(mrecipe.getID());
 					Intent intent = new Intent();

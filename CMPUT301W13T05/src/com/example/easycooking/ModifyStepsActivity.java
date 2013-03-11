@@ -33,6 +33,7 @@ public class ModifyStepsActivity extends Activity {
 				else{
 					mstep.set_detail(directions.getText().toString());
 					mrecipe.setSteps(mstep);
+					mstep.set_belong(mrecipe.getID());
 					Intent intent = new Intent();
 					intent.setClass(ModifyStepsActivity.this, CreateRecipeActivity.class);// should be jump to the modify 
 					//start a add entry activity
