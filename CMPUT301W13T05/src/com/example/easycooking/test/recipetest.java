@@ -21,7 +21,7 @@ public class recipetest extends TestCase {
        @Test
 	 public void testgetID(){
 		    Recipe recipe = new Recipe();  
-			assertNotNull("Recipe ID is empty", recipe.getID());
+			assertNotNull(recipe.getID());
 	  }
     // Test setName of the recipe
 			@Test
@@ -41,16 +41,22 @@ public class recipetest extends TestCase {
    //Test if there is no step
            @Test
              public void testgetSteps(){
-        	   Recipe recipe = new Recipe();  
-        	   recipe.set_download_upload_own(0);
-        	   assertNotNull("Recipe steps is empty", recipe.getSteps());      	   
+        	
+        	   java.util.ArrayList<Ingredient>  v1 = new java.util.ArrayList<Ingredient>();
+				java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>();
+				Step step = new Step();
+				Recipe recipe = new Recipe("12345","pizza",v2,v1,step,0);         
+        	   assertNull(recipe.getSteps());      	   
            }
     //Test if there is no image
            @Test
-             public void testgetImages(){
-        	   Recipe recipe = new Recipe();  
-        	   
-        	   assertNotNull("Recipe image is empty", recipe.getImages());      	   
+             public void testgetImages(){  
+				java.util.ArrayList<Ingredient>  v1 = new java.util.ArrayList<Ingredient>();
+				java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>();
+				Step step = new Step();
+       		    Recipe recipe = new Recipe("11111","qq",v2,v1,step,0);              
+       	      recipe.setSteps(step);
+        	   assertNotNull(recipe.getImages());      	   
            }
  
            
@@ -62,7 +68,7 @@ public class recipetest extends TestCase {
 				Step step = new Step(1,"12345","test");
         		Recipe recipe = new Recipe("12345","pizza",v2,v1,step,0);              
         	   recipe.setSteps(step);
-        	   assertEquals("1.test", recipe.getSteps());                     
+        	   assertNotNull(recipe.getSteps());                     
             }
          
      //Test setimages
@@ -97,7 +103,10 @@ public class recipetest extends TestCase {
     	
     	// test search recipe	
     	public void searchtest() {
-    		fail("Not yet implemented");
+    		java.util.ArrayList<Ingredient>  v1 = new java.util.ArrayList<Ingredient>();
+			java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>();
+			Step step = new Step();
+			Recipe recipe = new Recipe("54321","soup",v2,v1,step,0);            
     	}
     	
     	
