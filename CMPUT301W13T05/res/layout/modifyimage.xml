@@ -4,12 +4,12 @@
     android:layout_height="match_parent" >
 
     <Button
-        android:id="@+id/save"
+        android:id="@+id/continue_to"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_x="1dp"
         android:layout_y="410dp"
-        android:text="@string/Save" />
+        android:text="@string/continue_to_recipe" />
 
     <Button
         android:id="@+id/takephoto"
@@ -20,11 +20,20 @@
         android:text="@string/TakePhoto" />
 
     <Button
-        android:id="@+id/delete"
+        android:id="@+id/accept"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_x="1dp"
         android:layout_y="324dp"
-        android:text="@string/Delete" />
+        android:text="@string/accept" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        style="@style/AppTheme"
+        android:layout_width="match_parent"
+        android:layout_height="328dp"
+        android:layout_x="-1dp"
+        android:layout_y="0dp"
+        android:src="@drawable/ic_launcher" />
 
 </AbsoluteLayout>
