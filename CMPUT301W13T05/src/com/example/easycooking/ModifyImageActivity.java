@@ -52,7 +52,6 @@ public class ModifyImageActivity extends Activity {
         }); 
     }
 
-   
 
     private Bitmap ourBMP;
     private void setBogoPic() {
