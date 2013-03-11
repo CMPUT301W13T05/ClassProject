@@ -1,5 +1,9 @@
 package com.example.easycooking.test;
-
+/**
+ * This class is testing the recipe model
+ * @author Chenkun
+ *
+ */
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
