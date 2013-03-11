@@ -6,7 +6,11 @@ import android.widget.Button;
 import android.app.Activity;
 //import android.view.Menu;
 import android.content.Intent;
-
+/**
+ * TODO Implemented
+ * @author Alvin
+ *
+ */
 public class SelectionWebActivity extends Activity {
 
 	@Override
