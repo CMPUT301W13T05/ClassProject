@@ -3,6 +3,7 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:background="@drawable/sky"
     android:orientation="vertical" >
 
     <Button
@@ -13,8 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="1dp"
         android:layout_marginTop="9dp"
-        android:layout_x="0dp"
-        android:layout_y="6dp"
+      
         android:text="@string/Add" />
 
     <Button
@@ -24,8 +24,7 @@
         android:layout_alignTop="@+id/add"
         android:layout_marginLeft="4dp"
         android:layout_toRightOf="@+id/save"
-        android:layout_x="216dp"
-        android:layout_y="6dp"
+      
         android:text="@string/Delete" />
 
     <Button
@@ -35,8 +34,7 @@
         android:layout_alignTop="@+id/add"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/add"
-        android:layout_x="110dp"
-        android:layout_y="6dp"
+     
         android:text="@string/Save" />
 
     <TextView
@@ -47,8 +45,7 @@
         android:layout_below="@+id/add"
         android:layout_marginLeft="9dp"
         android:layout_marginTop="15dp"
-        android:layout_x="6dp"
-        android:layout_y="64dp"
+     
         android:text="@string/Ingredient:"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -60,8 +57,7 @@
         android:layout_marginLeft="13dp"
         android:layout_marginTop="70dp"
         android:layout_toRightOf="@+id/textView1"
-        android:layout_x="120dp"
-        android:layout_y="53dp"
+   
         android:ems="10"
         android:inputType="text" >
 
