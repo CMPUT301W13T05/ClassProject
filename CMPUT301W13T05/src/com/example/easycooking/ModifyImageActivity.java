@@ -44,24 +44,31 @@ public class ModifyImageActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.modifyimage);
+		Button takephoto = (Button)findViewById(R.id.takephoto);
+		final Button accept = (Button)findViewById(R.id.accept);
+		Button continue_to = (Button)findViewById(R.id.continue_to);
+		accept.setEnabled(false);
 		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 		image_obj_list = mrecipe.getImages();
 		
-		displayImage();
-        Button takephoto = (Button)findViewById(R.id.takephoto);
+		if(image_obj_list.size()>0) {
+			displayImage();
+		}
+        
         takephoto.setOnClickListener( new OnClickListener() {
             public void onClick(View v) {
             	setBogoPic();
+            	accept.setEnabled(true);
             }
         }); 
-        Button accept = (Button)findViewById(R.id.accept);
+        
         accept.setOnClickListener( new OnClickListener() {
             public void onClick(View v) {
             	saveFile();
             }
            
         }); 
-        Button continue_to = (Button)findViewById(R.id.continue_to);
+        
         continue_to.setOnClickListener( new OnClickListener() {
             public void onClick(View v) {
             	mrecipe.setImages(image_obj_list);
