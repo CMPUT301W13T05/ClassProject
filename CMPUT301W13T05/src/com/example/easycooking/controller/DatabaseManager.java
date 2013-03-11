@@ -121,10 +121,9 @@ public class DatabaseManager {
 		 */
 		public void update_steps(Step step){
 			ContentValues values = new ContentValues();
-			values.put("recipe_step", step.get_recipe_step());
 			values.put("rid", step.get_belong());
 			values.put("steps", step.get_detail());
-			db.update("step", values, "rid ='" +step.get_belong()+"' and recipe_step ='" + step.get_recipe_step()+"'", null);
+			db.update("step", values, "rid ='" +step.get_belong(), null);
 		}	
 		/**
 		 * delete_steps(Step step) deletes the row 
@@ -294,7 +293,7 @@ public class DatabaseManager {
 		 * @return step object
 		 */
 		private Step rebuildStep(Cursor cursor){
-			Step steps = new Step(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3));
+			Step steps = new Step(cursor.getInt(0),cursor.getString(1),cursor.getString(2));
 			return steps;
 		}
 		
