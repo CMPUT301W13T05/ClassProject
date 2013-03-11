@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 /**
  * This the MainPageActivity.Like the home_page.
  *  
@@ -41,19 +42,19 @@ public class MainPageActivity extends Activity {
 	        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
 	        		result_recipe=dB_LocalDatabaseManager.searchRecipes(serching_text.getText().toString(), -1);
 	        		dB_LocalDatabaseManager.close();
-	        		Intent intent = new Intent();
-	        		Bundle mbundle = new Bundle();
-	        		mbundle.putSerializable("RECIPE_RESULT", result_recipe);
-	        		intent.putExtras(mbundle);
-	        		intent.setClass(MainPageActivity.this, RecipeResultActivity.class);
-	        		/**
-	        		 * start a add entry activity
-	        		 */
-	        		
-	        		startActivity(intent);
-	        		/**
-	        		 * close the old activity
-	        		 */
+	        		if (result_recipe.size()>0){
+		        		Intent intent = new Intent();
+		        		Bundle mbundle = new Bundle();
+		        		mbundle.putSerializable("RECIPE_RESULT", result_recipe);
+		        		intent.putExtras(mbundle);
+		        		intent.setClass(MainPageActivity.this, RecipeResultActivity.class);
+		        		startActivity(intent);
+	        		}
+	        		else{
+	        			Toast toast = Toast.makeText(MainPageActivity.this, "No Recipe Matched", Toast.LENGTH_LONG);   
+						toast.show();
+	        		}
+	        	
 	        		
 	        	}
 	        });

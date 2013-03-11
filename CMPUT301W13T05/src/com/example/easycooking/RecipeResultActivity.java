@@ -14,7 +14,12 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-
+/**
+ * This is the View class that show all the recipe with the recipe name 
+ * By the given ArrayList of Recipe object
+ * @author Alvin
+ *
+ */
 public class RecipeResultActivity extends Activity {
 	private static ArrayList<Recipe> result = new ArrayList<Recipe>();
 	private static ArrayList<String> result_string = new ArrayList<String>();
