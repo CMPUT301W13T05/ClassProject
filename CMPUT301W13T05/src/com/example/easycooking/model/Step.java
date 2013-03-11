@@ -8,7 +8,7 @@ public class Step {
 	public Step(){
 		
 	}
-	public Step(Integer id, String Recipe_id,String directions,String recipe_step){
+	public Step(Integer id, String Recipe_id,String directions){
 		this.step_id = id;
 		this.belong_to = Recipe_id;
 		this.Detail = directions;	
