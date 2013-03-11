@@ -135,11 +135,13 @@ public class CreateRecipeActivity extends Activity {
 			public void onClick(View v) {
 				//TO BE IMPLEMENTED
 				Intent intent = new Intent();
-				intent.setClass(CreateRecipeActivity.this, Itisatry.class);// should be jump to the modify 
-				//start a add entry activity
+				Bundle mbundle = new Bundle();
+				intent.setClass(CreateRecipeActivity.this, ModifyStepsActivity.class);
+				intent.putExtras(mbundle);
+				mbundle.putSerializable("RECIPE_KEY", mrecipe);
 				startActivity(intent);
 				//close the old activity
-				CreateRecipeActivity.this.finish();
+				//CreateRecipeActivity.this.finish();
 			
 			}
 		});	

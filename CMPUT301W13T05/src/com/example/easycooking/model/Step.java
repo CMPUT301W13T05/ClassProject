@@ -4,7 +4,7 @@ public class Step {
 	private Integer step_id;
 	private String belong_to;
 	private String Detail;
-	private String recipe_step;
+	//private String recipe_step;
 	public Step(){
 		
 	}
@@ -12,7 +12,7 @@ public class Step {
 		this.step_id = id;
 		this.belong_to = Recipe_id;
 		this.Detail = directions;	
-		this.recipe_step = recipe_step;
+		//this.recipe_step = recipe_step;
 	}
 	public Integer get_id(){
 		return step_id;
@@ -23,12 +23,12 @@ public class Step {
 	public String get_belong(){
 		return belong_to;
 	}
-	public String get_recipe_step(){
-		return recipe_step;
-	}
-	public void set_recipe_step(String recipe_step){
-		this.recipe_step = recipe_step;
-	}
+//	public String get_recipe_step(){
+//		return recipe_step;
+//	}
+//	public void set_recipe_step(String recipe_step){
+//		this.recipe_step = recipe_step;
+//	}
 	public void set_belong(String Recipe_id){
 		this.belong_to = Recipe_id;
 	}
