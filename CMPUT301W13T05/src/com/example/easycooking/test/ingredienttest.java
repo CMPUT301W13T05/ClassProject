@@ -64,7 +64,8 @@ public class ingredienttest extends TestCase {
 					
 					
 
-	// test create a ingredient			
+
+// test create a ingredient			
 				@Test
 				public  void testCreateingredient()
 				{
@@ -78,7 +79,11 @@ public class ingredienttest extends TestCase {
 			        assertEquals("name", "salt", new_ingredient.get_name());
 			        assertEquals("amount", "5 scrops", new_ingredient.get_amount());
 				}
-								// test delete a ingredient			
+						
+	
+	
+	
+	// test delete a ingredient			
 				@Test
 				public  void testDeleteingredient()
 				{
