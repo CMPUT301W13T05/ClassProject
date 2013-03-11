@@ -240,19 +240,14 @@ public class DatabaseManager {
 		 * @param rid
 		 * @return an ArrayList contains steps objects
 		 */
-		public ArrayList<Step> searchSteps(String rid){
-			ArrayList<Step> steps = new ArrayList<Step>();
+		public Step searchSteps(String rid){
 			Cursor cursor_s;
 			if(rid == null) {cursor_s = db.query("step", null, null, null, null, null, null);}
 			else {cursor_s = db.query("step", null, "rid ='"+rid+"'", null, null, null, null);}
 			cursor_s.moveToFirst();
-			while(!cursor_s.isAfterLast()){
-				Step step = rebuildStep(cursor_s);
-				steps.add(step);
-				cursor_s.moveToNext();
-			}
+			Step step = rebuildStep(cursor_s);
 			cursor_s.close();
-			return steps;
+			return step;
 		}
 		/**
 		 * rebuildRecipe(Cursor cursor) takes a bunch of strings and ArrayList
@@ -263,8 +258,8 @@ public class DatabaseManager {
 		private Recipe rebuildRecipe(Cursor cursor){
 			ArrayList<Image> image_arraylist = searchImages(cursor.getString(0));
 			ArrayList<Ingredient> ingredient_arraylist = searchIngredients(null,cursor.getString(0));
-			ArrayList<Step>	step_arraylist = searchSteps(cursor.getString(0));
-			Recipe recipes = new Recipe(cursor.getString(0),cursor.getString(1),image_arraylist,ingredient_arraylist,step_arraylist,cursor.getInt(2));
+			Step step_obj = searchSteps(cursor.getString(0));
+			Recipe recipes = new Recipe(cursor.getString(0),cursor.getString(1),image_arraylist,ingredient_arraylist,step_obj,cursor.getInt(2));
 			return recipes;
 		}
 		/**
