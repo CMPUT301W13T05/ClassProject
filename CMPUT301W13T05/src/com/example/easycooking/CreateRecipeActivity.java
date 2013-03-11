@@ -103,7 +103,7 @@ public class CreateRecipeActivity extends Activity {
 			public void onClick(View v) {
 				//TO BE IMPLEMENTED
 				Intent intent = new Intent();
-				intent.setClass(CreateRecipeActivity.this, Itisatry.class);// should be jump to the modify image
+				intent.setClass(CreateRecipeActivity.this, ModifyImageActivity.class);// should be jump to the modify image
 				//start a add entry activity
 				startActivity(intent);
 				//close the old activity
