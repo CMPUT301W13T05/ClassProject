@@ -97,7 +97,9 @@ public class CreateRecipeActivity extends Activity {
 				CreateRecipeActivity.this.finish();
 			}
 		});	
-		//button photo
+		/**
+		 * The add_modify_photo function
+		 */
 		Button add_modify_photo = (Button)findViewById(R.id.photo);
 		add_modify_photo.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
@@ -108,7 +110,6 @@ public class CreateRecipeActivity extends Activity {
 				startActivity(intent);
 				//close the old activity
 				CreateRecipeActivity.this.finish();
-			
 			}
 		});
 		//button ingredients
