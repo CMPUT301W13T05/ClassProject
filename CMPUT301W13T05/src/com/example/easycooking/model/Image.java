@@ -7,14 +7,15 @@ public class Image implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private String  IMAGE_ID,image_belongto;
-	private String image_uri;
+	private String IMAGE_URI;
 	public Image(){
 		
 	}
-	public Image(String IMAGE_ID,String image_belongto){
+	public Image(String IMAGE_ID,String image_belongto,String IMAGE_URI){
 		super();
 		this.IMAGE_ID = IMAGE_ID;
-		this.image_belongto = image_belongto;			
+		this.image_belongto = image_belongto;	
+		this.IMAGE_URI = IMAGE_URI;
 	}
 	public String get_IMAGE_ID(){
 		return this.IMAGE_ID;
@@ -29,10 +30,10 @@ public class Image implements Serializable{
 		this.image_belongto = image_belongto;
 	}
 	public String get_imageUri() {
-		return this.image_uri;
+		return this.IMAGE_URI;
 	}
 	public void set_imageUri(String IMAGE_URI) {
-		this.image_uri = IMAGE_URI;
+		this.IMAGE_URI = IMAGE_URI;
 	}
 	/*public byte[] get_imageBit(){
 		return this.image_bit;
