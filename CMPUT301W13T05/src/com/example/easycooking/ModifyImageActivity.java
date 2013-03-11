@@ -1,6 +1,10 @@
 package com.example.easycooking;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 import com.example.easycooking.controller.*;
 
@@ -64,6 +68,34 @@ public class ModifyImageActivity extends Activity {
         Uri uri = (Uri) intent.getExtras().get(MediaStore.EXTRA_OUTPUT);
         return new File(uri.getPath());
     }	
+    private void processIntent(boolean cancel) {
+    	Intent intent = getIntent();
+    	if (intent == null) {
+    		return;
+    	}
+    	try {
+    		if (intent.getExtras() != null) {    
+    			File intentPicture = getPicturePath(intent);
+    			saveBMP(intentPicture, ourBMP);
+    			setResult(RESULT_OK);
+    		} else {
+    			Toast.makeText(this, "Photo Cancelled: No Reciever?", Toast.LENGTH_LONG).show();
+    			setResult(RESULT_CANCELED);
+    		}
+    	} catch (FileNotFoundException e) {
+    		Toast.makeText(this, "Couldn't Find File to Write to?", Toast.LENGTH_LONG).show();
+    		setResult(RESULT_CANCELED);    	
+    	} catch (IOException e) {
+    		Toast.makeText(this, "Couldn't Write File!", Toast.LENGTH_LONG).show();
+    		setResult(RESULT_CANCELED);
+    	}
+    	finish();
+    }
+    private void saveBMP( File intentPicture, Bitmap ourBMP) throws IOException, FileNotFoundException {
+		OutputStream out = new FileOutputStream(intentPicture);
+		ourBMP.compress(Bitmap.CompressFormat.JPEG, 75, out);
+		out.close();
+}
 
 
 }
