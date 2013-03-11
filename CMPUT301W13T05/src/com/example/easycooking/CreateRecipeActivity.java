@@ -122,8 +122,8 @@ public class CreateRecipeActivity extends Activity {
 					//start a add entry activity
 					startActivity(intent);
 					//close the old activity
-					CreateRecipeActivity.this.finish();
-				}
+					CreateRecipeActivity.this.finish(); 
+				} 
 			}
 		});	
 		/**
