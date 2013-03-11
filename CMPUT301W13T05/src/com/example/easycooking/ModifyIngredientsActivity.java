@@ -113,7 +113,10 @@ public class ModifyIngredientsActivity extends Activity {
 						ingredient_obj_list.get(_CHECK_POSITION).set_amount(ingredient_amount.getText().toString());
 						update_list(ingredient_obj_list);
 						adapter.notifyDataSetChanged();
-						modify_ingredients_add.setEnabled(true);					
+						modify_ingredients_add.setEnabled(true);
+						ingredient_name.setText("");
+						ingredient_amount.setText("");
+						_CHECK_SAVE_BUTTON = "UN_MODIFY";
 					}
 					else if (ingredient_name_list.contains(ingredient_name.getText().toString())){
 						Toast toast = Toast.makeText(ModifyIngredientsActivity.this, "Cannot Add Same Ingredient", Toast.LENGTH_LONG);   

@@ -45,8 +45,7 @@
         android:layout_below="@+id/add"
         android:layout_marginLeft="9dp"
         android:layout_marginTop="15dp"
-     
-        android:text="@string/Ingredient:"
+        android:text="Ingredient:"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText

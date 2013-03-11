@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.app.Activity;
 import android.content.Intent;
 
@@ -79,27 +80,45 @@ public class CreateRecipeActivity extends Activity {
 		Button add_modify_save = (Button)findViewById(R.id.save);
 		add_modify_save.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				mrecipe.setName(enter_recipe_name.getText().toString());
-				mrecipe.set_download_upload_own(1);
-				dB_LocalDatabaseManager.open();
-				ArrayList<Ingredient> db_input_ingredients = mrecipe.getIngredients();
-				//Step db_input_steps = mrecipe.getSteps();
-				dB_LocalDatabaseManager.add_recipe(mrecipe);
-				int i;
-				for (i = 0 ; i < db_input_ingredients.size(); i++ ){
-					dB_LocalDatabaseManager.add_ingrdient(mrecipe.getIngredients().get(i));
+				if (enter_recipe_name.getText().toString().equals("")){
+					Toast toast = Toast.makeText(CreateRecipeActivity.this, "Pleas Enter The Recipe Name", Toast.LENGTH_LONG);   
+					toast.show();
 				}
-				
-					dB_LocalDatabaseManager.add_step(mrecipe.getSteps());
-				
-				dB_LocalDatabaseManager.close();
-				enter_recipe_name.setText(mrecipe.getID());
-				Intent intent = new Intent();
-				intent.setClass(CreateRecipeActivity.this, MainPageActivity.class);
-				//start a add entry activity
-				startActivity(intent);
-				//close the old activity
-				CreateRecipeActivity.this.finish();
+				else if (mrecipe.getImages().size() == 0){
+					Toast toast = Toast.makeText(CreateRecipeActivity.this, "Pleas Upadate The Recipe Picture", Toast.LENGTH_LONG);   
+					toast.show();
+				}
+				else if (mrecipe.getIngredients().size() == 0){
+					Toast toast = Toast.makeText(CreateRecipeActivity.this, "Pleas Add The Recipe Ingredients", Toast.LENGTH_LONG);   
+					toast.show();
+				}
+				else if (mrecipe.getSteps().get_detail().equals("")){
+					Toast toast = Toast.makeText(CreateRecipeActivity.this, "Pleas Add The Recipe Steps", Toast.LENGTH_LONG);   
+					toast.show();
+				}
+				else{
+					mrecipe.setName(enter_recipe_name.getText().toString());
+					mrecipe.set_download_upload_own(1);
+					dB_LocalDatabaseManager.open();
+					ArrayList<Ingredient> db_input_ingredients = mrecipe.getIngredients();
+					//Step db_input_steps = mrecipe.getSteps();
+					dB_LocalDatabaseManager.add_recipe(mrecipe);
+					int i;
+					for (i = 0 ; i < db_input_ingredients.size(); i++ ){
+						dB_LocalDatabaseManager.add_ingrdient(mrecipe.getIngredients().get(i));
+					}
+					
+						dB_LocalDatabaseManager.add_step(mrecipe.getSteps());
+					
+					dB_LocalDatabaseManager.close();
+					enter_recipe_name.setText(mrecipe.getID());
+					Intent intent = new Intent();
+					intent.setClass(CreateRecipeActivity.this, MainPageActivity.class);
+					//start a add entry activity
+					startActivity(intent);
+					//close the old activity
+					CreateRecipeActivity.this.finish();
+				}
 			}
 		});	
 		/**
@@ -116,8 +135,7 @@ public class CreateRecipeActivity extends Activity {
 				mbundle.putSerializable("RECIPE_KEY", mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);
-				//close the old activity
-				//CreateRecipeActivity.this.finish();
+			
 			}
 		});
 		//button ingredients
@@ -144,8 +162,7 @@ public class CreateRecipeActivity extends Activity {
 				//TO BE IMPLEMENTED
 				Intent intent = new Intent();
 				Bundle mbundle = new Bundle();
-				intent.setClass(CreateRecipeActivity.this, ModifyStepsActivity.class);
-				
+				intent.setClass(CreateRecipeActivity.this, ModifyStepsActivity.class);				
 				mbundle.putSerializable("RECIPE_KEY", mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);

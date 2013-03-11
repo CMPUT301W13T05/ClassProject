@@ -85,37 +85,37 @@ public final class R {
         public static final int activity_main=0x7f060001;
     }
     public static final class string {
-        public static final int Add=0x7f040010;
+        public static final int Add=0x7f04000f;
         public static final int CreatRecipe=0x7f04000e;
-        public static final int Delete=0x7f040012;
+        public static final int Delete=0x7f040011;
         public static final int Greeting=0x7f040001;
-        public static final int Ingredient_=0x7f04000f;
+        public static final int Ingredients_=0x7f04001e;
         public static final int MyIngredient=0x7f04000d;
-        public static final int Newsearch=0x7f04001c;
-        public static final int Save=0x7f040011;
+        public static final int Newsearch=0x7f04001b;
+        public static final int Save=0x7f040010;
         public static final int Setup=0x7f04000c;
-        public static final int TakePhoto=0x7f04001b;
-        public static final int Upload=0x7f040019;
-        public static final int accept=0x7f04001e;
+        public static final int TakePhoto=0x7f04001a;
+        public static final int Upload=0x7f040018;
+        public static final int accept=0x7f04001d;
         public static final int app_name=0x7f040000;
         public static final int back_to_main=0x7f04000b;
-        public static final int continue_to_recipe=0x7f04001d;
-        public static final int download=0x7f040017;
+        public static final int continue_to_recipe=0x7f04001c;
+        public static final int download=0x7f040016;
         public static final int email=0x7f040003;
-        public static final int hello_world=0x7f040014;
+        public static final int hello_world=0x7f040013;
         public static final int local_recipe=0x7f04000a;
         public static final int menu_settings=0x7f040002;
-        public static final int modify=0x7f040018;
+        public static final int modify=0x7f040017;
         public static final int my_download=0x7f040008;
         public static final int my_upload=0x7f040009;
         public static final int profile=0x7f040005;
-        public static final int recipe_share_with_me=0x7f040013;
+        public static final int recipe_share_with_me=0x7f040012;
         public static final int record_recipe=0x7f040007;
         public static final int search=0x7f040004;
         public static final int search_hint=0x7f040006;
-        public static final int share=0x7f040016;
-        public static final int steps=0x7f04001a;
-        public static final int title_activity_itisatry=0x7f040015;
+        public static final int share=0x7f040015;
+        public static final int steps=0x7f040019;
+        public static final int title_activity_itisatry=0x7f040014;
     }
     public static final class style {
         /** 
