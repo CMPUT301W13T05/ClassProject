@@ -1,60 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-    <Button
-        android:id="@+id/add"
-        android:layout_width="103dp"
-        android:layout_height="wrap_content"
-        android:layout_x="0dp"
-        android:layout_y="6dp"
-        android:text="@string/Add" />
-
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="103dp"
-        android:layout_height="wrap_content"
-        android:layout_x="216dp"
-        android:layout_y="6dp"
-        android:text="@string/Delete" />
+    android:layout_height="match_parent" >
 
     <Button
         android:id="@+id/save"
-        android:layout_width="103dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_x="110dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="9dp"
+        android:layout_x="0dp"
         android:layout_y="6dp"
         android:text="@string/Save" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="347dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginLeft="3dp"
+        android:layout_x="2dp"
+        android:layout_y="136dp"
+        android:ems="10"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="6dp"
-        android:layout_y="64dp"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_below="@+id/save"
         android:text="@string/steps"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="306dp"
-        android:layout_height="wrap_content"
-        android:layout_x="6dp"
-        android:layout_y="91dp"
-        android:ems="10"
-        android:inputType="text" >
-
-        <requestFocus />
-    </EditText>
-
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_x="0dp"
-        android:layout_y="132dp" >
-    </ListView>
-
-</AbsoluteLayout>
+</RelativeLayout>

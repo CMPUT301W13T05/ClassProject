@@ -33,6 +33,7 @@
         <activity android:name="com.example.easycooking.RecipeResultActivity"></activity>
         <activity android:name="com.example.easycooking.ModifyIngredientsActivity"></activity>
         <activity android:name="com.example.easycooking.ModifyImageActivity"></activity>
+        <activity android:name="com.example.easycooking.ModifyStepsActivity"></activity>
     </application>
 
 </manifest>
