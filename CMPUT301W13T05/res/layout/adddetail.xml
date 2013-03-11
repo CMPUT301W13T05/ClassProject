@@ -44,8 +44,6 @@
         android:layout_x="121dp"
         android:layout_y="100dp"
         android:ems="10" >
-
-        <requestFocus />
     </EditText>
 
     <TextView
@@ -64,15 +62,16 @@
         android:layout_x="120dp"
         android:layout_y="53dp"
         android:ems="10"
-        android:inputType="text" />
+        android:inputType="text" >
+        <requestFocus />
+    </EditText>
 
     <ListView
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="312dp"
-        android:layout_x="-4dp"
-        android:layout_y="168dp" >
-
+        android:layout_x="-1dp"
+        android:layout_y="167dp" >
     </ListView>
 
 </AbsoluteLayout>

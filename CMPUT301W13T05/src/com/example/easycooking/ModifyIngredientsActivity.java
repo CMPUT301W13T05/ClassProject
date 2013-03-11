@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.app.Activity;
 //import android.view.Menu;
 import android.content.Intent;
@@ -20,6 +21,7 @@ public class ModifyIngredientsActivity extends Activity {
 	private static Recipe mrecipe = new Recipe();
 	private static ArrayList<String> ingredient_list = new ArrayList<String>();
 	private static ArrayList<Ingredient> ingredient_obj_list = new ArrayList<Ingredient>();
+	private static ArrayList<String> ingredient_name_list = new ArrayList<String>();
 	private static String _CHECK_SAVE_BUTTON = "UN_MODIFY" ;
 	private static int _CHECK_POSITION;
 	
@@ -27,42 +29,67 @@ public class ModifyIngredientsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.adddetail);
-		//ingredient_list.add("");
 		/**
 		 * set up each view variable
 		 */
 		final EditText ingredient_name = (EditText)findViewById(R.id.ingredient_text);
 		final EditText ingredient_amount = (EditText)findViewById(R.id.amount_Text);
 		final ListView ingredient_listView= (ListView) findViewById(R.id.listView1);
-		
-		
+		final Button modify_ingredients_save = (Button)findViewById(R.id.save);
+		final Button modify_ingredients_add = (Button)findViewById(R.id.add);
+		final Button modify_ingredients_delete = (Button)findViewById(R.id.delete);
 		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 		ingredient_obj_list = mrecipe.getIngredients();
 		update_list(ingredient_obj_list);
 		
-		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ModifyIngredientsActivity.this,
 				android.R.layout.simple_list_item_single_choice , ingredient_list);
 		ingredient_listView.setAdapter(adapter);
 		ingredient_listView.setItemsCanFocus(false);
 		ingredient_listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE); 
 		
+		if (ingredient_obj_list.isEmpty()){
+			modify_ingredients_save.setEnabled(false);
+			modify_ingredients_delete.setEnabled(false);
+		}
 		
 		//Add button
-		final Button modify_ingredients_add = (Button)findViewById(R.id.add);
+		
 		modify_ingredients_add.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Ingredient new_ingredient = new Ingredient();
 				new_ingredient.set_belongto(mrecipe.getID());
 				new_ingredient.set_name(ingredient_name.getText().toString());
 				new_ingredient.set_amount(ingredient_amount.getText().toString());
+				if (ingredient_name_list.contains(new_ingredient.get_name()) ){
+					Toast toast = Toast.makeText(ModifyIngredientsActivity.this, "Cannot Add Same Ingredient", Toast.LENGTH_LONG);   
+					toast.show();
+				}
+				if (new_ingredient.get_name().isEmpty()){
+					Toast toast = Toast.makeText(ModifyIngredientsActivity.this, "Pleas Enter The Required Information!", Toast.LENGTH_LONG);   
+					toast.show();
+				}
+				else{
 				ingredient_obj_list.add(new_ingredient);
+				ingredient_name_list.add(new_ingredient.get_name());
 				update_list(ingredient_obj_list);
 				adapter.notifyDataSetChanged();//refressh the list View
+				ingredient_name.setText("");
+				ingredient_amount.setText("");
+				}
+				if (ingredient_obj_list.isEmpty()){
+	    			modify_ingredients_save.setEnabled(false);
+	    			modify_ingredients_delete.setEnabled(false);
+	    		}
+	        	else{
+	        		modify_ingredients_save.setEnabled(true);
+	    			modify_ingredients_delete.setEnabled(true);
+	        	}
 			}
 		});
 		
 		//Save button
-		final Button modify_ingredients_save = (Button)findViewById(R.id.save);
+		
 		modify_ingredients_save.setOnClickListener(new Button.OnClickListener() {
 			/* (non-Javadoc)
 			 * @see android.view.View.OnClickListener#onClick(android.view.View)
@@ -88,6 +115,8 @@ public class ModifyIngredientsActivity extends Activity {
 					adapter.notifyDataSetChanged();
 					modify_ingredients_add.setEnabled(true);
 					_CHECK_SAVE_BUTTON = "UN_MODIFY";
+					ingredient_name.setText("");
+					ingredient_amount.setText("");
 				}
 			}
 		});
@@ -103,34 +132,45 @@ public class ModifyIngredientsActivity extends Activity {
 	        		ingredient_name.setText(ingredient_obj_list.get(position).get_name());
 	        		ingredient_amount.setText(ingredient_obj_list.get(position).get_amount());
 	        		modify_ingredients_add.setEnabled(false);
-	        		Button modify_ingredients_delete = (Button)findViewById(R.id.delete);
+	        		
 	        		modify_ingredients_delete.setOnClickListener(new Button.OnClickListener() {
 	        		        public void onClick(View v) {
-	        		        	ingredient_obj_list.remove(position);
-	        		        	ingredient_list.remove(position);
-	        		        		//To be implemented
-	        		        	adapter.notifyDataSetChanged();
-	        		        	ingredient_listView.setSelected(false);
-	        		        	modify_ingredients_add.setEnabled(true);
+	        		        	ingredient_name.setText("");
+	        					ingredient_amount.setText("");
+	        		        	if (ingredient_obj_list.isEmpty()){
+	        		    			modify_ingredients_save.setEnabled(false);
+	        		    			modify_ingredients_delete.setEnabled(false);
+	        		    		}
+	        		        	else{
+	        		        		modify_ingredients_save.setEnabled(true);
+	        		    			modify_ingredients_delete.setEnabled(true);
+	        		    			ingredient_obj_list.remove(position);
+		        		        	ingredient_list.remove(position);
+		        		        	ingredient_name_list.remove(position);
+		        		        		//To be implemented
+		        		        	adapter.notifyDataSetChanged();
+		        		        	ingredient_listView.setSelected(false);
+		        		        	modify_ingredients_add.setEnabled(true);
+		        		        	if (ingredient_obj_list.isEmpty()){
+		        		    			modify_ingredients_save.setEnabled(false);
+		        		    			modify_ingredients_delete.setEnabled(false);
+		        		    		}
+	        		        	}
 	        		        	_CHECK_SAVE_BUTTON = "UN_MODIFY";
 	        		        	}
 	        		        });
-//	        		modify_ingredients_save.setOnClickListener(new Button.OnClickListener() {
-//	        			public void onClick(View v) {
-//	        				if (_CHECK_SAVE_BUTTON.equals("MODIFY")){
-//	        					ingredient_obj_list.get(position).set_name(ingredient_name.getText().toString());
-//	        					ingredient_obj_list.get(position).set_amount(ingredient_amount.getText().toString());
-//	        					update_list(ingredient_obj_list);
-//	        					adapter.notifyDataSetChanged();
-//	        					modify_ingredients_add.setEnabled(true);
-//	        					_CHECK_SAVE_BUTTON = "UN_MODIFY";
-//	        				}
-//	        	}});
+
 
 	        	}
 		});
-	}
+		
+		
 	
+	}
+	/**
+	 * 
+	 * @param ingredients
+	 */
 	private void update_list(ArrayList<Ingredient> ingredients){
 		ingredient_list.clear();
 		Ingredient mingredient = new Ingredient();
@@ -143,10 +183,16 @@ public class ModifyIngredientsActivity extends Activity {
 		}
 		return;
 	}
-	
-	private void clean_editText(){
-		
+	/**
+	 * check the amount of the ingredients
+	 * @return
+	 */
+	private int check_ingredient(){
+		return mrecipe.getIngredients().size();	
 	}
+	
+
+	
 	
 	//@Override
 	/*public boolean onCreateOptionsMenu(Menu menu) {
