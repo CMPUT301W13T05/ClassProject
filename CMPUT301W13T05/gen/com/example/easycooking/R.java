@@ -20,7 +20,7 @@ public final class R {
     public static final class id {
         public static final int Ingredients=0x7f070012;
         public static final int RelativeLayout1=0x7f070008;
-        public static final int accept=0x7f07001a;
+        public static final int accept=0x7f070019;
         public static final int add=0x7f070009;
         public static final int amount_Text=0x7f07000e;
         public static final int backtomain=0x7f07001e;
@@ -57,7 +57,7 @@ public final class R {
         public static final int share=0x7f07002a;
         public static final int share_with_me=0x7f07001d;
         public static final int steps_view=0x7f070017;
-        public static final int takephoto=0x7f070019;
+        public static final int takephoto=0x7f07001a;
         public static final int textView1=0x7f070000;
         public static final int textView2=0x7f07000f;
         public static final int textView3=0x7f070027;

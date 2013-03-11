@@ -64,8 +64,7 @@ public class ingredienttest extends TestCase {
 					
 					
 
-
-// test create a ingredient			
+	// test create a ingredient			
 				@Test
 				public  void testCreateingredient()
 				{
@@ -78,24 +77,6 @@ public class ingredienttest extends TestCase {
 			        assertEquals("belongto", "pizza", new_ingredient.get_belongto());
 			        assertEquals("name", "salt", new_ingredient.get_name());
 			        assertEquals("amount", "5 scrops", new_ingredient.get_amount());
-				}
-						
-	
-	
-	
-	// test delete a ingredient			
-				@Test
-				public  void testDeleteingredient()
-				{
-					java.util.ArrayList<Ingredient>  v1 = new java.util.ArrayList<Ingredient>();
-					java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>();
-					Step step = new Step();
-					Recipe recipe = new Recipe("99999","cake",v2,v1,step, 0);
-					Ingredient i = new Ingredient("potato", "5", "99999");
-					recipe.getIngredients().add(i);
-					recipe.getIngredients().remove(0);
-
-			        assertEquals(0,recipe.getIngredients().size());
 				}
 
 

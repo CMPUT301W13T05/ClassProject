@@ -18,7 +18,10 @@ import android.widget.Toast;
 import android.app.Activity;
 import android.content.Intent;
 /**
- * This is a CreateRcipeActivtiy View class That Contain
+ * This is a CreateRcipeActivtiy View class That allow user to 
+ * creat a new recipe and upload image, ingredient and steps
+ * and insert them into database, and a object Recipe passed 
+ * among activities
  * @author Adonis
  *
  */
@@ -29,10 +32,11 @@ public class CreateRecipeActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		final DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);
-
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.addrecipe);
-		/////////Set up view
+		/**
+		 * Set up all the views widget
+		 */
 		final EditText enter_recipe_name = (EditText)findViewById(R.id.recipe_name);
 		TextView count_updated =(TextView)findViewById(R.id.uploaded_view);
 		TextView count_ingredients =(TextView)findViewById(R.id.ingredients_view);
@@ -60,13 +64,10 @@ public class CreateRecipeActivity extends Activity {
 			}
 			
 		}
-		//button home
-		//@SuppressWarnings("unchecked")
-		//test object 
-		//ArrayList<Recipe> mrecipe = (ArrayList<Recipe>)getIntent().getSerializableExtra("ArrayList");
-		//EditText enter_recipe_name = (EditText)findViewById(R.id.recipe_name);
-		//enter_recipe_name.setText(_FROM_WHERE+mrecipe.size());
-		//button home
+
+		/**
+		 * Home button and back to the main page
+		 */
 		Button add_modify_home = (Button)findViewById(R.id.home);
 		add_modify_home.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
@@ -78,9 +79,9 @@ public class CreateRecipeActivity extends Activity {
 				CreateRecipeActivity.this.finish();
 			}
 		});	
-		//button save
+		
 		/**
-		 * The save button and handle the uncomplete information
+		 * The save button and handle the uncompleted information
 		 */
 		Button add_modify_save = (Button)findViewById(R.id.save);
 		add_modify_save.setOnClickListener(new Button.OnClickListener() {
@@ -89,10 +90,11 @@ public class CreateRecipeActivity extends Activity {
 					Toast toast = Toast.makeText(CreateRecipeActivity.this, "Pleas Enter The Recipe Name", Toast.LENGTH_LONG);   
 					toast.show();
 				}
-				else if (mrecipe.getImages().size() == 0){
-					Toast toast = Toast.makeText(CreateRecipeActivity.this, "Pleas Upadate The Recipe Picture", Toast.LENGTH_LONG);   
-					toast.show();
-				}
+//				we do not need to check no image
+//				else if (mrecipe.getImages().size() == 0){
+//					Toast toast = Toast.makeText(CreateRecipeActivity.this, "Pleas Upadate The Recipe Picture", Toast.LENGTH_LONG);   
+//					toast.show();
+//				}
 				else if (mrecipe.getIngredients().size() == 0){
 					Toast toast = Toast.makeText(CreateRecipeActivity.this, "Pleas Add The Recipe Ingredients", Toast.LENGTH_LONG);   
 					toast.show();
@@ -122,23 +124,28 @@ public class CreateRecipeActivity extends Activity {
 					enter_recipe_name.setText(mrecipe.getID());
 					Intent intent = new Intent();
 					intent.setClass(CreateRecipeActivity.this, MainPageActivity.class);
-					//start a add entry activity
+					/**
+					 * start a add entry activity
+					 */
 					startActivity(intent);
-					//close the old activity
+					
+					/**
+					 *  close the old activity
+					 */
 					CreateRecipeActivity.this.finish(); 
 				} 
 			}
 		});	
 		/**
-		 * The add_modify_photo function
+		 * Link to the ModifyImageActivity
 		 */
 		Button add_modify_photo = (Button)findViewById(R.id.photo);
 		add_modify_photo.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				//TO BE IMPLEMENTED
+				
+				mrecipe.setName(enter_recipe_name.getText().toString());
 				Intent intent = new Intent();
-				intent.setClass(CreateRecipeActivity.this, ModifyImageActivity.class);// should be jump to the modify image
-				//start a add entry activity
+				intent.setClass(CreateRecipeActivity.this, ModifyImageActivity.class);			
 				Bundle mbundle = new Bundle();
 				mbundle.putSerializable("RECIPE_KEY", mrecipe);
 				intent.putExtras(mbundle);
@@ -146,36 +153,41 @@ public class CreateRecipeActivity extends Activity {
 			
 			}
 		});
-		//button ingredients
+		
+		/**
+		 * Link to the ModifyIngredientsActivity
+		 */
 		Button add_modify_ingredients = (Button)findViewById(R.id.Ingredients);
 		add_modify_ingredients.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				//TO BE IMPLEMENTED
+				mrecipe.setName(enter_recipe_name.getText().toString());
 				Intent intent = new Intent();
-				intent.setClass(CreateRecipeActivity.this, ModifyIngredientsActivity.class);// should be jump to the modify 
-				//start a add entry activity
+				intent.setClass(CreateRecipeActivity.this, ModifyIngredientsActivity.class); 
 				Bundle mbundle = new Bundle();
 				mbundle.putSerializable("RECIPE_KEY", mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);
-				//close the old activity
-				//CreateRecipeActivity.this.finish();
+				
 			
 			}
 		});	
-		//button description
+		
+		/**
+		 * Link to the ModifyStepsActivity 
+		 */
 		Button add_modify_description = (Button)findViewById(R.id.description);
 		add_modify_description.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				//TO BE IMPLEMENTED
+				mrecipe.setName(enter_recipe_name.getText().toString());
 				Intent intent = new Intent();
 				Bundle mbundle = new Bundle();
 				intent.setClass(CreateRecipeActivity.this, ModifyStepsActivity.class);				
 				mbundle.putSerializable("RECIPE_KEY", mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);
-				//close the old activity
-				//CreateRecipeActivity.this.finish();
+
 			
 			}
 		});	
