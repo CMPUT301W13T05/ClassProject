@@ -121,7 +121,10 @@ public class CreateRecipeActivity extends Activity {
 						dB_LocalDatabaseManager.add_image(mrecipe.getImages().get(i));
 					}
 					dB_LocalDatabaseManager.close();
-					enter_recipe_name.setText(mrecipe.getID());
+					/**
+					 * Test
+					 * enter_recipe_name.setText(mrecipe.getID());
+					 */
 					Intent intent = new Intent();
 					intent.setClass(CreateRecipeActivity.this, MainPageActivity.class);
 					/**

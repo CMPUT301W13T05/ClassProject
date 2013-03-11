@@ -34,7 +34,7 @@ public class RecipeResultActivity extends Activity {
 		//set up view 
 		ListView result_listView= (ListView) findViewById(R.id.listView1);
 		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_expandable_list_item_1 , result_string);
+				android.R.layout.simple_selectable_list_item , result_string);
 		result_listView.setAdapter(adapter);
 
 		result_listView.setItemsCanFocus(false);
