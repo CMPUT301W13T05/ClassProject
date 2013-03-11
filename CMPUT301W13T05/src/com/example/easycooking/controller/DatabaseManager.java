@@ -73,7 +73,6 @@ public class DatabaseManager {
 		 */
 		public void add_step(Step step){
 			ContentValues values = new ContentValues();
-			values.put("recipe_step", step.get_recipe_step());
 			values.put("rid", step.get_belong());
 			values.put("steps", step.get_detail());
 			db.insert("step", null, values);

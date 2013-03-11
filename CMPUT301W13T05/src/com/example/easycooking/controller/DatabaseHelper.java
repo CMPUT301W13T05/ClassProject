@@ -37,11 +37,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL("create table picture(" +
 				"pid CHAR PRIMARY KEY," +
 				"rid CHAR," +
-				"image blob," +
+				"image_uri CHAR(100)" +
 				"FOREIGN KEY(rid) REFERENCES localrecipe(rid))");
 		db.execSQL("create table step(" +
 				"sid INTEGER PRIMARY KEY AUTOINCREMENT," +
-				"recipe_step CHAR," +
 				"rid CHAR," +
 				"steps TEXT," +
 				"FOREIGN KEY(rid) REFERENCES localrecipe(rid))");

@@ -5,8 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 import com.example.easycooking.controller.*;
+import com.example.easycooking.model.Image;
+import com.example.easycooking.model.Ingredient;
+import com.example.easycooking.model.Recipe;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -30,12 +34,20 @@ import android.graphics.Bitmap;
  *
  */
 public class ModifyImageActivity extends Activity {
-	
+	private static Recipe mrecipe = new Recipe();
+	private static ArrayList<String> image_list = new ArrayList<String>();
+	private static ArrayList<Image> image_obj_list = new ArrayList<Image>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.modifyimage);
-        
+		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
+		image_obj_list = mrecipe.getImages();
+		
+		/** Display old photos*/
+    	ImageButton old_photo = (ImageButton)findViewById(R.id.imageButton1);
+    	old_photo.setImageBitmap(ourBMP);
+		
         Button takephoto = (Button)findViewById(R.id.takephoto);
         takephoto.setOnClickListener( new OnClickListener() {
             public void onClick(View v) {
@@ -95,7 +107,5 @@ public class ModifyImageActivity extends Activity {
 		OutputStream out = new FileOutputStream(intentPicture);
 		ourBMP.compress(Bitmap.CompressFormat.JPEG, 75, out);
 		out.close();
-}
-
-
+    }
 }
