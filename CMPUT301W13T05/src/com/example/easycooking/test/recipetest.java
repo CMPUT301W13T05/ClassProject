@@ -25,7 +25,7 @@ public class recipetest extends TestCase {
        @Test
 	 public void testgetID(){
 		    Recipe recipe = new Recipe();  
-			assertNotNull(recipe.getID());
+			assertNull(recipe.getID());
 	  }
     // Test setName of the recipe
 			@Test
@@ -40,7 +40,7 @@ public class recipetest extends TestCase {
              public void testget_download_upload_own(){
         	   Recipe recipe = new Recipe();  
         	   recipe.set_download_upload_own(0);
-        	   assertEquals("0", recipe.get_download_upload_own());        	   
+        	   assertEquals(0, recipe.get_download_upload_own());        	   
            }
    //Test if there is no step
            @Test
@@ -50,7 +50,7 @@ public class recipetest extends TestCase {
 				java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>();
 				Step step = new Step();
 				Recipe recipe = new Recipe("12345","pizza",v2,v1,step,0);         
-        	   assertNull(recipe.getSteps());      	   
+        	   assertEquals("",recipe.getSteps());      	   
            }
     //Test if there is no image
            @Test
@@ -83,7 +83,7 @@ public class recipetest extends TestCase {
 				Step step = new Step();
        		Recipe recipe = new Recipe("12345","pizza",v2,v1,step,0);              
        	   recipe.setImages(v2);
-       	   assertEquals("1", recipe.getImages());                   
+       	   assertNotNull(recipe.getImages());                   
            }    
     
            
@@ -119,6 +119,3 @@ public class recipetest extends TestCase {
 }		
   
 	
-
-		
- 
