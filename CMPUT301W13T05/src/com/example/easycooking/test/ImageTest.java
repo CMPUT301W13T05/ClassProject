@@ -9,7 +9,7 @@ import com.example.easycooking.model. *;
 
 import org.junit.Test;
 
-public class Imagetest {
+public class ImageTest {
 
   // test whether create image is successful or not 
 	@Test
