@@ -61,12 +61,12 @@ public class ModifyIngredientsActivity extends Activity {
 				new_ingredient.set_belongto(mrecipe.getID());
 				new_ingredient.set_name(ingredient_name.getText().toString());
 				new_ingredient.set_amount(ingredient_amount.getText().toString());
-				if (ingredient_name_list.contains(new_ingredient.get_name()) ){
-					Toast toast = Toast.makeText(ModifyIngredientsActivity.this, "Cannot Add Same Ingredient", Toast.LENGTH_LONG);   
-					toast.show();
-				}
 				if (new_ingredient.get_name().isEmpty()){
 					Toast toast = Toast.makeText(ModifyIngredientsActivity.this, "Pleas Enter The Required Information!", Toast.LENGTH_LONG);   
+					toast.show();
+				}
+				else if (ingredient_name_list.contains(new_ingredient.get_name()) ){
+					Toast toast = Toast.makeText(ModifyIngredientsActivity.this, "Cannot Add Same Ingredient", Toast.LENGTH_LONG);   
 					toast.show();
 				}
 				else{
@@ -109,14 +109,27 @@ public class ModifyIngredientsActivity extends Activity {
 					ModifyIngredientsActivity.this.finish();
 				}
 				else{
-					ingredient_obj_list.get(_CHECK_POSITION).set_name(ingredient_name.getText().toString());
-					ingredient_obj_list.get(_CHECK_POSITION).set_amount(ingredient_amount.getText().toString());
-					update_list(ingredient_obj_list);
-					adapter.notifyDataSetChanged();
-					modify_ingredients_add.setEnabled(true);
-					_CHECK_SAVE_BUTTON = "UN_MODIFY";
-					ingredient_name.setText("");
-					ingredient_amount.setText("");
+					if(ingredient_name_list.get(_CHECK_POSITION).equals(ingredient_name.getText().toString())){
+						ingredient_obj_list.get(_CHECK_POSITION).set_amount(ingredient_amount.getText().toString());
+						update_list(ingredient_obj_list);
+						adapter.notifyDataSetChanged();
+						modify_ingredients_add.setEnabled(true);
+						
+					}
+					else if (ingredient_name_list.contains(ingredient_name.getText().toString())){
+						Toast toast = Toast.makeText(ModifyIngredientsActivity.this, "Cannot Add Same Ingredient", Toast.LENGTH_LONG);   
+						toast.show();
+					}
+					else{
+						ingredient_obj_list.get(_CHECK_POSITION).set_name(ingredient_name.getText().toString());
+						ingredient_obj_list.get(_CHECK_POSITION).set_amount(ingredient_amount.getText().toString());
+						update_list(ingredient_obj_list);
+						adapter.notifyDataSetChanged();
+						modify_ingredients_add.setEnabled(true);
+						_CHECK_SAVE_BUTTON = "UN_MODIFY";
+						ingredient_name.setText("");
+						ingredient_amount.setText("");
+					}
 				}
 			}
 		});
@@ -172,6 +185,7 @@ public class ModifyIngredientsActivity extends Activity {
 	 * @param ingredients
 	 */
 	private void update_list(ArrayList<Ingredient> ingredients){
+		ingredient_name_list.clear();
 		ingredient_list.clear();
 		Ingredient mingredient = new Ingredient();
 		int i;
@@ -180,16 +194,11 @@ public class ModifyIngredientsActivity extends Activity {
 			mingredient = ingredients.get(i);
 			combine = mingredient.get_amount()+" "+ mingredient.get_name();
 			ingredient_list.add(combine);
+			ingredient_name_list.add(mingredient.get_name());
 		}
 		return;
 	}
-	/**
-	 * check the amount of the ingredients
-	 * @return
-	 */
-	private int check_ingredient(){
-		return mrecipe.getIngredients().size();	
-	}
+
 	
 
 	
