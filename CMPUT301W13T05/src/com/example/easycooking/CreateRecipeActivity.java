@@ -22,7 +22,7 @@ import android.content.Intent;
  * creat a new recipe and upload image, ingredient and steps
  * and insert them into database, and a object Recipe passed 
  * among activities
- * @author Adonis
+ * @author Alvin Sun
  *
  */
 

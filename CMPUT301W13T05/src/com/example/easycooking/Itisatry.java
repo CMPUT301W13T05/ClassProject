@@ -2,7 +2,11 @@ package com.example.easycooking;
 
 import android.os.Bundle;
 import android.app.Activity;
-//import android.view.Menu;
+/**
+ * This is a test activity
+ * @author Alvin Sun
+ *
+ */
 
 public class Itisatry extends Activity {
 

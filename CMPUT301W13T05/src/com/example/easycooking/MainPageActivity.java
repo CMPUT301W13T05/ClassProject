@@ -13,21 +13,30 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
+/**
+ * This the MainPageActivity.Like the home_page.
+ *  
+ * Searhing bar and Other functions' entry.
+ * @author Alvin
+ *
+ */
 public class MainPageActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		final DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);
-		
+		final DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		final EditText serching_text = (EditText)findViewById(R.id.editText1);
-		/////////////////////////////////Search button 
+		/**
+		 * Search button 
+		 */
 		 Button main_search = (Button)findViewById(R.id.search);
 		 main_search.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
-	        		//TODO get ArrayList<Recipe>
+	        		/*
+	        		 * Complete get ArrayList<Recipe>
+	        		 */
 	        		dB_LocalDatabaseManager.open();
 	        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
 	        		result_recipe=dB_LocalDatabaseManager.searchRecipes(serching_text.getText().toString(), 1);
@@ -37,58 +46,81 @@ public class MainPageActivity extends Activity {
 	        		mbundle.putSerializable("RECIPE_RESULT", result_recipe);
 	        		intent.putExtras(mbundle);
 	        		intent.setClass(MainPageActivity.this, RecipeResultActivity.class);
-	        		//start a add entry activity
+	        		/**
+	        		 * start a add entry activity
+	        		 */
 	        		
 	        		startActivity(intent);
-	        		//close the old activity
-	        		//MainPageActivity.this.finish();
+	        		/**
+	        		 * close the old activity
+	        		 */
+	        		
 	        	}
 	        });
-		 ////////////////////////////////Profile button
+		 /**
+		  * Profile button
+		  */
 		 Button main_profile =(Button)findViewById(R.id.profile);
 		 main_profile.setOnClickListener(new Button.OnClickListener() {
 		        public void onClick(View v) {
 		        		Intent intent = new Intent();
 		        		intent.setClass(MainPageActivity.this, MyProfileActivity.class);
-		        		//start a add entry activity
+		        		/**
+		        		 * start a add entry activity
+		        		 */
 		        		startActivity(intent);
-		        		//close the old activity
-		        		MainPageActivity.this.finish();
+		        		/**
+		        		 * close the old activity
+		        		 */
+		        		/*
+		        		 * MainPageActivity.this.finish();
+		        		 */
 		        	}
 		        });
-		 ////////////////////////////////Create Recipe
+		 /**
+		  * Create Recipe 
+		  */
 		 Button main_create = (Button)findViewById(R.id.creat);
 		 main_create.setOnClickListener(new Button.OnClickListener() {
 		        public void onClick(View v) {
 		        		Intent intent = new Intent();
 		        		Bundle mbundle = new Bundle();
 		        		mbundle.putString("FromWhere", "MAIN");
-		        		//ArrayList<Recipe> mrecipe = new ArrayList<Recipe>();
-		        		//mbundle.putSerializable("ArrayList", mrecipe);
 		        		intent.putExtras(mbundle);
 		        		intent.setClass(MainPageActivity.this, CreateRecipeActivity.class);
-		        		//start a add entry activity
+		        		/**
+		        		 * start a add entry activity
+		        		 */
 		        		startActivity(intent);
-		        		//close the old activity
-		        		//MainPageActivity.this.finish();
+		        		
 		        	}
 		        });
-		 ////////////////////////////////Custom Search
+		 /**
+		  * Custom Search
+		  */
 		 Button main_custom = (Button)findViewById(R.id.setup_search);
 		 main_custom.setOnClickListener(new Button.OnClickListener() {
 		        public void onClick(View v) {
-		        		//To be implemented
+		        		/**
+		        		 * TODO implemented
+		        		 */
 		        	}
 		        });
-		 ///////////////////////////////ModifyIngredientsActivityAcitivty
+		/**
+		 * ModifyIngredientsActivityAcitivty
+		 */
 		 Button main_ingredients = (Button)findViewById(R.id.modifyingre);
 		 main_ingredients.setOnClickListener(new Button.OnClickListener() {
 		        public void onClick(View v) {
 		        		Intent intent = new Intent();
 		        		intent.setClass(MainPageActivity.this, ModifyIngredientsActivity.class);
-		        		//start a add entry activity
+		        		/**
+		        		 * start a add entry activity
+		        		 */
 		        		startActivity(intent);
-		        		//close the old activity
+		        		/**
+		        		 * close the old activity
+		        		 */
 		        		MainPageActivity.this.finish();
 		        	}
 		        });

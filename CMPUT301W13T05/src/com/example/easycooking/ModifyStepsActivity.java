@@ -11,7 +11,11 @@ import android.widget.Toast;
 import android.app.Activity;
 //import android.view.Menu;
 import android.content.Intent;
-
+/**
+ * This a View to set the description of a recipe
+ * @author Alvin
+ *
+ */
 public class ModifyStepsActivity extends Activity {
 	private static Recipe mrecipe = new Recipe();
 	private static Step mstep = new Step();
@@ -22,7 +26,6 @@ public class ModifyStepsActivity extends Activity {
 		final EditText directions = (EditText)findViewById(R.id.editText1);
 		final Button save = (Button)findViewById(R.id.save);
 		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
-		//mrecipe.getSteps().set_belong(mrecipe.getID());
 		directions.setText(mrecipe.getSteps().get_detail());
 		save.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {

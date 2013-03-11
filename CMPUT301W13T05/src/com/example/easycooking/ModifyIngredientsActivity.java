@@ -16,7 +16,13 @@ import android.widget.Toast;
 import android.app.Activity;
 //import android.view.Menu;
 import android.content.Intent;
-
+/**
+ * This is the ModifyIngredientsActivity View
+ * It let User add the ingredents and set amount also let user to
+ * modify an exist recipes' ingredients
+ * @author Alvin
+ *
+ */
 public class ModifyIngredientsActivity extends Activity {
 	private static Recipe mrecipe = new Recipe();
 	private static ArrayList<String> ingredient_list = new ArrayList<String>();
@@ -53,8 +59,9 @@ public class ModifyIngredientsActivity extends Activity {
 			modify_ingredients_delete.setEnabled(false);
 		}
 		
-		//Add button
-		
+		/**
+		 * Add button, add an ingredient
+		 */		
 		modify_ingredients_add.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				Ingredient new_ingredient = new Ingredient();
@@ -88,24 +95,30 @@ public class ModifyIngredientsActivity extends Activity {
 			}
 		});
 		
-		//Save button
+		/**
+		 * Save button 
+		 * Save button can save the ingredient or save the changing of 
+		 * one recipe
+		 */
 		
 		modify_ingredients_save.setOnClickListener(new Button.OnClickListener() {
-			/* (non-Javadoc)
-			 * @see android.view.View.OnClickListener#onClick(android.view.View)
-			 */
+			
 			public void onClick(View v) {
 				if (_CHECK_SAVE_BUTTON.equals("UN_MODIFY")){
 					mrecipe.setIngredients(ingredient_obj_list);
 					Intent intent = new Intent();
 					intent.setClass(ModifyIngredientsActivity.this, CreateRecipeActivity.class);// should be jump to the modify 
-					//start a add entry activity
+					/**
+					 * start a add entry activity
+					 */
 					Bundle mbundle = new Bundle();
 					mbundle.putString("FromWhere", "MODIFY");
 					mbundle.putSerializable("RECIPE_KEY", mrecipe);
 					intent.putExtras(mbundle);
 					startActivity(intent);
-					//close the old activity
+					/**
+					 * close the old activity
+					 */
 					ModifyIngredientsActivity.this.finish();
 				}
 				else{
@@ -135,13 +148,15 @@ public class ModifyIngredientsActivity extends Activity {
 				}
 			}
 		});
-		/////////////////////////////////////////////////////
+		/**
+		 * Here is set a listview listener to handle the click activity on 
+		 * the list view
+		 */
 		ingredient_listView.setOnItemClickListener(new ListView.OnItemClickListener(){
 	        	@Override
 	        	public void onItemClick(AdapterView<?> arg0, View arg1, final int position,long id) 
 	        	{
-	        		//get the position
-	        		//delete button
+	        		
 	        		_CHECK_SAVE_BUTTON = "MODIFY";
 	        		_CHECK_POSITION = position;
 	        		ingredient_name.setText(ingredient_obj_list.get(position).get_name());
@@ -183,7 +198,7 @@ public class ModifyIngredientsActivity extends Activity {
 	
 	}
 	/**
-	 * 
+	 * Given a ingreidient list to update the listview
 	 * @param ingredients
 	 */
 	private void update_list(ArrayList<Ingredient> ingredients){
