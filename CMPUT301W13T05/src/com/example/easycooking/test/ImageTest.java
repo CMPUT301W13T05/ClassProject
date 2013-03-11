@@ -1,5 +1,9 @@
 package com.example.easycooking.test;
-
+/**
+ * This class is testing the Image model
+ * @author Chenkun
+ *
+ */
 import static org.junit.Assert.*;
 import com.example.easycooking.model. *;
 
