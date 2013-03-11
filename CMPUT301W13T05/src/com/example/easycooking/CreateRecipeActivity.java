@@ -17,6 +17,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.app.Activity;
 import android.content.Intent;
+/**
+ * This is a CreateRcipeActivtiy View class That Contain
+ * @author Adonis
+ *
+ */
 
 public class CreateRecipeActivity extends Activity {
 	private static String _FROM_WHERE = "";
