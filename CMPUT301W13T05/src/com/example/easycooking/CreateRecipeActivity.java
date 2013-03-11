@@ -114,9 +114,12 @@ public class CreateRecipeActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(CreateRecipeActivity.this, ModifyImageActivity.class);// should be jump to the modify image
 				//start a add entry activity
+				Bundle mbundle = new Bundle();
+				mbundle.putSerializable("RECIPE_KEY", mrecipe);
+				intent.putExtras(mbundle);
 				startActivity(intent);
 				//close the old activity
-				CreateRecipeActivity.this.finish();
+				//CreateRecipeActivity.this.finish();
 			}
 		});
 		//button ingredients
