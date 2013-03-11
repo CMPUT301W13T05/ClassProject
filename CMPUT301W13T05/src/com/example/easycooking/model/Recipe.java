@@ -5,6 +5,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import com.example.easycooking.model.Step;
 import com.example.easycooking.model.Ingredient;
+
+/**
+ * This is a model class for Recipe 
+ * it contains id images list and ingredient list and the steps 
+ * @author Alvin
+ *
+ */
 public class Recipe implements Serializable {
 	/**
 	 * 

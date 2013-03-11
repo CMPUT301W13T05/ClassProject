@@ -1,7 +1,12 @@
 package com.example.easycooking.model;
 
 import java.io.Serializable;
-
+/**
+ * This a model object for Step
+ * contains a detail as string
+ * @author Alvin
+ *
+ */
 public class Step implements Serializable {
 	/**
 	 * 

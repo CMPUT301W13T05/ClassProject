@@ -39,7 +39,7 @@ public class MainPageActivity extends Activity {
 	        		 */
 	        		dB_LocalDatabaseManager.open();
 	        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-	        		result_recipe=dB_LocalDatabaseManager.searchRecipes(serching_text.getText().toString(), 1);
+	        		result_recipe=dB_LocalDatabaseManager.searchRecipes(serching_text.getText().toString(), -1);
 	        		dB_LocalDatabaseManager.close();
 	        		Intent intent = new Intent();
 	        		Bundle mbundle = new Bundle();

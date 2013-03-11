@@ -2,7 +2,12 @@ package com.example.easycooking.model;
 
 import java.io.Serializable;
 
-
+/**
+ * This a model class for ingredient object
+ * It contains the name of the ingredient and the amount
+ * @author Alvin
+ *
+ */
 public class Ingredient implements Serializable {
 	
 	/**
