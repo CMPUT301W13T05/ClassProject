@@ -29,7 +29,7 @@ public class RecipeResultActivity extends Activity {
 		//set up view 
 		ListView result_listView= (ListView) findViewById(R.id.listView1);
 		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_single_choice , result_string);
+				android.R.layout.simple_expandable_list_item_1 , result_string);
 		result_listView.setAdapter(adapter);
 
 		result_listView.setItemsCanFocus(false);
@@ -65,10 +65,5 @@ public class RecipeResultActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}*/
-	
-	//back button pressed
-	
-	//public void onBackPressed() {
-	//return;
-	//}
+
 }
