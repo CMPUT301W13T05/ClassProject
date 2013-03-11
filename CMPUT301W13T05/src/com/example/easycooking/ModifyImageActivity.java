@@ -26,6 +26,7 @@ import android.content.Context;
 //import android.view.Menu;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 /**
  * setBogoPic() and saveFile() used project BogoPicGenActivity as reference
@@ -46,10 +47,7 @@ public class ModifyImageActivity extends Activity {
 		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 		//image_obj_list = mrecipe.getImages();
 		
-		/** Display old photos*/
-    	//ImageButton old_photo = (ImageButton)findViewById(R.id.imageButton1);
-    	//old_photo.setImageBitmap(ourBMP);
-		
+		displayImage();
         Button takephoto = (Button)findViewById(R.id.takephoto);
         takephoto.setOnClickListener( new OnClickListener() {
             public void onClick(View v) {
@@ -78,6 +76,13 @@ public class ModifyImageActivity extends Activity {
 		ourBMP = GeneratePhoto.generateBitmap(400, 400);
 		button.setImageBitmap(ourBMP);
 	}
+    private void displayImage() {
+    	//FileInputStream fis = new FileInputStream(image_obj_list.get(0).get_imageUri());
+    	//ourBMP = BitmapFactory.decodeFile(image_obj_list.get(0).get_imageUri());
+    	ourBMP = BitmapFactory.decodeFile("/data/data/com.example.easycooking/localimages/1363002462375.JPEG");
+    	ImageButton old_photo = (ImageButton)findViewById(R.id.imageButton1);
+    	old_photo.setImageBitmap(ourBMP);
+    }
    /* private File getPicturePath(Intent intent) {
         Uri uri = (Uri) intent.getExtras().get(MediaStore.EXTRA_OUTPUT);
         return new File(uri.getPath());
@@ -105,7 +110,6 @@ public class ModifyImageActivity extends Activity {
     	} catch (IOException e) {
     		Toast.makeText(this, "Couldn't Write File!", Toast.LENGTH_LONG).show();
     	}
-    	finish();
     }
     /*private void saveBMP( File FileName, Bitmap ourBMP) throws IOException, FileNotFoundException {
 		OutputStream out = new FileOutputStream(FileName);
