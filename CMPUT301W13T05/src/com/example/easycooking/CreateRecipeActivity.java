@@ -105,7 +105,10 @@ public class CreateRecipeActivity extends Activity {
 				}
 				else{
 					mrecipe.setName(enter_recipe_name.getText().toString());
-					mrecipe.set_download_upload_own(1);
+					/**
+					 * 99 mains the recipe is the own created 
+					 */
+					mrecipe.set_download_upload_own(99);
 					dB_LocalDatabaseManager.open();
 					ArrayList<Ingredient> db_input_ingredients = mrecipe.getIngredients();
 					ArrayList<Image> db_input_images = mrecipe.getImages();
