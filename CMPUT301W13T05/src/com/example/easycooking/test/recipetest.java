@@ -42,15 +42,15 @@ public class recipetest extends TestCase {
         	   recipe.set_download_upload_own(0);
         	   assertEquals(0, recipe.get_download_upload_own());        	   
            }
-   //Test if there is no step
-           @Test
+   //Test if the setstep and getStep runs
+            @Test
              public void testgetSteps(){
         	
         	   java.util.ArrayList<Ingredient>  v1 = new java.util.ArrayList<Ingredient>();
 				java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>();
-				Step step = new Step();
+				Step step = new Step(1,"112233","make it");
 				Recipe recipe = new Recipe("12345","pizza",v2,v1,step,0);         
-        	   assertEquals("",recipe.getSteps());      	   
+        	   assertNotNull(recipe.getSteps());      	   
            }
     //Test if there is no image
            @Test
