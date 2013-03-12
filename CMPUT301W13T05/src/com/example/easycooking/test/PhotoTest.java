@@ -5,6 +5,8 @@ package com.example.easycooking.test;
  *
  *
  */
+import static org.junit.Assert.*;
+
 import com.example.easycooking.model.*;
 
 import org.junit.Test;
