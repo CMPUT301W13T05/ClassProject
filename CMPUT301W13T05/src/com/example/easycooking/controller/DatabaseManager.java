@@ -198,6 +198,9 @@ public class DatabaseManager {
 				cursor_d.close();
 				}
 			else if(condition == 1){cursor_r = db.query("localrecipe", null, "name ='"+var+"'", null, null, null, null);}
+			else if(condition == 99){cursor_r = db.query("localrecipe", null, "download_upload_own = 99", null, null, null, null);}
+			else if(condition == 100){cursor_r = db.query("localrecipe", null, "download_upload_own = 100", null, null, null, null);}
+			else if(condition == 101){cursor_r = db.query("localrecipe", null, "download_upload_own = 101", null, null, null, null);}
 			else {	
 				cursor_a = db.query("ingredient", null, "ingredient = '"+var+"'", null, null, null, null);
 				cursor_r = db.query("localrecipe", null, "rid ='"+cursor_a.getString(2)+"'and name = '"+var+"'", null, null, null, null);
