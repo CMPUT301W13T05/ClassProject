@@ -193,7 +193,7 @@ public class DatabaseManager {
 			Cursor cursor_a;
 			if(condition == -1) {cursor_r = db.query("localrecipe", null, null, null, null, null, null);}//search all local recipes
 			else if(condition == 0) {
-				cursor_d = db.query("ingredient", null, "ingredient = '"+var+"'", null, null, null, null);
+				cursor_d = db.query("ingredient", null, "name = '"+var+"'", null, null, null, null);
 				cursor_r = db.query("localrecipe", null, "rid ='"+cursor_d.getString(2)+"'", null, null, null, null);
 				cursor_d.close();
 				}//search local recipes by ingredient
