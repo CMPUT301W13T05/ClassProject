@@ -191,21 +191,21 @@ public class DatabaseManager {
 			Cursor cursor_r;
 			Cursor cursor_d;
 			Cursor cursor_a;
-			if(condition == -1) {cursor_r = db.query("localrecipe", null, null, null, null, null, null);}
+			if(condition == -1) {cursor_r = db.query("localrecipe", null, null, null, null, null, null);}//search all local recipes
 			else if(condition == 0) {
 				cursor_d = db.query("ingredient", null, "ingredient = '"+var+"'", null, null, null, null);
 				cursor_r = db.query("localrecipe", null, "rid ='"+cursor_d.getString(2)+"'", null, null, null, null);
 				cursor_d.close();
-				}
-			else if(condition == 1){cursor_r = db.query("localrecipe", null, "name ='"+var+"'", null, null, null, null);}
-			else if(condition == 99){cursor_r = db.query("localrecipe", null, "download_upload_own = 99", null, null, null, null);}
-			else if(condition == 100){cursor_r = db.query("localrecipe", null, "download_upload_own = 100", null, null, null, null);}
-			else if(condition == 101){cursor_r = db.query("localrecipe", null, "download_upload_own = 101", null, null, null, null);}
+				}//search local recipes by ingredient
+			else if(condition == 1){cursor_r = db.query("localrecipe", null, "name ='"+var+"'", null, null, null, null);}//search local recipes by name
+			else if(condition == 99){cursor_r = db.query("localrecipe", null, "download_upload_own = 99", null, null, null, null);}//search owned recipes
+			else if(condition == 100){cursor_r = db.query("localrecipe", null, "download_upload_own = 100", null, null, null, null);}//search upload recipes
+			else if(condition == 101){cursor_r = db.query("localrecipe", null, "download_upload_own = 101", null, null, null, null);}//search download recipes
 			else {	
 				cursor_a = db.query("ingredient", null, "ingredient = '"+var+"'", null, null, null, null);
 				cursor_r = db.query("localrecipe", null, "rid ='"+cursor_a.getString(2)+"'and name = '"+var+"'", null, null, null, null);
 				cursor_a.close();
-				}
+				}//search local recipes with given name and ingredient
 			cursor_r.moveToFirst();
 			while(!cursor_r.isAfterLast()){
 				Recipe recipe = rebuildRecipe(cursor_r);
