@@ -42,7 +42,7 @@ public class recipetest extends TestCase {
         	   recipe.set_download_upload_own(0);
         	   assertEquals(0, recipe.get_download_upload_own());        	   
            }
-   //Test if the setstep and getStep runs
+   //Test if the getStep runs
             @Test
              public void testgetSteps(){
         	
