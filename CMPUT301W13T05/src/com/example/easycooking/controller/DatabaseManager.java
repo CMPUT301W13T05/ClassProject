@@ -186,8 +186,7 @@ public class DatabaseManager {
 		 * @param name
 		 * @return an ArrayList contains recipe objects
 		 */
-			public ArrayList<Recipe> searchRecipes(String var, int condition) {
-			condition = 0;
+		public ArrayList<Recipe> searchRecipes(String var, int condition) {
 			int add_to_list = 0;
 			ArrayList<Recipe> recipes = new ArrayList<Recipe>();
 			Cursor cursor_r = null;
