@@ -186,33 +186,61 @@ public class DatabaseManager {
 		 * @param name
 		 * @return an ArrayList contains recipe objects
 		 */
-		public ArrayList<Recipe> searchRecipes(String var, int condition) {
+			public ArrayList<Recipe> searchRecipes(String var, int condition) {
+			condition = 0;
+			int add_to_list = 0;
 			ArrayList<Recipe> recipes = new ArrayList<Recipe>();
-			Cursor cursor_r;
-			Cursor cursor_d;
-			Cursor cursor_a;
+			Cursor cursor_r = null;
+			Cursor cursor_d = null;
+			Cursor cursor_a = null;
 			if(condition == -1) {cursor_r = db.query("localrecipe", null, null, null, null, null, null);}//search all local recipes
 			else if(condition == 0) {
 				cursor_d = db.query("ingredient", null, "name = '"+var+"'", null, null, null, null);
-				cursor_r = db.query("localrecipe", null, "rid ='"+cursor_d.getString(2)+"'", null, null, null, null);
+				cursor_d.moveToFirst();
+				while(!cursor_d.isAfterLast()){
+					cursor_r = db.query("localrecipe", null, "rid ='"+cursor_d.getString(2)+"'", null, null, null, null);
+					cursor_r.moveToFirst();
+					while(!cursor_r.isAfterLast()){
+						Recipe recipe = rebuildRecipe(cursor_r);
+						recipes.add(recipe);
+						cursor_r.moveToNext();
+					}
+					cursor_r.close();
+					cursor_d.moveToNext();
+				}
 				cursor_d.close();
-				}//search local recipes by ingredient
+				add_to_list = 1;
+			}//search local recipes by ingredient
 			else if(condition == 1){cursor_r = db.query("localrecipe", null, "name ='"+var+"'", null, null, null, null);}//search local recipes by name
 			else if(condition == 99){cursor_r = db.query("localrecipe", null, "download_upload_own = 99", null, null, null, null);}//search owned recipes
 			else if(condition == 100){cursor_r = db.query("localrecipe", null, "download_upload_own = 100", null, null, null, null);}//search upload recipes
 			else if(condition == 101){cursor_r = db.query("localrecipe", null, "download_upload_own = 101", null, null, null, null);}//search download recipes
 			else {	
 				cursor_a = db.query("ingredient", null, "name = '"+var+"'", null, null, null, null);
-				cursor_r = db.query("localrecipe", null, "rid ='"+cursor_a.getString(2)+"'and name = '"+var+"'", null, null, null, null);
+				cursor_a.moveToFirst();
+				while(!cursor_a.isAfterLast()){
+					cursor_r = db.query("localrecipe", null, "rid ='"+cursor_a.getString(2)+"'or name = '"+var+"'", null, null, null, null);
+					cursor_r.moveToFirst();
+					while(!cursor_r.isAfterLast()){
+						Recipe recipe = rebuildRecipe(cursor_r);
+						recipes.add(recipe);
+						cursor_r.moveToNext();
+					}
+					cursor_r.close();
+					cursor_a.moveToNext();
+				}
 				cursor_a.close();
-				}//search local recipes with given name and ingredient
-			cursor_r.moveToFirst();
-			while(!cursor_r.isAfterLast()){
-				Recipe recipe = rebuildRecipe(cursor_r);
-				recipes.add(recipe);
-				cursor_r.moveToNext();
+				add_to_list = 1;
+			}//search local recipes with given name and ingredient
+			if(add_to_list == 0){
+				cursor_r.moveToFirst();
+				while(!cursor_r.isAfterLast()){
+					Recipe recipe = rebuildRecipe(cursor_r);
+					recipes.add(recipe);
+					cursor_r.moveToNext();
+				}
+				cursor_r.close();
 			}
-			cursor_r.close();
 			return recipes;
 		}
 		/**
