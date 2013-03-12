@@ -38,25 +38,31 @@ public class MainPageActivity extends Activity {
 	        		/*
 	        		 * Complete get ArrayList<Recipe>
 	        		 */
-	        		dB_LocalDatabaseManager.open();
-	        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-	        		result_recipe=dB_LocalDatabaseManager.searchRecipes(serching_text.getText().toString(), -99);
-	        		dB_LocalDatabaseManager.close();
-	        		if (result_recipe.size()>0){
-		        		Intent intent = new Intent();
-		        		Bundle mbundle = new Bundle();
-		        		mbundle.putSerializable("RECIPE_RESULT", result_recipe);
-		        		intent.putExtras(mbundle);
-		        		intent.setClass(MainPageActivity.this, RecipeResultActivity.class);
-		        		startActivity(intent);
-	        		}
-	        		else{
-	        			Toast toast = Toast.makeText(MainPageActivity.this, "No Recipe Matched", Toast.LENGTH_LONG);   
+	        		if (serching_text.getText().toString().isEmpty()){
+	        			Toast toast = Toast.makeText(MainPageActivity.this, "Empty Input!", Toast.LENGTH_LONG);   
 						toast.show();
 	        		}
-	        	
-	        		
-	        	}
+		        	else{
+		        		dB_LocalDatabaseManager.open();
+		        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
+		        		result_recipe=dB_LocalDatabaseManager.searchRecipes(serching_text.getText().toString(), -99);
+		        		dB_LocalDatabaseManager.close();
+		        		if (result_recipe.size()>0){
+			        		Intent intent = new Intent();
+			        		Bundle mbundle = new Bundle();
+			        		mbundle.putSerializable("RECIPE_RESULT", result_recipe);
+			        		intent.putExtras(mbundle);
+			        		intent.setClass(MainPageActivity.this, RecipeResultActivity.class);
+			        		startActivity(intent);
+		        		}
+		        		else{
+		        			Toast toast = Toast.makeText(MainPageActivity.this, "No Recipe Matched", Toast.LENGTH_LONG);   
+							toast.show();
+		        		}
+		        	
+		        		
+		        	}
+	        }
 	        });
 		 /**
 		  * Profile button
