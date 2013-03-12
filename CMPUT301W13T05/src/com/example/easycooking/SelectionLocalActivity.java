@@ -3,6 +3,7 @@ package com.example.easycooking;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.app.Activity;
 //import android.view.Menu;
 import android.content.Intent;
@@ -17,6 +18,7 @@ public class SelectionLocalActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.selection);
+		
 		//button share
 		Button selection_share = (Button)findViewById(R.id.search);
 		selection_share.setOnClickListener(new Button.OnClickListener() {
