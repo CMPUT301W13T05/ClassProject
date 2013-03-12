@@ -202,7 +202,7 @@ public class DatabaseManager {
 			else if(condition == 100){cursor_r = db.query("localrecipe", null, "download_upload_own = 100", null, null, null, null);}//search upload recipes
 			else if(condition == 101){cursor_r = db.query("localrecipe", null, "download_upload_own = 101", null, null, null, null);}//search download recipes
 			else {	
-				cursor_a = db.query("ingredient", null, "name = '"+var+"'", null, null, null, null);
+				cursor_a = db.query("ingredient", null, "ingredient = '"+var+"'", null, null, null, null);
 				cursor_r = db.query("localrecipe", null, "rid ='"+cursor_a.getString(2)+"'and name = '"+var+"'", null, null, null, null);
 				cursor_a.close();
 				}//search local recipes with given name and ingredient
