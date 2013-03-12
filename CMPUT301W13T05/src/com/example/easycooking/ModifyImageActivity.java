@@ -29,15 +29,20 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 /**
- * setBogoPic() and saveFile() used project BogoPicGenActivity as reference
- * download address https://github.com/abramhindle/BogoPicGen
- * author: Dr.Abram Hindle
- * @author HongZu
- *
+ * setBogoPic() and saveFile() used project BogoPicGenActivity as reference download address https://github.com/abramhindle/BogoPicGen author: Dr.Abram Hindle
+ * @author  HongZu
  */
 public class ModifyImageActivity extends Activity {
 	private Bitmap ourBMP;
+	/**
+	 * @uml.property  name="mrecipe"
+	 * @uml.associationEnd  
+	 */
 	private static Recipe mrecipe = new Recipe();
+	/**
+	 * @uml.property  name="rimages"
+	 * @uml.associationEnd  
+	 */
 	private static Image rimages = new Image();
 	private static ArrayList<Image> image_obj_list = new ArrayList<Image>();
 	@Override

@@ -13,11 +13,18 @@ import android.app.Activity;
 import android.content.Intent;
 /**
  * This a View to set the description of a recipe
- * @author Alvin
- *
+ * @author  Alvin
  */
 public class ModifyStepsActivity extends Activity {
+	/**
+	 * @uml.property  name="mrecipe"
+	 * @uml.associationEnd  
+	 */
 	private static Recipe mrecipe = new Recipe();
+	/**
+	 * @uml.property  name="mstep"
+	 * @uml.associationEnd  
+	 */
 	private static Step mstep = new Step();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

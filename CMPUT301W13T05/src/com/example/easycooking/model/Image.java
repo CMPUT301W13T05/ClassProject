@@ -11,7 +11,8 @@ import java.io.Serializable;
 public class Image implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private String  IMAGE_ID,image_belongto;
+	private String  IMAGE_ID;
+	private String image_belongto;
 	private String IMAGE_URI = "";
 	public Image(){
 		

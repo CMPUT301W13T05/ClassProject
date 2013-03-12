@@ -17,13 +17,14 @@ import android.app.Activity;
 //import android.view.Menu;
 import android.content.Intent;
 /**
- * This is the ModifyIngredientsActivity View
- * It let User add the ingredents and set amount also let user to
- * modify an exist recipes' ingredients
- * @author Alvin
- *
+ * This is the ModifyIngredientsActivity View It let User add the ingredents and set amount also let user to modify an exist recipes' ingredients
+ * @author  Alvin
  */
 public class ModifyIngredientsActivity extends Activity {
+	/**
+	 * @uml.property  name="mrecipe"
+	 * @uml.associationEnd  
+	 */
 	private static Recipe mrecipe = new Recipe();
 	private static ArrayList<String> ingredient_list = new ArrayList<String>();
 	private static ArrayList<Ingredient> ingredient_obj_list = new ArrayList<Ingredient>();

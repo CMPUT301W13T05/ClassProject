@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="model" size="1528,1065" id="com.example.easycooking.model" metadata="uml2-1.0" initialized="true" scrolledY="35" tag="1000" key="32303037303533312D31303030204D61696E41637469766974792F78696E79616F31">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.6/@sourceConnections.0 //@children.6/@sourceConnections.1 //@children.1/@sourceConnections.1 //@children.4/@sourceConnections.1 //@children.5/@sourceConnections.1" name="Recipe" location="450,315" size="211,211" id="com.example.easycooking.model/Recipe">
+    <children xsi:type="editmodel:CompartmentEditModel" size="188,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="images" id="com.example.easycooking.model/Recipe#images"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="ingredients" id="com.example.easycooking.model/Recipe#ingredients"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="name" id="com.example.easycooking.model/Recipe#name"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="159,108">
+      <children xsi:type="editmodel:MethodEditModel" name="Recipe" id="com.example.easycooking.model/Recipe#Recipe(Ljava.lang.String;Ljava.lang.String;Ljava.util.ArrayList;Ljava.util.ArrayList;Lcom.example.easycooking.model.Step;I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Recipe" location="12,114" id="com.example.easycooking.model/Recipe#Recipe()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getID" id="com.example.easycooking.model/Recipe#getID()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="get_download_upload_own" id="com.example.easycooking.model/Recipe#get_download_upload_own()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setID" id="com.example.easycooking.model/Recipe#setID(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="set_download_upload_own" id="com.example.easycooking.model/Recipe#set_download_upload_own(I)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.example.easycooking.model/Step@steps+com.example.easycooking.model/Recipe@" source="//@children.0" target="//@children.2" targetEnd="//@children.0/@sourceConnections.0/@children.2" label="//@children.0/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="83,211" id="com.example.easycooking.model/Step@steps+com.example.easycooking.model/Recipe@|com.example.easycooking.model/Recipe#" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="steps" location="53,0" id="com.example.easycooking.model/Step@steps+com.example.easycooking.model/Recipe@|com.example.easycooking.model/Step#steps" multiplicityLabel="//@children.0/@sourceConnections.0/@children.2/@children.1" roleLabel="//@children.0/@sourceConnections.0/@children.2/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - steps" location="540,656" size="35,12" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="508,656" size="18,12" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.example.easycooking.model/Recipe@mrecipe+com.example.easycooking/CreateRecipeActivity@" source="//@children.0" target="//@children.1" targetEnd="//@children.0/@sourceConnections.1/@children.2" label="//@children.0/@sourceConnections.1/@children.0" sourceEnd="//@children.0/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="mrecipe" location="0,207" id="com.example.easycooking.model/Recipe@mrecipe+com.example.easycooking/CreateRecipeActivity@|com.example.easycooking.model/Recipe#mrecipe" attachSource="true" multiplicityLabel="//@children.0/@sourceConnections.1/@children.1/@children.2" roleLabel="//@children.0/@sourceConnections.1/@children.1/@children.0" orderingLabel="//@children.0/@sourceConnections.1/@children.1/@children.1" scopeKind="1" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - mrecipe" location="395,491" size="48,12" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="{order}" location="405,529" size="38,12" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="437,503" size="6,12" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="184,15" id="com.example.easycooking.model/Recipe@mrecipe+com.example.easycooking/CreateRecipeActivity@|com.example.easycooking/CreateRecipeActivity#"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.example.easycooking.model/Recipe@mrecipe+com.example.easycooking/ModifyIngredientsActivity@" source="//@children.0" target="//@children.4" targetEnd="//@children.0/@sourceConnections.2/@children.2" label="//@children.0/@sourceConnections.2/@children.0" sourceEnd="//@children.0/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="mrecipe" location="211,7" id="com.example.easycooking.model/Recipe@mrecipe+com.example.easycooking/ModifyIngredientsActivity@|com.example.easycooking.model/Recipe#mrecipe" attachSource="true" multiplicityLabel="//@children.0/@sourceConnections.2/@children.1/@children.2" roleLabel="//@children.0/@sourceConnections.2/@children.1/@children.0" orderingLabel="//@children.0/@sourceConnections.2/@children.1/@children.1" scopeKind="1" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - mrecipe" location="668,291" size="48,12" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="{order}" location="668,329" size="38,12" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="668,303" size="6,12" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="28,34" id="com.example.easycooking.model/Recipe@mrecipe+com.example.easycooking/ModifyIngredientsActivity@|com.example.easycooking/ModifyIngredientsActivity#"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.example.easycooking.model/Recipe@mrecipe+com.example.easycooking/ModifyStepsActivity@" source="//@children.0" target="//@children.5" targetEnd="//@children.0/@sourceConnections.3/@children.2" label="//@children.0/@sourceConnections.3/@children.0" sourceEnd="//@children.0/@sourceConnections.3/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="mrecipe" location="211,200" id="com.example.easycooking.model/Recipe@mrecipe+com.example.easycooking/ModifyStepsActivity@|com.example.easycooking.model/Recipe#mrecipe" attachSource="true" multiplicityLabel="//@children.0/@sourceConnections.3/@children.1/@children.2" roleLabel="//@children.0/@sourceConnections.3/@children.1/@children.0" orderingLabel="//@children.0/@sourceConnections.3/@children.1/@children.1" scopeKind="1" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - mrecipe" location="668,484" size="48,12" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="{order}" location="668,522" size="38,12" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="668,496" size="6,12" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="28,0" id="com.example.easycooking.model/Recipe@mrecipe+com.example.easycooking/ModifyStepsActivity@|com.example.easycooking/ModifyStepsActivity#"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking.model/Recipe-Soyatec::Import->com.example.easycooking.model/Step" source="//@children.0" target="//@children.2" targetEnd="//@children.0/@sourceConnections.4/@children.2" label="//@children.0/@sourceConnections.4/@children.0" sourceEnd="//@children.0/@sourceConnections.4/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="44,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="63,211" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="18,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking.model/Recipe-Soyatec::Import->com.example.easycooking.model/Image" source="//@children.0" target="//@children.3" targetEnd="//@children.0/@sourceConnections.5/@children.2" label="//@children.0/@sourceConnections.5/@children.0" sourceEnd="//@children.0/@sourceConnections.5/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="44,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="9,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="152,179"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking.model/Recipe-Soyatec::Import->com.example.easycooking.model/Ingredient" source="//@children.0" target="//@children.7" targetEnd="//@children.0/@sourceConnections.6/@children.2" label="//@children.0/@sourceConnections.6/@children.0" sourceEnd="//@children.0/@sourceConnections.6/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import»" size="44,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="177,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,181"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.1" name="CreateRecipeActivity" location="165,570" size="184,41" id="com.example.easycooking/CreateRecipeActivity">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking/CreateRecipeActivity-Standard::Call->com.example.easycooking.model/Step*com.example.easycooking/CreateRecipeActivity-Standard::Instantiate->com.example.easycooking.model/Step" source="//@children.1" target="//@children.2" targetEnd="//@children.1/@sourceConnections.0/@children.2" label="//@children.1/@sourceConnections.0/@children.0" sourceEnd="//@children.1/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Call»" size="89,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="123,41" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,69"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking/CreateRecipeActivity-Standard::Call->com.example.easycooking.model/Recipe*com.example.easycooking/CreateRecipeActivity-Standard::Instantiate->com.example.easycooking.model/Recipe*com.example.easycooking/CreateRecipeActivity-Soyatec::Import->com.example.easycooking.model/Recipe" source="//@children.1" target="//@children.0" targetEnd="//@children.1/@sourceConnections.1/@children.2" label="//@children.1/@sourceConnections.1/@children.0" sourceEnd="//@children.1/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Import, Call»" size="127,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="127,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,165"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0 //@children.0/@sourceConnections.4 //@children.1/@sourceConnections.0 //@children.5/@sourceConnections.0" name="Step" location="480,675" size="107,211" id="com.example.easycooking.model/Step">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="84,162">
+      <children xsi:type="editmodel:MethodEditModel" name="Step" id="com.example.easycooking.model/Step#Step(ILjava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Step" id="com.example.easycooking.model/Step#Step()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="get_belong" id="com.example.easycooking.model/Step#get_belong()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="get_detail" id="com.example.easycooking.model/Step#get_detail()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="get_id" id="com.example.easycooking.model/Step#get_id()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="set_belong" id="com.example.easycooking.model/Step#set_belong(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="set_detail" id="com.example.easycooking.model/Step#set_detail(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="set_id" id="com.example.easycooking.model/Step#set_id(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="to_String" id="com.example.easycooking.model/Step#to_String()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.example.easycooking.model/Step@mstep+com.example.easycooking/ModifyStepsActivity@" source="//@children.2" target="//@children.5" targetEnd="//@children.2/@sourceConnections.0/@children.2" label="//@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="mstep" location="107,10" id="com.example.easycooking.model/Step@mstep+com.example.easycooking/ModifyStepsActivity@|com.example.easycooking.model/Step#mstep" attachSource="true" multiplicityLabel="//@children.2/@sourceConnections.0/@children.1/@children.2" roleLabel="//@children.2/@sourceConnections.0/@children.1/@children.0" orderingLabel="//@children.2/@sourceConnections.0/@children.1/@children.1" scopeKind="1" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - mstep" location="594,692" size="39,12" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="{order}" location="594,666" size="38,12" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="594,704" size="6,12" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="10,41" id="com.example.easycooking.model/Step@mstep+com.example.easycooking/ModifyStepsActivity@|com.example.easycooking/ModifyStepsActivity#"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.6/@sourceConnections.2 //@children.0/@sourceConnections.5" name="Image" location="235,58" size="152,193" id="com.example.easycooking.model/Image">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="129,144">
+      <children xsi:type="editmodel:MethodEditModel" name="Image" id="com.example.easycooking.model/Image#Image()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Image" id="com.example.easycooking.model/Image#Image(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="get_IMAGE_ID" id="com.example.easycooking.model/Image#get_IMAGE_ID()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="get_imageUri" id="com.example.easycooking.model/Image#get_imageUri()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="get_image_belongto" id="com.example.easycooking.model/Image#get_image_belongto()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="set_IMAGE_ID" id="com.example.easycooking.model/Image#set_IMAGE_ID(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="set_imageUri" id="com.example.easycooking.model/Image#set_imageUri(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="set_image_belongto" id="com.example.easycooking.model/Image#set_image_belongto(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.example.easycooking.model/Image@rimages+com.example.easycooking/ModifyImageActivity@" source="//@children.3" target="//@children.6" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="rimages" location="0,183" id="com.example.easycooking.model/Image@rimages+com.example.easycooking/ModifyImageActivity@|com.example.easycooking.model/Image#rimages" attachSource="true" multiplicityLabel="//@children.3/@sourceConnections.0/@children.1/@children.2" roleLabel="//@children.3/@sourceConnections.0/@children.1/@children.0" orderingLabel="//@children.3/@sourceConnections.0/@children.1/@children.1" scopeKind="1" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - rimages" location="180,210" size="48,12" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="{order}" location="190,248" size="38,12" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="222,222" size="6,12" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="172,0" id="com.example.easycooking.model/Image@rimages+com.example.easycooking/ModifyImageActivity@|com.example.easycooking/ModifyImageActivity#"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.2" name="ModifyIngredientsActivity" location="877,288" size="219,41" id="com.example.easycooking/ModifyIngredientsActivity">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking/ModifyIngredientsActivity-Standard::Call->com.example.easycooking.model/Ingredient*com.example.easycooking/ModifyIngredientsActivity-Standard::Instantiate->com.example.easycooking.model/Ingredient*com.example.easycooking/ModifyIngredientsActivity-Soyatec::Import->com.example.easycooking.model/Ingredient" source="//@children.4" target="//@children.7" targetEnd="//@children.4/@sourceConnections.0/@children.2" label="//@children.4/@sourceConnections.0/@children.0" sourceEnd="//@children.4/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Import, Call»" size="127,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="79,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="117,135"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking/ModifyIngredientsActivity-Standard::Call->com.example.easycooking.model/Recipe*com.example.easycooking/ModifyIngredientsActivity-Standard::Instantiate->com.example.easycooking.model/Recipe*com.example.easycooking/ModifyIngredientsActivity-Soyatec::Import->com.example.easycooking.model/Recipe" source="//@children.4" target="//@children.0" targetEnd="//@children.4/@sourceConnections.1/@children.2" label="//@children.4/@sourceConnections.1/@children.0" sourceEnd="//@children.4/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Import, Call»" size="127,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="28,14" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="196,0"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.3 //@children.2/@sourceConnections.0" name="ModifyStepsActivity" location="780,555" size="179,41" id="com.example.easycooking/ModifyStepsActivity">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking/ModifyStepsActivity-Standard::Call->com.example.easycooking.model/Step*com.example.easycooking/ModifyStepsActivity-Standard::Instantiate->com.example.easycooking.model/Step*com.example.easycooking/ModifyStepsActivity-Soyatec::Import->com.example.easycooking.model/Step" source="//@children.5" target="//@children.2" targetEnd="//@children.5/@sourceConnections.0/@children.2" label="//@children.5/@sourceConnections.0/@children.0" sourceEnd="//@children.5/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Import, Call»" size="127,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,36" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="92,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking/ModifyStepsActivity-Standard::Call->com.example.easycooking.model/Recipe*com.example.easycooking/ModifyStepsActivity-Standard::Instantiate->com.example.easycooking.model/Recipe*com.example.easycooking/ModifyStepsActivity-Soyatec::Import->com.example.easycooking.model/Recipe" source="//@children.5" target="//@children.0" targetEnd="//@children.5/@sourceConnections.1/@children.2" label="//@children.5/@sourceConnections.1/@children.0" sourceEnd="//@children.5/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Import, Call»" size="127,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="48,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="211,157"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@sourceConnections.0" name="ModifyImageActivity" location="50,302" size="182,41" id="com.example.easycooking/ModifyImageActivity">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.example.easycooking.model/Recipe@mrecipe+com.example.easycooking/ModifyImageActivity@" source="//@children.6" target="//@children.0" targetEnd="//@children.6/@sourceConnections.0/@children.2" label="//@children.6/@sourceConnections.0/@children.0" sourceEnd="//@children.6/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="180,27" id="com.example.easycooking.model/Recipe@mrecipe+com.example.easycooking/ModifyImageActivity@|com.example.easycooking/ModifyImageActivity#" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="mrecipe" location="0,14" id="com.example.easycooking.model/Recipe@mrecipe+com.example.easycooking/ModifyImageActivity@|com.example.easycooking.model/Recipe#mrecipe" multiplicityLabel="//@children.6/@sourceConnections.0/@children.2/@children.2" roleLabel="//@children.6/@sourceConnections.0/@children.2/@children.0" orderingLabel="//@children.6/@sourceConnections.0/@children.2/@children.1" scopeKind="1" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - mrecipe" location="395,298" size="48,12" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="{order}" location="405,336" size="38,12" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="437,310" size="6,12" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking/ModifyImageActivity-Standard::Call->com.example.easycooking.model/Recipe*com.example.easycooking/ModifyImageActivity-Standard::Instantiate->com.example.easycooking.model/Recipe*com.example.easycooking/ModifyImageActivity-Soyatec::Import->com.example.easycooking.model/Recipe" source="//@children.6" target="//@children.0" targetEnd="//@children.6/@sourceConnections.1/@children.2" label="//@children.6/@sourceConnections.1/@children.0" sourceEnd="//@children.6/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Import, Call»" size="127,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="175,41" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,47"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking/ModifyImageActivity-Standard::Call->com.example.easycooking.model/Image*com.example.easycooking/ModifyImageActivity-Standard::Instantiate->com.example.easycooking.model/Image*com.example.easycooking/ModifyImageActivity-Soyatec::Import->com.example.easycooking.model/Image" source="//@children.6" target="//@children.3" targetEnd="//@children.6/@sourceConnections.2/@children.2" label="//@children.6/@sourceConnections.2/@children.0" sourceEnd="//@children.6/@sourceConnections.2/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Import, Call»" size="127,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="182,15" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="15,193"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.6 //@children.4/@sourceConnections.0" name="Ingredient" location="684,50" size="117,193" id="com.example.easycooking.model/Ingredient">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="94,144">
+      <children xsi:type="editmodel:MethodEditModel" name="Ingredient" id="com.example.easycooking.model/Ingredient#Ingredient(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Ingredient" id="com.example.easycooking.model/Ingredient#Ingredient()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="get_amount" id="com.example.easycooking.model/Ingredient#get_amount()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="get_belongto" id="com.example.easycooking.model/Ingredient#get_belongto()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="get_name" id="com.example.easycooking.model/Ingredient#get_name()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="set_amount" id="com.example.easycooking.model/Ingredient#set_amount(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="set_belongto" id="com.example.easycooking.model/Ingredient#set_belongto(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="set_name" id="com.example.easycooking.model/Ingredient#set_name(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=7;Product=eUML2"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

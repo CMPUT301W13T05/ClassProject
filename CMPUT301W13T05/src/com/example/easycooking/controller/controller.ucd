@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="controller" size="1533,700" id="com.example.easycooking.controller" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D31303030204D61696E41637469766974792F78696E79616F31">
+  <children xsi:type="editmodel:ClassEditModel" name="GeneratePhoto" location="645,50" size="145,67" id="com.example.easycooking.controller/GeneratePhoto" runTimeClassModel="generateBitmap(II)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="108,18">
+      <children xsi:type="editmodel:MethodEditModel" name="generateBitmap" id="com.example.easycooking.controller/GeneratePhoto#generateBitmap(II)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.0 //@children.1/@sourceConnections.0" name="DatabaseManager" location="420,50" size="166,391" id="com.example.easycooking.controller/DatabaseManager" runTimeClassModel="delete_steps(Lcom.example.easycooking.model.Step;),update_recipe(Lcom.example.easycooking.model.Recipe;),searchImages(Ljava.lang.String;),searchRecipes(Ljava.lang.String;I),update_ingredient(Lcom.example.easycooking.model.Ingredient;),add_recipe(Lcom.example.easycooking.model.Recipe;),drop(),delete_recipe(Lcom.example.easycooking.model.Recipe;),getInstance(Landroid.content.Context;),close(),open(),update_steps(Lcom.example.easycooking.model.Step;),searchSteps(Ljava.lang.String;),searchIngredients(Ljava.lang.String;Ljava.lang.String;),add_step(Lcom.example.easycooking.model.Step;),delete_images(Lcom.example.easycooking.model.Image;),add_image(Lcom.example.easycooking.model.Image;),add_ingrdient(Lcom.example.easycooking.model.Ingredient;),delete_ingredient(Lcom.example.easycooking.model.Ingredient;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="119,342">
+      <children xsi:type="editmodel:MethodEditModel" name="add_image" id="com.example.easycooking.controller/DatabaseManager#add_image(Lcom.example.easycooking.model.Image;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="add_ingrdient" id="com.example.easycooking.controller/DatabaseManager#add_ingrdient(Lcom.example.easycooking.model.Ingredient;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="add_recipe" id="com.example.easycooking.controller/DatabaseManager#add_recipe(Lcom.example.easycooking.model.Recipe;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="add_step" id="com.example.easycooking.controller/DatabaseManager#add_step(Lcom.example.easycooking.model.Step;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="close" id="com.example.easycooking.controller/DatabaseManager#close()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="delete_images" id="com.example.easycooking.controller/DatabaseManager#delete_images(Lcom.example.easycooking.model.Image;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="delete_ingredient" id="com.example.easycooking.controller/DatabaseManager#delete_ingredient(Lcom.example.easycooking.model.Ingredient;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="delete_recipe" id="com.example.easycooking.controller/DatabaseManager#delete_recipe(Lcom.example.easycooking.model.Recipe;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="delete_steps" id="com.example.easycooking.controller/DatabaseManager#delete_steps(Lcom.example.easycooking.model.Step;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="drop" id="com.example.easycooking.controller/DatabaseManager#drop()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getInstance" id="com.example.easycooking.controller/DatabaseManager#getInstance(Landroid.content.Context;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="open" id="com.example.easycooking.controller/DatabaseManager#open()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="searchImages" id="com.example.easycooking.controller/DatabaseManager#searchImages(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="searchIngredients" id="com.example.easycooking.controller/DatabaseManager#searchIngredients(Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="searchRecipes" id="com.example.easycooking.controller/DatabaseManager#searchRecipes(Ljava.lang.String;I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="searchSteps" id="com.example.easycooking.controller/DatabaseManager#searchSteps(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="update_ingredient" id="com.example.easycooking.controller/DatabaseManager#update_ingredient(Lcom.example.easycooking.model.Ingredient;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="update_recipe" id="com.example.easycooking.controller/DatabaseManager#update_recipe(Lcom.example.easycooking.model.Recipe;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="update_steps" id="com.example.easycooking.controller/DatabaseManager#update_steps(Lcom.example.easycooking.model.Step;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.example.easycooking.controller/DatabaseManager@instance+com.example.easycooking.controller/DatabaseManager@" source="//@children.1" target="//@children.1" targetEnd="//@children.1/@sourceConnections.0/@children.2" label="//@children.1/@sourceConnections.0/@children.0" sourceEnd="//@children.1/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="instance" location="0,20" id="com.example.easycooking.controller/DatabaseManager@instance+com.example.easycooking.controller/DatabaseManager@|com.example.easycooking.controller/DatabaseManager#instance" anchorKind="FixedAtEdge" attachSource="true" multiplicityLabel="//@children.1/@sourceConnections.0/@children.1/@children.2" roleLabel="//@children.1/@sourceConnections.0/@children.1/@children.0" orderingLabel="//@children.1/@sourceConnections.0/@children.1/@children.1" scopeKind="1" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - instance" location="363,77" size="50,12" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="{order}" location="375,51" size="38,12" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="1" location="407,89" size="6,12" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="20,0" id="com.example.easycooking.controller/DatabaseManager@instance+com.example.easycooking.controller/DatabaseManager@|com.example.easycooking.controller/DatabaseManager#" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking.controller/DatabaseManager-Standard::Call->com.example.easycooking.controller/DatabaseHelper*com.example.easycooking.controller/DatabaseManager-Standard::Instantiate->com.example.easycooking.controller/DatabaseHelper*com.example.easycooking.controller/DatabaseManager-Soyatec::Import->com.example.easycooking.controller/DatabaseHelper" source="//@children.1" target="//@children.2" targetEnd="//@children.1/@sourceConnections.1/@children.2" label="//@children.1/@sourceConnections.1/@children.0" sourceEnd="//@children.1/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Import, Call»" size="127,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,51" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="151,51"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.1" name="DatabaseHelper" location="50,50" size="151,103" id="com.example.easycooking.controller/DatabaseHelper" runTimeClassModel="onCreate(Landroid.database.sqlite.SQLiteDatabase;),DatabaseHelper(Landroid.content.Context;),onUpgrade(Landroid.database.sqlite.SQLiteDatabase;II)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="108,54">
+      <children xsi:type="editmodel:MethodEditModel" name="DatabaseHelper" id="com.example.easycooking.controller/DatabaseHelper#DatabaseHelper(Landroid.content.Context;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="onCreate" id="com.example.easycooking.controller/DatabaseHelper#onCreate(Landroid.database.sqlite.SQLiteDatabase;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="onUpgrade" id="com.example.easycooking.controller/DatabaseHelper#onUpgrade(Landroid.database.sqlite.SQLiteDatabase;II)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.example.easycooking.controller/DatabaseHelper@dbHelper+com.example.easycooking.controller/DatabaseManager@" source="//@children.2" target="//@children.1" targetEnd="//@children.2/@sourceConnections.0/@children.2" label="//@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="dbHelper" location="151,22" id="com.example.easycooking.controller/DatabaseHelper@dbHelper+com.example.easycooking.controller/DatabaseManager@|com.example.easycooking.controller/DatabaseHelper#dbHelper" attachSource="true" multiplicityLabel="//@children.2/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.2/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - dbHelper" location="208,53" size="53,12" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="208,79" size="18,12" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,31" id="com.example.easycooking.controller/DatabaseHelper@dbHelper+com.example.easycooking.controller/DatabaseManager@|com.example.easycooking.controller/DatabaseManager#"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=7;Product=eUML2"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

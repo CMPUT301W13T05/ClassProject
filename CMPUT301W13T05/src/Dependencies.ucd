@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="Dependencies" size="1471,679" id="." metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D31303030204D61696E41637469766974792F78696E79616F31">
+  <children xsi:type="editmodel:PackageEditModel" targetConnections="//@children.2/@sourceConnections.1" name="com.example.easycooking.controller" location="501,50" size="286,60" id="com.example.easycooking.controller">
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking.controller-Standard::Call->com.example.easycooking.model*com.example.easycooking.controller-Standard::Instantiate->com.example.easycooking.model*com.example.easycooking.controller-Soyatec::Import->com.example.easycooking.model" source="//@children.0" target="//@children.1" targetEnd="//@children.0/@sourceConnections.0/@children.2" label="//@children.0/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Import, Call»" size="127,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="44,60" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="217,0"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" targetConnections="//@children.0/@sourceConnections.0 //@children.2/@sourceConnections.0 //@children.3/@sourceConnections.0" name="com.example.easycooking.model" location="328,304" size="262,60" id="com.example.easycooking.model"/>
+  <children xsi:type="editmodel:PackageEditModel" name="com.example.easycooking" location="635,322" size="215,60" id="com.example.easycooking">
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking-Standard::Call->com.example.easycooking.model*com.example.easycooking-Standard::Instantiate->com.example.easycooking.model*com.example.easycooking-Soyatec::Import->com.example.easycooking.model" source="//@children.2" target="//@children.1" targetEnd="//@children.2/@sourceConnections.0/@children.2" label="//@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Import, Call»" size="127,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,20" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="262,38"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking-Standard::Call->com.example.easycooking.controller*com.example.easycooking-Soyatec::Import->com.example.easycooking.controller" source="//@children.2" target="//@children.0" targetEnd="//@children.2/@sourceConnections.1/@children.2" label="//@children.2/@sourceConnections.1/@children.0" sourceEnd="//@children.2/@sourceConnections.1/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Import, Call»" size="0,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="75,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="209,60"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" name="com.example.easycooking.test" location="50,442" size="247,60" id="com.example.easycooking.test">
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" autoLocated="true" id="com.example.easycooking.test-Standard::Call->com.example.easycooking.model*com.example.easycooking.test-Standard::Instantiate->com.example.easycooking.model*com.example.easycooking.test-Soyatec::Import->com.example.easycooking.model" source="//@children.3" target="//@children.1" targetEnd="//@children.3/@sourceConnections.0/@children.2" label="//@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manual">
+      <children xsi:type="editmodel:WireLabelEditModel" name="«Instantiate, Import, Call»" size="127,12" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="185,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="69,60"/>
+    </sourceConnections>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" properties="wireOptions=4;Product=eUML2;displayOptions=1"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+</editmodel:ClassDiagramEditModel>

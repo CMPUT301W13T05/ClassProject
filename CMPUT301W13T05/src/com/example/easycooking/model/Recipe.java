@@ -7,10 +7,8 @@ import com.example.easycooking.model.Step;
 import com.example.easycooking.model.Ingredient;
 
 /**
- * This is a model class for Recipe 
- * it contains id images list and ingredient list and the steps 
- * @author Alvin
- *
+ * This is a model class for Recipe  it contains id images list and ingredient list and the steps 
+ * @author  Alvin
  */
 public class Recipe implements Serializable {
 	/**
@@ -18,10 +16,23 @@ public class Recipe implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String id;
+	/**
+	 * @uml.property  name="name"
+	 */
 	private String name;
 
+	/**
+	 * @uml.property  name="ingredients"
+	 */
 	private ArrayList<Ingredient> ingredients;
+	/**
+	 * @uml.property  name="images"
+	 */
 	private ArrayList<Image> images;
+	/**
+	 * @uml.property  name="steps"
+	 * @uml.associationEnd  
+	 */
 	private Step steps;
 	private int download_upload_own;
 	public Recipe(){
@@ -45,6 +56,10 @@ public class Recipe implements Serializable {
 		this.id = id;
 	}
 	
+	/**
+	 * @return
+	 * @uml.property  name="name"
+	 */
 	public String getName() {
 		return name;
 	}
@@ -55,26 +70,54 @@ public class Recipe implements Serializable {
 		this.download_upload_own = download_upload_own;
 	}
 
+	/**
+	 * @param name
+	 * @uml.property  name="name"
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+	/**
+	 * @return
+	 * @uml.property  name="ingredients"
+	 */
 	public ArrayList<Ingredient> getIngredients() {
 		return ingredients;
 	}
 
+	/**
+	 * @param ingredients
+	 * @uml.property  name="ingredients"
+	 */
 	public void setIngredients(ArrayList<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
+	/**
+	 * @return
+	 * @uml.property  name="images"
+	 */
 	public ArrayList<Image> getImages() {
 		return images;
 	}
 	
+	/**
+	 * @return
+	 * @uml.property  name="steps"
+	 */
 	public Step getSteps(){
 		return steps;
 	}
+	/**
+	 * @param steps
+	 * @uml.property  name="steps"
+	 */
 	public void setSteps(Step steps){
 		this.steps = steps;
 	}
+	/**
+	 * @param images
+	 * @uml.property  name="images"
+	 */
 	public void setImages(ArrayList<Image> images) {
 		this.images = images;
 	}

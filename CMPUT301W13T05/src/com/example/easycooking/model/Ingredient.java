@@ -15,7 +15,11 @@ public class Ingredient implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String ingredients_name, ingredients_amount,ingredients_belongto;
+	private String ingredients_name;
+
+	private String ingredients_amount;
+
+	private String ingredients_belongto;
 	public Ingredient(){
 		
 	}

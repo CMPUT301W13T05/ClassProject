@@ -17,15 +17,20 @@ import android.database.sqlite.SQLiteDatabase;
 import android.view.View;  
 
 /**
- * This class manages the database that contains the local recipes.
- * The local recipes contains download, upload recipes.
- * All interaction with local recipes much go through the DatabaseManager
- * @author HongZu
- *
+ * This class manages the database that contains the local recipes. The local recipes contains download, upload recipes. All interaction with local recipes much go through the DatabaseManager
+ * @author  HongZu
  */
 public class DatabaseManager {
+	/**
+	 * @uml.property  name="instance"
+	 * @uml.associationEnd  
+	 */
 	private static DatabaseManager instance = null;
 		private SQLiteDatabase db ;
+		/**
+		 * @uml.property  name="dbHelper"
+		 * @uml.associationEnd  
+		 */
 		private DatabaseHelper dbHelper;
 		
 		protected DatabaseManager(Context context){

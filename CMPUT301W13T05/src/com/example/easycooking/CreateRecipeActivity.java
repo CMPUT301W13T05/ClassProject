@@ -18,16 +18,16 @@ import android.widget.Toast;
 import android.app.Activity;
 import android.content.Intent;
 /**
- * This is a CreateRcipeActivtiy View class That allow user to 
- * creat a new recipe and upload image, ingredient and steps
- * and insert them into database, and a object Recipe passed 
- * among activities
- * @author Alvin Sun
- *
+ * This is a CreateRcipeActivtiy View class That allow user to  creat a new recipe and upload image, ingredient and steps and insert them into database, and a object Recipe passed  among activities
+ * @author  Alvin Sun
  */
 
 public class CreateRecipeActivity extends Activity {
 	private static String _FROM_WHERE = "";
+	/**
+	 * @uml.property  name="mrecipe"
+	 * @uml.associationEnd  
+	 */
 	private static Recipe mrecipe = new Recipe();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
