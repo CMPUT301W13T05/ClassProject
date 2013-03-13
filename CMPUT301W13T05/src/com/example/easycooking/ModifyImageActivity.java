@@ -52,6 +52,7 @@ public class ModifyImageActivity extends Activity {
 		Button takephoto = (Button)findViewById(R.id.takephoto);
 		final Button accept = (Button)findViewById(R.id.accept);
 		Button continue_to = (Button)findViewById(R.id.continue_to);
+		final ImageButton delete = (ImageButton)findViewById(R.id.imageButton1);
 		accept.setEnabled(false);
 		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 		image_obj_list = mrecipe.getImages();
@@ -59,7 +60,15 @@ public class ModifyImageActivity extends Activity {
 		if(image_obj_list.size()>0) {
 			displayImage();
 		}
-        
+        OnClickListener listener = new OnClickListener() {
+            public void onClick(View v) {
+            	delete.setImageBitmap(null);
+            	image_obj_list.clear();
+            	accept.setEnabled(false);
+            }
+        }; 
+        delete.setOnClickListener(listener);
+
         takephoto.setOnClickListener( new OnClickListener() {
             public void onClick(View v) {
             	setBogoPic();

@@ -197,6 +197,7 @@ public class DatabaseManager {
 			Cursor cursor_r = null;
 			Cursor cursor_d = null;
 			Cursor cursor_a = null;
+			Cursor cursor_b = null;
 			if(condition == -1) {cursor_r = db.query("localrecipe", null, null, null, null, null, null);}//search all local recipes
 			else if(condition == 0) {
 				cursor_d = db.query("ingredient", null, "name = '"+var+"'", null, null, null, null);
@@ -234,6 +235,17 @@ public class DatabaseManager {
 					cursor_a.moveToNext();
 				}
 				cursor_a.close();
+				
+				if(cursor_r == null) {
+					cursor_b = db.query("localrecipe", null, "name = '"+var+"'", null, null, null, null);
+					cursor_b.moveToFirst();
+					while(!cursor_b.isAfterLast()){
+						Recipe recipe = rebuildRecipe(cursor_b);
+						recipes.add(recipe);
+						cursor_b.moveToNext();
+					}
+					cursor_b.close();
+				}
 				add_to_list = 1;
 			}//search local recipes with given name and ingredient
 			if(add_to_list == 0){
