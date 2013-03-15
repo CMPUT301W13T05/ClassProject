@@ -56,14 +56,24 @@ public class ModifyImageActivity extends Activity {
 		accept.setEnabled(false);
 		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 		image_obj_list = mrecipe.getImages();
-		
+    	final Toast toast = Toast.makeText(ModifyImageActivity.this, "Image Deleted", Toast.LENGTH_SHORT);   
 		if(image_obj_list.size()>0) {
 			displayImage();
 		}
         OnClickListener listener = new OnClickListener() {
             public void onClick(View v) {
-            	delete.setImageBitmap(null);
-            	image_obj_list.clear();
+            	if(image_obj_list.isEmpty()) {}
+            	else {
+		        	delete.setImageBitmap(null);
+		        	image_obj_list.remove(image_obj_list.size()-1);
+		        	toast.show();
+		        	if(image_obj_list.isEmpty()) {}
+		        	else {
+		        		ourBMP = BitmapFactory.decodeFile(image_obj_list.get(image_obj_list.size()-1).get_imageUri());
+		        		delete.setImageBitmap(ourBMP);
+		        		}
+            	}
+            	/** jump to show all images */
             	accept.setEnabled(false);
             }
         }; 
@@ -73,12 +83,15 @@ public class ModifyImageActivity extends Activity {
             public void onClick(View v) {
             	setBogoPic();
             	accept.setEnabled(true);
+            	delete.setEnabled(false);
             }
         }); 
         
         accept.setOnClickListener( new OnClickListener() {
             public void onClick(View v) {
+            	accept.setEnabled(false);
             	saveFile();
+            	delete.setEnabled(true);
             }
            
         }); 
@@ -107,7 +120,7 @@ public class ModifyImageActivity extends Activity {
 	}
     private void displayImage() {
     	//FileInputStream fis = new FileInputStream(image_obj_list.get(0).get_imageUri());
-    	ourBMP = BitmapFactory.decodeFile(image_obj_list.get(0).get_imageUri());
+    	ourBMP = BitmapFactory.decodeFile(image_obj_list.get(image_obj_list.size()-1).get_imageUri());
     	ImageButton old_photo = (ImageButton)findViewById(R.id.imageButton1);
     	old_photo.setImageBitmap(ourBMP);
     }
@@ -121,7 +134,6 @@ public class ModifyImageActivity extends Activity {
     		if(!file.exists()) {
     			file.mkdirs();
     		}
-    		image_obj_list.clear();
     		FileOutputStream fos = null;
     		String pic_date = Long.toString(System.currentTimeMillis());
     		String image_uri = "/data/data/com.example.easycooking/localimages/"+pic_date+".JPEG";
@@ -132,7 +144,7 @@ public class ModifyImageActivity extends Activity {
     		rimages.set_image_belongto(mrecipe.getID());
     		rimages.set_imageUri(image_uri);
     		image_obj_list.add(rimages);
-    		Toast.makeText(this, "Image Saved", Toast.LENGTH_SHORT).show();
+    		Toast.makeText(this, "Image Saved\nClick Image to Delete", Toast.LENGTH_SHORT).show();
     	} catch (FileNotFoundException e) {
     		Toast.makeText(this, "Couldn't Find File to Write to?", Toast.LENGTH_LONG).show();
     	} catch (IOException e) {
