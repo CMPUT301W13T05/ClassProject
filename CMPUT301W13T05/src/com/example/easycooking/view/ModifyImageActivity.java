@@ -44,7 +44,7 @@ public class ModifyImageActivity extends Activity {
 	 * @uml.property  name="rimages"
 	 * @uml.associationEnd  
 	 */
-	private static Image rimages = new Image();
+	private Image rimages = new Image();
 	private static ArrayList<Image> image_obj_list = new ArrayList<Image>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +65,26 @@ public class ModifyImageActivity extends Activity {
             public void onClick(View v) {
             	if(image_obj_list.isEmpty()) {}
             	else {
-		        	delete.setImageBitmap(null);
-		        	image_obj_list.remove(image_obj_list.size()-1);
-		        	toast.show();
-		        	if(image_obj_list.isEmpty()) {}
-		        	else {
-		        		ourBMP = BitmapFactory.decodeFile(image_obj_list.get(image_obj_list.size()-1).get_imageUri());
-		        		delete.setImageBitmap(ourBMP);
-		        		}
+            		mrecipe.setImages(image_obj_list);
+                	Intent intent = new Intent();
+    				Bundle mbundle = new Bundle();
+    				int i;
+                	for (i=0 ; i<mrecipe.getImages().size();i++){
+                		System.out.println("the size="+mrecipe.getImages().size()+"||"+mrecipe.getImages().get(i).get_imageUri());
+                	}
+    				intent.setClass(ModifyImageActivity.this, DisplayModifyImageActivity.class);
+    				mbundle.putSerializable("RECIPE_KEY", mrecipe);
+    				intent.putExtras(mbundle);
+    				startActivity(intent);
+//		        	delete.setImageBitmap(null);
+//		        	image_obj_list.remove(image_obj_list.size()-1);
+//		        	toast.show();
+//		        	if(image_obj_list.isEmpty()) {}
+//		        	else {
+//		        		ourBMP = BitmapFactory.decodeFile(image_obj_list.get(image_obj_list.size()-1).get_imageUri());
+//		        		delete.setImageBitmap(ourBMP);
+//		        		}
+            		
             	}
             	/** jump to show all images */
             	accept.setEnabled(false);
@@ -100,6 +112,7 @@ public class ModifyImageActivity extends Activity {
         continue_to.setOnClickListener( new OnClickListener() {
             public void onClick(View v) {
             	mrecipe.setImages(image_obj_list);
+            	
             	Intent intent = new Intent();
 				Bundle mbundle = new Bundle();
 				intent.setClass(ModifyImageActivity.this, CreateRecipeActivity.class);
@@ -138,6 +151,7 @@ public class ModifyImageActivity extends Activity {
     		FileOutputStream fos = null;
     		String pic_date = Long.toString(System.currentTimeMillis());
     		String image_uri = "/data/data/com.example.easycooking/localimages/"+pic_date+".JPEG";
+    		System.out.println(pic_date);
     		fos = new FileOutputStream(image_uri);
     		ourBMP.compress(Bitmap.CompressFormat.JPEG, 75, fos);
     		fos.close();
@@ -145,6 +159,7 @@ public class ModifyImageActivity extends Activity {
     		rimages.set_image_belongto(mrecipe.getID());
     		rimages.set_imageUri(image_uri);
     		image_obj_list.add(rimages);
+    		rimages = new Image();
     		Toast.makeText(this, "Image Saved\nClick Image to Delete", Toast.LENGTH_SHORT).show();
     	} catch (FileNotFoundException e) {
     		Toast.makeText(this, "Couldn't Find File to Write to?", Toast.LENGTH_LONG).show();
