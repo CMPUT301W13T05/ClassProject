@@ -32,7 +32,7 @@ public class DisplayModifyImageActivity extends Activity {
 		adapter.createReflectedImages();
 		GalleryFlow galleryFlow = (GalleryFlow) this.findViewById(R.id.galleryFlow1);     
 	    galleryFlow.setFadingEdgeLength(0);     
-	    galleryFlow.setSpacing(-100); //图片之间的间距     
+	    galleryFlow.setSpacing(-100); 
 	    galleryFlow.setAdapter(adapter);     
 	    galleryFlow.setOnItemClickListener(new OnItemClickListener() {     
 	            public void onItemClick(AdapterView<?> parent, View view,     
