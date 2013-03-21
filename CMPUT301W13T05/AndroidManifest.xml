@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/Dialog" >
         <activity
-            android:name="com.example.easycooking.MainPageActivity"
+            android:name="com.example.easycooking.view.MainPageActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,17 +23,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.easycooking.Itisatry"
+            android:name="com.example.easycooking.view.Itisatry"
             android:label="@string/title_activity_itisatry" >
         </activity>
-        <activity android:name="com.example.easycooking.CreateRecipeActivity"></activity>
-        <activity android:name="com.example.easycooking.MyProfileActivity"></activity>
-        <activity android:name="com.example.easycooking.SelectionLocalActivity"></activity>
-        <activity android:name="com.example.easycooking.SelectionWebActivity"></activity>
-        <activity android:name="com.example.easycooking.RecipeResultActivity"></activity>
-        <activity android:name="com.example.easycooking.ModifyIngredientsActivity"></activity>
-        <activity android:name="com.example.easycooking.ModifyImageActivity"></activity>
-        <activity android:name="com.example.easycooking.ModifyStepsActivity"></activity>
+        <activity android:name="com.example.easycooking.view.CreateRecipeActivity"></activity>
+        <activity android:name="com.example.easycooking.view.MyProfileActivity"></activity>
+        <activity android:name="com.example.easycooking.view.SelectionLocalActivity"></activity>
+        <activity android:name="com.example.easycooking.view.SelectionWebActivity"></activity>
+        <activity android:name="com.example.easycooking.view.RecipeResultActivity"></activity>
+        <activity android:name="com.example.easycooking.view.ModifyIngredientsActivity"></activity>
+        <activity android:name="com.example.easycooking.view.ModifyImageActivity"></activity>
+        <activity android:name="com.example.easycooking.view.ModifyStepsActivity"></activity>
     </application>
 
 </manifest>

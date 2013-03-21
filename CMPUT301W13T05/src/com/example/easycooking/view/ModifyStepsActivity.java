@@ -1,5 +1,6 @@
-package com.example.easycooking;
+package com.example.easycooking.view;
 
+import com.example.easycooking.R;
 import com.example.easycooking.model.Recipe;
 import com.example.easycooking.model.Step;
 

@@ -1,4 +1,4 @@
-package com.example.easycooking;
+package com.example.easycooking.view;
 
 
 public class CustomSearchActivity {

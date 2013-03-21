@@ -11,7 +11,7 @@ import com.example.easycooking.model.Image;
 import com.example.easycooking.model.Ingredient;
 import com.example.easycooking.model.Recipe;
 import com.example.easycooking.model.Step;
-import com.example.easycooking.ModifyIngredientsActivity;
+import com.example.easycooking.view.ModifyIngredientsActivity;
 
 public class ingredienttest extends TestCase {
 

@@ -1,4 +1,6 @@
-package com.example.easycooking;
+package com.example.easycooking.view;
+
+import com.example.easycooking.R;
 
 import android.os.Bundle;
 import android.view.View;

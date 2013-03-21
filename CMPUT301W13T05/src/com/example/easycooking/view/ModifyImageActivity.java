@@ -1,4 +1,4 @@
-package com.example.easycooking;
+package com.example.easycooking.view;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,6 +8,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import com.example.easycooking.R;
 import com.example.easycooking.controller.*;
 import com.example.easycooking.model.Image;
 import com.example.easycooking.model.Ingredient;

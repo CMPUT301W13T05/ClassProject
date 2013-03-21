@@ -1,7 +1,8 @@
-package com.example.easycooking;
+package com.example.easycooking.view;
 
 import java.util.ArrayList;
 
+import com.example.easycooking.R;
 import com.example.easycooking.model.Ingredient;
 import com.example.easycooking.model.Recipe;
 
