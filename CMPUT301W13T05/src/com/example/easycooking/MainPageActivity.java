@@ -126,10 +126,16 @@ public class MainPageActivity extends Activity {
 		        		Toast toast = Toast.makeText(MainPageActivity.this, "TODO", Toast.LENGTH_LONG);   
 						toast.show();
 			        	}
-		        	
-		        else{
+		        	dB_LocalDatabaseManager.open();
+	        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
+	        		result_recipe=dB_LocalDatabaseManager.searchRecipes(null, 999);
+		        	Recipe mrecipe = result_recipe.get(0);
 		        		Intent intent = new Intent();
+		        		Bundle mbundle = new Bundle();
+		        		mbundle.putSerializable("RECIPE_KEY", mrecipe);
+		        		intent.putExtras(mbundle);
 		        		intent.setClass(MainPageActivity.this, ModifyIngredientsActivity.class);
+		        		
 		        		/**
 		        		 * start a add entry activity
 		        		 */
@@ -138,7 +144,7 @@ public class MainPageActivity extends Activity {
 		        		 * close the old activity
 		        		 */
 		        		MainPageActivity.this.finish();
-		        	}
+		        	
 		        }
 		        });
 	}
