@@ -34,6 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				"rid CHAR PRIMARY KEY," +
 				"name TEXT," +
 				"download_upload_own INTEGER)"); 
+		db.execSQL("insert into localrecipe");
 		db.execSQL("create table picture(" +
 				"pid CHAR PRIMARY KEY," +
 				"rid CHAR," +
