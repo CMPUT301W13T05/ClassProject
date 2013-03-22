@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.app.Activity;
 /**
@@ -27,8 +29,8 @@ public class DisplayModifyImageActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.my_gallery);
 		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
-		
-		ImageAdapter adapter = new ImageAdapter(this, mrecipe.getImages()); 
+		final ImageButton delete_button = (ImageButton) this.findViewById(R.id.imageButton1);
+		final ImageAdapter adapter = new ImageAdapter(this, mrecipe.getImages()); 
 		adapter.createReflectedImages();
 		GalleryFlow galleryFlow = (GalleryFlow) this.findViewById(R.id.galleryFlow1);     
 	    galleryFlow.setFadingEdgeLength(0);     
@@ -36,8 +38,16 @@ public class DisplayModifyImageActivity extends Activity {
 	    galleryFlow.setAdapter(adapter);     
 	    galleryFlow.setOnItemClickListener(new OnItemClickListener() {     
 	            public void onItemClick(AdapterView<?> parent, View view,     
-	                    int position, long id) {     
-	                Toast.makeText(getApplicationContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();     
+	                    final int position, long id) {     
+	                	Toast.makeText(getApplicationContext(), String.valueOf("Click Button To Delete"), Toast.LENGTH_SHORT).show();  
+	                	
+	                	delete_button.setOnClickListener(new ImageButton.OnClickListener(){
+	                		public void onClick(View v) {
+	                			mrecipe.getImages().remove(position);
+	                			adapter.notifyDataSetChanged();
+	                		}
+	                		
+	                	});
 	            }     
 	                 
 	        });     

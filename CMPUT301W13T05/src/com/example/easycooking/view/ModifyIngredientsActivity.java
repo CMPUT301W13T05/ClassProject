@@ -82,7 +82,7 @@ public class ModifyIngredientsActivity extends Activity {
 				ingredient_obj_list.add(new_ingredient);
 				ingredient_name_list.add(new_ingredient.get_name());
 				update_list(ingredient_obj_list);
-				adapter.notifyDataSetChanged();//refressh the list View
+				adapter.notifyDataSetChanged();//refresh the list View
 				ingredient_name.setText("");
 				ingredient_amount.setText("");
 				}
