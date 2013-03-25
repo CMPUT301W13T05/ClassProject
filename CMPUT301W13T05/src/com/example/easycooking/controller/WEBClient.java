@@ -98,24 +98,41 @@ public class WEBClient {
 	}
 
 	/**
-	 * search by keywords
+	 * This fuction is build to search recipe by giving keywords
+	 * @param str
+	 * @return
+	 * @throws ClientProtocolException
+	 * @throws IOException
 	 */
-	public ArrayList<Recipe> searchRecipes(String str) throws ClientProtocolException, IOException {
+	public ArrayList<Recipe> searchRecipes(String[] keywords, int condition) throws ClientProtocolException, IOException {
 		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-		HttpGet searchRequest = new HttpGet("http://cmput301.softwareprocess.es:8080/CMPUT301W13T05/" +
-				java.net.URLEncoder.encode(str,"UTF-8"));
+		
+		HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/CMPUT301W13T05/");
+		if(condition == 1) {//search by dish name
+			
+		}
+		else{
+			
+		}
+		String query = 	"{\"query\" : {\"query_string\" : {\"default_field\" : \"ingredients\",\"query\" : \"" + keywords[0] + "\"}}}";
+		StringEntity stringentity = new StringEntity(query);
+
 		searchRequest.setHeader("Accept","application/json");
+		searchRequest.setEntity(stringentity);
+
 		HttpResponse response = httpclient.execute(searchRequest);
 		String status = response.getStatusLine().toString();
-		Log.d("server", status);
+		System.out.println(status);
+
 		String json = getEntityContent(response);
 
 		Type elasticSearchSearchResponseType = new TypeToken<ElasticSearchSearchResponse<Recipe>>(){}.getType();
 		ElasticSearchSearchResponse<Recipe> esResponse = gson.fromJson(json, elasticSearchSearchResponseType);
+		System.err.println(esResponse);
 		for (ElasticSearchResponse<Recipe> r : esResponse.getHits()) {
 			Recipe recipe = r.getSource();
 			result_recipe.add(recipe);
-		}
+		}	
 		return result_recipe;
 	}	
 
