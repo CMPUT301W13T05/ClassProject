@@ -5,7 +5,7 @@
     tools:context=".Itisatry" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/text_dishname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -16,7 +16,7 @@
         android:id="@+id/gallery1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView1"
+        android:layout_above="@+id/text_dishname"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="76dp" />
 

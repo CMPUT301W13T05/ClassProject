@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.Intent;
 //import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -22,6 +23,7 @@ import android.widget.ListView;
  *
  */
 public class RecipeResultActivity extends Activity {
+	private static Recipe choosen_recipe = new Recipe();
 	private static ArrayList<Recipe> result = new ArrayList<Recipe>();
 	private static ArrayList<String> result_string = new ArrayList<String>();
 	
@@ -37,11 +39,34 @@ public class RecipeResultActivity extends Activity {
 		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_selectable_list_item , result_string);
 		result_listView.setAdapter(adapter);
-
 		result_listView.setItemsCanFocus(false);
-
 		result_listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE); 
-		////////////////////////////////Profile button
+		/**
+		 * build up the click function for choosing a recipe name and 
+		 * jump to the details
+		 */
+		result_listView.setOnItemClickListener(new ListView.OnItemClickListener(){
+        	@Override
+        	public void onItemClick(AdapterView<?> arg0, View arg1, final int position,long id) 
+        	{
+        		choosen_recipe = result.get(position);
+        		/**
+        		 * pass the recipe object to the selectionLocal view
+        		 */
+        		Intent intent = new Intent();
+				intent.setClass(RecipeResultActivity.this, SelectionLocalActivity.class);
+				/**
+				 * start a add entry activity
+				 */
+				Bundle mbundle = new Bundle();
+				mbundle.putSerializable("RECIPE_KEY", choosen_recipe);
+				intent.putExtras(mbundle);
+				startActivity(intent);
+        	}
+		});
+		/**
+		 * Take a new search
+		 */
 		Button result_search =(Button)findViewById(R.id.search);
 		result_search.setOnClickListener(new Button.OnClickListener() {
 		       public void onClick(View v) {

@@ -52,7 +52,7 @@
         android:text="Photo" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/text_dishname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/photo"
@@ -65,7 +65,7 @@
         android:id="@+id/recipe_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignBottom="@+id/text_dishname"
         android:layout_alignParentRight="true"
         android:ems="10" >
 
