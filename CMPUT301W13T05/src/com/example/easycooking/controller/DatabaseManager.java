@@ -148,24 +148,24 @@ public class DatabaseManager {
 			values.put("steps", step.get_detail());
 			db.update("step", values, "rid ='" +step.get_belong(), null);
 		}	
-		public void delete_images(Image image) {
-			db.delete("picture", "rid = '"+image.get_image_belongto()+"'", null);
+		public void delete_images(String rid) {
+			db.delete("picture", "rid = '"+rid+"'", null);
 		}
 		/**
 		 * delete_steps(Step step) deletes the row 
 		 * contains the current step object in the step table
 		 * @param step
 		 */
-		public void delete_steps(Step step){
-			db.delete("step", "rid = '"+step.get_belong()+"'", null);
+		public void delete_steps(String rid){
+			db.delete("step", "rid = '"+rid+"'", null);
 		}
 		/**
 		 * delete_ingredient(Ingredient ingredient) deletes the row 
 		 * contains the current ingredient object in ingredient table
 		 * @param ingredient
 		 */
-		public void delete_ingredient(Ingredient ingredient){
-			db.delete("ingredient", "rid ='"+ingredient.get_belongto()+"'and name ='"+ ingredient.get_name()+"'", null);
+		public void delete_ingredient(String rid){
+			db.delete("ingredient", "rid ='"+rid+"'", null);
 		}
 		/**
 		 * delete_recipe(Recipe recipe) deletes the row
@@ -173,22 +173,9 @@ public class DatabaseManager {
 		 * @param recipe
 		 */
 		public void delete_recipe(Recipe recipe){	
-			ArrayList<Image> de_Image = new ArrayList<Image>();
-			de_Image = recipe.getImages();
-			for (int n = 0;n<de_Image.size();n++){
-				delete_images(de_Image.get(n));
-			}
-			ArrayList<Ingredient> de_Ingredient = new ArrayList<Ingredient>();
-			de_Ingredient = recipe.getIngredients();
-			// delete ingredient belong to the given recipe from ingredient table
-			int i;
-			for (i = 0;i < de_Ingredient.size();i++){
-				delete_ingredient(de_Ingredient.get(i));
-			}
-			//Step de_Step = new Step();
-			Step de_Step = recipe.getSteps();
-			delete_steps(de_Step);
-			// delete recipe from recipe table
+			delete_images(recipe.getID());
+			delete_ingredient(recipe.getID());
+			delete_steps(recipe.getID());
 			db.delete("localrecipe","rid ='" + recipe.getID()+"'", null);
 		}
 		/**
