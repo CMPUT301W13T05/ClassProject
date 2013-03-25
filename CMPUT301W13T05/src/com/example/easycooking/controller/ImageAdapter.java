@@ -17,6 +17,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Shader.TileMode;
+import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -43,8 +44,8 @@ public  class ImageAdapter extends BaseAdapter {
      int index = 0;     
      for (Image imageId : mImageList) {     
   
-      Bitmap originalImage = BitmapFactory.decodeFile(imageId.get_imageUri());    
-      System.out.println("uri="+imageId.get_imageUri());
+      Bitmap originalImage = stringtoBitmap(imageId.get_imageUri());    
+      //System.out.println("uri="+imageId.get_imageUri());
       int width = originalImage.getWidth();     
       int height = originalImage.getHeight();     
  
@@ -113,5 +114,17 @@ public  class ImageAdapter extends BaseAdapter {
     }     
     public float getScale(boolean focused, int offset) {    
         return Math.max(0, 1.0f / (float) Math.pow(2, Math.abs(offset)));     
-    }     
+    }    
+    public Bitmap stringtoBitmap(String string) {
+        Bitmap bitmap = null;
+        try {
+                byte[] bitmapArray;
+                bitmapArray = Base64.decode(string, Base64.DEFAULT);
+                bitmap = BitmapFactory.decodeByteArray(bitmapArray, 0,
+                                bitmapArray.length);
+        } catch (Exception e) {
+                e.printStackTrace();
+        }
+        return bitmap;
+    }
    }    

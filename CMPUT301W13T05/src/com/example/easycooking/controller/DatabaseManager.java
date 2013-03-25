@@ -338,7 +338,7 @@ public class DatabaseManager {
 		 * @return ingredient object
 		 */
 		private Ingredient rebuildIngredient(Cursor cursor){
-			Ingredient ingredients = new Ingredient(cursor.getString(0),cursor.getString(1),cursor.getString(2));
+			Ingredient ingredients = new Ingredient(cursor.getString(1),cursor.getString(3),cursor.getString(2));
 			return ingredients;
 		}
 		/**
