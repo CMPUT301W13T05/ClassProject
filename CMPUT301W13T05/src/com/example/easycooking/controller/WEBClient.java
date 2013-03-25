@@ -98,40 +98,65 @@ public class WEBClient {
 	}
 
 	/**
-	 * This fuction is build to search recipe by giving keywords
+	 * This fuction is build to search recipe by giving Ingredient
 	 * @param str
 	 * @return
 	 * @throws ClientProtocolException
 	 * @throws IOException
 	 */
-	public ArrayList<Recipe> searchRecipes(String[] keywords, int condition) throws ClientProtocolException, IOException {
+	public ArrayList<Recipe> searchRecipesWithIngredient(String[] keywords, int condition) throws ClientProtocolException, IOException {
 		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
 		HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/CMPUT301W13T05/");
-		if(condition == -1) {//search by dish name
-			//to do
+	
+		for(int i=0; i<=keywords.length;i++){
+			String query = 	"{\"query\" : {\"query_string\" : {\"default_field\" : \"ingredients\",\"query\" : \"" + keywords[i] + "\"}}}";
+			StringEntity stringentity = new StringEntity(query);
+		
+			searchRequest.setHeader("Accept","application/json");
+			searchRequest.setEntity(stringentity);
+		
+			HttpResponse response = httpclient.execute(searchRequest);
+			String status = response.getStatusLine().toString();
+			Log.d("server", status);			
+			String json = getEntityContent(response);
+		
+			Type elasticSearchSearchResponseType = new TypeToken<ElasticSearchSearchResponse<Recipe>>(){}.getType();
+			ElasticSearchSearchResponse<Recipe> esResponse = gson.fromJson(json, elasticSearchSearchResponseType);
+			for (ElasticSearchResponse<Recipe> r : esResponse.getHits()) {
+				Recipe recipe = r.getSource();
+				result_recipe.add(recipe);
+			}
 		}
-		else if(condition == 1){//search by ingredients
-			//to do
-		}
-		else {//search by both
-			for(int i=0; i<=keywords.length;i++){
-				String query = 	"{\"query\" : {\"query_string\" : {\"default_field\" : \"ingredients\",\"query\" : \"" + keywords[i] + "\"}}}";
-				StringEntity stringentity = new StringEntity(query);
-			
-				searchRequest.setHeader("Accept","application/json");
-				searchRequest.setEntity(stringentity);
-			
-				HttpResponse response = httpclient.execute(searchRequest);
-				String status = response.getStatusLine().toString();
-				Log.d("server", status);			
-				String json = getEntityContent(response);
-			
-				Type elasticSearchSearchResponseType = new TypeToken<ElasticSearchSearchResponse<Recipe>>(){}.getType();
-				ElasticSearchSearchResponse<Recipe> esResponse = gson.fromJson(json, elasticSearchSearchResponseType);
-				for (ElasticSearchResponse<Recipe> r : esResponse.getHits()) {
-					Recipe recipe = r.getSource();
-					result_recipe.add(recipe);
-				}	
+		return result_recipe;
+	}
+	/**
+	 * This fuction is build to search recipe by giving dish name
+	 * @param str
+	 * @return
+	 * @throws ClientProtocolException
+	 * @throws IOException
+	 */
+	public ArrayList<Recipe> searchRecipesWithName(String[] keywords, int condition) throws ClientProtocolException, IOException {
+		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
+		HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/CMPUT301W13T05/");
+	
+		for(int i=0; i<=keywords.length;i++){
+			String query = 	"{\"query\" : {\"query_string\" : {\"default_field\" : \"name\",\"query\" : \"" + keywords[i] + "\"}}}";
+			StringEntity stringentity = new StringEntity(query);
+		
+			searchRequest.setHeader("Accept","application/json");
+			searchRequest.setEntity(stringentity);
+		
+			HttpResponse response = httpclient.execute(searchRequest);
+			String status = response.getStatusLine().toString();
+			Log.d("server", status);			
+			String json = getEntityContent(response);
+		
+			Type elasticSearchSearchResponseType = new TypeToken<ElasticSearchSearchResponse<Recipe>>(){}.getType();
+			ElasticSearchSearchResponse<Recipe> esResponse = gson.fromJson(json, elasticSearchSearchResponseType);
+			for (ElasticSearchResponse<Recipe> r : esResponse.getHits()) {
+				Recipe recipe = r.getSource();
+				result_recipe.add(recipe);
 			}
 		}
 		return result_recipe;
