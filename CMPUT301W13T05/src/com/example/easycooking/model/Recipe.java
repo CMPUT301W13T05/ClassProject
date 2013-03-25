@@ -3,6 +3,8 @@ package com.example.easycooking.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+
 import com.example.easycooking.model.Step;
 import com.example.easycooking.model.Ingredient;
 
@@ -120,6 +122,24 @@ public class Recipe implements Serializable {
 	 */
 	public void setImages(ArrayList<Image> images) {
 		this.images = images;
+	}
+	@SuppressWarnings("null")
+	@Override
+	public String toString(){
+		ArrayList<String> string_ingredients = null;
+		ArrayList<String> string_images = null;
+		ArrayList<String> string_in_amount = null;
+		int i;
+		for (i=0;i<this.getIngredients().size();i++){
+			string_ingredients.add(this.getIngredients().get(i).get_name());
+			string_in_amount.add(this.getIngredients().get(i).get_amount());
+		}
+		for (i=0;i<this.getImages().size();i++){
+			string_images.add(this.getImages().get(i).get_imageUri());
+		}
+			
+		return "Recipe [ id = " +id+", name ="+ name+", ingredients =" + string_ingredients + ", in_amount =" +
+					string_in_amount + ", images = "+ string_images+"]";
 	}
 	
 }
