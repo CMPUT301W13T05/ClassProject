@@ -43,7 +43,7 @@ public class SelectionLocalActivity extends Activity {
 		dish_name.setText("DishName£º"+mrecipe.getName());
 		String temp_string = "";
 		int i = 0;
-		for (i=1 ; i < mrecipe.getIngredients().size(); i++){
+		for (i=0 ; i < mrecipe.getIngredients().size(); i++){
 			temp_string += mrecipe.getIngredients().get(i).get_amount()+":"+mrecipe.getIngredients().get(i).get_name()+"|";
 		}
 		dish_ingredients.setText(temp_string);

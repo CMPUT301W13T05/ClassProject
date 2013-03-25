@@ -25,6 +25,7 @@ import android.content.Intent;
 
 public class DisplayModifyImageActivity extends Activity {
 	private static Recipe mrecipe = new Recipe();
+	private static String _FROM_WHERE = "";
 	private static ArrayList<Image> image_list = new ArrayList<Image>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,8 @@ public class DisplayModifyImageActivity extends Activity {
 		 * get the recipe obj and pull out the image array list 
 		 */
 		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
+		Bundle mbundle = getIntent().getExtras();
+		_FROM_WHERE = mbundle.getString("FromWhere");
 		image_list = mrecipe.getImages();
 		/**
 		 * set up the button and adapter and the gallery view
@@ -91,6 +94,7 @@ public class DisplayModifyImageActivity extends Activity {
 				 */
 				Bundle mbundle = new Bundle();
 				mbundle.putSerializable("RECIPE_KEY", mrecipe);
+				mbundle.putString("FromWhere", _FROM_WHERE);
 				intent.putExtras(mbundle);
 				startActivity(intent);
 				/**

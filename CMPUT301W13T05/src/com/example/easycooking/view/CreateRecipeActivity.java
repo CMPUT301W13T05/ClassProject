@@ -123,14 +123,6 @@ public class CreateRecipeActivity extends Activity {
 					if (_FROM_WHERE.equals("SELECTION")){
 						System.out.println("DELETING SELECTION");
 						dB_LocalDatabaseManager.delete_recipe(mrecipe);
-//						for (i = 0 ; i < db_input_ingredients.size(); i++ ){
-//							dB_LocalDatabaseManager.delete_ingredient(mrecipe.getIngredients().get(i));
-//						}
-//						
-//							dB_LocalDatabaseManager.add_step(db_input_steps);
-//						for (i = 0 ; i < db_input_images.size(); i++ ){
-//							dB_LocalDatabaseManager.delete_images(mrecipe.getImages().get(i));
-//						}
 					}
 					dB_LocalDatabaseManager.add_recipe(mrecipe);
 					
