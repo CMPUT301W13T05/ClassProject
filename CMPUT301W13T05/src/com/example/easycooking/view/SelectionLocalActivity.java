@@ -10,6 +10,7 @@ import com.example.easycooking.model.Recipe;
 
 import android.os.Bundle;
 import android.provider.MediaStore.Images;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,7 +47,9 @@ public class SelectionLocalActivity extends Activity {
 			temp_string += mrecipe.getIngredients().get(i).get_amount()+":"+mrecipe.getIngredients().get(i).get_name()+"|";
 		}
 		dish_ingredients.setText(temp_string);
+		dish_ingredients.setMovementMethod(ScrollingMovementMethod.getInstance());
 		dish_steps.setText(mrecipe.getSteps().get_detail());
+		dish_steps.setMovementMethod(ScrollingMovementMethod.getInstance()); 
 		/**
 		 * set up gallery
 		 */
@@ -61,15 +64,12 @@ public class SelectionLocalActivity extends Activity {
 		/**
 		 * button share
 		 */
-		Button selection_share = (Button)findViewById(R.id.search);
+	    System.out.println("run here");
+		Button selection_share = (Button)findViewById(R.id.share);
+		
 		selection_share.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
-	        		Intent intent = new Intent();
-	        		intent.setClass(SelectionLocalActivity.this, Itisatry.class);
-	        		//start a add entry activity
-	        		startActivity(intent);
-	        		//close the old activity
-	        		SelectionLocalActivity.this.finish();
+	        		//TODO
 	        	}
 	        });
 		
@@ -78,8 +78,13 @@ public class SelectionLocalActivity extends Activity {
 		selection_modify.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 			        Intent intent = new Intent();
-			        intent.setClass(SelectionLocalActivity.this, Itisatry.class);// should change to the RecipeDetails.java
+			        intent.setClass(SelectionLocalActivity.this, CreateRecipeActivity.class);// should change to the RecipeDetails.java
 			        //start a add entry activity
+			        Bundle mbundle = new Bundle();
+			        mbundle.putString("FromWhere", "SELECTION");
+					mbundle.putSerializable("RECIPE_KEY", mrecipe);
+					intent.putExtras(mbundle);
+					
 			        startActivity(intent);
 			        //close the old activity
 			        SelectionLocalActivity.this.finish();
@@ -90,6 +95,7 @@ public class SelectionLocalActivity extends Activity {
 		selection_delete.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 					//TO BE IMPLEMENTED
+					
 			      }
 			});
 		//button upload

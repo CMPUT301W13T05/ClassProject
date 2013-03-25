@@ -44,6 +44,7 @@ public class CreateRecipeActivity extends Activity {
 		TextView count_steps =(TextView)findViewById(R.id.steps_view);
 		Bundle mbundle = getIntent().getExtras();
 		_FROM_WHERE = mbundle.getString("FromWhere");
+		System.out.println("==============="+_FROM_WHERE);
 		if (_FROM_WHERE.equals("MAIN")){
 			UUID uuid = UUID.randomUUID(); 
 			mrecipe.setID(uuid.toString());
@@ -51,8 +52,9 @@ public class CreateRecipeActivity extends Activity {
 			mrecipe.setIngredients(new ArrayList<Ingredient>());
 			mrecipe.setSteps(new Step());
 			count_steps.setText("No steps");
+			_FROM_WHERE = "MODIFY";
 		}
-		else if (_FROM_WHERE.equals("MODIFY") ){
+		else if (_FROM_WHERE.equals("MODIFY") || _FROM_WHERE.equals("SELECTION") ){
 			mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 			enter_recipe_name.setText(mrecipe.getName());
 			count_updated.setText(mrecipe.getImages().size() + " uploaded");
@@ -114,8 +116,24 @@ public class CreateRecipeActivity extends Activity {
 					ArrayList<Ingredient> db_input_ingredients = mrecipe.getIngredients();
 					ArrayList<Image> db_input_images = mrecipe.getImages();
 					Step db_input_steps = mrecipe.getSteps();
-					dB_LocalDatabaseManager.add_recipe(mrecipe);
+					/**
+					 * If it is a recipe already in the db we need to update it
+					 */
 					int i;
+					if (_FROM_WHERE.equals("SELECTION")){
+						System.out.println("DELETING SELECTION");
+						dB_LocalDatabaseManager.delete_recipe(mrecipe);
+//						for (i = 0 ; i < db_input_ingredients.size(); i++ ){
+//							dB_LocalDatabaseManager.delete_ingredient(mrecipe.getIngredients().get(i));
+//						}
+//						
+//							dB_LocalDatabaseManager.add_step(db_input_steps);
+//						for (i = 0 ; i < db_input_images.size(); i++ ){
+//							dB_LocalDatabaseManager.delete_images(mrecipe.getImages().get(i));
+//						}
+					}
+					dB_LocalDatabaseManager.add_recipe(mrecipe);
+					
 					for (i = 0 ; i < db_input_ingredients.size(); i++ ){
 						dB_LocalDatabaseManager.add_ingrdient(mrecipe.getIngredients().get(i));
 					}
@@ -154,6 +172,7 @@ public class CreateRecipeActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(CreateRecipeActivity.this, ModifyImageActivity.class);			
 				Bundle mbundle = new Bundle();
+				mbundle.putString("FromWhere", _FROM_WHERE);
 				mbundle.putSerializable("RECIPE_KEY", mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);
@@ -172,6 +191,7 @@ public class CreateRecipeActivity extends Activity {
 				Intent intent = new Intent();
 				intent.setClass(CreateRecipeActivity.this, ModifyIngredientsActivity.class); 
 				Bundle mbundle = new Bundle();
+				mbundle.putString("FromWhere", _FROM_WHERE);
 				mbundle.putSerializable("RECIPE_KEY", mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);
@@ -190,7 +210,8 @@ public class CreateRecipeActivity extends Activity {
 				mrecipe.setName(enter_recipe_name.getText().toString());
 				Intent intent = new Intent();
 				Bundle mbundle = new Bundle();
-				intent.setClass(CreateRecipeActivity.this, ModifyStepsActivity.class);				
+				intent.setClass(CreateRecipeActivity.this, ModifyStepsActivity.class);	
+				mbundle.putString("FromWhere", _FROM_WHERE);
 				mbundle.putSerializable("RECIPE_KEY", mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);

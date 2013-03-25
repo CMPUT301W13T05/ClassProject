@@ -60,7 +60,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView2"
-        android:layout_alignParentLeft="true"
+        android:layout_alignLeft="@+id/text_dishname"
+        android:layout_alignRight="@+id/text_dishname"
         android:layout_below="@+id/text_dishname" />
 
     <TextView
@@ -71,7 +72,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView4"
-        android:scrollHorizontally="true"
+        android:clickable="false"
+        android:scrollbars="vertical"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -84,6 +86,7 @@
         android:layout_below="@+id/textView2"
         android:height="60dp"
         android:scrollHorizontally="true"
+        android:scrollbars="vertical"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 

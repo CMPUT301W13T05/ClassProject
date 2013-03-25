@@ -27,12 +27,15 @@ public class ModifyStepsActivity extends Activity {
 	 * @uml.associationEnd  
 	 */
 	private static Step mstep = new Step();
+	private static String _FROM_WHERE = "";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.adddetail_steps);
 		final EditText directions = (EditText)findViewById(R.id.editText1);
 		final Button save = (Button)findViewById(R.id.save);
+		Bundle mbundle = getIntent().getExtras();
+		_FROM_WHERE = mbundle.getString("FromWhere");
 		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 		directions.setText(mrecipe.getSteps().get_detail());
 		save.setOnClickListener(new Button.OnClickListener() {
@@ -49,7 +52,7 @@ public class ModifyStepsActivity extends Activity {
 					intent.setClass(ModifyStepsActivity.this, CreateRecipeActivity.class);// should be jump to the modify 
 					//start a add entry activity
 					Bundle mbundle = new Bundle();
-					mbundle.putString("FromWhere", "MODIFY");
+					mbundle.putString("FromWhere", _FROM_WHERE);
 					mbundle.putSerializable("RECIPE_KEY", mrecipe);
 					intent.putExtras(mbundle);
 					startActivity(intent);

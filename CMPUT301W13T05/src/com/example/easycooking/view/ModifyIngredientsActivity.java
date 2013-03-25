@@ -32,6 +32,7 @@ public class ModifyIngredientsActivity extends Activity {
 	private static ArrayList<String> ingredient_name_list = new ArrayList<String>();
 	private static String _CHECK_SAVE_BUTTON = "UN_MODIFY" ;
 	private static int _CHECK_POSITION;
+	private static String _FROM_WHERE = "";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,8 @@ public class ModifyIngredientsActivity extends Activity {
 		final Button modify_ingredients_save = (Button)findViewById(R.id.save);
 		final Button modify_ingredients_add = (Button)findViewById(R.id.add);
 		final Button modify_ingredients_delete = (Button)findViewById(R.id.delete);
+		Bundle mbundle = getIntent().getExtras();
+		_FROM_WHERE = mbundle.getString("FromWhere");
 		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 		ingredient_obj_list = mrecipe.getIngredients();
 		update_list(ingredient_obj_list);
@@ -114,7 +117,7 @@ public class ModifyIngredientsActivity extends Activity {
 					 * start a add entry activity
 					 */
 					Bundle mbundle = new Bundle();
-					mbundle.putString("FromWhere", "MODIFY");
+					mbundle.putString("FromWhere", _FROM_WHERE);
 					mbundle.putSerializable("RECIPE_KEY", mrecipe);
 					intent.putExtras(mbundle);
 					startActivity(intent);

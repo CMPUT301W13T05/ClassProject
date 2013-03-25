@@ -46,6 +46,7 @@ public class ModifyImageActivity extends Activity {
 	 */
 	private Image rimages = new Image();
 	private static ArrayList<Image> image_obj_list = new ArrayList<Image>();
+	private static String _FROM_WHERE = "";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,6 +56,8 @@ public class ModifyImageActivity extends Activity {
 		Button continue_to = (Button)findViewById(R.id.continue_to);
 		final ImageButton delete = (ImageButton)findViewById(R.id.imageButton1);
 		accept.setEnabled(false);
+		Bundle mbundle = getIntent().getExtras();
+		_FROM_WHERE = mbundle.getString("FromWhere");
 		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 		image_obj_list = mrecipe.getImages();
     	final Toast toast = Toast.makeText(ModifyImageActivity.this, "Image Deleted", Toast.LENGTH_SHORT);   
@@ -116,7 +119,7 @@ public class ModifyImageActivity extends Activity {
             	Intent intent = new Intent();
 				Bundle mbundle = new Bundle();
 				intent.setClass(ModifyImageActivity.this, CreateRecipeActivity.class);
-				mbundle.putString("FromWhere", "MODIFY");
+				mbundle.putString("FromWhere", _FROM_WHERE);
 				mbundle.putSerializable("RECIPE_KEY", mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);
