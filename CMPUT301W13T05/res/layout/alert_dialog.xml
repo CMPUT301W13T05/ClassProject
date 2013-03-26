@@ -19,48 +19,48 @@
 </LinearLayout>
 
 <CheckBox
-    android:id="@+id/checkBox1"
+    android:id="@+id/pop_local"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentTop="true"
     android:layout_centerHorizontal="true"
     android:layout_marginTop="43dp"
-    android:text="LoclRecipes" />
+    android:text="@string/LoclRecipes" />
 
 <CheckBox
-    android:id="@+id/checkBox2"
+    android:id="@+id/pop_internet"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_alignLeft="@+id/checkBox1"
-    android:layout_below="@+id/checkBox1"
+    android:layout_alignLeft="@+id/pop_local"
+    android:layout_below="@+id/pop_local"
     android:layout_marginTop="18dp"
-    android:text="InternetData" />
+    android:text="@string/InternetData" />
 
 <CheckBox
-    android:id="@+id/checkBox5"
+    android:id="@+id/pop_onhand"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_alignLeft="@+id/checkBox4"
-    android:layout_below="@+id/checkBox4"
+    android:layout_alignLeft="@+id/pop_dish"
+    android:layout_below="@+id/pop_dish"
     android:layout_marginTop="16dp"
-    android:text="Search By My Ingredient" />
+    android:text="@string/Search_By_My_Ingredient" />
 
 <CheckBox
-    android:id="@+id/checkBox3"
+    android:id="@+id/pop_ingredient"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_alignLeft="@+id/checkBox2"
-    android:layout_below="@+id/checkBox2"
+    android:layout_alignLeft="@+id/pop_internet"
+    android:layout_below="@+id/pop_internet"
     android:layout_marginTop="16dp"
-    android:text="AsIngredient" />
+    android:text="@string/AsIngredient" />
 
 <CheckBox
-    android:id="@+id/checkBox4"
+    android:id="@+id/pop_dish"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_alignLeft="@+id/checkBox3"
-    android:layout_below="@+id/checkBox3"
+    android:layout_alignLeft="@+id/pop_ingredient"
+    android:layout_below="@+id/pop_ingredient"
     android:layout_marginTop="20dp"
-    android:text="AsDishName" />
+    android:text="@string/AsDishName" />
 
 </RelativeLayout>

@@ -1,12 +1,16 @@
 package com.example.easycooking.view;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.example.easycooking.R;
 import com.example.easycooking.controller.ImageAdapter;
+import com.example.easycooking.controller.WEBClient;
 import com.example.easycooking.model.GalleryFlow;
 import com.example.easycooking.model.Image;
+import com.example.easycooking.model.Ingredient;
 import com.example.easycooking.model.Recipe;
+import com.example.easycooking.model.Step;
 
 import android.os.Bundle;
 import android.provider.MediaStore.Images;
@@ -18,6 +22,7 @@ import android.widget.TextView;
 import android.app.Activity;
 //import android.view.Menu;
 import android.content.Intent;
+
 /**
  * TODO Implemented
  * @author Alvin
@@ -103,10 +108,47 @@ public class SelectionLocalActivity extends Activity {
 		selection_upload.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 					//TO BE IMPLEMENTED
+					Recipe try_recipe = initializeRecipe();
+					WEBClient my_client = new WEBClient();
+					try {
+						my_client.UploadRecipe(try_recipe);
+					} catch (IllegalStateException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 			      }
 			});
 
 
+	}
+	private Recipe initializeRecipe() {
+		Recipe r = new Recipe();
+		Ingredient in = new Ingredient();
+		Step s = new Step();
+		Image im = new Image();
+		r.setID("999");
+		r.setName("Fried egg");
+		ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
+		in.set_name("egg");
+		in.set_amount("1");
+		in.set_belongto("999");
+		ingredients.add(in);
+		r.setIngredients(ingredients);
+		s.set_belong("999");
+		s.set_detail("fry the egg");
+		r.setSteps(s);
+		r.setID("1");
+		ArrayList<Image> images = new ArrayList<Image>();
+		im.set_imageUri("0101111011100011010111101110001101011110111000110101111011100011");
+		im.set_image_belongto("999");
+		im.set_IMAGE_ID("1");
+		images.add(im);
+		r.setImages(images);
+		return r;
 	}
 
 	
