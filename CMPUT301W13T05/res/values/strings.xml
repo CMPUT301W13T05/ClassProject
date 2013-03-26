@@ -32,5 +32,10 @@
     <string name="continue_to_recipe">Continue to Edit Recipe</string>
     <string name="accept">Accept</string>
     <string name="Ingredients:">Ingredients:</string>
+    <string name="LoclRecipes">LoclRecipes</string>
+    <string name="InternetData">InternetData</string>
+    <string name="AsIngredient">AsIngredient</string>
+    <string name="AsDishName">AsDishName</string>
+    <string name="Search_By_My_Ingredient">Search By My Ingredient</string>
 
 </resources>

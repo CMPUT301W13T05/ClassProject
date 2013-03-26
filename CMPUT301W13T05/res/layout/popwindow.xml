@@ -6,31 +6,31 @@
     android:orientation="vertical" >
 
     <CheckBox
-        android:id="@+id/checkBox1"
+        android:id="@+id/pop_local"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LoclRecipes" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/pop_internet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="InternetData" />
 
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/pop_ingredient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="AsIngredient" />
 
     <CheckBox
-        android:id="@+id/checkBox4"
+        android:id="@+id/pop_dish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="AsDishName" />
 
     <CheckBox
-        android:id="@+id/checkBox5"
+        android:id="@+id/pop_onhand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Search By My Ingredient" />
