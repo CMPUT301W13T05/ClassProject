@@ -136,15 +136,7 @@ public class SelectionLocalActivity extends Activity {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					try {
-						try_recipe = my_client.DisplayRecipe(mrecipe);
-					} catch (ClientProtocolException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					
 					System.out.println(try_recipe.getID());
 					
 			}
