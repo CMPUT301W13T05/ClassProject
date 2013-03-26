@@ -2,12 +2,10 @@ package com.example.easycooking.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -28,6 +26,11 @@ import com.example.easycooking.model.Recipe;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * This class used chenlei's ESClient as reference
+ * @author HongZu
+ *
+ */
 
 public class WEBClient {
 	// Http Connector
@@ -37,9 +40,10 @@ public class WEBClient {
 	private Gson gson = new Gson();
 
 	/**
-	 * Consumes the POST/Insert operation of the service
-	 * @throws IOException 
-	 * @throws IllegalStateException 
+	 * This function is build to allow user to upload recipe to the Internet
+	 * @param recipe
+	 * @throws IllegalStateException
+	 * @throws IOException
 	 */
 	public void UploadRecipe(Recipe recipe) throws IllegalStateException, IOException{
 		HttpPost httpPost = new HttpPost("http://cmput301.softwareprocess.es:8080/CMPUT301W13T05/"+recipe.getID());
@@ -72,9 +76,12 @@ public class WEBClient {
 	}
 
 	/**
-	 * Consumes the Get operation of the service
-	 * @throws IOException 
-	 * @throws ClientProtocolException 
+	 * This function is build to download recipe from web server to this APP,
+	 * allow user to view the recipe that is on the Internet
+	 * @param recipe
+	 * @return recipe
+	 * @throws ClientProtocolException
+	 * @throws IOException
 	 */
 	public Recipe DownloadRecipe(Recipe recipe) throws ClientProtocolException, IOException{
 			HttpGet getRequest = new HttpGet("http://cmput301.softwareprocess.es:8080/CMPUT301W13T05/"+recipe.getID());
@@ -98,15 +105,15 @@ public class WEBClient {
 	}
 
 	/**
-	 * This fuction is build to search recipe by giving Ingredient
+	 * This function is build to search recipe by giving Ingredient
 	 * @param str
-	 * @return
+	 * @return ArrayList<Recipe>
 	 * @throws ClientProtocolException
 	 * @throws IOException
 	 */
 	public ArrayList<Recipe> searchRecipesWithIngredient(String[] keywords, int condition) throws ClientProtocolException, IOException {
 		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-		HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/CMPUT301W13T05/");
+		HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/CMPUT301W13T05/_search");
 	
 		for(int i=0; i<=keywords.length;i++){
 			String query = 	"{\"query\" : {\"query_string\" : {\"default_field\" : \"ingredients\",\"query\" : \"" + keywords[i] + "\"}}}";
@@ -130,15 +137,15 @@ public class WEBClient {
 		return result_recipe;
 	}
 	/**
-	 * This fuction is build to search recipe by giving dish name
+	 * This function is build to search recipe by giving dish name
 	 * @param str
-	 * @return
+	 * @return ArrayList<Recipe>
 	 * @throws ClientProtocolException
 	 * @throws IOException
 	 */
 	public ArrayList<Recipe> searchRecipesWithName(String[] keywords, int condition) throws ClientProtocolException, IOException {
 		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-		HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/CMPUT301W13T05/");
+		HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/CMPUT301W13T05/_search");
 	
 		for(int i=0; i<=keywords.length;i++){
 			String query = 	"{\"query\" : {\"query_string\" : {\"default_field\" : \"name\",\"query\" : \"" + keywords[i] + "\"}}}";
