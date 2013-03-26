@@ -86,8 +86,8 @@ public class WEBClient {
 	 * @throws ClientProtocolException
 	 * @throws IOException
 	 */
-	public Recipe DisplayRecipe(Recipe recipe) throws ClientProtocolException, IOException{
-			HttpGet getRequest = new HttpGet("http://cmput301.softwareprocess.es:8080/cmput301w13t05/recipe/"+recipe.getID());
+	public void DisplayRecipe() throws ClientProtocolException, IOException{
+			HttpGet getRequest = new HttpGet("http://cmput301.softwareprocess.es:8080/cmput301w13t05/recipe/");
 
 			getRequest.addHeader("Accept","application/json");
 
@@ -104,7 +104,6 @@ public class WEBClient {
 			ElasticSearchResponse<Recipe> esResponse = gson.fromJson(json, elasticSearchResponseType);
 			// We get the recipe from it!
 			Recipe download_recipe = esResponse.getSource();
-			return download_recipe;
 	}
 
 	/**
