@@ -3,6 +3,8 @@ package com.example.easycooking.view;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.apache.http.client.ClientProtocolException;
+
 import com.example.easycooking.R;
 import com.example.easycooking.controller.ImageAdapter;
 import com.example.easycooking.controller.WEBClient;
@@ -126,7 +128,7 @@ public class SelectionLocalActivity extends Activity {
 					Recipe try_recipe = initializeRecipe();
 					WEBClient my_client = new WEBClient();
 					try {
-						my_client.UploadRecipe(try_recipe);
+						my_client.UploadRecipe(mrecipe);
 					} catch (IllegalStateException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -134,8 +136,18 @@ public class SelectionLocalActivity extends Activity {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					try {
+						try_recipe = my_client.DownloadRecipe(mrecipe);
+					} catch (ClientProtocolException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					System.out.println(try_recipe.getID());
 					
-			      }
+			}
 			});
 
 
