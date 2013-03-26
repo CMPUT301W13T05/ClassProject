@@ -76,7 +76,7 @@ public class WEBClient {
 	 * @throws IOException
 	 */
 	public void UploadRecipe(Recipe recipe) throws IllegalStateException, IOException{
-		HttpPost httpPost = new HttpPost("http://cmput301.softwareprocess.es:8080/testing/lab02/"+recipe.getID());
+		HttpPost httpPost = new HttpPost("http://cmput301.softwareprocess.es:8080/CMPUT301W13T05/"+recipe.getID());
 		StringEntity stringentity = null;
 		try {
 			stringentity = new StringEntity(gson.toJson(recipe));
