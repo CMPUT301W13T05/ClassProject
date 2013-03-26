@@ -31,6 +31,7 @@ import com.google.gson.reflect.TypeToken;
 
 /**
  * This class used chenlei's ESClient as reference
+ * but some changes applied
  * @author HongZu
  *
  */
@@ -73,9 +74,6 @@ public class WEBClient {
 
 		String status = response.getStatusLine().toString();
 		Log.d("server", status);
-		if(response.getStatusLine() == null){
-			recipe.set_download_upload_own(100);
-		}
 	}
 
 	/**
@@ -86,7 +84,7 @@ public class WEBClient {
 	 * @throws ClientProtocolException
 	 * @throws IOException
 	 */
-	public void DisplayRecipe() throws ClientProtocolException, IOException{
+	public Recipe DisplayRecipe() throws ClientProtocolException, IOException{
 			HttpGet getRequest = new HttpGet("http://cmput301.softwareprocess.es:8080/cmput301w13t05/recipe/");
 
 			getRequest.addHeader("Accept","application/json");
@@ -104,6 +102,7 @@ public class WEBClient {
 			ElasticSearchResponse<Recipe> esResponse = gson.fromJson(json, elasticSearchResponseType);
 			// We get the recipe from it!
 			Recipe download_recipe = esResponse.getSource();
+			return download_recipe;
 	}
 
 	/**
@@ -113,7 +112,7 @@ public class WEBClient {
 	 * @throws ClientProtocolException
 	 * @throws IOException
 	 */
-	public ArrayList<Recipe> searchRecipesWithIngredient(String[] keywords, int condition) throws ClientProtocolException, IOException {
+	public ArrayList<Recipe> searchRecipesWithIngredient(String[] keywords) throws ClientProtocolException, IOException {
 		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
 		HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/CMPUT301W13T05/_search");
 	
@@ -145,7 +144,7 @@ public class WEBClient {
 	 * @throws ClientProtocolException
 	 * @throws IOException
 	 */
-	public ArrayList<Recipe> searchRecipesWithName(String[] keywords, int condition) throws ClientProtocolException, IOException {
+	public ArrayList<Recipe> searchRecipesWithName(String[] keywords) throws ClientProtocolException, IOException {
 		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
 		HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/CMPUT301W13T05/_search");
 	
