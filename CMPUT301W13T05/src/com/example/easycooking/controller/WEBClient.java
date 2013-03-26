@@ -59,8 +59,8 @@ public class WEBClient {
 		r.setIngredients(ingredients);
 		s.set_belong("999");
 		s.set_detail("fry the egg");
+		s.set_id(1);
 		r.setSteps(s);
-		r.setID("1");
 		ArrayList<Image> images = new ArrayList<Image>();
 		im.set_imageUri("0101111011100011010111101110001101011110111000110101111011100011");
 		im.set_image_belongto("999");
