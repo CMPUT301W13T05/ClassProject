@@ -13,6 +13,7 @@ import com.example.easycooking.model.Recipe;
 import com.example.easycooking.model.Step;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.provider.MediaStore.Images;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -35,6 +36,20 @@ public class SelectionLocalActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.selection);
+		/**
+		 * Set up mode
+		 */
+		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()       
+        .detectDiskReads()       
+        .detectDiskWrites()       
+        .detectNetwork()   // or .detectAll() for all detectable problems       
+        .penaltyLog()       
+        .build());       
+		StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()       
+        .detectLeakedSqlLiteObjects()    
+        .penaltyLog()       
+        .penaltyDeath()       
+        .build());    
 		/**
 		 * get the recipe object from the result view
 		 */
