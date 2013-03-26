@@ -137,7 +137,7 @@ public class SelectionLocalActivity extends Activity {
 						e.printStackTrace();
 					}
 					try {
-						try_recipe = my_client.DownloadRecipe(mrecipe);
+						try_recipe = my_client.DisplayRecipe(mrecipe);
 					} catch (ClientProtocolException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

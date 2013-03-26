@@ -42,33 +42,6 @@ public class WEBClient {
 	// JSON Utilities
 	private Gson gson = new Gson();
 
-	
-	
-	private Recipe initializeRecipe() {
-		Recipe r = new Recipe();
-		Ingredient in = new Ingredient();
-		Step s = new Step();
-		Image im = new Image();
-		r.setID("999");
-		r.setName("Fried egg");
-		ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
-		in.set_name("egg");
-		in.set_amount("1");
-		in.set_belongto("999");
-		ingredients.add(in);
-		r.setIngredients(ingredients);
-		s.set_belong("999");
-		s.set_detail("fry the egg");
-		s.set_id(1);
-		r.setSteps(s);
-		ArrayList<Image> images = new ArrayList<Image>();
-		im.set_imageUri("0101111011100011010111101110001101011110111000110101111011100011");
-		im.set_image_belongto("999");
-		im.set_IMAGE_ID("1");
-		images.add(im);
-		r.setImages(images);
-		return r;
-	}
 	/**
 	 * This function is build to allow user to upload recipe to the Internet
 	 * @param recipe
@@ -113,7 +86,7 @@ public class WEBClient {
 	 * @throws ClientProtocolException
 	 * @throws IOException
 	 */
-	public Recipe DownloadRecipe(Recipe recipe) throws ClientProtocolException, IOException{
+	public Recipe DisplayRecipe(Recipe recipe) throws ClientProtocolException, IOException{
 			HttpGet getRequest = new HttpGet("http://cmput301.softwareprocess.es:8080/cmput301w13t05/recipe/"+recipe.getID());
 
 			getRequest.addHeader("Accept","application/json");
