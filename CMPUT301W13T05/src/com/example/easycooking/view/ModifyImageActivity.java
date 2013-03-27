@@ -16,6 +16,7 @@ import com.example.easycooking.model.Image;
 import com.example.easycooking.model.Ingredient;
 import com.example.easycooking.model.Recipe;
 
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -77,7 +78,8 @@ public class ModifyImageActivity extends Activity {
 		image_obj_list = mrecipe.getImages();
     	final Toast toast = Toast.makeText(ModifyImageActivity.this, "Image Deleted", Toast.LENGTH_SHORT);   
 		if(image_obj_list.size()>0) {
-			displayImage();
+			ourBMP = stringtoBitmap(image_obj_list.get(image_obj_list.size()-1).get_imageUri());
+			displayImage(ourBMP);
 		}
         OnClickListener listener = new OnClickListener() {
             public void onClick(View v) {
@@ -163,12 +165,13 @@ public class ModifyImageActivity extends Activity {
 	}
 
 
-    private void displayImage() {
+    private void displayImage(Bitmap originalImage) {
     	//FileInputStream fis = new FileInputStream(image_obj_list.get(0).get_imageUri());
     	//ourBMP = BitmapFactory.decodeFile(image_obj_list.get(image_obj_list.size()-1).get_imageUri());
-    	ourBMP = stringtoBitmap(image_obj_list.get(image_obj_list.size()-1).get_imageUri());
+    	
     	ImageButton old_photo = (ImageButton)findViewById(R.id.imageButton1);
-    	old_photo.setImageBitmap(ourBMP);
+    	Bitmap thumbnail = ThumbnailUtils.extractThumbnail(originalImage, 300, 400);
+    	old_photo.setImageBitmap(thumbnail);
     }
    /* private File getPicturePath(Intent intent) {
         Uri uri = (Uri) intent.getExtras().get(MediaStore.EXTRA_OUTPUT);
@@ -251,8 +254,7 @@ public class ModifyImageActivity extends Activity {
         		rimages.set_image_belongto(mrecipe.getID());
         		rimages.set_imageUri(bitmaptoString(ourBMP));
         		image_obj_list.add(rimages);
-            	ImageButton take_photo = (ImageButton)findViewById(R.id.imageButton1);
-            	take_photo.setImageBitmap(ourBMP);
+            	displayImage(ourBMP);
                 rimages = new Image();
                 Toast.makeText(this, "Image Saved\nClick Image to view all images", Toast.LENGTH_SHORT).show();
             } else if (resultCode == RESULT_CANCELED) {
