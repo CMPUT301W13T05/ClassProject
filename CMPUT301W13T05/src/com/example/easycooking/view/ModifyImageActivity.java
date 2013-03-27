@@ -62,12 +62,12 @@ public class ModifyImageActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.modifyimage);
-		Button generate = (Button)findViewById(R.id.generate);
+		//Button generate = (Button)findViewById(R.id.generate);
 		Button takephoto = (Button)findViewById(R.id.takephoto);
-		final Button accept = (Button)findViewById(R.id.accept);
+		//final Button accept = (Button)findViewById(R.id.accept);
 		Button continue_to = (Button)findViewById(R.id.continue_to);
 		final ImageButton delete = (ImageButton)findViewById(R.id.imageButton1);
-		accept.setEnabled(false);
+		//accept.setEnabled(false);
 		myapp = (MyApp)getApplication();
 		Bundle mbundle = getIntent().getExtras();
 		_FROM_WHERE = mbundle.getString("FromWhere");
@@ -106,18 +106,19 @@ public class ModifyImageActivity extends Activity {
             		
             	}
             	/** jump to show all images */
-            	accept.setEnabled(false);
+            	//accept.setEnabled(false);
             }
         }; 
         delete.setOnClickListener(listener);
-        generate.setOnClickListener(new OnClickListener(){
+        /*
+         * generate.setOnClickListener(new OnClickListener(){
         	public void onClick(View v) {
         		//TODO Camera implement
         		setBogoPic();
             	accept.setEnabled(true);
             	delete.setEnabled(false);
             }
-        });
+        });*/
         takephoto.setOnClickListener(new OnClickListener(){
         	public void onClick(View v) {
         		//TODO Camera implement
@@ -125,7 +126,7 @@ public class ModifyImageActivity extends Activity {
             }
            
         }); 
-        
+        /*
         accept.setOnClickListener( new OnClickListener() {
             public void onClick(View v) {
             	accept.setEnabled(false);
@@ -133,7 +134,7 @@ public class ModifyImageActivity extends Activity {
             	delete.setEnabled(true);
             }
            
-        }); 
+        }); */
         
         continue_to.setOnClickListener( new OnClickListener() {
             public void onClick(View v) {
@@ -193,7 +194,7 @@ public class ModifyImageActivity extends Activity {
     		//System.out.println(image_base64);
     		image_obj_list.add(rimages);
     		rimages = new Image();
-    		Toast.makeText(this, "Image Saved\nClick Image to Delete", Toast.LENGTH_SHORT).show();
+    		Toast.makeText(this, "Image Saved\nClick Image to view all images", Toast.LENGTH_SHORT).show();
 //    	} catch (FileNotFoundException e) {
 //    		Toast.makeText(this, "Couldn't Find File to Write to?", Toast.LENGTH_LONG).show();
 //    	} catch (IOException e) {
