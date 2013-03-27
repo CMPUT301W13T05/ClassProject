@@ -64,19 +64,14 @@ public class ModifyImageActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.modifyimage);
-		//Button generate = (Button)findViewById(R.id.generate);
 		Button takephoto = (Button)findViewById(R.id.takephoto);
-		//final Button accept = (Button)findViewById(R.id.accept);
 		Button continue_to = (Button)findViewById(R.id.continue_to);
 		final ImageButton delete = (ImageButton)findViewById(R.id.imageButton1);
-		//accept.setEnabled(false);
 		myapp = (MyApp)getApplication();
 		Bundle mbundle = getIntent().getExtras();
 		_FROM_WHERE = mbundle.getString("FromWhere");
-		//mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 		mrecipe = myapp.get_mrecipe();
 		image_obj_list = mrecipe.getImages();
-    	final Toast toast = Toast.makeText(ModifyImageActivity.this, "Image Deleted", Toast.LENGTH_SHORT);   
 		if(image_obj_list.size()>0) {
 			ourBMP = stringtoBitmap(image_obj_list.get(image_obj_list.size()-1).get_imageUri());
 			displayImage(ourBMP);
@@ -113,15 +108,7 @@ public class ModifyImageActivity extends Activity {
             }
         }; 
         delete.setOnClickListener(listener);
-        /*
-         * generate.setOnClickListener(new OnClickListener(){
-        	public void onClick(View v) {
-        		//TODO Camera implement
-        		setBogoPic();
-            	accept.setEnabled(true);
-            	delete.setEnabled(false);
-            }
-        });*/
+
         takephoto.setOnClickListener(new OnClickListener(){
         	public void onClick(View v) {
         		//TODO Camera implement
@@ -129,15 +116,7 @@ public class ModifyImageActivity extends Activity {
             }
            
         }); 
-        /*
-        accept.setOnClickListener( new OnClickListener() {
-            public void onClick(View v) {
-            	accept.setEnabled(false);
-            	saveFile();
-            	delete.setEnabled(true);
-            }
-           
-        }); */
+
         
         continue_to.setOnClickListener( new OnClickListener() {
             public void onClick(View v) {
@@ -157,59 +136,15 @@ public class ModifyImageActivity extends Activity {
     }
 
 
-    private void setBogoPic() {
-    	Toast.makeText(this, "Generating Photo", Toast.LENGTH_SHORT).show();
-    	ImageButton button = (ImageButton)findViewById(R.id.imageButton1);
-		ourBMP = GeneratePhoto.generateBitmap(400, 400);
-		button.setImageBitmap(ourBMP);
-	}
-
-
     private void displayImage(Bitmap originalImage) {
     	//FileInputStream fis = new FileInputStream(image_obj_list.get(0).get_imageUri());
     	//ourBMP = BitmapFactory.decodeFile(image_obj_list.get(image_obj_list.size()-1).get_imageUri());
     	
     	ImageButton old_photo = (ImageButton)findViewById(R.id.imageButton1);
-    	Bitmap thumbnail = ThumbnailUtils.extractThumbnail(originalImage, 300, 400);
+    	Bitmap thumbnail = ThumbnailUtils.extractThumbnail(originalImage, 420, 480);
     	old_photo.setImageBitmap(thumbnail);
     }
-   /* private File getPicturePath(Intent intent) {
-        Uri uri = (Uri) intent.getExtras().get(MediaStore.EXTRA_OUTPUT);
-        return new File(uri.getPath());
-    }	*/
-    private void saveFile() {
-//    	try { 
-//    		File file = new File("/data/data/com.example.easycooking/localimages/");
-//    		if(!file.exists()) {
-//    			file.mkdirs();
-//    		}
-//    		FileOutputStream fos = null;
-    		String pic_date = Long.toString(System.currentTimeMillis());
-//    		String image_uri = "/data/data/com.example.easycooking/localimages/"+pic_date+".JPEG";
-//    		System.out.println(pic_date);
-//    		fos = new FileOutputStream(image_uri);
-//    		ourBMP.compress(Bitmap.CompressFormat.JPEG, 75, fos);
-//    		fos.close();
-    		String image_base64 = null;
-    		image_base64 = bitmaptoString(ourBMP);
-    		rimages.set_IMAGE_ID(pic_date);
-    		rimages.set_image_belongto(mrecipe.getID());
-    		rimages.set_imageUri(image_base64);
-    		//System.out.println(image_base64);
-    		image_obj_list.add(rimages);
-    		rimages = new Image();
-    		
-//    	} catch (FileNotFoundException e) {
-//    		Toast.makeText(this, "Couldn't Find File to Write to?", Toast.LENGTH_LONG).show();
-//    	} catch (IOException e) {
-//    		Toast.makeText(this, "Couldn't Write File!", Toast.LENGTH_LONG).show();
-//    	}
-    }
-    /*private void saveBMP( File FileName, Bitmap ourBMP) throws IOException, FileNotFoundException {
-		OutputStream out = new FileOutputStream(FileName);
-		ourBMP.compress(Bitmap.CompressFormat.JPEG, 75, out);
-		out.close();
-    }*/
+
     public String bitmaptoString(Bitmap bitmap) {
         String string = null;
         ByteArrayOutputStream bStream = new ByteArrayOutputStream();
