@@ -35,6 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				"name TEXT," +
 				"download_upload_own INTEGER)"); 
 		db.execSQL("insert into localrecipe values('ingredientsonhand',null,999)");
+		db.execSQL("insert into localrecipe values('notyetsavedrecipe',null,99)");
 		db.execSQL("create table picture(" +
 				"pid CHAR PRIMARY KEY," +
 				"rid CHAR," +

@@ -114,7 +114,7 @@ public class WEBClient {
 	 */
 	public ArrayList<Recipe> searchRecipesWithIngredient(String[] keywords) throws ClientProtocolException, IOException {
 		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-		HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/CMPUT301W13T05/_search");
+		HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/cmput301w13t05/_search");
 	
 		for(int i=0; i<=keywords.length;i++){
 			String query = 	"{\"query\" : {\"query_string\" : {\"default_field\" : \"ingredients\",\"query\" : \"" + keywords[i] + "\"}}}";
@@ -146,7 +146,7 @@ public class WEBClient {
 	 */
 	public ArrayList<Recipe> searchRecipesWithName(String[] keywords) throws ClientProtocolException, IOException {
 		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-		HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/CMPUT301W13T05/_search");
+		HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/cmput301w13t05/_search");
 	
 		for(int i=0; i<=keywords.length;i++){
 			String query = 	"{\"query\" : {\"query_string\" : {\"default_field\" : \"name\",\"query\" : \"" + keywords[i] + "\"}}}";
@@ -169,7 +169,15 @@ public class WEBClient {
 		}
 		return result_recipe;
 	}	
-
+	/**
+	 * Delete recipe on the Internet
+	 * @param ID
+	 * @throws IOException
+	 */
+	public void deleteRecipe(String ID) throws IOException {
+		HttpDelete httpDelete = new HttpDelete("http://cmput301.softwareprocess.es:8080/cmput301w13t05/"+ID);
+		httpDelete.addHeader("Accept","application/json");
+	}
 
 	/**
 	 * get the http response and return json string
