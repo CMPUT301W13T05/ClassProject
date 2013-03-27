@@ -3,6 +3,7 @@ package com.example.easycooking.view;
 import java.util.ArrayList;
 
 import com.example.easycooking.R;
+import com.example.easycooking.application.MyApp;
 import com.example.easycooking.controller.ImageAdapter;
 import com.example.easycooking.model.GalleryFlow;
 import com.example.easycooking.model.Image;
@@ -27,14 +28,17 @@ public class DisplayModifyImageActivity extends Activity {
 	private static Recipe mrecipe = new Recipe();
 	private static String _FROM_WHERE = "";
 	private static ArrayList<Image> image_list = new ArrayList<Image>();
+	private MyApp myapp;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.my_gallery);
+		myapp = (MyApp)getApplication();
 		/**
 		 * get the recipe obj and pull out the image array list 
 		 */
-		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
+		//mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
+		mrecipe = myapp.get_mrecipe();
 		Bundle mbundle = getIntent().getExtras();
 		_FROM_WHERE = mbundle.getString("FromWhere");
 		image_list = mrecipe.getImages();
