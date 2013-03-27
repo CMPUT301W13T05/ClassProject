@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.apache.http.client.ClientProtocolException;
 
 import com.example.easycooking.R;
+import com.example.easycooking.application.MyApp;
 import com.example.easycooking.controller.ImageAdapter;
 import com.example.easycooking.controller.WEBClient;
 import com.example.easycooking.model.GalleryFlow;
@@ -34,10 +35,12 @@ import android.content.Intent;
 public class SelectionLocalActivity extends Activity {
 	private static Recipe mrecipe = new Recipe();
 	private static ArrayList<Image> image_list = new ArrayList<Image>();
+	private MyApp myapp;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.selection);
+		myapp = (MyApp)getApplication();
 		/**
 		 * Set up mode
 		 */
@@ -55,7 +58,8 @@ public class SelectionLocalActivity extends Activity {
 		/**
 		 * get the recipe object from the result view
 		 */
-		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
+		mrecipe = myapp.get_mrecipe();
+//		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 		/**
 		 * set up all the text_view 
 		 */

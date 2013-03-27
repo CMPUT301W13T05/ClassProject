@@ -61,9 +61,10 @@ public class RecipeResultActivity extends Activity {
 				/**
 				 * start a add entry activity
 				 */
-				Bundle mbundle = new Bundle();
-				mbundle.putSerializable("RECIPE_KEY", choosen_recipe);
-				intent.putExtras(mbundle);
+				myapp.setRecipe(choosen_recipe);
+//				Bundle mbundle = new Bundle();
+//				mbundle.putSerializable("RECIPE_KEY", choosen_recipe);
+//				intent.putExtras(mbundle);
 				startActivity(intent);
         	}
 		});
