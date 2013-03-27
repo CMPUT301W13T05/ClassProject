@@ -115,7 +115,7 @@ public class WEBClient {
 	public ArrayList<Recipe> searchRecipesWithIngredient(String[] keywords) throws ClientProtocolException, IOException {
 		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
 
-		for(int i=0; i<=keywords.length;i++){
+		for(int i=0; i<keywords.length;i++){
 			HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/cmput301w13t05/recipe/_search?pretty=1");
 			String query = 	"{\"query\" : {\"query_string\" : {\"default_field\" : \"ingredients\",\"query\" : \"" + keywords[i] + "\"}}}";
 			StringEntity stringentity = new StringEntity(query);
@@ -146,7 +146,7 @@ public class WEBClient {
 	 */
 	public ArrayList<Recipe> searchRecipesWithName(String[] keywords) throws ClientProtocolException, IOException {
 		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-		for(int i=0; i<=keywords.length;i++){
+		for(int i=0; i<keywords.length;i++){
 			HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/cmput301w13t05/recipe/_search?pretty=1");			
 			String query = 	"{\"query\" : {\"query_string\" : {\"default_field\" : \"name\",\"query\" : \"" + keywords[i] + "\"}}}";
 			StringEntity stringentity = new StringEntity(query);
