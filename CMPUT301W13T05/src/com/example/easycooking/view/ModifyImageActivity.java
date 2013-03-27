@@ -144,35 +144,8 @@ public class ModifyImageActivity extends Activity {
 		ourBMP = GeneratePhoto.generateBitmap(400, 400);
 		button.setImageBitmap(ourBMP);
 	}
-    private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
-    public void takeAPhoto() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        
-        File file = new File("/mnt/sdcard/EasyCooking/localimages/");
-		if(!file.exists()) {
-			file.mkdirs();
-		}
-		String pic_time = Long.toString(System.currentTimeMillis());
-		String imageFilePath = "/mnt/sdcard/EasyCooking/localimages/"+pic_time+".JPEG";
-		File imageFile = new File(imageFilePath);
-		imageFileUri = Uri.fromFile(imageFile);
-		rimages.set_IMAGE_ID(pic_time);
-		rimages.set_image_belongto(mrecipe.getID());
-		rimages.set_imageUri(imageFilePath);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
-        startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
-    }
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-            	image_obj_list.add(rimages);
-                displayImage();
-                rimages = new Image();
-            } else if (resultCode == RESULT_CANCELED) {
-            } else {
-            }
-        }
-    }
+
+
     private void displayImage() {
     	//FileInputStream fis = new FileInputStream(image_obj_list.get(0).get_imageUri());
     	//ourBMP = BitmapFactory.decodeFile(image_obj_list.get(image_obj_list.size()-1).get_imageUri());
@@ -236,6 +209,36 @@ public class ModifyImageActivity extends Activity {
                 e.printStackTrace();
         }
         return bitmap;
+    }
+    private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
+    public void takeAPhoto() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        
+        File file = new File("/mnt/sdcard/EasyCooking/localimages/");
+		if(!file.exists()) {
+			file.mkdirs();
+		}
+		String pic_time = Long.toString(System.currentTimeMillis());
+		String imageFilePath = "/mnt/sdcard/EasyCooking/localimages/"+pic_time+".JPEG";
+		File imageFile = new File(imageFilePath);
+		imageFileUri = Uri.fromFile(imageFile);
+		rimages.set_IMAGE_ID(pic_time);
+		rimages.set_image_belongto(mrecipe.getID());
+		rimages.set_imageUri(imageFilePath);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
+        startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+            	image_obj_list.add(rimages);
+                rimages = new Image();
+            } else if (resultCode == RESULT_CANCELED) {
+            	rimages = new Image();
+            	Toast.makeText(this, "Operation cancelled", Toast.LENGTH_SHORT).show();
+            } else {
+            }
+        }
     }
 }
 
