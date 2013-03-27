@@ -14,6 +14,7 @@ import com.example.easycooking.model.Recipe;
 import com.example.easycooking.model.SelectPicPopupWindow;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Gravity;
@@ -49,6 +50,20 @@ public class MainPageActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		//myapp = (MyApp)getApplication();
+		/**
+		 * Set up mode
+		 */
+		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()       
+        .detectDiskReads()       
+        .detectDiskWrites()       
+        .detectNetwork()   // or .detectAll() for all detectable problems       
+        .penaltyLog()       
+        .build());       
+		StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()       
+        .detectLeakedSqlLiteObjects()    
+        .penaltyLog()       
+        .penaltyDeath()       
+        .build());    
 		myapp = (MyApp)getApplication();
 		myapp.setRecipe(null);
 		myapp.setRecipe_list(null);
