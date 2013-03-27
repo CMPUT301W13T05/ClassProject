@@ -38,5 +38,6 @@
     <string name="AsDishName">AsDishName</string>
     <string name="Search_By_My_Ingredient">Search By My Ingredient</string>
     <string name="generate">generate</string>
+    <string name="Confirm">Confirm</string>
 
 </resources>

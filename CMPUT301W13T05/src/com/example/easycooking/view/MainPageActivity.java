@@ -1,11 +1,15 @@
 package com.example.easycooking.view;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import org.apache.http.client.ClientProtocolException;
 
 import com.example.easycooking.R;
 import com.example.easycooking.application.MyApp;
 import com.example.easycooking.controller.DatabaseManager;
+import com.example.easycooking.controller.WEBClient;
 import com.example.easycooking.model.Recipe;
 import com.example.easycooking.model.SelectPicPopupWindow;
 
@@ -17,6 +21,9 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.Toast;
 /**
@@ -30,11 +37,12 @@ public class MainPageActivity extends Activity {
 
 	protected OnClickListener itemsOnClick;
 	private MyApp myapp;
-	private boolean if_local = false;
-	private boolean if_internet = false;
+	private boolean if_local = true;
+	private boolean if_internet = true;
 	private boolean if_dishname = false;
 	private boolean if_ingredient = false;
-
+	private boolean if_on_hand = false;
+	private SelectPicPopupWindow menuWindow; 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		final DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);		
@@ -59,9 +67,10 @@ public class MainPageActivity extends Activity {
 						toast.show();
 	        		}
 		        	else{
-		        		dB_LocalDatabaseManager.open();
 		        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
 		        		String[] String_search = serching_text.getText().toString().split(" ");
+		        		if (if_local){
+		        		dB_LocalDatabaseManager.open();		        				        		
 		        		result_recipe=dB_LocalDatabaseManager.searchRecipes(String_search, -99);
 		        		/**
 		        		 * This is a test
@@ -69,6 +78,19 @@ public class MainPageActivity extends Activity {
 		        		System.out.println(String_search.length);
 		        		for (String st : String_search){
 		        			System.out.println(st);
+		        		}
+		        		}//local end
+		        		else if (if_internet){
+		        			WEBClient myClient = new WEBClient();
+		        			try {
+								result_recipe = myClient.searchRecipesWithName(String_search);
+							} catch (ClientProtocolException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 		        		}
 		        		/**
 		        		 * 
@@ -90,6 +112,7 @@ public class MainPageActivity extends Activity {
 		        		}
 		        	
 		        		
+		        	
 		        	}
 	        }
 	        });
@@ -140,10 +163,11 @@ public class MainPageActivity extends Activity {
 		        		/**
 		        		 * TODO implemented
 		        		 */
-		        	SelectPicPopupWindow menuWindow;  
-		        	menuWindow = new SelectPicPopupWindow(MainPageActivity.this,itemsOnClick);
-	                //显示窗口  
-	                menuWindow.showAtLocation(MainPageActivity.this.findViewById(R.id.setup_search), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置  
+		        	 
+		        	menuWindow = new SelectPicPopupWindow(MainPageActivity.this,itemsOnClick1,if_local,if_internet,if_dishname,if_ingredient,if_on_hand);
+	                menuWindow.showAtLocation(MainPageActivity.this.findViewById(R.id.setup_search), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0); 
+	                menuWindow.setFocusable(true);
+	               
 		        	Toast toast = Toast.makeText(MainPageActivity.this, "TODO", Toast.LENGTH_LONG);   
 					toast.show();
 		        	}
@@ -181,8 +205,28 @@ public class MainPageActivity extends Activity {
 		        }
 		        });
 	}
-		 
-		 
+	 
+	private OnClickListener  itemsOnClick1 = new OnClickListener(){  
+		
+        public void onClick(View v) {    
+			// TODO Auto-generated method stub
+			System.out.println("select internet");
+			menuWindow.dismiss();
+			switch (v.getId()) { 
+			case R.id.confirm:  
+				if_local = menuWindow.get_local();
+				if_dishname = menuWindow.get_dish();
+				if_internet = menuWindow.get_internet();
+				if_ingredient = menuWindow.get_ingredient();
+				if_on_hand = menuWindow.get_onhand();
+				break; 
+	        default:  
+	        	break;  	
+		}  
+          
+    }   
+        
+	};
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
