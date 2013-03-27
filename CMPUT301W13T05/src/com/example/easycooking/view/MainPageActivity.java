@@ -30,6 +30,10 @@ public class MainPageActivity extends Activity {
 
 	protected OnClickListener itemsOnClick;
 	private MyApp myapp;
+	private boolean if_local = false;
+	private boolean if_internet = false;
+	private boolean if_dishname = false;
+	private boolean if_ingredient = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
