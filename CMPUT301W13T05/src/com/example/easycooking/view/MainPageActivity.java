@@ -4,6 +4,7 @@ package com.example.easycooking.view;
 import java.util.ArrayList;
 
 import com.example.easycooking.R;
+import com.example.easycooking.application.MyApp;
 import com.example.easycooking.controller.DatabaseManager;
 import com.example.easycooking.model.Recipe;
 import com.example.easycooking.model.SelectPicPopupWindow;
@@ -28,13 +29,17 @@ import android.widget.Toast;
 public class MainPageActivity extends Activity {
 
 	protected OnClickListener itemsOnClick;
-
+	private MyApp myapp;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		final DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		//myapp = (MyApp)getApplication();
+		myapp = (MyApp)getApplication();
+		myapp.setRecipe(null);
+		myapp.setRecipe_list(null);
 		final EditText serching_text = (EditText)findViewById(R.id.editText1);
 		/**
 		 * Search button 
@@ -68,9 +73,10 @@ public class MainPageActivity extends Activity {
 		        		
 		        		if (result_recipe.size()>0){
 			        		Intent intent = new Intent();
-			        		Bundle mbundle = new Bundle();
-			        		mbundle.putSerializable("RECIPE_RESULT", result_recipe);
-			        		intent.putExtras(mbundle);
+//			        		Bundle mbundle = new Bundle();
+//			        		mbundle.putSerializable("RECIPE_RESULT", result_recipe);
+//			        		intent.putExtras(mbundle);
+			        		myapp.setRecipe_list(result_recipe);
 			        		intent.setClass(MainPageActivity.this, RecipeResultActivity.class);
 			        		startActivity(intent);
 		        		}

@@ -4,6 +4,7 @@ package com.example.easycooking.view;
 import java.util.ArrayList;
 
 import com.example.easycooking.R;
+import com.example.easycooking.application.MyApp;
 import com.example.easycooking.model.Ingredient;
 import com.example.easycooking.model.Recipe;
 
@@ -26,13 +27,15 @@ public class RecipeResultActivity extends Activity {
 	private static Recipe choosen_recipe = new Recipe();
 	private static ArrayList<Recipe> result = new ArrayList<Recipe>();
 	private static ArrayList<String> result_string = new ArrayList<String>();
-	
+	private MyApp myapp;
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.result);
-		result = (ArrayList<Recipe>)getIntent().getSerializableExtra("RECIPE_RESULT");
+		//result = (ArrayList<Recipe>)getIntent().getSerializableExtra("RECIPE_RESULT");
+		myapp = (MyApp)getApplication();
+		result = myapp.getAll();
 		update_list(result);
 		//set up view 
 		ListView result_listView= (ListView) findViewById(R.id.listView1);
