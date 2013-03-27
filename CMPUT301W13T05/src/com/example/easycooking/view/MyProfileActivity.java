@@ -4,6 +4,7 @@ package com.example.easycooking.view;
 import java.util.ArrayList;
 
 import com.example.easycooking.R;
+import com.example.easycooking.application.MyApp;
 import com.example.easycooking.controller.DatabaseManager;
 import com.example.easycooking.model.Recipe;
 
@@ -16,12 +17,13 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MyProfileActivity extends Activity {
-
+	private MyApp myapp;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		final DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);	
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.my_profile);
+		myapp = (MyApp)getApplication();
 		// record recipes
 		Button profile_record = (Button)findViewById(R.id.record);
 		profile_record.setOnClickListener(new Button.OnClickListener() {
@@ -33,7 +35,8 @@ public class MyProfileActivity extends Activity {
 	        		if (result_recipe.size()>0){
 		        		Intent intent = new Intent();
 		        		Bundle mbundle = new Bundle();
-		        		mbundle.putSerializable("RECIPE_RESULT", result_recipe);
+		        		//mbundle.putSerializable("RECIPE_RESULT", result_recipe);
+		        		myapp.setRecipe_list(result_recipe);
 		        		intent.putExtras(mbundle);
 		        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
 		        		startActivity(intent);
@@ -55,7 +58,8 @@ public class MyProfileActivity extends Activity {
         		if (result_recipe.size()>0){
 	        		Intent intent = new Intent();
 	        		Bundle mbundle = new Bundle();
-	        		mbundle.putSerializable("RECIPE_RESULT", result_recipe);
+	        		//mbundle.putSerializable("RECIPE_RESULT", result_recipe);
+	        		myapp.setRecipe_list(result_recipe);
 	        		intent.putExtras(mbundle);
 	        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
 	        		startActivity(intent);

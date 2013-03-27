@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import com.example.easycooking.R;
+import com.example.easycooking.application.MyApp;
 import com.example.easycooking.controller.DatabaseManager;
 import com.example.easycooking.model.Image;
 import com.example.easycooking.model.Ingredient;
@@ -25,6 +26,7 @@ import android.content.Intent;
 
 public class CreateRecipeActivity extends Activity {
 	private static String _FROM_WHERE = "";
+	private MyApp myapp;
 	/**
 	 * @uml.property  name="mrecipe"
 	 * @uml.associationEnd  
@@ -35,6 +37,7 @@ public class CreateRecipeActivity extends Activity {
 		final DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.addrecipe);
+		myapp = (MyApp)getApplication();
 		/**
 		 * Set up all the views widget
 		 */
@@ -55,7 +58,8 @@ public class CreateRecipeActivity extends Activity {
 			_FROM_WHERE = "MODIFY";
 		}
 		else if (_FROM_WHERE.equals("MODIFY") || _FROM_WHERE.equals("SELECTION") ){
-			mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
+			//mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
+			mrecipe = myapp.get_mrecipe();
 			enter_recipe_name.setText(mrecipe.getName());
 			count_updated.setText(mrecipe.getImages().size() + " uploaded");
 			count_ingredients.setText(mrecipe.getIngredients().size() + " ingredients");
@@ -165,7 +169,8 @@ public class CreateRecipeActivity extends Activity {
 				intent.setClass(CreateRecipeActivity.this, ModifyImageActivity.class);			
 				Bundle mbundle = new Bundle();
 				mbundle.putString("FromWhere", _FROM_WHERE);
-				mbundle.putSerializable("RECIPE_KEY", mrecipe);
+				//mbundle.putSerializable("RECIPE_KEY", mrecipe);
+				myapp.setRecipe(mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);
 			
@@ -184,7 +189,8 @@ public class CreateRecipeActivity extends Activity {
 				intent.setClass(CreateRecipeActivity.this, ModifyIngredientsActivity.class); 
 				Bundle mbundle = new Bundle();
 				mbundle.putString("FromWhere", _FROM_WHERE);
-				mbundle.putSerializable("RECIPE_KEY", mrecipe);
+				//mbundle.putSerializable("RECIPE_KEY", mrecipe);
+				myapp.setRecipe(mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);
 				
@@ -204,7 +210,8 @@ public class CreateRecipeActivity extends Activity {
 				Bundle mbundle = new Bundle();
 				intent.setClass(CreateRecipeActivity.this, ModifyStepsActivity.class);	
 				mbundle.putString("FromWhere", _FROM_WHERE);
-				mbundle.putSerializable("RECIPE_KEY", mrecipe);
+				//mbundle.putSerializable("RECIPE_KEY", mrecipe);
+				myapp.setRecipe(mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);
 

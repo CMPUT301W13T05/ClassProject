@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import com.example.easycooking.R;
+import com.example.easycooking.application.MyApp;
 import com.example.easycooking.controller.*;
 import com.example.easycooking.model.Image;
 import com.example.easycooking.model.Ingredient;
@@ -20,8 +21,10 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -54,18 +57,22 @@ public class ModifyImageActivity extends Activity {
 	private Image rimages = new Image();
 	private static ArrayList<Image> image_obj_list = new ArrayList<Image>();
 	private static String _FROM_WHERE = "";
+	private MyApp myapp;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.modifyimage);
+		Button generate = (Button)findViewById(R.id.generate);
 		Button takephoto = (Button)findViewById(R.id.takephoto);
 		final Button accept = (Button)findViewById(R.id.accept);
 		Button continue_to = (Button)findViewById(R.id.continue_to);
 		final ImageButton delete = (ImageButton)findViewById(R.id.imageButton1);
 		accept.setEnabled(false);
+		myapp = (MyApp)getApplication();
 		Bundle mbundle = getIntent().getExtras();
 		_FROM_WHERE = mbundle.getString("FromWhere");
-		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
+		//mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
+		mrecipe = myapp.get_mrecipe();
 		image_obj_list = mrecipe.getImages();
     	final Toast toast = Toast.makeText(ModifyImageActivity.this, "Image Deleted", Toast.LENGTH_SHORT);   
 		if(image_obj_list.size()>0) {
@@ -84,7 +91,8 @@ public class ModifyImageActivity extends Activity {
                 	}
     				intent.setClass(ModifyImageActivity.this, DisplayModifyImageActivity.class);
     				mbundle.putString("FromWhere", _FROM_WHERE);
-    				mbundle.putSerializable("RECIPE_KEY", mrecipe);
+    				//mbundle.putSerializable("RECIPE_KEY", mrecipe);
+    				myapp.setRecipe(mrecipe);
     				intent.putExtras(mbundle);
     				startActivity(intent);
 //		        	delete.setImageBitmap(null);
@@ -102,14 +110,21 @@ public class ModifyImageActivity extends Activity {
             }
         }; 
         delete.setOnClickListener(listener);
-
-        takephoto.setOnClickListener( new OnClickListener() {
-            public void onClick(View v) {
-            	takeAPhoto();
-            	//setBogoPic();
+        generate.setOnClickListener(new OnClickListener(){
+        	public void onClick(View v) {
+        		//TODO Camera implement
+        		setBogoPic();
             	accept.setEnabled(true);
             	delete.setEnabled(false);
             }
+        });
+        takephoto.setOnClickListener(new OnClickListener(){
+        	public void onClick(View v) {
+        		//TODO Camera implement
+        		Toast toast = Toast.makeText(ModifyImageActivity.this, "ShortClick TODO", Toast.LENGTH_LONG);   
+				toast.show();
+            }
+           
         }); 
         
         accept.setOnClickListener( new OnClickListener() {
@@ -129,7 +144,8 @@ public class ModifyImageActivity extends Activity {
 				Bundle mbundle = new Bundle();
 				intent.setClass(ModifyImageActivity.this, CreateRecipeActivity.class);
 				mbundle.putString("FromWhere", _FROM_WHERE);
-				mbundle.putSerializable("RECIPE_KEY", mrecipe);
+				//mbundle.putSerializable("RECIPE_KEY", mrecipe);
+				myapp.setRecipe(mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);
 				finish();
@@ -210,36 +226,7 @@ public class ModifyImageActivity extends Activity {
         }
         return bitmap;
     }
-    private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
-    public void takeAPhoto() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        
-        File file = new File("/mnt/sdcard/EasyCooking/localimages/");
-		if(!file.exists()) {
-			file.mkdirs();
-		}
-		String pic_time = Long.toString(System.currentTimeMillis());
-		String imageFilePath = "/mnt/sdcard/EasyCooking/localimages/"+pic_time+".JPEG";
-		File imageFile = new File(imageFilePath);
-		imageFileUri = Uri.fromFile(imageFile);
-		rimages.set_IMAGE_ID(pic_time);
-		rimages.set_image_belongto(mrecipe.getID());
-		rimages.set_imageUri(imageFilePath);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
-        startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
-    }
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-            	image_obj_list.add(rimages);
-                rimages = new Image();
-            } else if (resultCode == RESULT_CANCELED) {
-            	rimages = new Image();
-            	Toast.makeText(this, "Operation cancelled", Toast.LENGTH_SHORT).show();
-            } else {
-            }
-        }
-    }
+ 
 }
 
 

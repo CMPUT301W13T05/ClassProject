@@ -1,6 +1,7 @@
 package com.example.easycooking.view;
 
 import com.example.easycooking.R;
+import com.example.easycooking.application.MyApp;
 import com.example.easycooking.model.Recipe;
 import com.example.easycooking.model.Step;
 
@@ -28,15 +29,18 @@ public class ModifyStepsActivity extends Activity {
 	 */
 	private static Step mstep = new Step();
 	private static String _FROM_WHERE = "";
+	private MyApp myapp;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.adddetail_steps);
+		myapp = (MyApp)getApplication();
 		final EditText directions = (EditText)findViewById(R.id.editText1);
 		final Button save = (Button)findViewById(R.id.save);
 		Bundle mbundle = getIntent().getExtras();
 		_FROM_WHERE = mbundle.getString("FromWhere");
-		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
+		//mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
+		mrecipe = myapp.get_mrecipe();
 		directions.setText(mrecipe.getSteps().get_detail());
 		save.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
@@ -53,7 +57,8 @@ public class ModifyStepsActivity extends Activity {
 					//start a add entry activity
 					Bundle mbundle = new Bundle();
 					mbundle.putString("FromWhere", _FROM_WHERE);
-					mbundle.putSerializable("RECIPE_KEY", mrecipe);
+					//mbundle.putSerializable("RECIPE_KEY", mrecipe);
+					myapp.setRecipe(mrecipe);
 					intent.putExtras(mbundle);
 					startActivity(intent);
 					//close the old activity

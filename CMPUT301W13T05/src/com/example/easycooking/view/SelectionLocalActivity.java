@@ -103,12 +103,13 @@ public class SelectionLocalActivity extends Activity {
 		Button selection_modify = (Button)findViewById(R.id.modify);
 		selection_modify.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
+					myapp.setRecipe(mrecipe);
 			        Intent intent = new Intent();
 			        intent.setClass(SelectionLocalActivity.this, CreateRecipeActivity.class);// should change to the RecipeDetails.java
 			        //start a add entry activity
 			        Bundle mbundle = new Bundle();
 			        mbundle.putString("FromWhere", "SELECTION");
-					mbundle.putSerializable("RECIPE_KEY", mrecipe);
+					//mbundle.putSerializable("RECIPE_KEY", mrecipe);
 					intent.putExtras(mbundle);
 					
 			        startActivity(intent);

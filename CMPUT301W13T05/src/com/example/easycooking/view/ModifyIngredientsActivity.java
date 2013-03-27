@@ -3,6 +3,7 @@ package com.example.easycooking.view;
 import java.util.ArrayList;
 
 import com.example.easycooking.R;
+import com.example.easycooking.application.MyApp;
 import com.example.easycooking.model.Ingredient;
 import com.example.easycooking.model.Recipe;
 
@@ -33,11 +34,13 @@ public class ModifyIngredientsActivity extends Activity {
 	private static String _CHECK_SAVE_BUTTON = "UN_MODIFY" ;
 	private static int _CHECK_POSITION;
 	private static String _FROM_WHERE = "";
+	private MyApp myapp;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.adddetail);
+		myapp = (MyApp)getApplication();
 		/**
 		 * set up each view variable
 		 */
@@ -49,7 +52,8 @@ public class ModifyIngredientsActivity extends Activity {
 		final Button modify_ingredients_delete = (Button)findViewById(R.id.delete);
 		Bundle mbundle = getIntent().getExtras();
 		_FROM_WHERE = mbundle.getString("FromWhere");
-		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
+		//mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
+		mrecipe = myapp.get_mrecipe();
 		ingredient_obj_list = mrecipe.getIngredients();
 		update_list(ingredient_obj_list);
 		
@@ -118,7 +122,8 @@ public class ModifyIngredientsActivity extends Activity {
 					 */
 					Bundle mbundle = new Bundle();
 					mbundle.putString("FromWhere", _FROM_WHERE);
-					mbundle.putSerializable("RECIPE_KEY", mrecipe);
+					//mbundle.putSerializable("RECIPE_KEY", mrecipe);
+					myapp.setRecipe(mrecipe);
 					intent.putExtras(mbundle);
 					startActivity(intent);
 					/**
