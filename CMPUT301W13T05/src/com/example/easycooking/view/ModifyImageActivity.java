@@ -121,8 +121,7 @@ public class ModifyImageActivity extends Activity {
         takephoto.setOnClickListener(new OnClickListener(){
         	public void onClick(View v) {
         		//TODO Camera implement
-        		Toast toast = Toast.makeText(ModifyImageActivity.this, "ShortClick TODO", Toast.LENGTH_LONG);   
-				toast.show();
+        		takeAPhoto();
             }
            
         }); 
@@ -226,7 +225,40 @@ public class ModifyImageActivity extends Activity {
         }
         return bitmap;
     }
- 
+    private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
+    public void takeAPhoto() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        
+        String folder = Environment.getExternalStorageDirectory().getAbsolutePath() + "/localimage";
+        File folderF = new File(folder);
+        if (!folderF.exists()) {
+            folderF.mkdir();
+        }
+		String imageFilePath = folder + "/" + String.valueOf(System.currentTimeMillis())+".JPEG";
+		File imageFile = new File(imageFilePath);
+		imageFileUri = Uri.fromFile(imageFile);
+		
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
+        startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
+    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+            	ourBMP = BitmapFactory.decodeFile(imageFileUri.getPath());
+            	rimages.set_IMAGE_ID(imageFileUri.getPath());
+        		rimages.set_image_belongto(mrecipe.getID());
+        		rimages.set_imageUri(bitmaptoString(ourBMP));
+        		image_obj_list.add(rimages);
+            	ImageButton take_photo = (ImageButton)findViewById(R.id.imageButton1);
+            	take_photo.setImageBitmap(ourBMP);
+                rimages = new Image();
+            } else if (resultCode == RESULT_CANCELED) {
+            	rimages = new Image();
+            	Toast.makeText(this, "Image cancelled", Toast.LENGTH_SHORT).show();
+            } else {
+            }
+        }
+    }
 }
 
 
