@@ -39,7 +39,8 @@ import android.graphics.drawable.Drawable;
 import android.graphics.BitmapFactory;
 
 /**
- * setBogoPic() and saveFile() used project BogoPicGenActivity as reference download address https://github.com/abramhindle/BogoPicGen author: Dr.Abram Hindle
+ * takeAphoto() function is took from Dr. Abram Hindle's code
+ * https://github.com/coniewt/CMPUT301W13T12/blob/master/C301W13T12Recipes/src/ca/ualberta/c301w13t12recipes/view/AddPicWizardActivity.java
  * @author  HongZu
  */
 public class ModifyImageActivity extends Activity {
@@ -194,7 +195,7 @@ public class ModifyImageActivity extends Activity {
     		//System.out.println(image_base64);
     		image_obj_list.add(rimages);
     		rimages = new Image();
-    		Toast.makeText(this, "Image Saved\nClick Image to view all images", Toast.LENGTH_SHORT).show();
+    		
 //    	} catch (FileNotFoundException e) {
 //    		Toast.makeText(this, "Couldn't Find File to Write to?", Toast.LENGTH_LONG).show();
 //    	} catch (IOException e) {
@@ -253,6 +254,7 @@ public class ModifyImageActivity extends Activity {
             	ImageButton take_photo = (ImageButton)findViewById(R.id.imageButton1);
             	take_photo.setImageBitmap(ourBMP);
                 rimages = new Image();
+                Toast.makeText(this, "Image Saved\nClick Image to view all images", Toast.LENGTH_SHORT).show();
             } else if (resultCode == RESULT_CANCELED) {
             	rimages = new Image();
             	Toast.makeText(this, "Image cancelled", Toast.LENGTH_SHORT).show();
