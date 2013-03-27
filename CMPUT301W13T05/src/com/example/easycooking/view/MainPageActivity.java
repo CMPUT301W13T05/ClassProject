@@ -6,12 +6,15 @@ import java.util.ArrayList;
 import com.example.easycooking.R;
 import com.example.easycooking.controller.DatabaseManager;
 import com.example.easycooking.model.Recipe;
+import com.example.easycooking.model.SelectPicPopupWindow;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,6 +26,9 @@ import android.widget.Toast;
  *
  */
 public class MainPageActivity extends Activity {
+
+	protected OnClickListener itemsOnClick;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +52,20 @@ public class MainPageActivity extends Activity {
 		        	else{
 		        		dB_LocalDatabaseManager.open();
 		        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-		        		result_recipe=dB_LocalDatabaseManager.searchRecipes(serching_text.getText().toString(), -99);
+		        		String[] String_search = serching_text.getText().toString().split(" ");
+		        		result_recipe=dB_LocalDatabaseManager.searchRecipes(String_search, -99);
+		        		/**
+		        		 * This is a test
+		        		 */
+		        		System.out.println(String_search.length);
+		        		for (String st : String_search){
+		        			System.out.println(st);
+		        		}
+		        		/**
+		        		 * 
+		        		 */
 		        		dB_LocalDatabaseManager.close();
+		        		
 		        		if (result_recipe.size()>0){
 			        		Intent intent = new Intent();
 			        		Bundle mbundle = new Bundle();
@@ -112,6 +130,10 @@ public class MainPageActivity extends Activity {
 		        		/**
 		        		 * TODO implemented
 		        		 */
+		        	SelectPicPopupWindow menuWindow;  
+		        	menuWindow = new SelectPicPopupWindow(MainPageActivity.this,itemsOnClick);
+	                //显示窗口  
+	                menuWindow.showAtLocation(MainPageActivity.this.findViewById(R.id.setup_search), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置  
 		        	Toast toast = Toast.makeText(MainPageActivity.this, "TODO", Toast.LENGTH_LONG);   
 					toast.show();
 		        	}

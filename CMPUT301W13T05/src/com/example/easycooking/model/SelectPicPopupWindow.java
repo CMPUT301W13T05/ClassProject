@@ -26,7 +26,7 @@ import android.widget.PopupWindow;
 public class SelectPicPopupWindow extends PopupWindow {
 
 
-	private CheckBox check_local,check_internet,check_dish,check_ingredient,check_onhand;
+	private static CheckBox check_local,check_internet,check_dish,check_ingredient,check_onhand;
 	private View mMenuView;
 
 	@SuppressWarnings("deprecation")
@@ -35,12 +35,17 @@ public class SelectPicPopupWindow extends PopupWindow {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		mMenuView = inflater.inflate(R.layout.alert_dialog, null);
-		
-//		check_local = (CheckBox)findViewById(R.id.pop_local);
-//		check_internet = (CheckBox)findViewById(R.id.pop_internet);
-//		check_dish = (CheckBox)findViewById(R.id.pop_dish);
-//		check_ingredient = (CheckBox)findViewById(R.id.pop_ingredient);
-//		check_onhand = (CheckBox)findViewById(R.id.pop_onhand);
+		/**
+		 * set up all the check box button
+		 */
+		check_local = (CheckBox)mMenuView.findViewById(R.id.pop_local);
+		check_internet = (CheckBox)mMenuView.findViewById(R.id.pop_internet);
+		check_dish = (CheckBox)mMenuView.findViewById(R.id.pop_dish);
+		check_ingredient = (CheckBox)mMenuView.findViewById(R.id.pop_ingredient);
+		check_onhand = (CheckBox)mMenuView.findViewById(R.id.pop_onhand);
+		/**
+		 * set up the layout
+		 */
 		this.setContentView(mMenuView);
 		this.setWidth(LayoutParams.FILL_PARENT);
 		this.setHeight(LayoutParams.WRAP_CONTENT);
@@ -48,6 +53,8 @@ public class SelectPicPopupWindow extends PopupWindow {
 		this.setAnimationStyle(R.style.AppBaseTheme);
 		ColorDrawable dw = new ColorDrawable(0xb0000000);
 		this.setBackgroundDrawable(dw);
+		
+		
 		mMenuView.setOnTouchListener(new OnTouchListener() {
 			
 			public boolean onTouch(View v, MotionEvent event) {

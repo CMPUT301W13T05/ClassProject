@@ -28,7 +28,7 @@ public class MyProfileActivity extends Activity {
 	        public void onClick(View v) {
 		        	dB_LocalDatabaseManager.open();
 	        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-	        		result_recipe = dB_LocalDatabaseManager.searchRecipes("Nothing", 99);
+	        		result_recipe = dB_LocalDatabaseManager.searchRecipes(null, 99);
 	        		dB_LocalDatabaseManager.close();
 	        		if (result_recipe.size()>0){
 		        		Intent intent = new Intent();
@@ -50,7 +50,7 @@ public class MyProfileActivity extends Activity {
 	        public void onClick(View v) {
 	        	dB_LocalDatabaseManager.open();
         		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-        		result_recipe = dB_LocalDatabaseManager.searchRecipes("Nothing", -1);
+        		result_recipe = dB_LocalDatabaseManager.searchRecipes(null, -1);
         		dB_LocalDatabaseManager.close();
         		if (result_recipe.size()>0){
 	        		Intent intent = new Intent();
