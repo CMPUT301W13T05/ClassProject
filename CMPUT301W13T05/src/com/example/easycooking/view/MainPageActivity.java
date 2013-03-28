@@ -11,6 +11,7 @@ import com.example.easycooking.R;
 import com.example.easycooking.application.MyApp;
 import com.example.easycooking.controller.DatabaseManager;
 import com.example.easycooking.controller.EmailController;
+import com.example.easycooking.controller.UsefulFunctions;
 import com.example.easycooking.controller.WEBClient;
 import com.example.easycooking.model.Recipe;
 import com.example.easycooking.model.SelectPicPopupWindow;
@@ -266,13 +267,15 @@ public class MainPageActivity extends Activity {
 		        		 * 
 		        		 */
 					dB_LocalDatabaseManager.close();
-
+					
 					if (result_recipe.size() > 0) {
 						Intent intent = new Intent();
 						// Bundle mbundle = new Bundle();
 						// mbundle.putSerializable("RECIPE_RESULT",
 						// result_recipe);
 						// intent.putExtras(mbundle);
+						UsefulFunctions so_fun = new UsefulFunctions();
+						result_recipe = so_fun.Unique(result_recipe);
 						myapp.setRecipe_list(result_recipe);
 						intent.setClass(MainPageActivity.this,
 								RecipeResultActivity.class);
