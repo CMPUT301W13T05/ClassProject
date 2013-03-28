@@ -7,6 +7,7 @@ import org.apache.http.client.ClientProtocolException;
 
 import com.example.easycooking.R;
 import com.example.easycooking.application.MyApp;
+import com.example.easycooking.controller.DatabaseManager;
 import com.example.easycooking.controller.ImageAdapter;
 import com.example.easycooking.controller.WEBClient;
 import com.example.easycooking.model.GalleryFlow;
@@ -19,9 +20,12 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore.Images;
 import android.text.method.ScrollingMovementMethod;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.app.Activity;
 //import android.view.Menu;
@@ -79,6 +83,8 @@ public class SelectionLocalActivity extends Activity {
 		/**
 		 * set up gallery
 		 */
+		
+		
 		image_list = mrecipe.getImages();
 		final ImageAdapter adapter = new ImageAdapter(SelectionLocalActivity.this, image_list); 
 		adapter.createReflectedImages();
@@ -87,6 +93,10 @@ public class SelectionLocalActivity extends Activity {
 	    galleryFlow.setSpacing(-100); 
 	    galleryFlow.setAdapter(adapter);   
 	    galleryFlow.setSelection(0);  
+	    if (mrecipe.getImages().size()==0){
+	    	System.out.println("No image herr");
+			//galleryFlow.setBackgroundDrawable(R.drawable.noimage);
+		}
 		/**
 		 * button share
 		 */
@@ -174,7 +184,65 @@ public class SelectionLocalActivity extends Activity {
 		r.setImages(images);
 		return r;
 	}
-
+	@Override  
+    public boolean onCreateOptionsMenu(Menu menu) {  
+        // TODO Auto-generated method stub  
+        menu.add(0, 0, 0, "Share");  
+        menu.add(0, 1, 1, "Upload");
+        menu.add(0, 2, 0, "Modify");
+        menu.add(0, 3, 1, "Delete");
+        return super.onCreateOptionsMenu(menu);  
+    }  
+  
+    @Override  
+    public boolean onOptionsItemSelected(MenuItem item) {  
+        // TODO Auto-generated method stub  
+        switch (item.getItemId()) {  
+        case 0:
+        	/**
+        	 * TODO SHARE 
+        	 */
+        	break;
+        case 1:
+			WEBClient my_client = new WEBClient();
+			try {
+				my_client.UploadRecipe(mrecipe);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("Uploaded");
+        	break;
+        case 2:  
+        	myapp.setRecipe(mrecipe);
+	        Intent intent = new Intent();
+	        intent.setClass(SelectionLocalActivity.this, CreateRecipeActivity.class);// should change to the RecipeDetails.java
+	        //start a add entry activity
+	        Bundle mbundle = new Bundle();
+	        mbundle.putString("FromWhere", "SELECTION");
+			//mbundle.putSerializable("RECIPE_KEY", mrecipe);
+			intent.putExtras(mbundle);
+			
+	        startActivity(intent);
+	        //close the old activity
+	        SelectionLocalActivity.this.finish(); 
+            break;  
+        case 3:
+        	DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);
+        	dB_LocalDatabaseManager.delete_recipe(mrecipe);
+        	dB_LocalDatabaseManager.close();
+        	Intent intent2 = new Intent();
+        	intent2.setClass(SelectionLocalActivity.this, MainPageActivity.class);
+        	startActivity(intent2);
+	        //close the old activity
+	        SelectionLocalActivity.this.finish(); 
+        	break;
+        }  
+        return super.onOptionsItemSelected(item);  
+    }  
 	
 
 }

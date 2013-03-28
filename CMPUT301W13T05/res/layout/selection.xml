@@ -60,9 +60,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView2"
-        android:layout_alignLeft="@+id/text_dishname"
-        android:layout_alignRight="@+id/text_dishname"
-        android:layout_below="@+id/text_dishname" />
+        android:layout_alignRight="@+id/modify"
+        android:layout_below="@+id/text_dishname"
+        android:layout_toRightOf="@+id/share" />
 
     <TextView
         android:id="@+id/text_steps"

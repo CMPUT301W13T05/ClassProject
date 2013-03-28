@@ -67,9 +67,9 @@ public class DisplayModifyImageActivity extends Activity {
 	                			 * not allow to delete the last image
 	                			 *
 	                			 */
-	                			if (image_list.size()==1){
+	                			if (image_list.size()==0){
 	                				//Do nothing
-	                				Toast.makeText(getApplicationContext(), String.valueOf("You can not delete the last image!"), Toast.LENGTH_SHORT).show();  
+	                				Toast.makeText(getApplicationContext(), String.valueOf("Empty Gallery"), Toast.LENGTH_SHORT).show();  
 	                			}
 	                			else{
 		                			image_list.remove(position);
@@ -97,7 +97,8 @@ public class DisplayModifyImageActivity extends Activity {
 				 * start a add entry activity
 				 */
 				Bundle mbundle = new Bundle();
-				mbundle.putSerializable("RECIPE_KEY", mrecipe);
+				//mbundle.putSerializable("RECIPE_KEY", mrecipe);
+				myapp.setRecipe(mrecipe);
 				mbundle.putString("FromWhere", _FROM_WHERE);
 				intent.putExtras(mbundle);
 				startActivity(intent);
