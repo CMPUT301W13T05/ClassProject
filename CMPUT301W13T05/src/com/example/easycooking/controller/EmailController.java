@@ -9,6 +9,10 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -20,6 +24,7 @@ import android.util.Log;
 
 import com.example.easycooking.model.*;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class EmailController {
 	private Gson gson = new Gson();
@@ -55,7 +60,23 @@ public class EmailController {
 		Intent.createChooser(intent, "Choose Email Client");
 		return intent;
     } 
-    public void downloadFromEmail(){
-    	
+	 public Recipe downloadFromEmail(String path) throws IOException{
+    	 FileInputStream stream = new FileInputStream(new File(path));
+    	  try {
+    	    FileChannel fc = stream.getChannel();
+    	    MappedByteBuffer bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
+    	    /* Instead of using default, pass in a decoder. */
+    	    String json =  Charset.defaultCharset().decode(bb).toString();
+    	    // We have to tell GSON what type we expect
+    	    Type elasticSearchResponseType = new TypeToken<ElasticSearchResponse<Recipe>>(){}.getType();
+    	 	// Now we expect to get a Recipe response
+    	 	ElasticSearchResponse<Recipe> esResponse = gson.fromJson(json, elasticSearchResponseType);
+    	 	// We get the recipe from it!
+    	 	Recipe download_recipe = esResponse.getSource();
+    	 	return download_recipe;
+    	  }
+    	  finally {
+    	    stream.close();
+    	  }
     }
 }
