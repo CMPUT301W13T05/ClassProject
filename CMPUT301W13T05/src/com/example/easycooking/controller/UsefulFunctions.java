@@ -10,13 +10,15 @@ import com.example.easycooking.model.*;
  */
 public class UsefulFunctions {
 	public ArrayList<Recipe> Unique(ArrayList<Recipe> inputList){
+		ArrayList<String> uniqueString = new ArrayList<String>();
 		ArrayList<Recipe> uniqueList= new ArrayList<Recipe>();
 		for(int i = 0;i<inputList.size();i++){
-			if(!uniqueList.contains(inputList.get(i))){
+			if(!uniqueString.contains(inputList.get(i).getID())){
+				uniqueString.add(uniqueList.get(i).getID());
 				uniqueList.add(inputList.get(i));
 			}
 		}
 		return uniqueList;
 	}
-}
+}                                                                                                                                                                                                                                                                                                                    
 
