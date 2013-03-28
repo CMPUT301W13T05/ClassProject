@@ -36,11 +36,10 @@ public final class R {
         public static final int creat=0x7f070003;
         public static final int delete=0x7f07000a;
         public static final int description=0x7f070011;
-        public static final int download=0x7f070032;
         public static final int editText1=0x7f070002;
         public static final int gallery1=0x7f070001;
         public static final int galleryFlow1=0x7f070025;
-        public static final int generate=0x7f070034;
+        public static final int generate=0x7f070031;
         public static final int home=0x7f070010;
         public static final int imageButton1=0x7f070022;
         public static final int imageSave=0x7f070026;
@@ -48,7 +47,7 @@ public final class R {
         public static final int ingredient_text=0x7f07000c;
         public static final int ingredients_view=0x7f070016;
         public static final int listView1=0x7f07000d;
-        public static final int menu_settings=0x7f070035;
+        public static final int menu_settings=0x7f070032;
         public static final int modifyingre=0x7f070005;
         public static final int photo=0x7f070013;
         public static final int pop_dish=0x7f07001c;
@@ -63,13 +62,11 @@ public final class R {
         public static final int save=0x7f07000b;
         public static final int search=0x7f070007;
         public static final int setup_search=0x7f070004;
-        public static final int share=0x7f070033;
         public static final int share_with_me=0x7f070028;
         public static final int steps_view=0x7f070017;
         public static final int takephoto=0x7f070023;
         public static final int textView2=0x7f07000f;
         public static final int textView4=0x7f07002e;
-        public static final int textView5=0x7f070031;
         public static final int text_dishname=0x7f070000;
         public static final int text_ingredients=0x7f07002f;
         public static final int text_steps=0x7f07002d;

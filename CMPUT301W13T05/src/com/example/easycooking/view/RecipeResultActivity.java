@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 //import android.view.Menu;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -56,6 +57,11 @@ public class RecipeResultActivity extends Activity {
         		/**
         		 * pass the recipe object to the selectionLocal view
         		 */
+        		if (choosen_recipe.get_download_upload_own() == 101){
+        			System.out.println("we have go here");
+        			Intent intent = new Intent();
+    				intent.setClass(RecipeResultActivity.this, SelectionWebActivity.class);
+        		}
         		Intent intent = new Intent();
 				intent.setClass(RecipeResultActivity.this, SelectionLocalActivity.class);
 				/**

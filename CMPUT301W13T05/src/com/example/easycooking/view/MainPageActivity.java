@@ -1,6 +1,8 @@
 package com.example.easycooking.view;
 
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -9,9 +11,11 @@ import org.apache.http.client.ClientProtocolException;
 import com.example.easycooking.R;
 import com.example.easycooking.application.MyApp;
 import com.example.easycooking.controller.DatabaseManager;
+import com.example.easycooking.controller.EmailController;
 import com.example.easycooking.controller.WEBClient;
 import com.example.easycooking.model.Recipe;
 import com.example.easycooking.model.SelectPicPopupWindow;
+import com.google.gson.Gson;
 
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -44,8 +48,10 @@ public class MainPageActivity extends Activity {
 	private boolean if_ingredient = false;
 	private boolean if_on_hand = false;
 	private SelectPicPopupWindow menuWindow; 
+	@SuppressWarnings("static-access")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		final DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -69,8 +75,42 @@ public class MainPageActivity extends Activity {
 		myapp.setRecipe_list(null);
 		final EditText serching_text = (EditText)findViewById(R.id.editText1);
 		/**
+		 * import intent json file
+		 */
+		Intent intent = getIntent();
+		String action = intent.getAction();
+		if(intent.ACTION_VIEW.equals(action)){
+			Gson gson = new Gson();
+			 System.out.println("run here get action"+intent.getDataString());
+			try {
+		 
+				BufferedReader br = new BufferedReader(
+					new FileReader(intent.getDataString()));
+		 
+				//convert the json string back to object
+				Recipe obj = gson.fromJson(br, Recipe.class);
+				myapp.setRecipe(obj);
+				Intent intent2 = new Intent();
+        		Bundle mbundle = new Bundle();
+        		intent2.putExtras(mbundle);
+        		intent2.setClass(MainPageActivity.this, SelectionWebActivity.class);
+        		
+        		/**
+        		 * start a add entry activity
+        		 */
+        		startActivity(intent2);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		/**
 		 * Search button 
 		 */
+		
+		
+		
+		
 		 Button main_search = (Button)findViewById(R.id.search);
 		 main_search.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
