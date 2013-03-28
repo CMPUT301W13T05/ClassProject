@@ -155,7 +155,7 @@ public class SelectionLocalActivity extends Activity {
 				EmailController myEmail = new EmailController();
         		Intent data = null;
 				try {
-					data = myEmail.sentRecipe(initializeRecipe());
+					data = myEmail.sentRecipe(mrecipe);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
