@@ -26,9 +26,22 @@ import com.example.easycooking.model.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * This Class allows user to email recipe.
+ * @author HongZu
+ *
+ */
 public class EmailController {
 	private Gson gson = new Gson();
 	Uri jsonFileUri;
+	/**
+	 * This function receives a recipe object
+	 * and returns an intent that contain the .json file
+	 * and call email App to Email this .json file
+	 * @param recipe
+	 * @return Intent
+	 * @throws IOException
+	 */
 	public Intent sentRecipe(Recipe recipe) throws IOException{
     	String Json = gson.toJson(recipe);
     	Intent intent = new Intent(Intent.ACTION_SEND);
