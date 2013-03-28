@@ -12,7 +12,9 @@ public class UsefulFunctions {
 	public ArrayList<Recipe> Unique(ArrayList<Recipe> inputList){
 		ArrayList<Recipe> uniqueList= new ArrayList<Recipe>();
 		for(int i = 0;i<inputList.size();i++){
-			
+			if(!uniqueList.contains(inputList.get(i))){
+				uniqueList.add(inputList.get(i));
+			}
 		}
 		return uniqueList;
 	}
