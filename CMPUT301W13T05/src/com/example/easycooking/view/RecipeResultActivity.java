@@ -67,6 +67,7 @@ public class RecipeResultActivity extends Activity {
 						if (choosen_recipe.get_download_upload_own() == 101) {
 							System.out.println(choosen_recipe
 									.get_download_upload_own() + "==");
+							myapp.setRecipe(choosen_recipe);
 							Intent intent = new Intent();
 							intent.setClass(RecipeResultActivity.this,
 									SelectionWebActivity.class);
