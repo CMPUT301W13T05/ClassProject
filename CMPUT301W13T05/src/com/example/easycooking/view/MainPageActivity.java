@@ -85,7 +85,7 @@ public class MainPageActivity extends Activity {
 			try {
 		 
 				BufferedReader br = new BufferedReader(
-					new FileReader(intent.getDataString()));
+					new FileReader(intent.getData().getEncodedPath()));
 		 
 				//convert the json string back to object
 				Recipe obj = gson.fromJson(br, Recipe.class);
