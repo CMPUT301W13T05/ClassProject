@@ -8,6 +8,7 @@ import org.apache.http.client.ClientProtocolException;
 import com.example.easycooking.R;
 import com.example.easycooking.application.MyApp;
 import com.example.easycooking.controller.DatabaseManager;
+import com.example.easycooking.controller.EmailController;
 import com.example.easycooking.controller.ImageAdapter;
 import com.example.easycooking.controller.WEBClient;
 import com.example.easycooking.model.GalleryFlow;
@@ -151,7 +152,16 @@ public class SelectionLocalActivity extends Activity {
 			public boolean onMenuItemClick(MenuItem item) {
 				// TODO Auto-generated method stub
 				//TOD share
-				
+				EmailController myEmail = new EmailController();
+        		Intent data = null;
+				try {
+					data = myEmail.sentRecipe(initializeRecipe());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+                startActivity(data); 
+
 				return false;
 			}
         	

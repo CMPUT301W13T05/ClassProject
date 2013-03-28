@@ -4,6 +4,7 @@
     android:versionCode="1"
     android:versionName="1.0" >
 	
+	
     <uses-sdk
         android:minSdkVersion="15"
         android:targetSdkVersion="15" />
@@ -23,6 +24,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+	<action android:name="android.intent.action.VIEW"></action>
+	<category android:name="android.intent.category.DEFAULT"></category>
+	<data android:mimeType="application/json"></data>
+	
+	</intent-filter>
         </activity>
         <activity
             android:name="com.example.easycooking.view.Itisatry"
