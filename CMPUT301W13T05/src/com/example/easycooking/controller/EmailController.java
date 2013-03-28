@@ -51,7 +51,7 @@ public class EmailController {
 		intent.putExtra(Intent.EXTRA_STREAM, jsonFileUri);
 		intent.putExtra(Intent.EXTRA_SUBJECT, recipe.getName());
 		intent.putExtra(Intent.EXTRA_TEXT   , "");
-		intent.setType("application/text");
+		intent.setType("application/json");
 		Intent.createChooser(intent, "Choose Email Client");
 		return intent;
     } 
