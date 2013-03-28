@@ -82,30 +82,141 @@ public class MainPageActivity extends Activity {
 						toast.show();
 	        		}
 		        	else{
+		        		dB_LocalDatabaseManager.open();
+		        		WEBClient myClient = new WEBClient();
 		        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-		        		String[] String_search = serching_text.getText().toString().split(" ");
+		        		String[] String_search = serching_text.getText().toString().split(",");
 		        		if (if_local){
-		        		dB_LocalDatabaseManager.open();		        				        		
-		        		result_recipe=dB_LocalDatabaseManager.searchRecipes(String_search, -99);
-		        		/**
-		        		 * This is a test
-		        		 */
-		        		System.out.println(String_search.length);
-		        		for (String st : String_search){
-		        			System.out.println(st);
+		        			if (if_dishname){
+		        				if(if_ingredient){ //local_name_ingredint
+				        		result_recipe.addAll(dB_LocalDatabaseManager.searchRecipes(String_search, -99));
+				        		/**
+				        		 * This is a test
+				        		 */
+				        		System.out.println(String_search.length);
+				        		for (String st : String_search){
+				        			System.out.println(st);
+				        		}
+		        				}
+				        		else{//only by name and local
+				        			result_recipe.addAll(dB_LocalDatabaseManager.searchRecipes(String_search, 1));
+				        		}
+		        				
+				        		}
+		        			else{
+		        				if(if_ingredient){//only by ingredient and local
+		        					result_recipe.addAll(dB_LocalDatabaseManager.searchRecipes(String_search, 0));
+		        				}
+		        				else{
+		        					//no ingredient dish name wrong
+		        				}
+		        				
+		        		}
+		        		if (if_internet){ // local and internet 
+		        			if (if_dishname){
+		        				if (if_ingredient){//local internent name ingredient
+		        					try {
+										result_recipe.addAll(myClient.searchRecipesWithName(String_search));
+									} catch (ClientProtocolException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									} catch (IOException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+		        					try {
+										result_recipe.addAll(myClient.searchRecipesWithIngredient(String_search));
+									} catch (ClientProtocolException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									} catch (IOException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+		        				}
+		        				else{//local internet name
+		        					try {
+										result_recipe.addAll(myClient.searchRecipesWithName(String_search));
+									} catch (ClientProtocolException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									} catch (IOException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+		        				}
+		        			}
+		        			else{
+		        				if (if_ingredient){// local intenet ingredient
+		        					try {
+										result_recipe.addAll(myClient.searchRecipesWithIngredient(String_search));
+									} catch (ClientProtocolException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									} catch (IOException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+		        				}
+		        				else{
+		        					//no dish name no ingredient wrong
+		        				}
+		        			}
+		        			
 		        		}
 		        		}//local end
-		        		else if (if_internet){
-		        			WEBClient myClient = new WEBClient();
-		        			try {
-								result_recipe = myClient.searchRecipesWithName(String_search);
-							} catch (ClientProtocolException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
+		        		else if (if_internet){ //intenet		        			
+		        			if (if_dishname){
+		        				if (if_ingredient){// internent name ingredient
+		        					try {
+										result_recipe.addAll(myClient.searchRecipesWithName(String_search));
+									} catch (ClientProtocolException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									} catch (IOException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+		        					try {
+										result_recipe.addAll(myClient.searchRecipesWithIngredient(String_search));
+									} catch (ClientProtocolException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									} catch (IOException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+		        				}
+		        				else{// internet name
+		        					try {
+										result_recipe.addAll(myClient.searchRecipesWithName(String_search));
+									} catch (ClientProtocolException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									} catch (IOException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+		        				}
+		        			}
+		        			else{
+		        				if (if_ingredient){//  intenet ingredient
+		        					try {
+										result_recipe.addAll(myClient.searchRecipesWithIngredient(String_search));
+									} catch (ClientProtocolException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									} catch (IOException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+		        				}
+		        				else{
+		        					//no dish name no ingredient wrong
+		        				}
+		        			}
+		        			
+		        		
 		        		}
 		        		/**
 		        		 * 

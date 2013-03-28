@@ -13,62 +13,20 @@
         android:text="DishName：Swiss Steak"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/share"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@+id/upload"
-        android:text="@string/share" />
-
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="@string/Delete" />
-
-    <Button
-        android:id="@+id/modify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/delete"
-        android:text="@string/modify" />
-
-    <Button
-        android:id="@+id/upload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/textView4"
-        android:text="@string/Upload" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:text="Ingredients:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <com.example.easycooking.model.GalleryFlow
         android:id="@+id/galleryFlow1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView2"
-        android:layout_alignRight="@+id/modify"
-        android:layout_below="@+id/text_dishname"
-        android:layout_toRightOf="@+id/share" />
+        android:layout_alignLeft="@+id/text_dishname"
+        android:layout_alignRight="@+id/text_dishname"
+        android:layout_below="@+id/text_dishname" />
 
     <TextView
         android:id="@+id/text_steps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/share"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView4"
@@ -98,5 +56,23 @@
         android:layout_below="@+id/text_ingredients"
         android:text="Description："
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:text="Ingredients:"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/galleryFlow1"
+        android:src="@drawable/noimage" />
 
 </RelativeLayout>

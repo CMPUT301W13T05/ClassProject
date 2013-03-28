@@ -22,12 +22,15 @@ import android.provider.MediaStore.Images;
 import android.text.method.ScrollingMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.app.Activity;
+import android.app.Dialog;
 //import android.view.Menu;
 import android.content.Intent;
 
@@ -67,6 +70,7 @@ public class SelectionLocalActivity extends Activity {
 		/**
 		 * set up all the text_view 
 		 */
+		ImageView no_image = (ImageView)findViewById(R.id.imageView1);
 		TextView dish_name = (TextView)findViewById(R.id.text_dishname);
 		TextView dish_ingredients = (TextView)findViewById(R.id.text_ingredients);
 		TextView dish_steps = (TextView)findViewById(R.id.text_steps);
@@ -94,69 +98,19 @@ public class SelectionLocalActivity extends Activity {
 	    galleryFlow.setAdapter(adapter);   
 	    galleryFlow.setSelection(0);  
 	    if (mrecipe.getImages().size()==0){
+	    	no_image.setVisibility(0);
+	    	no_image.setFocusable(true);
 	    	System.out.println("No image herr");
 			//galleryFlow.setBackgroundDrawable(R.drawable.noimage);
 		}
+	    else{
+	    	no_image.setFocusable(false);
+	    	no_image.setVisibility(100);
+	    }
 		/**
 		 * button share
 		 */
 	    System.out.println("run here");
-		Button selection_share = (Button)findViewById(R.id.share);
-		
-		selection_share.setOnClickListener(new Button.OnClickListener() {
-	        public void onClick(View v) {
-	        		//TODO
-	        	}
-	        });
-		
-		//button modify
-		Button selection_modify = (Button)findViewById(R.id.modify);
-		selection_modify.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-					myapp.setRecipe(mrecipe);
-			        Intent intent = new Intent();
-			        intent.setClass(SelectionLocalActivity.this, CreateRecipeActivity.class);// should change to the RecipeDetails.java
-			        //start a add entry activity
-			        Bundle mbundle = new Bundle();
-			        mbundle.putString("FromWhere", "SELECTION");
-					//mbundle.putSerializable("RECIPE_KEY", mrecipe);
-					intent.putExtras(mbundle);
-					
-			        startActivity(intent);
-			        //close the old activity
-			        SelectionLocalActivity.this.finish();
-			      }
-			});
-		//button delete
-		Button selection_delete = (Button)findViewById(R.id.delete);
-		selection_delete.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-					//TO BE IMPLEMENTED
-					
-			      }
-			});
-		//button upload
-		Button selection_upload = (Button)findViewById(R.id.upload);
-		selection_upload.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) {
-					//TO BE IMPLEMENTED
-					Recipe try_recipe = initializeRecipe();
-					WEBClient my_client = new WEBClient();
-					try {
-						my_client.UploadRecipe(mrecipe);
-					} catch (IllegalStateException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-					System.out.println(try_recipe.getID());
-					
-			}
-			});
-
 
 	}
 	private Recipe initializeRecipe() {
@@ -188,61 +142,155 @@ public class SelectionLocalActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {  
         // TODO Auto-generated method stub  
         menu.add(0, 0, 0, "Share");  
-        menu.add(0, 1, 1, "Upload");
+        menu.add(0, 1, 0, "Upload");
         menu.add(0, 2, 0, "Modify");
-        menu.add(0, 3, 1, "Delete");
-        return super.onCreateOptionsMenu(menu);  
+        menu.add(0, 3, 0, "Delete");
+        menu.getItem(0).setOnMenuItemClickListener(new OnMenuItemClickListener(){
+
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				// TODO Auto-generated method stub
+				//TOD share
+				
+				return false;
+			}
+        	
+        });
+        menu.getItem(1).setOnMenuItemClickListener(new OnMenuItemClickListener(){
+
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				// TODO Auto-generated method stub
+				mrecipe.set_download_upload_own(101);
+				WEBClient my_client = new WEBClient();
+				try {
+					my_client.UploadRecipe(mrecipe);
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				return false;
+			}
+        	
+        });
+        menu.getItem(2).setOnMenuItemClickListener(new OnMenuItemClickListener(){
+			@Override
+			public boolean onMenuItemClick(MenuItem arg0) {
+				// TODO Auto-generated method stub
+				myapp.setRecipe(mrecipe);
+		        Intent intent = new Intent();
+		        intent.setClass(SelectionLocalActivity.this, CreateRecipeActivity.class);// should change to the RecipeDetails.java
+		        //start a add entry activity
+		        Bundle mbundle = new Bundle();
+		        mbundle.putString("FromWhere", "SELECTION");
+				//mbundle.putSerializable("RECIPE_KEY", mrecipe);
+				intent.putExtras(mbundle);	
+		        startActivity(intent);
+		        //close the old activity
+		        SelectionLocalActivity.this.finish(); 
+				return false;
+			}
+			
+        });
+       
+        menu.getItem(3).setOnMenuItemClickListener(new OnMenuItemClickListener(){
+			@Override
+			public boolean onMenuItemClick(MenuItem arg0) {
+				// TODO Auto-generated method stub
+				/**
+				 * set up dialog
+				 */
+				final Dialog confirm = new Dialog(SelectionLocalActivity.this);
+				confirm.setContentView(R.layout.confirm_dialog);
+				confirm.setTitle("Notice!");
+				TextView confirm_text = (TextView)confirm.findViewById(R.id.confirm_text);
+				confirm_text.setText("Do you confirm to delete this reciep?");
+				Button confirm_yes = (Button)confirm.findViewById(R.id.Yes);
+				Button confirm_no = (Button)confirm.findViewById(R.id.No);
+				confirm_yes.setOnClickListener(new View.OnClickListener()
+				{
+					public void onClick(View v)
+					{
+						DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(SelectionLocalActivity.this);
+			        	dB_LocalDatabaseManager.open();
+			        	dB_LocalDatabaseManager.delete_recipe(mrecipe);
+			        	dB_LocalDatabaseManager.close();
+			        	Intent intent = new Intent();
+			        	intent.setClass(SelectionLocalActivity.this, MainPageActivity.class);
+			        	startActivity(intent);
+				        //close the old activity
+				        SelectionLocalActivity.this.finish(); 
+					}
+				});
+				confirm_no.setOnClickListener(new View.OnClickListener()
+				{
+					public void onClick(View v)
+					{
+						confirm.dismiss();
+					}
+				});
+				confirm.show();
+				return false;
+			}
+        	
+        }); 
+        return super.onCreateOptionsMenu(menu);
     }  
   
-    @Override  
-    public boolean onOptionsItemSelected(MenuItem item) {  
-        // TODO Auto-generated method stub  
-        switch (item.getItemId()) {  
-        case 0:
-        	/**
-        	 * TODO SHARE 
-        	 */
-        	break;
-        case 1:
-			WEBClient my_client = new WEBClient();
-			try {
-				my_client.UploadRecipe(mrecipe);
-			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.println("Uploaded");
-        	break;
-        case 2:  
-        	myapp.setRecipe(mrecipe);
-	        Intent intent = new Intent();
-	        intent.setClass(SelectionLocalActivity.this, CreateRecipeActivity.class);// should change to the RecipeDetails.java
-	        //start a add entry activity
-	        Bundle mbundle = new Bundle();
-	        mbundle.putString("FromWhere", "SELECTION");
-			//mbundle.putSerializable("RECIPE_KEY", mrecipe);
-			intent.putExtras(mbundle);
-			
-	        startActivity(intent);
-	        //close the old activity
-	        SelectionLocalActivity.this.finish(); 
-            break;  
-        case 3:
-        	DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);
-        	dB_LocalDatabaseManager.delete_recipe(mrecipe);
-        	dB_LocalDatabaseManager.close();
-        	Intent intent2 = new Intent();
-        	intent2.setClass(SelectionLocalActivity.this, MainPageActivity.class);
-        	startActivity(intent2);
-	        //close the old activity
-	        SelectionLocalActivity.this.finish(); 
-        	break;
-        }  
-        return super.onOptionsItemSelected(item);  
-    }  
+  
+//    public boolean onOptionsItemSelected(MenuItem item) {  
+//        // TODO Auto-generated method stub  
+//        switch (item.getItemId()) {  
+//        case 0:
+//        	/**
+//        	 * TODO SHARE 
+//        	 */
+//        	break;
+//        case 1:
+////			WEBClient my_client = new WEBClient();
+////			try {
+////				my_client.UploadRecipe(mrecipe);
+////			} catch (IllegalStateException e) {
+////				// TODO Auto-generated catch block
+////				e.printStackTrace();
+////			} catch (IOException e) {
+////				// TODO Auto-generated catch block
+////				e.printStackTrace();
+////			}
+////			System.out.println("Uploaded");
+//        	break;
+//        case 2:  
+//        	myapp.setRecipe(mrecipe);
+//	        Intent intent = new Intent();
+//	        intent.setClass(SelectionLocalActivity.this, CreateRecipeActivity.class);// should change to the RecipeDetails.java
+//	        //start a add entry activity
+//	        Bundle mbundle = new Bundle();
+//	        mbundle.putString("FromWhere", "SELECTION");
+//			//mbundle.putSerializable("RECIPE_KEY", mrecipe);
+//			intent.putExtras(mbundle);
+//			
+//	        startActivity(intent);
+//	        //close the old activity
+//	        SelectionLocalActivity.this.finish(); 
+//            break;  
+//        case 3:
+//        	DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);
+//        	dB_LocalDatabaseManager.open();
+//        	dB_LocalDatabaseManager.delete_recipe(mrecipe);
+//        	dB_LocalDatabaseManager.close();
+//        	Intent intent2 = new Intent();
+//        	intent2.setClass(SelectionLocalActivity.this, MainPageActivity.class);
+//        	startActivity(intent2);
+//	        //close the old activity
+//	        SelectionLocalActivity.this.finish(); 
+//        	break;
+//        }  
+//        return super.onOptionsItemSelected(item);  
+//    }  
 	
 
 }

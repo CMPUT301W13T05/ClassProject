@@ -22,30 +22,33 @@ public final class R {
     }
     public static final class id {
         public static final int Ingredients=0x7f070012;
+        public static final int No=0x7f070021;
         public static final int RelativeLayout1=0x7f070008;
+        public static final int Yes=0x7f070020;
         public static final int add=0x7f070009;
         public static final int amount_Text=0x7f07000e;
-        public static final int backtomain=0x7f070026;
-        public static final int check_download=0x7f070027;
-        public static final int checklocal=0x7f070028;
+        public static final int backtomain=0x7f070029;
+        public static final int check_download=0x7f07002a;
+        public static final int checklocal=0x7f07002b;
         public static final int confirm=0x7f07001e;
-        public static final int continue_to=0x7f070021;
+        public static final int confirm_text=0x7f07001f;
+        public static final int continue_to=0x7f070024;
         public static final int creat=0x7f070003;
         public static final int delete=0x7f07000a;
         public static final int description=0x7f070011;
-        public static final int download=0x7f070030;
+        public static final int download=0x7f070032;
         public static final int editText1=0x7f070002;
         public static final int gallery1=0x7f070001;
-        public static final int galleryFlow1=0x7f070022;
-        public static final int generate=0x7f070031;
+        public static final int galleryFlow1=0x7f070025;
+        public static final int generate=0x7f070034;
         public static final int home=0x7f070010;
-        public static final int imageButton1=0x7f07001f;
-        public static final int imageSave=0x7f070023;
+        public static final int imageButton1=0x7f070022;
+        public static final int imageSave=0x7f070026;
+        public static final int imageView1=0x7f070030;
         public static final int ingredient_text=0x7f07000c;
         public static final int ingredients_view=0x7f070016;
         public static final int listView1=0x7f07000d;
-        public static final int menu_settings=0x7f070032;
-        public static final int modify=0x7f07002b;
+        public static final int menu_settings=0x7f070035;
         public static final int modifyingre=0x7f070005;
         public static final int photo=0x7f070013;
         public static final int pop_dish=0x7f07001c;
@@ -56,21 +59,21 @@ public final class R {
         public static final int pop_onhand=0x7f07001b;
         public static final int profile=0x7f070006;
         public static final int recipe_name=0x7f070014;
-        public static final int record=0x7f070029;
+        public static final int record=0x7f07002c;
         public static final int save=0x7f07000b;
         public static final int search=0x7f070007;
         public static final int setup_search=0x7f070004;
-        public static final int share=0x7f07002a;
-        public static final int share_with_me=0x7f070025;
+        public static final int share=0x7f070033;
+        public static final int share_with_me=0x7f070028;
         public static final int steps_view=0x7f070017;
-        public static final int takephoto=0x7f070020;
+        public static final int takephoto=0x7f070023;
         public static final int textView2=0x7f07000f;
-        public static final int textView4=0x7f07002c;
-        public static final int textView5=0x7f07002f;
+        public static final int textView4=0x7f07002e;
+        public static final int textView5=0x7f070031;
         public static final int text_dishname=0x7f070000;
-        public static final int text_ingredients=0x7f07002e;
+        public static final int text_ingredients=0x7f07002f;
         public static final int text_steps=0x7f07002d;
-        public static final int upload=0x7f070024;
+        public static final int upload=0x7f070027;
         public static final int uploaded_view=0x7f070015;
     }
     public static final class layout {
@@ -80,15 +83,16 @@ public final class R {
         public static final int adddetail_steps=0x7f030003;
         public static final int addrecipe=0x7f030004;
         public static final int alert_dialog=0x7f030005;
-        public static final int display_images=0x7f030006;
-        public static final int modifyimage=0x7f030007;
-        public static final int my_gallery=0x7f030008;
-        public static final int my_profile=0x7f030009;
-        public static final int popwindow=0x7f03000a;
-        public static final int result=0x7f03000b;
-        public static final int selection=0x7f03000c;
-        public static final int selection_web=0x7f03000d;
-        public static final int sharepopwindow=0x7f03000e;
+        public static final int confirm_dialog=0x7f030006;
+        public static final int display_images=0x7f030007;
+        public static final int modifyimage=0x7f030008;
+        public static final int my_gallery=0x7f030009;
+        public static final int my_profile=0x7f03000a;
+        public static final int popwindow=0x7f03000b;
+        public static final int result=0x7f03000c;
+        public static final int selection=0x7f03000d;
+        public static final int selection_web=0x7f03000e;
+        public static final int sharepopwindow=0x7f03000f;
     }
     public static final class menu {
         public static final int activity_itisatry=0x7f060000;
@@ -125,6 +129,7 @@ public final class R {
         public static final int modify=0x7f040017;
         public static final int my_download=0x7f040008;
         public static final int my_upload=0x7f040009;
+        public static final int no=0x7f040027;
         public static final int profile=0x7f040005;
         public static final int recipe_share_with_me=0x7f040012;
         public static final int record_recipe=0x7f040007;
@@ -133,6 +138,7 @@ public final class R {
         public static final int share=0x7f040015;
         public static final int steps=0x7f040019;
         public static final int title_activity_itisatry=0x7f040014;
+        public static final int yes=0x7f040026;
     }
     public static final class style {
         /** 

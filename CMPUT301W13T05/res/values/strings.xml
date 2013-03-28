@@ -39,5 +39,7 @@
     <string name="Search_By_My_Ingredient">Search By My Ingredient</string>
     <string name="generate">generate</string>
     <string name="Confirm">Confirm</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 </resources>
