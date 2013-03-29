@@ -140,15 +140,14 @@ public class SelectionWebActivity extends Activity {
 				// TODO Check the Recipe whether has been download 
 				DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(SelectionWebActivity.this);
 	        	dB_LocalDatabaseManager.open();
-	        	dB_LocalDatabaseManager.add_recipe(mrecipe);
-	        	if (true){//check
+	        	if (dB_LocalDatabaseManager.inDB(mrecipe)){//check
 	        		dB_LocalDatabaseManager.add_recipe(mrecipe);
+	        		Toast.makeText(SelectionWebActivity.this, "Downloaded Success", Toast.LENGTH_SHORT).show();
 	        	}
-	        	if (true){//check
-	        		Toast.makeText(SelectionWebActivity.this, "You have Already Downloaded this Recipe", Toast.LENGTH_SHORT).show();
+	        	else{
+	        		Toast.makeText(SelectionWebActivity.this, "You have alreadly Downloaded", Toast.LENGTH_SHORT).show();
 	        	}
-	        	dB_LocalDatabaseManager.close();
-	        	Toast.makeText(SelectionWebActivity.this, "Downloded Success", Toast.LENGTH_SHORT).show();
+	        	dB_LocalDatabaseManager.close();	       	
 				return false;
 			}
         	
