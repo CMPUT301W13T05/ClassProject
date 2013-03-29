@@ -21,5 +21,8 @@ public class UsefulFunctions {
 		}
 		return uniqueList;
 	}
+	public boolean DBexists(Recipe recipe){
+		return true;
+	}
 }                                                                                                                                                                                                                                                                                                                    
 

@@ -359,6 +359,17 @@ public class DatabaseManager {
 			return steps;
 		}
 		
+		public boolean inDB(Recipe recipe){
+			Cursor query_c = null;
+			query_c = db.query("localrecipe", null, "rid="+recipe.getID(), null, null, null, null);
+			if(query_c==null){
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+		
 		
 		
 }
