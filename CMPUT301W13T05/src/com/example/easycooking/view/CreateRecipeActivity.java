@@ -58,8 +58,8 @@ public class CreateRecipeActivity extends Activity {
 			_FROM_WHERE = "MODIFY";
 		}
 		else if (_FROM_WHERE.equals("MODIFY") || _FROM_WHERE.equals("SELECTION") ){
-			//mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 			mrecipe = myapp.get_mrecipe();
+			
 			enter_recipe_name.setText(mrecipe.getName());
 			count_updated.setText(mrecipe.getImages().size() + " uploaded");
 			count_ingredients.setText(mrecipe.getIngredients().size() + " ingredients");
@@ -97,11 +97,7 @@ public class CreateRecipeActivity extends Activity {
 					Toast toast = Toast.makeText(CreateRecipeActivity.this, "Pleas Enter The Recipe Name", Toast.LENGTH_LONG);   
 					toast.show();
 				}
-//				we do not need to check no image
-//				else if (mrecipe.getImages().size() == 0){
-//					Toast toast = Toast.makeText(CreateRecipeActivity.this, "Pleas Upadate The Recipe Picture", Toast.LENGTH_LONG);   
-//					toast.show();
-//				}
+
 				else if (mrecipe.getIngredients().size() == 0){
 					Toast toast = Toast.makeText(CreateRecipeActivity.this, "Pleas Add The Recipe Ingredients", Toast.LENGTH_LONG);   
 					toast.show();
@@ -112,6 +108,27 @@ public class CreateRecipeActivity extends Activity {
 				}
 				else{
 					mrecipe.setName(enter_recipe_name.getText().toString());
+					/**
+					 * check the whether the  recipe is modified by a downloaded recipe
+					 */
+					if (mrecipe.get_download_upload_own() == 100){
+						/**
+						 * give the recipe the new UUID
+						 */
+						UUID uuid = UUID.randomUUID(); 
+						mrecipe.setID(uuid.toString());
+						int i;
+						/**
+						 * set all the images;steps;ingredients belong to 
+						 */
+						for (i=0;i<mrecipe.getImages().size();i++){
+							mrecipe.getImages().get(i).set_image_belongto(mrecipe.getID());
+						}
+						for (i=0;i<mrecipe.getIngredients().size();i++){
+							mrecipe.getIngredients().get(i).set_belongto(mrecipe.getID());
+						}
+						mrecipe.getSteps().set_belong(mrecipe.getID());
+					}
 					/**
 					 * 99 mains the recipe is the own created 
 					 */
@@ -169,7 +186,6 @@ public class CreateRecipeActivity extends Activity {
 				intent.setClass(CreateRecipeActivity.this, ModifyImageActivity.class);			
 				Bundle mbundle = new Bundle();
 				mbundle.putString("FromWhere", _FROM_WHERE);
-				//mbundle.putSerializable("RECIPE_KEY", mrecipe);
 				myapp.setRecipe(mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);
@@ -189,7 +205,6 @@ public class CreateRecipeActivity extends Activity {
 				intent.setClass(CreateRecipeActivity.this, ModifyIngredientsActivity.class); 
 				Bundle mbundle = new Bundle();
 				mbundle.putString("FromWhere", _FROM_WHERE);
-				//mbundle.putSerializable("RECIPE_KEY", mrecipe);
 				myapp.setRecipe(mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);
@@ -210,7 +225,6 @@ public class CreateRecipeActivity extends Activity {
 				Bundle mbundle = new Bundle();
 				intent.setClass(CreateRecipeActivity.this, ModifyStepsActivity.class);	
 				mbundle.putString("FromWhere", _FROM_WHERE);
-				//mbundle.putSerializable("RECIPE_KEY", mrecipe);
 				myapp.setRecipe(mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);

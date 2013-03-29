@@ -1,10 +1,14 @@
 package com.example.easycooking.view;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.example.easycooking.R;
 import com.example.easycooking.application.MyApp;
+import com.example.easycooking.controller.DatabaseManager;
+import com.example.easycooking.controller.EmailController;
 import com.example.easycooking.controller.ImageAdapter;
+import com.example.easycooking.controller.WEBClient;
 import com.example.easycooking.model.GalleryFlow;
 import com.example.easycooking.model.Image;
 import com.example.easycooking.model.Recipe;
@@ -12,11 +16,16 @@ import com.example.easycooking.model.Recipe;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.method.ScrollingMovementMethod;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.app.Activity;
+import android.app.Dialog;
 //import android.view.Menu;
 import android.content.Intent;
 /**
@@ -52,7 +61,6 @@ public class SelectionWebActivity extends Activity {
 		 * get the recipe object from the result view
 		 */
 		mrecipe = myapp.get_mrecipe();
-//		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
 		/**
 		 * set up all the text_view 
 		 */
@@ -99,4 +107,53 @@ public class SelectionWebActivity extends Activity {
 	    System.out.println("run here");
 
 	}
+    public boolean onCreateOptionsMenu(Menu menu) {  
+        // TODO Auto-generated method stub  
+        menu.add(0, 0, 0, "Share");  
+        menu.add(0, 1, 0, "DownLoad");
+        
+        menu.getItem(0).setOnMenuItemClickListener(new OnMenuItemClickListener(){
+
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				// TODO Auto-generated method stub
+				//TOD share
+				EmailController myEmail = new EmailController();
+        		Intent data = null;
+				try {
+					data = myEmail.sentRecipe(mrecipe);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+                startActivity(data); 
+
+				return false;
+			}
+        	
+        });
+        menu.getItem(1).setOnMenuItemClickListener(new OnMenuItemClickListener(){
+
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				// TODO Auto-generated method stub
+				// TODO Check the Recipe whether has been download 
+				DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(SelectionWebActivity.this);
+	        	dB_LocalDatabaseManager.open();
+	        	dB_LocalDatabaseManager.add_recipe(mrecipe);
+	        	if (true){//check
+	        		dB_LocalDatabaseManager.add_recipe(mrecipe);
+	        	}
+	        	if (true){//check
+	        		Toast.makeText(SelectionWebActivity.this, "You have Already Downloaded this Recipe", Toast.LENGTH_SHORT).show();
+	        	}
+	        	dB_LocalDatabaseManager.close();
+	        	Toast.makeText(SelectionWebActivity.this, "Downloded Success", Toast.LENGTH_SHORT).show();
+				return false;
+			}
+        	
+        });
+       
+        return super.onCreateOptionsMenu(menu);
+    }
 }

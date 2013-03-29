@@ -141,14 +141,14 @@ public class ModifyImageActivity extends Activity {
     	//ourBMP = BitmapFactory.decodeFile(image_obj_list.get(image_obj_list.size()-1).get_imageUri());
     	
     	ImageButton old_photo = (ImageButton)findViewById(R.id.imageButton1);
-    	Bitmap thumbnail = ThumbnailUtils.extractThumbnail(originalImage, 420, 480);
-    	old_photo.setImageBitmap(thumbnail);
+    	//Bitmap thumbnail = ThumbnailUtils.extractThumbnail(originalImage, 420, 480);
+    	old_photo.setImageBitmap(originalImage);
     }
 
     public String bitmaptoString(Bitmap bitmap) {
         String string = null;
         ByteArrayOutputStream bStream = new ByteArrayOutputStream();
-        bitmap.compress(CompressFormat.JPEG, 100, bStream);
+        bitmap.compress(CompressFormat.JPEG, 75, bStream);
         byte[] bytes = bStream.toByteArray();
         string = Base64.encodeToString(bytes, Base64.DEFAULT);
         return string;
@@ -184,7 +184,42 @@ public class ModifyImageActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
-            	ourBMP = BitmapFactory.decodeFile(imageFileUri.getPath());
+            	
+            	//ourBMP = decodeBitmapFromFile(imageFileUri.getPath(),500,500);
+            	
+            	float imagew = 300;
+            	float imageh = 300;
+            	 
+            	BitmapFactory.Options bitmapFactoryOptions = new BitmapFactory.Options();
+            	bitmapFactoryOptions.inJustDecodeBounds = true;
+            	ourBMP = BitmapFactory.decodeFile(imageFileUri.getPath(), bitmapFactoryOptions);
+            	 
+            	int yRatio = (int)Math.ceil(bitmapFactoryOptions.outHeight/imageh);
+            	int xRatio = (int)Math.ceil(bitmapFactoryOptions.outWidth/imagew);
+            	 
+            	if (yRatio > 1 || xRatio > 1){
+            	 if (yRatio > xRatio) {
+            	  bitmapFactoryOptions.inSampleSize = yRatio;
+            	  Toast.makeText(this,
+            	    "yRatio = " + String.valueOf(yRatio),
+            	    Toast.LENGTH_LONG).show();
+            	 }
+            	 else {
+            	  bitmapFactoryOptions.inSampleSize = xRatio;
+            	  Toast.makeText(this,
+            	    "xRatio = " + String.valueOf(xRatio),
+            	    Toast.LENGTH_LONG).show();
+            	 }
+            	}
+            	else{
+            	 Toast.makeText(this,
+            	   "inSampleSize = 1",
+            	   Toast.LENGTH_LONG).show();
+            	}
+            	 
+            	bitmapFactoryOptions.inJustDecodeBounds = false;
+            	ourBMP = BitmapFactory.decodeFile(imageFileUri.getPath(), bitmapFactoryOptions);
+            
             	rimages.set_IMAGE_ID(imageFileUri.getPath());
         		rimages.set_image_belongto(mrecipe.getID());
         		rimages.set_imageUri(bitmaptoString(ourBMP));
@@ -199,6 +234,9 @@ public class ModifyImageActivity extends Activity {
             }
         }
     }
+
+
+	
 }
 
 

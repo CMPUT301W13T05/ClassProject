@@ -252,55 +252,7 @@ public class SelectionLocalActivity extends Activity {
     }  
   
   
-//    public boolean onOptionsItemSelected(MenuItem item) {  
-//        // TODO Auto-generated method stub  
-//        switch (item.getItemId()) {  
-//        case 0:
-//        	/**
-//        	 * TODO SHARE 
-//        	 */
-//        	break;
-//        case 1:
-////			WEBClient my_client = new WEBClient();
-////			try {
-////				my_client.UploadRecipe(mrecipe);
-////			} catch (IllegalStateException e) {
-////				// TODO Auto-generated catch block
-////				e.printStackTrace();
-////			} catch (IOException e) {
-////				// TODO Auto-generated catch block
-////				e.printStackTrace();
-////			}
-////			System.out.println("Uploaded");
-//        	break;
-//        case 2:  
-//        	myapp.setRecipe(mrecipe);
-//	        Intent intent = new Intent();
-//	        intent.setClass(SelectionLocalActivity.this, CreateRecipeActivity.class);// should change to the RecipeDetails.java
-//	        //start a add entry activity
-//	        Bundle mbundle = new Bundle();
-//	        mbundle.putString("FromWhere", "SELECTION");
-//			//mbundle.putSerializable("RECIPE_KEY", mrecipe);
-//			intent.putExtras(mbundle);
-//			
-//	        startActivity(intent);
-//	        //close the old activity
-//	        SelectionLocalActivity.this.finish(); 
-//            break;  
-//        case 3:
-//        	DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(this);
-//        	dB_LocalDatabaseManager.open();
-//        	dB_LocalDatabaseManager.delete_recipe(mrecipe);
-//        	dB_LocalDatabaseManager.close();
-//        	Intent intent2 = new Intent();
-//        	intent2.setClass(SelectionLocalActivity.this, MainPageActivity.class);
-//        	startActivity(intent2);
-//	        //close the old activity
-//	        SelectionLocalActivity.this.finish(); 
-//        	break;
-//        }  
-//        return super.onOptionsItemSelected(item);  
-//    }  
+
 	
 
 }

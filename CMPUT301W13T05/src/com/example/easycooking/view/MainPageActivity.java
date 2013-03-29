@@ -357,12 +357,7 @@ public class MainPageActivity extends Activity {
 		Button main_ingredients = (Button) findViewById(R.id.modifyingre);
 		main_ingredients.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
-				int todo = 0;
-				if (todo == 0) {
-					Toast toast = Toast.makeText(MainPageActivity.this, "TODO",
-							Toast.LENGTH_LONG);
-					toast.show();
-				}
+				
 				dB_LocalDatabaseManager.open();
 				ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
 				result_recipe = dB_LocalDatabaseManager
