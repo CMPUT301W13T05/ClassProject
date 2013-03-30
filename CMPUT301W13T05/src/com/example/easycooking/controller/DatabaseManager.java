@@ -373,9 +373,8 @@ public class DatabaseManager {
 		}
 		
 		public Recipe IngredientsOnHand(){
-			Recipe recipe = new Recipe();
-			Cursor my_ingredients = db.query("localrecipe", null, "rid='ingredientsonhand'", null, null, null, null);
-			return new Recipe("ingredientsonhand",null,null,null,null,999);
+			ArrayList<Ingredient> my_ingredients = searchIngredients(null, "ingredientsonhand");
+			return new Recipe("ingredientsonhand",null,null,my_ingredients,null,999);
 		}
 		
 }
