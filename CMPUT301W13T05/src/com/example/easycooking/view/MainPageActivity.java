@@ -360,13 +360,10 @@ public class MainPageActivity extends Activity {
 			public void onClick(View v) {
 				
 				dB_LocalDatabaseManager.open();
-				ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-				result_recipe = dB_LocalDatabaseManager
-						.searchRecipes(null, 999);
-				Recipe mrecipe = result_recipe.get(0);
+				
+				//Recipe mrecipe = dB_LocalDatabaseManager.
 				Intent intent = new Intent();
 				Bundle mbundle = new Bundle();
-				mbundle.putSerializable("RECIPE_KEY", mrecipe);
 				intent.putExtras(mbundle);
 				intent.setClass(MainPageActivity.this,
 						ModifyIngredientsActivity.class);
