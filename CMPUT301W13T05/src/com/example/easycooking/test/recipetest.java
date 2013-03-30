@@ -39,45 +39,44 @@ public class recipetest extends TestCase {
 		    // Test setName of the recipe
 	              
 			 @Test
-					public void testgetName(){				         
+				public void testgetName(){				         
 				        recipe.setName("pizza");
 				        String expect = "pizza";
 				        assertEquals(expect, recipe.getName());
-					}
+				}
 		     
 		   //Test set_download_upload_own and get_download_upload_own
 	          
 			  @Test
-	               public void testget_download_upload_own(){
-	         
-	        	   recipe.set_download_upload_own(0);
-	        	   assertEquals(0, recipe.get_download_upload_own());        	   
-	           }
+	                        public void testget_download_upload_own(){
+	       	        	       recipe.set_download_upload_own(0);
+	        	               assertEquals(0, recipe.get_download_upload_own());        	   
+	                        }
 	        
-			//Test if the getStep runs
+		//Test if the getStep runs
 	          
-			  @Test
-	              public void testgetSteps(){					
+			 @Test
+	                        public void testgetSteps(){					
 					Step step = new Step(1,"112233","make it");
 					recipe.setSteps(step);					       
-	        	   assertEquals(step,recipe.getSteps());      	   
-	           }
+	        	                assertEquals(step,recipe.getSteps());      	   
+	                        }
 	       //Test if there is no image
-	           @Test
-	              public void testgetImages(){  
+	                @Test
+	                        public void testgetImages(){  
 					java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>();
 					recipe.setImages(v2);
 					assertNotNull(recipe.getImages());      	   
-	           }
+	                        }
 	 
 	           
 	      //Test setSteps
-	           @Test
-	              public void teststeps(){
+	               @Test
+	                       public void teststeps(){
 					Step step = new Step(1,"12345","test");              
-	        	    recipe.setSteps(step);
-	        	    assertNotNull(recipe.getSteps());                     
-	            }
+	        	               recipe.setSteps(step);
+	        	               assertNotNull(recipe.getSteps());                     
+	                       }
 	    
 	           
 	    	
