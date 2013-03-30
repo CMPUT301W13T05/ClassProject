@@ -31,6 +31,7 @@ public class MyProfileActivity extends Activity {
 		        	dB_LocalDatabaseManager.open();
 	        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
 	        		result_recipe = dB_LocalDatabaseManager.searchRecipes(null, 99);
+	        		result_recipe.addAll(dB_LocalDatabaseManager.searchRecipes(null, 101));
 	        		dB_LocalDatabaseManager.close();
 	        		if (result_recipe.size()>0){
 		        		Intent intent = new Intent();
@@ -42,7 +43,7 @@ public class MyProfileActivity extends Activity {
 		        		startActivity(intent);
 	        		}
 	        		else{
-	        			Toast toast = Toast.makeText(MyProfileActivity.this, "No Recipe Recored", Toast.LENGTH_LONG);   
+	        			Toast toast = Toast.makeText(MyProfileActivity.this, "No Recipe Recored", Toast.LENGTH_SHORT);   
 						toast.show();
 	        		}
 	        	}
@@ -74,28 +75,45 @@ public class MyProfileActivity extends Activity {
 		Button profile_upload = (Button)findViewById(R.id.upload);
 		profile_upload.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
-//	        		Intent intent = new Intent();
-//	        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
-//	        		//start a add entry activity
-//	        		startActivity(intent);
-//	        		//close the old activity
-//	        		MyProfileActivity.this.finish();
-	        	Toast toast = Toast.makeText(MyProfileActivity.this, "TODO", Toast.LENGTH_LONG);   
-				toast.show();
+	        	dB_LocalDatabaseManager.open();
+        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
+        		result_recipe = dB_LocalDatabaseManager.searchRecipes(null, 101);
+        		dB_LocalDatabaseManager.close();
+        		if (result_recipe.size()>0){
+	        		Intent intent = new Intent();
+	        		Bundle mbundle = new Bundle();
+	        		myapp.setRecipe_list(result_recipe);
+	        		intent.putExtras(mbundle);
+	        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
+	        		startActivity(intent);
+        		}
+        		else{
+        			Toast toast = Toast.makeText(MyProfileActivity.this, "No Recipe Uploaded", Toast.LENGTH_LONG);   
+					toast.show();
+        		}
 	        	}
 	        });
 		// downloaded recipes
 		Button profile_downloaded = (Button)findViewById(R.id.check_download);
 		profile_downloaded.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
-//	        		Intent intent = new Intent();
-//	        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
-//	        		//start a add entry activity
-//	        		startActivity(intent);
-//	        		//close the old activity
-//	        		MyProfileActivity.this.finish();
-	        	Toast toast = Toast.makeText(MyProfileActivity.this, "TODO", Toast.LENGTH_LONG);   
-				toast.show();
+	        	dB_LocalDatabaseManager.open();
+        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
+        		result_recipe = dB_LocalDatabaseManager.searchRecipes(null, 100);
+        		dB_LocalDatabaseManager.close();
+        		if (result_recipe.size()>0){
+	        		Intent intent = new Intent();
+	        		Bundle mbundle = new Bundle();
+	        		//mbundle.putSerializable("RECIPE_RESULT", result_recipe);
+	        		myapp.setRecipe_list(result_recipe);
+	        		intent.putExtras(mbundle);
+	        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
+	        		startActivity(intent);
+        		}
+        		else{
+        			Toast toast = Toast.makeText(MyProfileActivity.this, "No Recipe IN DownLoaded", Toast.LENGTH_LONG);   
+					toast.show();
+        		}
 	        	
 	        	}
 	        });
@@ -115,7 +133,7 @@ public class MyProfileActivity extends Activity {
 		Button profile_share = (Button)findViewById(R.id.share_with_me);
 		profile_share.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
-	        	// to be implemented
+	        	//TODO we need to add a new condition to handle the share conidtion 
 	        	Toast toast = Toast.makeText(MyProfileActivity.this, "TODO", Toast.LENGTH_LONG);   
 				toast.show();
 	        	}

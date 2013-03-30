@@ -191,7 +191,7 @@ public class DatabaseManager {
 			Cursor cursor_d = null;
 			Cursor cursor_a = null;
 			Cursor cursor_b = null;
-			if(condition == -1) {cursor_r = db.query("localrecipe", null, null, null, null, null, null);}//search all local recipes
+			if(condition == -1) {cursor_r = db.query("localrecipe", null, "rid <> 'ingredientsonhand'", null, null, null, null);}//search all local recipes
 			else if(condition == 0) {
 				for(int i = 0; i<var.length;i++){ 
 					cursor_d = db.query("ingredient", null, "name = '"+var[i]+"'", null, null, null, null);
@@ -362,10 +362,12 @@ public class DatabaseManager {
 		public boolean inDB(Recipe recipe){
 			Cursor query_c = null;
 			query_c = db.query("localrecipe", null, "rid='"+recipe.getID()+"'", null, null, null, null);
-			if(query_c==null){
+			//System.out.println(query_c.getString(0)+query_c.getString(1));
+			if(query_c.getCount() <=0){
 				return false;
 			}
 			else{
+				System.out.println("JUMPHERE");
 				return true;
 			}
 		}

@@ -218,7 +218,7 @@ public class SelectionLocalActivity extends Activity {
 				confirm.setContentView(R.layout.confirm_dialog);
 				confirm.setTitle("Notice!");
 				TextView confirm_text = (TextView)confirm.findViewById(R.id.confirm_text);
-				confirm_text.setText("Do you confirm to delete this reciep?");
+				confirm_text.setText("Do you confirm to delete this recipe?");
 				Button confirm_yes = (Button)confirm.findViewById(R.id.Yes);
 				Button confirm_no = (Button)confirm.findViewById(R.id.No);
 				confirm_yes.setOnClickListener(new View.OnClickListener()
@@ -229,6 +229,7 @@ public class SelectionLocalActivity extends Activity {
 			        	dB_LocalDatabaseManager.open();
 			        	dB_LocalDatabaseManager.delete_recipe(mrecipe);
 			        	dB_LocalDatabaseManager.close();
+			        	confirm.dismiss();
 			        	Intent intent = new Intent();
 			        	intent.setClass(SelectionLocalActivity.this, MainPageActivity.class);
 			        	startActivity(intent);

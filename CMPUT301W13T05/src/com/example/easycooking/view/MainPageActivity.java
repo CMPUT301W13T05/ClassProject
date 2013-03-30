@@ -86,6 +86,7 @@ public class MainPageActivity extends Activity {
 		if (intent.ACTION_VIEW.equals(action)) {
 			Gson gson = new Gson();
 			System.out.println("run here get action" + intent.getDataString());
+			//TODO add a toast tell the user will show the imput data
 			try {
 
 				BufferedReader br = new BufferedReader(new FileReader(intent
@@ -404,17 +405,16 @@ public class MainPageActivity extends Activity {
 		}
 
 	};
-
+	/**
+	 * The menu with the button to let the user can jump to 
+	 * the querying ingredients on hand activity.
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_main, menu);
+		menu.add(0, 0, 0,"Query Your Ingredients");
 		return true;
 	}
-	// @Override
-	// //back button pressed
-	// public void onBackPressed() {
-	// return;
-	// }
 
 }

@@ -138,10 +138,19 @@ public class SelectionWebActivity extends Activity {
 			public boolean onMenuItemClick(MenuItem item) {
 				// TODO Auto-generated method stub
 				// TODO Check the Recipe whether has been download 
-				DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(SelectionWebActivity.this);
+				DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(SelectionWebActivity.this);	        	
+	        	mrecipe.set_download_upload_own(100);
 	        	dB_LocalDatabaseManager.open();
-	        	if (dB_LocalDatabaseManager.inDB(mrecipe)){//check
+	        	if (!dB_LocalDatabaseManager.inDB(mrecipe)){//check	        		
 	        		dB_LocalDatabaseManager.add_recipe(mrecipe);
+	        		int i;
+	        		for (i = 0 ; i < mrecipe.getIngredients().size(); i++ ){
+						dB_LocalDatabaseManager.add_ingrdient(mrecipe.getIngredients().get(i));
+					}					
+						dB_LocalDatabaseManager.add_step(mrecipe.getSteps());
+					for (i = 0 ; i < mrecipe.getImages().size(); i++ ){
+						dB_LocalDatabaseManager.add_image(mrecipe.getImages().get(i));
+					}
 	        		Toast.makeText(SelectionWebActivity.this, "Downloaded Success", Toast.LENGTH_SHORT).show();
 	        	}
 	        	else{
