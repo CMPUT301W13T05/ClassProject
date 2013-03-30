@@ -372,6 +372,10 @@ public class DatabaseManager {
 			}
 		}
 		
-		
+		public Recipe IngredientsOnHand(){
+			Recipe recipe = new Recipe();
+			Cursor my_ingredients = db.query("localrecipe", null, "name='ingredientsonhand'", null, null, null, null);
+			return rebuildRecipe(my_ingredients);
+		}
 		
 }
