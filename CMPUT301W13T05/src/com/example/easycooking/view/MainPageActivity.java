@@ -79,6 +79,13 @@ public class MainPageActivity extends Activity {
 		myapp.setRecipe_list(null);
 		final EditText serching_text = (EditText) findViewById(R.id.editText1);
 		/**
+		 * Test
+		 */
+		if (if_on_hand){
+			dB_LocalDatabaseManager.open();
+			serching_text.setText(dB_LocalDatabaseManager.IngredientsOnHand().getIngredients().get(0).get_name());
+		}
+		/**
 		 * import intent json file
 		 */
 		Intent intent = getIntent();
@@ -359,11 +366,13 @@ public class MainPageActivity extends Activity {
 		main_ingredients.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				
-				dB_LocalDatabaseManager.open();
-				
-				//Recipe mrecipe = dB_LocalDatabaseManager.
+				dB_LocalDatabaseManager.open();				
+				Recipe mrecipe = dB_LocalDatabaseManager.IngredientsOnHand();
+				dB_LocalDatabaseManager.close();
+				myapp.setRecipe(mrecipe);
 				Intent intent = new Intent();
 				Bundle mbundle = new Bundle();
+				mbundle.putString("FromWhere", "IngredientOnHand");
 				intent.putExtras(mbundle);
 				intent.setClass(MainPageActivity.this,
 						ModifyIngredientsActivity.class);

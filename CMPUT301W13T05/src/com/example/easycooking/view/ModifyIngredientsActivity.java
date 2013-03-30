@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.example.easycooking.R;
 import com.example.easycooking.application.MyApp;
+import com.example.easycooking.controller.DatabaseManager;
 import com.example.easycooking.model.Ingredient;
 import com.example.easycooking.model.Recipe;
 
@@ -77,7 +78,7 @@ public class ModifyIngredientsActivity extends Activity {
 				new_ingredient.set_belongto(mrecipe.getID());
 				new_ingredient.set_name(ingredient_name.getText().toString());
 				new_ingredient.set_amount(ingredient_amount.getText().toString());
-				if (new_ingredient.get_name().isEmpty()){
+				if (new_ingredient.get_name().isEmpty() ){
 					Toast toast = Toast.makeText(ModifyIngredientsActivity.this, "Pleas Enter The Required Information!", Toast.LENGTH_LONG);   
 					toast.show();
 				}
@@ -115,6 +116,29 @@ public class ModifyIngredientsActivity extends Activity {
 			public void onClick(View v) {
 				if (_CHECK_SAVE_BUTTON.equals("UN_MODIFY")){
 					mrecipe.setIngredients(ingredient_obj_list);
+					/**
+					 * If this is the modifycation of  the ingredientsOnhand
+					 */
+					if (_FROM_WHERE.equals("IngredientOnHand")){
+						DatabaseManager dB_LocalDatabaseManager = DatabaseManager
+								.getInstance(ModifyIngredientsActivity.this);						
+						if (mrecipe.getIngredients().size()>0){
+							dB_LocalDatabaseManager.open();
+							dB_LocalDatabaseManager.delete_ingredient(mrecipe.getID());
+							int i;
+							for (i=0;i<mrecipe.getIngredients().size();i++){
+								dB_LocalDatabaseManager.add_ingrdient(mrecipe.getIngredients().get(i));
+							}
+							dB_LocalDatabaseManager.close();
+						}
+						Intent intent = new Intent();
+						intent.setClass(ModifyIngredientsActivity.this, MainPageActivity.class);// should be jump to the modify 
+						/**
+						 * start a add entry activity
+						 */					
+						startActivity(intent);
+						ModifyIngredientsActivity.this.finish();
+					}					
 					Intent intent = new Intent();
 					intent.setClass(ModifyIngredientsActivity.this, CreateRecipeActivity.class);// should be jump to the modify 
 					/**

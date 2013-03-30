@@ -40,18 +40,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				"rid CHAR," +
 				"image_uri CHAR(100)," +
 				"FOREIGN KEY(rid) REFERENCES localrecipe(rid))");
+		db.execSQL("insert into picture values('ingredientsonhandpicture','ingredientsonhand',null)");
 		db.execSQL("create table step(" +
 				"sid INTEGER PRIMARY KEY AUTOINCREMENT," +
 				"rid CHAR," +
 				"steps TEXT," +
 				"FOREIGN KEY(rid) REFERENCES localrecipe(rid))");
+		db.execSQL("insert into step values(1,'ingredientsonhand',null)");
 		db.execSQL("create table ingredient(" +
 				"iid INTEGER PRIMARY KEY AUTOINCREMENT," +
 				"name TEXT," +
 				"rid CHAR," +
 				"amount CHAR, " +
 				"FOREIGN KEY(rid) REFERENCES localrecipe(rid))");
-	}     
+		db.execSQL("insert into ingredient values(1,null,'ingredientsonhand',null)");
+	}   
 	
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {     
