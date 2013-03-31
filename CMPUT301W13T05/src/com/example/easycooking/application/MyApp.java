@@ -9,12 +9,14 @@ import android.app.Application;
 	public class MyApp extends Application {
         private ArrayList<Recipe> mrecipe_list;
         private Recipe mrecipe;
+        private ArrayList<String> onhand;
         
         @Override
         public void onCreate() {
                 super.onCreate();
-                setRecipe_list(Set_recipe_list); //初始化全局变量
+                setRecipe_list(Set_recipe_list); //
                 setRecipe(Set_recipe);
+                setOnhand(Set_onhand);
         }
         public ArrayList<Recipe> getAll() {
                 return mrecipe_list;
@@ -28,7 +30,14 @@ import android.app.Application;
         public void setRecipe(Recipe recipe){
         		this.mrecipe = recipe;
         }
+        public ArrayList<String> get_onhand(){
+        	return onhand;
+        }
+        public void setOnhand(ArrayList<String> onhand_list){
+        	this.onhand = onhand_list;
+        }
         private static final ArrayList<Recipe> Set_recipe_list = null;
         private static final Recipe Set_recipe = null;
+        private static final ArrayList<String> Set_onhand = null;
 }
 

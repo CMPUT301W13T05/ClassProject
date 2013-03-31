@@ -41,5 +41,6 @@
     <string name="Confirm">Confirm</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="query_ingredients">Query Your Ingreidents</string>
 
 </resources>

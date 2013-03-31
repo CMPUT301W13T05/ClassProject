@@ -114,11 +114,13 @@ public class ModifyIngredientsActivity extends Activity {
 		modify_ingredients_save.setOnClickListener(new Button.OnClickListener() {
 			
 			public void onClick(View v) {
+				System.out.println("here"+_FROM_WHERE);
 				if (_CHECK_SAVE_BUTTON.equals("UN_MODIFY")){
 					mrecipe.setIngredients(ingredient_obj_list);
 					/**
 					 * If this is the modifycation of  the ingredientsOnhand
 					 */
+					System.out.println("here"+_FROM_WHERE);
 					if (_FROM_WHERE.equals("IngredientOnHand")){
 						DatabaseManager dB_LocalDatabaseManager = DatabaseManager
 								.getInstance(ModifyIngredientsActivity.this);						
@@ -138,7 +140,8 @@ public class ModifyIngredientsActivity extends Activity {
 						 */					
 						startActivity(intent);
 						ModifyIngredientsActivity.this.finish();
-					}					
+					}
+					else{
 					Intent intent = new Intent();
 					intent.setClass(ModifyIngredientsActivity.this, CreateRecipeActivity.class);// should be jump to the modify 
 					/**
@@ -146,7 +149,6 @@ public class ModifyIngredientsActivity extends Activity {
 					 */
 					Bundle mbundle = new Bundle();
 					mbundle.putString("FromWhere", _FROM_WHERE);
-					//mbundle.putSerializable("RECIPE_KEY", mrecipe);
 					myapp.setRecipe(mrecipe);
 					intent.putExtras(mbundle);
 					startActivity(intent);
@@ -154,6 +156,7 @@ public class ModifyIngredientsActivity extends Activity {
 					 * close the old activity
 					 */
 					ModifyIngredientsActivity.this.finish();
+					}
 				}
 				else{
 					if(ingredient_name_list.get(_CHECK_POSITION).equals(ingredient_name.getText().toString())){

@@ -44,15 +44,15 @@ public final class R {
         public static final int editText1=0x7f070002;
         public static final int gallery1=0x7f070001;
         public static final int galleryFlow1=0x7f070025;
-        public static final int generate=0x7f070031;
+        public static final int generate=0x7f070032;
         public static final int home=0x7f070010;
         public static final int imageButton1=0x7f070022;
         public static final int imageSave=0x7f070026;
-        public static final int imageView1=0x7f070030;
+        public static final int imageView1=0x7f070031;
         public static final int ingredient_text=0x7f07000c;
         public static final int ingredients_view=0x7f070016;
         public static final int listView1=0x7f07000d;
-        public static final int menu_settings=0x7f070032;
+        public static final int menu_settings=0x7f070033;
         public static final int modifyingre=0x7f070005;
         public static final int photo=0x7f070013;
         public static final int pop_dish=0x7f07001c;
@@ -70,11 +70,12 @@ public final class R {
         public static final int share_with_me=0x7f070028;
         public static final int steps_view=0x7f070017;
         public static final int takephoto=0x7f070023;
+        public static final int textView1=0x7f07002d;
         public static final int textView2=0x7f07000f;
-        public static final int textView4=0x7f07002e;
+        public static final int textView4=0x7f07002f;
         public static final int text_dishname=0x7f070000;
-        public static final int text_ingredients=0x7f07002f;
-        public static final int text_steps=0x7f07002d;
+        public static final int text_ingredients=0x7f070030;
+        public static final int text_steps=0x7f07002e;
         public static final int upload=0x7f070027;
         public static final int uploaded_view=0x7f070015;
     }
@@ -91,10 +92,11 @@ public final class R {
         public static final int my_gallery=0x7f030009;
         public static final int my_profile=0x7f03000a;
         public static final int popwindow=0x7f03000b;
-        public static final int result=0x7f03000c;
-        public static final int selection=0x7f03000d;
-        public static final int selection_web=0x7f03000e;
-        public static final int sharepopwindow=0x7f03000f;
+        public static final int query_ingredients=0x7f03000c;
+        public static final int result=0x7f03000d;
+        public static final int selection=0x7f03000e;
+        public static final int selection_web=0x7f03000f;
+        public static final int sharepopwindow=0x7f030010;
     }
     public static final class menu {
         public static final int activity_itisatry=0x7f060000;
@@ -133,6 +135,7 @@ public final class R {
         public static final int my_upload=0x7f040009;
         public static final int no=0x7f040027;
         public static final int profile=0x7f040005;
+        public static final int query_ingredients=0x7f040028;
         public static final int recipe_share_with_me=0x7f040012;
         public static final int record_recipe=0x7f040007;
         public static final int search=0x7f040004;
