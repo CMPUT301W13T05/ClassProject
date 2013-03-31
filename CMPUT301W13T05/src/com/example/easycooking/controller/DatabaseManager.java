@@ -26,7 +26,6 @@ import android.view.View;
  * owned = 99
  * download = 100
  * upload = 101
- * ingredient on hand = 999 
  * @author  HongZu
  */
 public class DatabaseManager {
@@ -203,8 +202,10 @@ public class DatabaseManager {
 						cursor_r = db.query("localrecipe", null, "rid ='"+cursor_d.getString(2)+"'", null, null, null, null);
 						cursor_r.moveToFirst();
 						while(!cursor_r.isAfterLast()){
-							Recipe recipe = rebuildRecipe(cursor_r);
-							recipes.add(recipe);
+							if(!cursor_r.getString(0).equals("ingredientsonhand")){
+								Recipe recipe = rebuildRecipe(cursor_r);
+								recipes.add(recipe);
+							}
 							cursor_r.moveToNext();
 						}
 						cursor_r.close();
@@ -218,11 +219,10 @@ public class DatabaseManager {
 				for(int i = 0;i<var.length;i++){
 					cursor_r = db.query("localrecipe", null, "name ='"+var[i]+"'", null, null, null, null);
 				}}//search local recipes by name
-			else if(condition == 98){cursor_r = db.query("localrecipe", null, "download_upload_own = 98", null, null, null, null);}
+			else if(condition == 98){cursor_r = db.query("localrecipe", null, "download_upload_own = 98", null, null, null, null);}//search shared to me recipes
 			else if(condition == 99){cursor_r = db.query("localrecipe", null, "download_upload_own = 99", null, null, null, null);}//search owned recipes
 			else if(condition == 100){cursor_r = db.query("localrecipe", null, "download_upload_own = 100", null, null, null, null);}//search upload recipes
 			else if(condition == 101){cursor_r = db.query("localrecipe", null, "download_upload_own = 101", null, null, null, null);}//search download recipes
-			else if(condition == 999){cursor_r = db.query("localrecipe", null, "download_upload_own = 999", null, null, null, null);}//search for ingredients on hand
 			else {
 				for(int i = 0;i<var.length;i++){
 					cursor_a = db.query("ingredient", null, "name = '"+var[i]+"'", null, null, null, null);
@@ -231,8 +231,10 @@ public class DatabaseManager {
 						cursor_r = db.query("localrecipe", null, "rid ='"+cursor_a.getString(2)+"'or name = '"+var[i]+"'", null, null, null, null);
 						cursor_r.moveToFirst();
 						while(!cursor_r.isAfterLast()){
-							Recipe recipe = rebuildRecipe(cursor_r);
-							recipes.add(recipe);
+							if(!cursor_r.getString(0).equals("ingredientsonhand")){
+								Recipe recipe = rebuildRecipe(cursor_r);
+								recipes.add(recipe);
+							}
 							cursor_r.moveToNext();
 						}
 						cursor_r.close();
@@ -244,8 +246,10 @@ public class DatabaseManager {
 						cursor_b = db.query("localrecipe", null, "name = '"+var[i]+"'", null, null, null, null);
 						cursor_b.moveToFirst();
 						while(!cursor_b.isAfterLast()){
-							Recipe recipe = rebuildRecipe(cursor_b);
-							recipes.add(recipe);
+							if(!cursor_b.getString(0).equals("ingredientsonhand")){
+								Recipe recipe = rebuildRecipe(cursor_b);
+								recipes.add(recipe);
+							}
 							cursor_b.moveToNext();
 						}
 						cursor_b.close();
@@ -256,8 +260,10 @@ public class DatabaseManager {
 			if(add_to_list == 0){
 				cursor_r.moveToFirst();
 				while(!cursor_r.isAfterLast()){
-					Recipe recipe = rebuildRecipe(cursor_r);
-					recipes.add(recipe);
+					if(!cursor_r.getString(0).equals("ingredientsonhand")){
+						Recipe recipe = rebuildRecipe(cursor_r);
+						recipes.add(recipe);
+					}
 					cursor_r.moveToNext();
 				}
 				cursor_r.close();

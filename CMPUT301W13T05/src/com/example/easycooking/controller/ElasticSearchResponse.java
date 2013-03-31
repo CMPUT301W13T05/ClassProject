@@ -1,5 +1,11 @@
 package com.example.easycooking.controller;
-
+/**
+ * This class is took from chenlei's ESDemo
+ * address:https://github.com/rayzhangcl/ESDemo
+ * @author HongZu
+ *
+ * @param <T>
+ */
 public class ElasticSearchResponse<T> {
     String _index;
     String _type;

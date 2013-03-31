@@ -30,12 +30,20 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * This class used chenlei's ESClient as reference
- * but some changes applied
- * @author HongZu
+ * This class used chenlei's ESClient as reference but some changes applied
+ * address:https://github.com/rayzhangcl/ESDemo
  *
  */
 
+/**
+ * This class controls the Internet connection of this App
+ * If the activities want to publish, search, download recipe from the Internet,
+ * operations in this class will be called.
+ * This class contains the following operations:
+ * Upload Recipe, display Recipe, search recipes by name, search recipes by ingredients
+ * @author HongZu
+ *
+ */
 public class WEBClient {
 	// Http Connector
 	private HttpClient httpclient = new DefaultHttpClient();
