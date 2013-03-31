@@ -40,8 +40,12 @@ import android.graphics.drawable.Drawable;
 import android.graphics.BitmapFactory;
 
 /**
- * takeAphoto() function is took from Dr. Abram Hindle's code
- * https://github.com/coniewt/CMPUT301W13T12/blob/master/C301W13T12Recipes/src/ca/ualberta/c301w13t12recipes/view/AddPicWizardActivity.java
+ * The main goal of this activity is to take photos and display them
+ * In this page, user have choice of taking photo and saving photo
+ * if user wants to take photo, activity will jump the the camera App which is build in android system
+ * After taking photo, user have the choice to save, retake and cancel.
+ * If user choose ok, image will be saved, retake to re-activate camera, cancel to cancel and go back to App.
+ * Also, in the this page, the most recent image will be displayed on a image button.
  * @author  HongZu
  */
 public class ModifyImageActivity extends Activity {
@@ -89,22 +93,12 @@ public class ModifyImageActivity extends Activity {
                 	}
     				intent.setClass(ModifyImageActivity.this, DisplayModifyImageActivity.class);
     				mbundle.putString("FromWhere", _FROM_WHERE);
-    				//mbundle.putSerializable("RECIPE_KEY", mrecipe);
     				myapp.setRecipe(mrecipe);
     				intent.putExtras(mbundle);
     				startActivity(intent);
-//		        	delete.setImageBitmap(null);
-//		        	image_obj_list.remove(image_obj_list.size()-1);
-//		        	toast.show();
-//		        	if(image_obj_list.isEmpty()) {}
-//		        	else {
-//		        		ourBMP = BitmapFactory.decodeFile(image_obj_list.get(image_obj_list.size()-1).get_imageUri());
-//		        		delete.setImageBitmap(ourBMP);
-//		        		}
             		
             	}
             	/** jump to show all images */
-            	//accept.setEnabled(false);
             }
         }; 
         delete.setOnClickListener(listener);
@@ -126,7 +120,6 @@ public class ModifyImageActivity extends Activity {
 				Bundle mbundle = new Bundle();
 				intent.setClass(ModifyImageActivity.this, CreateRecipeActivity.class);
 				mbundle.putString("FromWhere", _FROM_WHERE);
-				//mbundle.putSerializable("RECIPE_KEY", mrecipe);
 				myapp.setRecipe(mrecipe);
 				intent.putExtras(mbundle);
 				startActivity(intent);
@@ -135,16 +128,20 @@ public class ModifyImageActivity extends Activity {
         }); 
     }
 
-
+	/**
+	 * displayImage() receives a bitmap and sets it on the image button
+	 * @param originalImage
+	 */
     private void displayImage(Bitmap originalImage) {
-    	//FileInputStream fis = new FileInputStream(image_obj_list.get(0).get_imageUri());
-    	//ourBMP = BitmapFactory.decodeFile(image_obj_list.get(image_obj_list.size()-1).get_imageUri());
-    	
     	ImageButton old_photo = (ImageButton)findViewById(R.id.imageButton1);
-    	//Bitmap thumbnail = ThumbnailUtils.extractThumbnail(originalImage, 420, 480);
     	old_photo.setImageBitmap(originalImage);
     }
-
+    /**
+     * bitmaptoString receives a bitmap and convert it to base64 string
+     * then return the string
+     * @param bitmap
+     * @return base64 string
+     */
     public String bitmaptoString(Bitmap bitmap) {
         String string = null;
         ByteArrayOutputStream bStream = new ByteArrayOutputStream();
@@ -153,6 +150,11 @@ public class ModifyImageActivity extends Activity {
         string = Base64.encodeToString(bytes, Base64.DEFAULT);
         return string;
     }
+    /**
+     * stringtoBitmap() receives a string and convert it to a bitmap
+     * @param string
+     * @return bitmap
+     */
     public Bitmap stringtoBitmap(String string) {
         Bitmap bitmap = null;
         try {
@@ -166,6 +168,9 @@ public class ModifyImageActivity extends Activity {
         return bitmap;
     }
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
+    /**
+     * takePhoto() activate the camera App
+     */
     public void takeAPhoto() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         
@@ -181,12 +186,14 @@ public class ModifyImageActivity extends Activity {
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
     }
+    /**
+     * This operation receives the response of the users after taking photo
+     * and do the matching operation, then display the image
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
-            	
-            	//ourBMP = decodeBitmapFromFile(imageFileUri.getPath(),500,500);
-            	
+            	            	
             	float imagew = 300;
             	float imageh = 300;
             	 
