@@ -23,7 +23,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Gravity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -59,7 +61,6 @@ public class MainPageActivity extends Activity {
 				.getInstance(this);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		// myapp = (MyApp)getApplication();
 		/**
 		 * Set up mode
 		 */
@@ -102,6 +103,7 @@ public class MainPageActivity extends Activity {
 				// convert the json string back to object
 				Recipe obj = gson.fromJson(br, Recipe.class);
 				myapp.setRecipe(obj);
+				Toast.makeText(MainPageActivity.this,"Import The Recipe File...", Toast.LENGTH_LONG).show();
 				Intent intent2 = new Intent();
 				Bundle mbundle = new Bundle();
 				intent2.putExtras(mbundle);
@@ -127,7 +129,14 @@ public class MainPageActivity extends Activity {
 				/*
 				 * Complete get ArrayList<Recipe>
 				 */
-				if (serching_text.getText().toString().isEmpty()) {
+				String Temp = "";
+				if (if_on_hand){
+					int i;
+					for (i=0;i<myapp.get_onhand().size();i++){
+						Temp+=myapp.get_onhand().get(i)+",";
+					}
+				}
+				if ((serching_text.getText().toString()+Temp).isEmpty()) {
 					Toast toast = Toast.makeText(MainPageActivity.this,
 							"Empty Input!", Toast.LENGTH_LONG);
 					toast.show();
@@ -384,7 +393,6 @@ public class MainPageActivity extends Activity {
 				/**
 				 * close the old activity
 				 */
-				MainPageActivity.this.finish();
 
 			}
 		});
@@ -398,6 +406,9 @@ public class MainPageActivity extends Activity {
 			menuWindow.dismiss();
 			switch (v.getId()) {
 			case R.id.confirm:
+				if (myapp.get_onhand().size()==0){
+					Toast.makeText(MainPageActivity.this,"None Ingredient", Toast.LENGTH_LONG).show();
+				}
 				if_local = menuWindow.get_local();
 				if_dishname = menuWindow.get_dish();
 				if_internet = menuWindow.get_internet();
@@ -420,6 +431,28 @@ public class MainPageActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		menu.add(0, 0, 0,"Query Your Ingredients");
+		menu.getItem(0).setOnMenuItemClickListener(new OnMenuItemClickListener(){
+
+			@Override
+			public boolean onMenuItemClick(MenuItem arg0) {
+				// TODO Auto-generated method stub
+				 DatabaseManager dB_LocalDatabaseManager = DatabaseManager
+							.getInstance(MainPageActivity.this);
+				dB_LocalDatabaseManager.open();				
+				Recipe mrecipe = dB_LocalDatabaseManager.IngredientsOnHand();
+				dB_LocalDatabaseManager.close();
+				myapp.setRecipe(mrecipe);
+				Intent intent = new Intent();
+				intent.setClass(MainPageActivity.this,
+						QueryMyIngredientsActivity.class);
+				/**
+				 * start a add entry activity
+				 */
+				startActivity(intent);
+				return false;
+			}
+			
+		});
 		return true;
 	}
 

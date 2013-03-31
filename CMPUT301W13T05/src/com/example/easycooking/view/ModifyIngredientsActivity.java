@@ -133,6 +133,7 @@ public class ModifyIngredientsActivity extends Activity {
 							}
 							dB_LocalDatabaseManager.close();
 						}
+						myapp.setOnhand(ingredient_name_list);
 						Intent intent = new Intent();
 						intent.setClass(ModifyIngredientsActivity.this, MainPageActivity.class);// should be jump to the modify 
 						/**
