@@ -6,7 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
+ * DatabaseHelper inheritances from SQLiteOpenHelper. 
  * SQLiteOpenHelper is a helper class to manage database creation and version management
+ * Databasehelper create Four tables:{localrecipe, picture, step, ingredient}
+ * localrecipe table contains recipes' id, name, the information of the recipe is shared, download, upload, or self created
+ * picture table contains images' id, belong to which recipe id, and the base64 image
+ * step table contains steps' id, belong to which recipe id, and the steps string
+ * ingredient contains ingredient's id, belong to which recipe id, the ingredient name, and the amount of this ingredient 
  * @author HongZu
  */
 public class DatabaseHelper extends SQLiteOpenHelper { 

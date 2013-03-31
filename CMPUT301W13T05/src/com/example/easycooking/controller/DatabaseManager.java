@@ -17,9 +17,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.view.View;  
 
 /**
- * This class manages the database that contains the local recipes. 
- * The local recipes contains download, upload recipes. 
+ * This class initial the database.
+ * Also, this class contains many operations that is oriented to the database.
+ * Such as add, edit, delete, search.
  * All interaction with local recipes much go through the DatabaseManager
+ * The values below indicate local recipes' property whether they are download, upload, created, received
+ * share = 98
  * owned = 99
  * download = 100
  * upload = 101
@@ -215,6 +218,7 @@ public class DatabaseManager {
 				for(int i = 0;i<var.length;i++){
 					cursor_r = db.query("localrecipe", null, "name ='"+var[i]+"'", null, null, null, null);
 				}}//search local recipes by name
+			else if(condition == 98){cursor_r = db.query("localrecipe", null, "download_upload_own = 98", null, null, null, null);}
 			else if(condition == 99){cursor_r = db.query("localrecipe", null, "download_upload_own = 99", null, null, null, null);}//search owned recipes
 			else if(condition == 100){cursor_r = db.query("localrecipe", null, "download_upload_own = 100", null, null, null, null);}//search upload recipes
 			else if(condition == 101){cursor_r = db.query("localrecipe", null, "download_upload_own = 101", null, null, null, null);}//search download recipes
@@ -358,7 +362,11 @@ public class DatabaseManager {
 			Step steps = new Step(cursor.getInt(0),cursor.getString(1),cursor.getString(2));
 			return steps;
 		}
-		
+		/**
+		 * inDB(Recipe recipe) receives a recipe object and check if the recipe is in the database already
+		 * @param recipe
+		 * @return boolean
+		 */
 		public boolean inDB(Recipe recipe){
 			Cursor query_c = null;
 			query_c = db.query("localrecipe", null, "rid='"+recipe.getID()+"'", null, null, null, null);
@@ -371,7 +379,10 @@ public class DatabaseManager {
 				return true;
 			}
 		}
-		
+		/**
+		 * IngredientsOnHand() returns  a recipe object that contains the ingredients in my fridge
+		 * @return recipe obejct
+		 */
 		public Recipe IngredientsOnHand(){
 			ArrayList<Ingredient> my_ingredients = searchIngredients(null, "ingredientsonhand");
 			return new Recipe("ingredientsonhand",null,null,my_ingredients,null,999);
