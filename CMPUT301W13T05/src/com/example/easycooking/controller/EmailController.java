@@ -27,7 +27,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * This Class allows user to email recipe.
+ * This class allows the app the share recipe via email Apps
+ * recipes are stored in a .json file as json form
+ * and this .json file will be sent as an attach
  * @author HongZu
  *
  */

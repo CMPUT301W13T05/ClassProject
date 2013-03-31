@@ -5,6 +5,9 @@ import java.io.Serializable;
 /**
  * This class initial a model of image object
  * image object contains image_id, image_belongto, and image_uri
+ * image_id is the id of the image
+ * image_belongto indicates which recipe the image belongs to
+ * image_uri contains the base64 of the image
  * @author HongZu
  *
  */

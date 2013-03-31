@@ -41,6 +41,8 @@ import com.google.gson.reflect.TypeToken;
  * operations in this class will be called.
  * This class contains the following operations:
  * Upload Recipe, display Recipe, search recipes by name, search recipes by ingredients
+ * The web service address is http://cmput301.softwareprocess.es:8080/cmput301w13t05/
+ * recipes are store as json form on the website
  * @author HongZu
  *
  */

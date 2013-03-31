@@ -9,7 +9,9 @@ import com.example.easycooking.model.Step;
 import com.example.easycooking.model.Ingredient;
 
 /**
- * This is a model class for Recipe  it contains id images list and ingredient list and the steps 
+ * This is a model class for Recipe  
+ * it contains recipe id, images list and ingredient list and the steps 
+ * image list and ingredient list are ArrayLists that contain image object and ingredient object
  * @author  Alvin
  */
 public class Recipe implements Serializable {

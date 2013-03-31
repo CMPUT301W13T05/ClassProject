@@ -22,7 +22,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-
+/**
+ * This class is build for gallery view
+ * The class put the images in order on display
+ * @author HongZu
+ *
+ */
 public  class ImageAdapter extends BaseAdapter {     
     int mGalleryItemBackground;     
     private Context mContext;     

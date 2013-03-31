@@ -3,7 +3,7 @@ package com.example.easycooking.model;
 import java.io.Serializable;
 /**
  * This a model object for Step
- * contains a detail as string
+ * contains step_id, which recipe does it belong to and the detail of the step
  * @author Alvin
  *
  */
