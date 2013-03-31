@@ -67,6 +67,7 @@ public class QueryMyIngredientsActivity extends Activity {
 					onhand.add(ingredient_list.get(i));
 				}
 				myapp.setOnhand(onhand);
+				System.out.println(onhand);
 				Intent intent = new Intent();
 				intent.setClass(QueryMyIngredientsActivity.this,
 						MainPageActivity.class);

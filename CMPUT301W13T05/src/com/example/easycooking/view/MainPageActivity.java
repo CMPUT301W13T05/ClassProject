@@ -102,6 +102,7 @@ public class MainPageActivity extends Activity {
 
 				// convert the json string back to object
 				Recipe obj = gson.fromJson(br, Recipe.class);
+				obj.set_download_upload_own(98);
 				myapp.setRecipe(obj);
 				Toast.makeText(MainPageActivity.this,"Import The Recipe File...", Toast.LENGTH_LONG).show();
 				Intent intent2 = new Intent();
@@ -136,6 +137,7 @@ public class MainPageActivity extends Activity {
 						Temp+=myapp.get_onhand().get(i)+",";
 					}
 				}
+				System.out.println(Temp);
 				if ((serching_text.getText().toString()+Temp).isEmpty()) {
 					Toast toast = Toast.makeText(MainPageActivity.this,
 							"Empty Input!", Toast.LENGTH_LONG);
@@ -144,7 +146,7 @@ public class MainPageActivity extends Activity {
 					dB_LocalDatabaseManager.open();
 					WEBClient myClient = new WEBClient();
 					ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-					String[] String_search = serching_text.getText().toString()
+					String[] String_search = (serching_text.getText().toString()+","+Temp)
 							.split(",");
 					if (if_local) {
 						if (if_dishname) {

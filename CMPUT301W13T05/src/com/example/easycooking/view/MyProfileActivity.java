@@ -134,8 +134,23 @@ public class MyProfileActivity extends Activity {
 		profile_share.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
 	        	//TODO we need to add a new condition to handle the share conidtion 
-	        	Toast toast = Toast.makeText(MyProfileActivity.this, "TODO", Toast.LENGTH_LONG);   
-				toast.show();
+	        	dB_LocalDatabaseManager.open();
+        		ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
+        		result_recipe = dB_LocalDatabaseManager.searchRecipes(null, 98);
+        		dB_LocalDatabaseManager.close();
+        		if (result_recipe.size()>0){
+	        		Intent intent = new Intent();
+	        		Bundle mbundle = new Bundle();
+	        		//mbundle.putSerializable("RECIPE_RESULT", result_recipe);
+	        		myapp.setRecipe_list(result_recipe);
+	        		intent.putExtras(mbundle);
+	        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
+	        		startActivity(intent);
+        		}
+        		else{
+        			Toast toast = Toast.makeText(MyProfileActivity.this, "No Recipe Shared with You Saved", Toast.LENGTH_LONG);   
+					toast.show();
+        		}
 	        	}
 	        });
 		

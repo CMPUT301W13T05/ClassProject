@@ -107,10 +107,18 @@ public class SelectionWebActivity extends Activity {
 	    System.out.println("run here");
 
 	}
-    public boolean onCreateOptionsMenu(Menu menu) {  
+    public boolean onPrepareOptionsMenu(Menu menu) {  
         // TODO Auto-generated method stub  
-        menu.add(0, 0, 0, "Share");  
-        menu.add(0, 1, 0, "DownLoad");
+    	menu.clear();
+    	menu.add(0, 0, 0, "Share");
+    	if (mrecipe.get_download_upload_own()==98){
+    		menu.add(0, 1, 0, "Save It");
+    	}
+    	else{
+    		 menu.add(0, 1, 0, "DownLoad");
+    	}
+          
+       
         
         menu.getItem(0).setOnMenuItemClickListener(new OnMenuItemClickListener(){
 

@@ -38,6 +38,6 @@ import android.app.Application;
         }
         private static final ArrayList<Recipe> Set_recipe_list = null;
         private static final Recipe Set_recipe = null;
-        private static final ArrayList<String> Set_onhand = null;
+        private static final ArrayList<String> Set_onhand = new ArrayList<String>();
 }
 
