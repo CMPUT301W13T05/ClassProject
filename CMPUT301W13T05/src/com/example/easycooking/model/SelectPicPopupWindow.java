@@ -24,9 +24,15 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.PopupWindow;
-
+/**
+ * This class is the pop window class that for the custom search
+ * it has five conditions for checking the check box 
+ * when user click the confirm button it should be save all the conditions
+ * and lets up get this variables by the get functions
+ * @author Adonis
+ *
+ */
 public class SelectPicPopupWindow extends PopupWindow {
-
 
 	private static CheckBox check_local,check_internet,check_dish,check_ingredient,check_onhand;
 	private static Button check_confrim;
@@ -70,7 +76,9 @@ public class SelectPicPopupWindow extends PopupWindow {
 		this.setAnimationStyle(R.style.AppBaseTheme);
 		ColorDrawable dw = new ColorDrawable(0xb0000000);
 		this.setBackgroundDrawable(dw);
-		
+		/**
+		 * set the checkedchangelistener for each check box 
+		 */
 		check_local.setOnCheckedChangeListener(new OnCheckedChangeListener(){
 
 			@Override

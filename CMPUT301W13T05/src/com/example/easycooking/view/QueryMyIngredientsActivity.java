@@ -17,11 +17,11 @@ import android.widget.Toast;
 import android.app.Activity;
 import android.content.Intent;
 /**
- * This is a test activity
+ * This activity contains a checkbox listview which contains all the ingredients
+ * on hand. User can query some of them and used them to search
  * @author Alvin Sun
  *
  */
-
 public class QueryMyIngredientsActivity extends Activity {
 	private Recipe recipe_onhand = new Recipe();
 	private static ArrayList<String> ingredient_list = new ArrayList<String>();
@@ -30,6 +30,9 @@ public class QueryMyIngredientsActivity extends Activity {
 	private MyApp myapp;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		/**
+		 * set the oncreate condition
+		 */
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.query_ingredients);
 		myapp = (MyApp)getApplication();
@@ -42,7 +45,11 @@ public class QueryMyIngredientsActivity extends Activity {
 		ingredient_listView.setAdapter(adapter);
 		ingredient_listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE); 
 	}
-
+	/**
+	 * this functions is used to update the ArrayList<string> for setting 
+	 * up the listview adapter
+	 * @param ingredients
+	 */
 	private void update_list(ArrayList<Ingredient> ingredients){
 		
 		ingredient_list.clear();		
@@ -52,7 +59,10 @@ public class QueryMyIngredientsActivity extends Activity {
 		}
 		return;
 	}
-	
+	/**
+	 * Set up and set listener of the items on the 
+	 * menu
+	 */
 	public boolean onCreateOptionsMenu(Menu menu) { 
 		menu.add(0,0,0,"Confirm");
 		menu.getItem(0).setOnMenuItemClickListener(new OnMenuItemClickListener(){

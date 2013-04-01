@@ -35,10 +35,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * This the MainPageActivity.Like the home_page.
- * 
- * Searhing bar and Other functions' entry.
- * 
+ * This is the MainPageActivity.Like the home_page.
+ * Users can create the new recipe, Custom the search method : looking for local,web sources 
+ * Or search by the dish name or the ingredient or the ingredients on hand. 
+ * Users also can define their own ingredients on hand and click the menu item to qurey them
+ * The searching bar is the edittext view to get the user input
+ * User also can jump to the profile activity from here
  * @author Alvin
  * 
  */
@@ -48,8 +50,8 @@ public class MainPageActivity extends Activity {
 	private MyApp myapp;
 	private boolean if_local = true;
 	private boolean if_internet = true;
-	private boolean if_dishname = false;
-	private boolean if_ingredient = false;
+	private boolean if_dishname = true;
+	private boolean if_ingredient = true;
 	private boolean if_on_hand = false;
 	private SelectPicPopupWindow menuWindow;
 
@@ -282,17 +284,12 @@ public class MainPageActivity extends Activity {
 						}
 
 					}
-					/**
-		        		 * 
-		        		 */
 					dB_LocalDatabaseManager.close();
-					
+					/**
+					 * Get the result list and check it whether it is empty
+					 */
 					if (result_recipe.size() > 0) {
 						Intent intent = new Intent();
-						// Bundle mbundle = new Bundle();
-						// mbundle.putSerializable("RECIPE_RESULT",
-						// result_recipe);
-						// intent.putExtras(mbundle);
 						UsefulFunctions so_fun = new UsefulFunctions();
 						result_recipe = so_fun.Unique(result_recipe);
 						myapp.setRecipe_list(result_recipe);
@@ -323,9 +320,7 @@ public class MainPageActivity extends Activity {
 				/**
 				 * close the old activity
 				 */
-				/*
-				 * MainPageActivity.this.finish();
-				 */
+
 			}
 		});
 		/**
@@ -365,9 +360,6 @@ public class MainPageActivity extends Activity {
 						Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
 				menuWindow.setFocusable(true);
 
-				Toast toast = Toast.makeText(MainPageActivity.this, "TODO",
-						Toast.LENGTH_LONG);
-				toast.show();
 			}
 		});
 		/**

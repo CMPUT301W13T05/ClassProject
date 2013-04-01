@@ -10,7 +10,10 @@ import android.widget.Gallery;
 import android.widget.ImageView;
 
 /**
- * This is GalleryFlow 
+ * This is GalleryFlow which is extends the Gallery
+ * It rewrite some functions and add some functions
+ * to create the 3D view and reflection effects also
+ * asign several parameter
  * @author Adonis
  *
  */
@@ -55,17 +58,29 @@ public class GalleryFlow extends Gallery{
     }      
           
           
-    
+    /**
+     * control each pics in the gallery
+     * rewrite the function of gallery
+     * it will calculate the rotation angle by the 
+     * the position of the pics in the gallery
+     */
     protected boolean getChildStaticTransformation(View child, Transformation t) {        
-       
+    	/**
+    	 * get the r of the current view
+    	 */
         final int childCenter = getCenterOfView(child);      
         System.out.println("childCenter："+childCenter);      
         final int childWidth = child.getWidth();      
-         
+         /**
+          * the angle 
+          * and reset the status
+          */
         int rotationAngle = 0;      
        
         t.clear();      
-       
+       /**
+        * this is the type of transformat 
+        */
         t.setTransformationType(Transformation.TYPE_MATRIX);      
 
         if (childCenter == mCoveflowCenter) {      
@@ -85,23 +100,24 @@ public class GalleryFlow extends Gallery{
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {      
         mCoveflowCenter = getCenterOfCoverflow();      
         super.onSizeChanged(w, h, oldw, oldh);      
-    }      
+    }   
+    /**
+     * this function are used to save the affect and set the 
+     * viewpot of the camera by the real height and width of 
+     * the pics
+     * @param child
+     * @param t
+     * @param rotationAngle
+     */
     private void transformImageBitmap(ImageView child, Transformation t,      
                     int rotationAngle) {      
-        //对效果进行保存      
         mCamera.save();      
-        final Matrix imageMatrix = t.getMatrix();      
-      
-        final int imageHeight = child.getLayoutParams().height;      
-  
-        final int imageWidth = child.getLayoutParams().width;      
-              
-     
-        final int rotation = Math.abs(rotationAngle);      
-              
-        
+        final Matrix imageMatrix = t.getMatrix();          
+        final int imageHeight = child.getLayoutParams().height;       
+        final int imageWidth = child.getLayoutParams().width;       
+        final int rotation = Math.abs(rotationAngle);             
         mCamera.translate(0.0f, 0.0f, 100.0f);      
-        // As the angle of the view gets less, zoom in      
+ 
         if (rotation < mMaxRotationAngle) {      
             float zoomAmount = (float) (mMaxZoom + (rotation * 1.5));      
             mCamera.translate(0.0f, 0.0f, zoomAmount);      

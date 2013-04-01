@@ -20,8 +20,12 @@ import android.widget.Toast;
 import android.app.Activity;
 import android.content.Intent;
 /**
- * This is a CreateRcipeActivtiy View class That allow user to  creat a new recipe and upload image, ingredient and steps and insert them into database, and a object Recipe passed  among activities
- * @author  Alvin Sun
+ * This is a CreateRcipeActivtiy View class That allow user to  creat a new recipe and upload image, 
+ * ingredient and steps and insert them into database, and a object Recipe passed  
+ * among activities. The control condition _FROM_WHERE is for checking whether this page
+ * is used for modifying or creating a new recipe. The object recipe are get and set in the 
+ * myapp variable.
+ * @author  Alvin Sun 
  */
 
 public class CreateRecipeActivity extends Activity {
@@ -46,6 +50,9 @@ public class CreateRecipeActivity extends Activity {
 		TextView count_ingredients =(TextView)findViewById(R.id.ingredients_view);
 		TextView count_steps =(TextView)findViewById(R.id.steps_view);
 		Bundle mbundle = getIntent().getExtras();
+		/**
+		 * Check the condition and decide what should we do next
+		 */
 		_FROM_WHERE = mbundle.getString("FromWhere");
 		System.out.println("==============="+_FROM_WHERE);
 		if (_FROM_WHERE.equals("MAIN")){
