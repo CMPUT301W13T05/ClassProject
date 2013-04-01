@@ -52,7 +52,7 @@ public class MainPageActivity extends Activity {
 	private boolean if_internet = true;
 	private boolean if_dishname = true;
 	private boolean if_ingredient = true;
-	private boolean if_on_hand = false;
+	private boolean if_on_hand = true;
 	private SelectPicPopupWindow menuWindow;
 
 	@SuppressWarnings("static-access")
@@ -142,7 +142,8 @@ public class MainPageActivity extends Activity {
 					System.out.println(Temp+"---Tem-----phere");
 				}
 				System.out.println(Temp);
-				if ((serching_text.getText().toString()+Temp).isEmpty()) {
+				serching_text.setText(serching_text.getText().toString()+","+Temp);
+				if ((serching_text.getText().toString()).isEmpty()) {
 					Toast toast = Toast.makeText(MainPageActivity.this,
 							"Empty Input!", Toast.LENGTH_LONG);
 					toast.show();
@@ -151,7 +152,7 @@ public class MainPageActivity extends Activity {
 					WEBClient myClient = new WEBClient();
 					ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
 					System.out.println(serching_text.getText().toString()+","+Temp+"---sarching-----phere");
-					String[] String_search = (serching_text.getText().toString()+","+Temp)
+					String[] String_search = serching_text.getText().toString()
 							.split(",");
 					//System.out.println(String_search[0]+"---1herer1---"+String_search[1]);
 					if (if_local) {
