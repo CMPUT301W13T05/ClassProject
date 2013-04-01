@@ -54,6 +54,7 @@ public class MainPageActivity extends Activity {
 	private boolean if_ingredient = true;
 	private boolean if_on_hand = false;
 	private SelectPicPopupWindow menuWindow;
+	private EditText serching_text;
 
 	@SuppressWarnings("static-access")
 	@Override
@@ -80,15 +81,23 @@ public class MainPageActivity extends Activity {
 		myapp = (MyApp) getApplication();
 		myapp.setRecipe(null);
 		myapp.setRecipe_list(null);
-		final EditText serching_text = (EditText) findViewById(R.id.editText1);
+		if (myapp.get_onhand().size()==0){
+			dB_LocalDatabaseManager.open();				
+			Recipe mrecipe = dB_LocalDatabaseManager.IngredientsOnHand();
+			dB_LocalDatabaseManager.close();
+			if (mrecipe.getIngredients().size()>0){
+				ArrayList<String> Temp = new ArrayList<String>();
+				int i = 0 ;
+				for (i=0;i<mrecipe.getIngredients().size();i++){
+					Temp.add(mrecipe.getIngredients().get(i).get_name());
+				}
+			}
+		}
+		serching_text = (EditText) findViewById(R.id.editText1);
 		/**
 		 * Test
 		 */
-		if (if_on_hand){
-			dB_LocalDatabaseManager.open();
-			serching_text.setText(dB_LocalDatabaseManager.IngredientsOnHand().getIngredients().get(0).get_name());
-			dB_LocalDatabaseManager.close();
-		}
+		
 		/**
 		 * import intent json file
 		 */
@@ -133,16 +142,8 @@ public class MainPageActivity extends Activity {
 				/*
 				 * Complete get ArrayList<Recipe>
 				 */
-				String Temp = "";
-				if (if_on_hand){
-					int i;
-					for (i=0;i<myapp.get_onhand().size();i++){
-						Temp+=myapp.get_onhand().get(i)+",";
-					}
-					System.out.println(Temp+"---Tem-----phere");
-				}
-				System.out.println(Temp);
-				serching_text.setText(serching_text.getText().toString()+","+Temp);
+				
+				
 				if ((serching_text.getText().toString()).isEmpty()) {
 					Toast toast = Toast.makeText(MainPageActivity.this,
 							"Empty Input!", Toast.LENGTH_LONG);
@@ -151,7 +152,7 @@ public class MainPageActivity extends Activity {
 					dB_LocalDatabaseManager.open();
 					WEBClient myClient = new WEBClient();
 					ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
-					System.out.println(serching_text.getText().toString()+","+Temp+"---sarching-----phere");
+					//System.out.println(serching_text.getText().toString()+","+Temp+"---sarching-----phere");
 					String[] String_search = serching_text.getText().toString()
 							.split(",");
 					//System.out.println(String_search[0]+"---1herer1---"+String_search[1]);
@@ -405,14 +406,37 @@ public class MainPageActivity extends Activity {
 			menuWindow.dismiss();
 			switch (v.getId()) {
 			case R.id.confirm:
-				if (myapp.get_onhand().size()==0 && if_on_hand){
-					Toast.makeText(MainPageActivity.this,"None Ingredient", Toast.LENGTH_SHORT).show();
-				}
 				if_local = menuWindow.get_local();
 				if_dishname = menuWindow.get_dish();
 				if_internet = menuWindow.get_internet();
 				if_ingredient = menuWindow.get_ingredient();
 				if_on_hand = menuWindow.get_onhand();
+				if (myapp.get_onhand().size()==0 && if_on_hand){
+					Toast.makeText(MainPageActivity.this,"None Ingredient", Toast.LENGTH_SHORT).show();
+				}
+				if (if_on_hand){
+					DatabaseManager dB_LocalDatabaseManager = DatabaseManager
+							.getInstance(MainPageActivity.this);
+					dB_LocalDatabaseManager.open();
+					String Temp = "";
+					if (if_on_hand){
+						int i;
+						for (i=0;i<myapp.get_onhand().size();i++){
+							Temp+=myapp.get_onhand().get(i)+",";
+						}
+						System.out.println(Temp+"---Tem-----phere");
+					}
+					System.out.println(Temp);
+					if (serching_text.getText().toString().isEmpty()){
+						serching_text.setText(Temp);
+					}
+					else{
+						serching_text.setText(serching_text.getText().toString()+","+Temp);
+					}
+					dB_LocalDatabaseManager.close();
+				}
+			
+				
 				break;
 			default:
 				break;
