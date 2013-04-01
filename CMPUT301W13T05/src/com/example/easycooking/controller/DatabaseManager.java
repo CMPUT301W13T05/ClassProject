@@ -378,10 +378,12 @@ public class DatabaseManager {
 			query_c = db.query("localrecipe", null, "rid='"+recipe.getID()+"'", null, null, null, null);
 			//System.out.println(query_c.getString(0)+query_c.getString(1));
 			if(query_c.getCount() <=0){
+				query_c.close();
 				return false;
 			}
 			else{
 				System.out.println("JUMPHERE");
+				query_c.close();
 				return true;
 			}
 		}

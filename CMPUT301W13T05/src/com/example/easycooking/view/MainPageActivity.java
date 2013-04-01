@@ -87,6 +87,7 @@ public class MainPageActivity extends Activity {
 		if (if_on_hand){
 			dB_LocalDatabaseManager.open();
 			serching_text.setText(dB_LocalDatabaseManager.IngredientsOnHand().getIngredients().get(0).get_name());
+			dB_LocalDatabaseManager.close();
 		}
 		/**
 		 * import intent json file

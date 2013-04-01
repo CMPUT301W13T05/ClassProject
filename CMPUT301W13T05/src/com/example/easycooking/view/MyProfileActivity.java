@@ -15,7 +15,15 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
+/**
+ * This activity is aim to classify all the recipe in the local database
+ * We can get all the recipes we created or modifrid from others
+ * We can get all the recipes we downloaded
+ * We can get all the recipes we have already uploaded
+ * We can get all the recipes in the local database 
+ * @author Adonis
+ *
+ */
 public class MyProfileActivity extends Activity {
 	private MyApp myapp;
 	@Override
@@ -48,7 +56,9 @@ public class MyProfileActivity extends Activity {
 	        		}
 	        	}
 	        });
-		// local recipes
+		/**
+		 * local recipes
+		 */
 		Button profile_local = (Button)findViewById(R.id.checklocal);
 		profile_local.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
@@ -71,7 +81,9 @@ public class MyProfileActivity extends Activity {
         		}
 	        	}
 	        });
-		// upload recipes
+		/**
+		 * upload recipes
+		 */
 		Button profile_upload = (Button)findViewById(R.id.upload);
 		profile_upload.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
@@ -93,7 +105,9 @@ public class MyProfileActivity extends Activity {
         		}
 	        	}
 	        });
-		// downloaded recipes
+		/**
+		 * downloaded recipes
+		 */
 		Button profile_downloaded = (Button)findViewById(R.id.check_download);
 		profile_downloaded.setOnClickListener(new Button.OnClickListener() {
 	        public void onClick(View v) {
@@ -152,12 +166,9 @@ public class MyProfileActivity extends Activity {
 					toast.show();
         		}
 	        	}
-	        });
-		
+	        });		
 	}
-
 	@Override
-	
 	//back button pressed
 	public void onBackPressed() {
 	return;

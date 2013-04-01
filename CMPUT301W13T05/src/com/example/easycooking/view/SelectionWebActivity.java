@@ -155,8 +155,10 @@ public class SelectionWebActivity extends Activity {
 				// TODO Auto-generated method stub
 				// TODO Check the Recipe whether has been download 
 				DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(SelectionWebActivity.this);	        	
-	        	mrecipe.set_download_upload_own(100);
-	        	dB_LocalDatabaseManager.open();
+				if (mrecipe.get_download_upload_own()!=98){
+					mrecipe.set_download_upload_own(100);
+				}
+	        		dB_LocalDatabaseManager.open();
 	        	if (!dB_LocalDatabaseManager.inDB(mrecipe)){//check	        		
 	        		dB_LocalDatabaseManager.add_recipe(mrecipe);
 	        		int i;
@@ -167,12 +169,20 @@ public class SelectionWebActivity extends Activity {
 					for (i = 0 ; i < mrecipe.getImages().size(); i++ ){
 						dB_LocalDatabaseManager.add_image(mrecipe.getImages().get(i));
 					}
-	        		Toast.makeText(SelectionWebActivity.this, "Downloaded Success", Toast.LENGTH_SHORT).show();
+					dB_LocalDatabaseManager.close();
+					Toast.makeText(SelectionWebActivity.this, "Success", Toast.LENGTH_SHORT).show();
+	        		myapp.setRecipe(mrecipe);
+	        		Intent intent = new Intent();
+	        		intent.setClass(SelectionWebActivity.this, SelectionLocalActivity.class);
+					/**
+					 * start a add entry activity
+					 */
+					startActivity(intent);
+					SelectionWebActivity.this.finish();
 	        	}
 	        	else{
 	        		Toast.makeText(SelectionWebActivity.this, "You have alreadly Downloaded", Toast.LENGTH_SHORT).show();
-	        	}
-	        	dB_LocalDatabaseManager.close();	       	
+	        	}	       	
 				return false;
 			}
         	
