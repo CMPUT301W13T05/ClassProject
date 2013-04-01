@@ -4,6 +4,8 @@ package com.example.easycooking.test;
  * @author Chenkun
  *
  */
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import junit.framework.TestCase;
 
@@ -16,67 +18,82 @@ import com.example.easycooking.view.ModifyIngredientsActivity;
 public class ingredienttest extends TestCase {
 
   
-     
-
+	         public Recipe recipe;
+	      
+	@Before
+		 public void setUp()  {
+			  java.util.ArrayList<Ingredient>  v1 = new java.util.ArrayList<Ingredient>(1);
+		          java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>(2);
+		          Step step = new Step();
+	       		  recipe = new Recipe("12345","pizza",v2,v1,step,0);  
+						
+	    	}
 				
-		//test add ingredient
-				@Test
-				 public void testaddIngredients(){
-					java.util.ArrayList<Ingredient>  v1 = new java.util.ArrayList<Ingredient>();
-					java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>();
-					Step step = new Step();
-					Recipe recipe = new Recipe("12345","pizza",v2,v1,step, 0);
-					Ingredient i = new Ingredient("egg", "5", "12345");
-					Ingredient ii = new Ingredient("rice", "5", "12345");
-					boolean exceptionWasCaught = false;
+				
+				
+	@After 
+	         public void tearDown(){
+				
+			   recipe = null;					  
+		}
 
-					try {
-						recipe.getIngredients().add(i);
-						} catch (Exception e) {
-							e.printStackTrace();
-						} 
+	
+	
+	
+				
+//test add ingredient
+	@Test
+		 public void testaddIngredients(){
+		           Ingredient i = new Ingredient("egg", "5", "12345");
+		           Ingredient ii = new Ingredient("rice", "5", "12345");
+			   boolean exceptionWasCaught = false;
+
+		      	  try {
+						
+			    recipe.getIngredients().add(i);
+			      } catch (Exception e) {
+			    e.printStackTrace();
+			      } 
 	    ;
-						try {
-							recipe.getIngredients().add(ii);
-						} catch (Exception e) {
-							exceptionWasCaught = true;
-							e.printStackTrace();
-						}
+			   try {
+				  
+		            recipe.getIngredients().add(ii);
+		        	} catch (Exception e) {
+			    exceptionWasCaught = true;
+		            e.printStackTrace();
+			         }
 
-						assertFalse(exceptionWasCaught);
+			    assertFalse(exceptionWasCaught);
+				
 				}
 				
 				 
 				
   //test if duplicate recipe is added
 
-				@Test
-				public void testAddingDuplicate() {
-					
-					java.util.ArrayList<Ingredient>  v1 = new java.util.ArrayList<Ingredient>();
-					java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>();
-					Step step = new Step();
-					Recipe recipe = new Recipe("33333","pizza",v2,v1,step, 0);
-					Ingredient i = new Ingredient("tomato", "5", "33333");
-					Ingredient ii = new Ingredient("tomato", "5", "33333");
+          @Test
+		public void testAddingDuplicate() {
+
+				Ingredient i = new Ingredient("tomato", "5", "12345");
+				Ingredient ii = new Ingredient("tomato", "5", "12345");
      				recipe.getIngredients().add(i);
      				recipe.getIngredients().add(ii);				
-					assertEquals(2,recipe.getIngredients().size());
+				assertEquals(2,recipe.getIngredients().size());
 				
 					
 			}
 					
 					
 
-	// test create a ingredient			
-				@Test
-				public  void testCreateingredient()
+// test create a ingredient			
+	@Test
+		public  void testCreateingredient()
 				{
-					Ingredient new_ingredient = new Ingredient();
+				Ingredient new_ingredient = new Ingredient();
 
-					new_ingredient.set_belongto("pizza");
-					new_ingredient.set_name("salt");
-					new_ingredient.set_amount("5 scrops");
+				new_ingredient.set_belongto("pizza");
+				new_ingredient.set_name("salt");
+				new_ingredient.set_amount("5 scrops");
 
 			        assertEquals("belongto", "pizza", new_ingredient.get_belongto());
 			        assertEquals("name", "salt", new_ingredient.get_name());
@@ -85,4 +102,5 @@ public class ingredienttest extends TestCase {
 
 
 	}
+
 
