@@ -127,7 +127,7 @@ public class WEBClient {
 		HttpPost searchRequest = new HttpPost("http://cmput301.softwareprocess.es:8080/cmput301w13t05/recipe/_search?pretty=1");
 		for(int i=0; i<keywords.length;i++){
 			
-			String query = 	"{\"query\" : {\"query_string\" : {\"default_field\" : \"ingredients\",\"query\" : \"" + keywords[i] + "\"}}}";
+			String query = 	"{\"query\" : {\"query_string\" : {\"default_field\" : \"ingredients_name\",\"query\" : \"" + keywords[i] + "\"}}}";
 			StringEntity stringentity = new StringEntity(query);
 		
 			searchRequest.setHeader("Accept","application/json");
