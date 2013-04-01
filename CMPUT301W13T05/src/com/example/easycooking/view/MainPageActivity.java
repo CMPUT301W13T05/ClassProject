@@ -52,7 +52,7 @@ public class MainPageActivity extends Activity {
 	private boolean if_internet = true;
 	private boolean if_dishname = true;
 	private boolean if_ingredient = true;
-	private boolean if_on_hand = true;
+	private boolean if_on_hand = false;
 	private SelectPicPopupWindow menuWindow;
 
 	@SuppressWarnings("static-access")
