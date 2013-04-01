@@ -27,11 +27,11 @@ public class LocalDBtest {
 
 
 		/* Assertions */
-		// A book must be equal to itself
+		// A recipe must be equal to itself
 		assertTrue(book1.equals(book1));
 
 
-		// Books with different isbn are not equal
+		// recipes with different id are not equal
 		assertFalse(book1.equals(book2));
 	}
 
