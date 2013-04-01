@@ -30,6 +30,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.app.Activity;
 import android.app.Dialog;
 //import android.view.Menu;
@@ -153,7 +154,15 @@ public class SelectionLocalActivity extends Activity {
 			@Override
 			public boolean onMenuItemClick(MenuItem item) {
 				// TODO Auto-generated method stub
+				if (mrecipe.get_download_upload_own() != 99){
+					Toast.makeText(SelectionLocalActivity.this, "You cannot Upload Not Own Recipe", Toast.LENGTH_SHORT).show();
+					return false;
+				}
 				mrecipe.set_download_upload_own(101);
+				DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(SelectionLocalActivity.this);
+	        	dB_LocalDatabaseManager.open();
+	        	dB_LocalDatabaseManager.update_recipe(mrecipe);
+	        	dB_LocalDatabaseManager.close();
 				WEBClient my_client = new WEBClient();
 				try {
 					my_client.UploadRecipe(mrecipe);
@@ -164,7 +173,7 @@ public class SelectionLocalActivity extends Activity {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
+				Toast.makeText(SelectionLocalActivity.this, "Success", Toast.LENGTH_SHORT).show();
 				return false;
 			}
         	
