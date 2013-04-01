@@ -23,8 +23,12 @@ import android.widget.ListView;
 
 /**
  * This is the View class that show all the recipe with the recipe name By the
- * given ArrayList of Recipe object
- * 
+ * given ArrayList of Recipe object.
+ * The local recipe will have the prefix LOCAL-
+ * The Internet recipe will have the prefix WEB--
+ * Different source recipes will jump to  the different details activity (Just by clicking the item)
+ * The menu item can switch the mode between only showing the Recipe has images and showing all
+ * the recipes.
  * @author Alvin
  * 
  */
@@ -86,10 +90,6 @@ public class RecipeResultActivity extends Activity {
 							 * start a add entry activity
 							 */
 							myapp.setRecipe(choosen_recipe);
-							// Bundle mbundle = new Bundle();
-							// mbundle.putSerializable("RECIPE_KEY",
-							// choosen_recipe);
-							// intent.putExtras(mbundle);
 							startActivity(intent);
 						}
 					}
@@ -102,10 +102,8 @@ public class RecipeResultActivity extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent();
 				intent.setClass(RecipeResultActivity.this,
-						MainPageActivity.class);
-				// start a add entry activity
-				startActivity(intent);
-				// close the old activity
+						MainPageActivity.class);				
+				startActivity(intent);				
 				RecipeResultActivity.this.finish();
 			}
 		});

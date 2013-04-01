@@ -29,7 +29,10 @@ import android.app.Dialog;
 //import android.view.Menu;
 import android.content.Intent;
 /**
- * TODO Implemented
+ * This activity is used to show the web source recipe 
+ * It displays the images,ingredients and the steps
+ * User can download this recipe or share this recipe by the 
+ * mail application
  * @author Alvin
  *
  */
@@ -95,7 +98,6 @@ public class SelectionWebActivity extends Activity {
 	    	no_image.setVisibility(0);
 	    	no_image.setFocusable(true);
 	    	System.out.println("No image herr");
-			//galleryFlow.setBackgroundDrawable(R.drawable.noimage);
 		}
 	    else{
 	    	no_image.setFocusable(false);
@@ -119,7 +121,9 @@ public class SelectionWebActivity extends Activity {
     	}
           
        
-        
+        /**
+         * The share button
+         */
         menu.getItem(0).setOnMenuItemClickListener(new OnMenuItemClickListener(){
 
 			@Override
@@ -140,6 +144,10 @@ public class SelectionWebActivity extends Activity {
 			}
         	
         });
+        /**
+         * the save it: if the recipe is import from a file
+         * download it: if the recipe is a web source recipe
+         */
         menu.getItem(1).setOnMenuItemClickListener(new OnMenuItemClickListener(){
 
 			@Override

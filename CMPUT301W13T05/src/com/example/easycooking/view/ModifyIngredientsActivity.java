@@ -20,7 +20,8 @@ import android.app.Activity;
 //import android.view.Menu;
 import android.content.Intent;
 /**
- * This is the ModifyIngredientsActivity View It let User add the ingredents and set amount also let user to modify an exist recipes' ingredients
+ * This is the ModifyIngredientsActivity View It let User add the ingredents and set amount
+ * also let user to modify an exist recipes' ingredients.
  * @author  Alvin
  */
 public class ModifyIngredientsActivity extends Activity {

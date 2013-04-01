@@ -36,7 +36,10 @@ import android.app.Dialog;
 import android.content.Intent;
 
 /**
- * TODO Implemented
+ * This activity is a local recipe details show
+ * User can see all the images, ingredients, steps in this pages
+ * On the menu users are allowed to modify this recipe,share this recipe,upload this recipe,
+ * And delete this recipe
  * @author Alvin
  *
  */
@@ -67,7 +70,7 @@ public class SelectionLocalActivity extends Activity {
 		 * get the recipe object from the result view
 		 */
 		mrecipe = myapp.get_mrecipe();
-//		mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");
+
 		/**
 		 * set up all the text_view 
 		 */
@@ -88,8 +91,7 @@ public class SelectionLocalActivity extends Activity {
 		/**
 		 * set up gallery
 		 */
-		
-		
+
 		image_list = mrecipe.getImages();
 		final ImageAdapter adapter = new ImageAdapter(SelectionLocalActivity.this, image_list); 
 		adapter.createReflectedImages();
@@ -102,7 +104,6 @@ public class SelectionLocalActivity extends Activity {
 	    	no_image.setVisibility(0);
 	    	no_image.setFocusable(true);
 	    	System.out.println("No image herr");
-			//galleryFlow.setBackgroundDrawable(R.drawable.noimage);
 		}
 	    else{
 	    	no_image.setFocusable(false);
@@ -114,31 +115,7 @@ public class SelectionLocalActivity extends Activity {
 	    System.out.println("run here");
 
 	}
-	private Recipe initializeRecipe() {
-		Recipe r = new Recipe();
-		Ingredient in = new Ingredient();
-		Step s = new Step();
-		Image im = new Image();
-		r.setID("999");
-		r.setName("Fried egg");
-		ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
-		in.set_name("egg");
-		in.set_amount("1");
-		in.set_belongto("999");
-		ingredients.add(in);
-		r.setIngredients(ingredients);
-		s.set_belong("999");
-		s.set_detail("fry the egg");
-		r.setSteps(s);
-		r.setID("1");
-		ArrayList<Image> images = new ArrayList<Image>();
-		im.set_imageUri("0101111011100011010111101110001101011110111000110101111011100011");
-		im.set_image_belongto("999");
-		im.set_IMAGE_ID("1");
-		images.add(im);
-		r.setImages(images);
-		return r;
-	}
+
 	@Override  
     public boolean onCreateOptionsMenu(Menu menu) {  
         // TODO Auto-generated method stub  
@@ -147,7 +124,9 @@ public class SelectionLocalActivity extends Activity {
         menu.add(0, 2, 0, "Modify");
         menu.add(0, 3, 0, "Delete");
         menu.getItem(0).setOnMenuItemClickListener(new OnMenuItemClickListener(){
-
+        	/**
+        	 * link to the email app to share the .json file
+        	 */
 			@Override
 			public boolean onMenuItemClick(MenuItem item) {
 				// TODO Auto-generated method stub
@@ -166,6 +145,9 @@ public class SelectionLocalActivity extends Activity {
 			}
         	
         });
+        /**
+         * Upload this recipe
+         */
         menu.getItem(1).setOnMenuItemClickListener(new OnMenuItemClickListener(){
 
 			@Override
@@ -187,6 +169,9 @@ public class SelectionLocalActivity extends Activity {
 			}
         	
         });
+        /**
+         * Modify This Recipe
+         */
         menu.getItem(2).setOnMenuItemClickListener(new OnMenuItemClickListener(){
 			@Override
 			public boolean onMenuItemClick(MenuItem arg0) {
@@ -206,7 +191,10 @@ public class SelectionLocalActivity extends Activity {
 			}
 			
         });
-       
+        /**
+         * Give a dialog confirm view
+         * and delete the recipe from the database
+         */
         menu.getItem(3).setOnMenuItemClickListener(new OnMenuItemClickListener(){
 			@Override
 			public boolean onMenuItemClick(MenuItem arg0) {
@@ -221,6 +209,9 @@ public class SelectionLocalActivity extends Activity {
 				confirm_text.setText("Do you confirm to delete this recipe?");
 				Button confirm_yes = (Button)confirm.findViewById(R.id.Yes);
 				Button confirm_no = (Button)confirm.findViewById(R.id.No);
+				/**
+				 * Confirm click
+				 */
 				confirm_yes.setOnClickListener(new View.OnClickListener()
 				{
 					public void onClick(View v)
@@ -233,10 +224,12 @@ public class SelectionLocalActivity extends Activity {
 			        	Intent intent = new Intent();
 			        	intent.setClass(SelectionLocalActivity.this, MainPageActivity.class);
 			        	startActivity(intent);
-				        //close the old activity
 				        SelectionLocalActivity.this.finish(); 
 					}
 				});
+				/**
+				 * cancle
+				 */
 				confirm_no.setOnClickListener(new View.OnClickListener()
 				{
 					public void onClick(View v)

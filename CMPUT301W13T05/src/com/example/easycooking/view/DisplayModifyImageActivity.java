@@ -18,12 +18,15 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import android.app.Activity;
 import android.content.Intent;
+
 /**
- * This is a test activity
- * @author Alvin Sun
+ * This activity contains a galleryflow which is rebuild by 
+ * myself. Users can review all the pictures here with the 3d View
+ * and can chosen by single click the image and can delete it 
+ * finally users can save the modification
+ * @author Adonis
  *
  */
-
 public class DisplayModifyImageActivity extends Activity {
 	private static Recipe mrecipe = new Recipe();
 	private static String _FROM_WHERE = "";
