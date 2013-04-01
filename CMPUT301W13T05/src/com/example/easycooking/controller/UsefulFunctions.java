@@ -48,7 +48,6 @@ public class UsefulFunctions {
 	 */
 	public String saveInJason(Recipe recipe) throws IOException{
 		String Json = gson.toJson(recipe);
-    	Intent intent = new Intent(Intent.ACTION_SEND);
     	
     	String folder = Environment.getExternalStorageDirectory().getAbsolutePath() + "/cachedrecipes";
         File folderF = new File(folder);
