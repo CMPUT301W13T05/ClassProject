@@ -483,19 +483,24 @@ public class MainPageActivity extends Activity {
 				DatabaseManager dB_LocalDatabaseManager = DatabaseManager
 							.getInstance(MainPageActivity.this);
 				dB_LocalDatabaseManager.open();	
-				if (dB_LocalDatabaseManager.cachedRecipe().size() == 0){
-					Toast.makeText(MainPageActivity.this,"None History Recipe Cached", Toast.LENGTH_SHORT).show();
-				}
-				else{
-					myapp.setRecipe_list(dB_LocalDatabaseManager.cachedRecipe());
-					dB_LocalDatabaseManager.close();
-					Intent intent = new Intent();
-					intent.setClass(MainPageActivity.this,
-							RecipeResultActivity.class);
-					/**
-					 * start a add entry activity
-					 */
-					startActivity(intent);
+				try {
+					if (dB_LocalDatabaseManager.cachedRecipe().size() == 0){
+						Toast.makeText(MainPageActivity.this,"None History Recipe Cached", Toast.LENGTH_SHORT).show();
+					}
+					else{
+						myapp.setRecipe_list(dB_LocalDatabaseManager.cachedRecipe());
+						dB_LocalDatabaseManager.close();
+						Intent intent = new Intent();
+						intent.setClass(MainPageActivity.this,
+								RecipeResultActivity.class);
+						/**
+						 * start a add entry activity
+						 */
+						startActivity(intent);
+					}
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				dB_LocalDatabaseManager.close();
 				

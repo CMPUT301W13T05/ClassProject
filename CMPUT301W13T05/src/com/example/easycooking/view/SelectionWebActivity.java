@@ -66,7 +66,12 @@ public class SelectionWebActivity extends Activity {
 		mrecipe = myapp.get_mrecipe();
 		DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(SelectionWebActivity.this);
 		dB_LocalDatabaseManager.open();
-		dB_LocalDatabaseManager.addCacheRecipe(mrecipe);
+		try {
+			dB_LocalDatabaseManager.addCacheRecipe(mrecipe);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		dB_LocalDatabaseManager.close();
 		/**
 		 * set up all the text_view 
