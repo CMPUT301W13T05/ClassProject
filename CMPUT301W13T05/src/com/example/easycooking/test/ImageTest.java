@@ -7,14 +7,29 @@ package com.example.easycooking.test;
 import static org.junit.Assert.*;
 import com.example.easycooking.model. *;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class ImageTest {
 
+	Image image;
+	
+	@Before
+	       public void setUp()  {
+		 	image = new Image();
+              	}
+
+
+
+        @After 
+                public void tearDown(){
+		   image = null;					  
+        	}
   // test whether create image is successful or not 
-	@Test
-	public void CreateImageTest() {
-		Image image = new Image();
+    	@Test
+        	public void CreateImageTest() {
+		
 	//	java.util.ArrayList<Ingredient>  v1 = new java.util.ArrayList<Ingredient>();
 	//	java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>();
 	//	Step step = new Step();
