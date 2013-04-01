@@ -57,6 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				"rid CHAR," +
 				"amount CHAR, " +
 				"FOREIGN KEY(rid) REFERENCES localrecipe(rid))");
+		db.execSQL("create table cachedrecipe(rid CHAR PROMARY KEY, FOREIGN KEY(rid) REFERENCES localrecipe(rid))");
 	}   
 	
 	@Override

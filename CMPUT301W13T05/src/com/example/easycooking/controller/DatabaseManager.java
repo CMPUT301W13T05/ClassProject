@@ -382,7 +382,7 @@ public class DatabaseManager {
 				return false;
 			}
 			else{
-				System.out.println("JUMPHERE");
+				//System.out.println("JUMPHERE");
 				query_c.close();
 				return true;
 			}
@@ -394,6 +394,91 @@ public class DatabaseManager {
 		public Recipe IngredientsOnHand(){
 			ArrayList<Ingredient> my_ingredients = searchIngredients(null, "ingredientsonhand");
 			return new Recipe("ingredientsonhand",null,null,my_ingredients,null,999);
+		}
+		/**
+		 * This operation checks if the cachedrecipe table contain more than ten recipes
+		 * @return true for more than 10 recipes, false otherwise
+		 */
+		public boolean greaterThanTen(){
+			Cursor cursor = db.query("cachedrecipe", null, null, null, null, null, null);
+			if(cursor.getCount()>11){
+				cursor.close();
+				return true;
+			}
+			else{
+				cursor.close();
+				return false;
+			}
+			
+		}
+		/**
+		 * This operation deletes the cached recipe from database
+		 * @param rid
+		 */
+		public void deleteCacheRecipe(String rid){
+			delete_images(rid);
+			delete_ingredient(rid);
+			delete_steps(rid);
+			db.delete("cachedrecipe", "rid = '"+rid+"'", null);
+			db.delete("localrecipe","rid ='" + rid+"'", null);
+		}
+		/**
+		 * This operation checks if the recipe is cached already
+		 * @param recipe
+		 * @return boolean
+		 */
+		public boolean inCache(Recipe recipe){
+			Cursor query_c = null;
+			query_c = db.query("cachedrecipe", null, "rid='"+recipe.getID()+"'", null, null, null, null);
+			if(query_c.getCount() <=0){
+				query_c.close();
+				return false;
+			}
+			else{
+				query_c.close();
+				return true;
+			}
+		}
+		/**
+		 * This operation add cached recipe into database
+		 * @param recipe
+		 */
+		public void addCacheRecipe(Recipe recipe){
+			if(greaterThanTen()){
+				Cursor first_row = db.query("cachedrecipe", null, null, null, null, null, null);
+				first_row.moveToFirst();
+				deleteCacheRecipe(first_row.getString(0));
+				first_row.close();
+			}
+			if(!inCache(recipe)){
+				add_recipe(recipe);
+				add_step(recipe.getSteps());
+				for(int i = 0;i<recipe.getImages().size();i++){
+					add_image(recipe.getImages().get(i));
+				}
+				for(int j = 0;j<recipe.getIngredients().size();j++){
+					add_ingrdient(recipe.getIngredients().get(j));
+				}
+				ContentValues values = new ContentValues();
+				values.put("rid", recipe.getID());
+				db.insert("cachedrecipe", null, values);
+			}
+		}
+		/**
+		 * This operation returns all cached recipes in the database
+		 * @return ArrayList<Recipe>
+		 */
+		public ArrayList<Recipe> cachedRecipe(){
+			ArrayList<Recipe> cache = new ArrayList<Recipe>();
+			Cursor history = db.query("cachedrecipe", null, null, null, null, null, null);
+			history.moveToFirst();
+			while(!history.isAfterLast()){
+				Cursor cursor_r = db.query("localrecipe", null, "rid = '"+history.getString(0)+"'", null, null, null, null);
+				Recipe recipe = rebuildRecipe(cursor_r);
+				cache.add(recipe);
+			}
+			history.close();
+			return cache;
 		}
 		
 }
