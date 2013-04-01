@@ -69,10 +69,20 @@ public class UsefulFunctions {
 	    
 	    return jsonFilePath;
 	}
+	/**
+	 * delete the given file
+	 * @param path
+	 */
 	public void deleteFile(String path){
 		File temp = new File(path);
 		temp.delete();
 	}
+	/**
+	 * read the given file and convert to recipe object
+	 * @param path
+	 * @return recipe object
+	 * @throws IOException
+	 */
 	public Recipe getJsonFile(String path) throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader(path));
 		Recipe recipe = gson.fromJson(br, Recipe.class);
