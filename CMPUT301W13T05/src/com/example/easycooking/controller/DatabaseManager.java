@@ -1,6 +1,7 @@
 package com.example.easycooking.controller;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.example.easycooking.model.Image;
@@ -418,12 +419,10 @@ public class DatabaseManager {
 		 * This operation deletes the cached recipe from database
 		 * @param rid
 		 */
-		public void deleteCacheRecipe(String rid){
-			delete_images(rid);
-			delete_ingredient(rid);
-			delete_steps(rid);
+		public void deleteCacheRecipe(String rid,String path){
+			UsefulFunctions func = new UsefulFunctions();
+			func.deleteFile(path);
 			db.delete("cachedrecipe", "rid = '"+rid+"'", null);
-			db.delete("localrecipe","rid ='" + rid+"'", null);
 		}
 		/**
 		 * This operation checks if the recipe is cached already
@@ -445,40 +444,38 @@ public class DatabaseManager {
 		/**
 		 * This operation add cached recipe into database
 		 * @param recipe
+		 * @throws IOException 
 		 */
-		public void addCacheRecipe(Recipe recipe){
+		public void addCacheRecipe(Recipe recipe) throws IOException{
 			if(greaterThanTen()){
 				Cursor first_row = db.query("cachedrecipe", null, null, null, null, null, null);
 				first_row.moveToFirst();
-				deleteCacheRecipe(first_row.getString(0));
+				deleteCacheRecipe(first_row.getString(0),first_row.getString(1));
 				first_row.close();
 			}
-			if(!inCache(recipe)&&!inDB(recipe)){
-				add_recipe(recipe);
-				add_step(recipe.getSteps());
-				for(int i = 0;i<recipe.getImages().size();i++){
-					add_image(recipe.getImages().get(i));
-				}
-				for(int j = 0;j<recipe.getIngredients().size();j++){
-					add_ingrdient(recipe.getIngredients().get(j));
-				}
+			if(!inCache(recipe)){
+				UsefulFunctions uf = new UsefulFunctions();
+				String path = uf.saveInJason(recipe);
 				ContentValues values = new ContentValues();
 				values.put("rid", recipe.getID());
+				values.put("path", path);
 				db.insert("cachedrecipe", null, values);
 			}
 		}
 		/**
 		 * This operation returns all cached recipes in the database
 		 * @return ArrayList<Recipe>
+		 * @throws IOException 
 		 */
-		public ArrayList<Recipe> cachedRecipe(){
+		public ArrayList<Recipe> cachedRecipe() throws IOException{
+			UsefulFunctions uf = new UsefulFunctions();
 			ArrayList<Recipe> cache = new ArrayList<Recipe>();
 			Cursor history = db.query("cachedrecipe", null, null, null, null, null, null);
 			history.moveToFirst();
-			System.out.print(history.getString(0));
+			System.out.println("This line is reached!!!!!!!!!!!!!!!!");
+			System.out.println(history.getString(0));
 			while(!history.isAfterLast()){
-				Cursor cursor_r = db.query("localrecipe", null, "rid = '"+history.getString(0)+"'", null, null, null, null);
-				Recipe recipe = rebuildRecipe(cursor_r);
+				Recipe recipe = uf.getJsonFile(history.getString(1));
 				cache.add(recipe);
 			}
 			history.close();
