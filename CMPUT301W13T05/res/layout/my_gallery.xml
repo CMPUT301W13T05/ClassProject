@@ -13,6 +13,15 @@
         android:layout_centerHorizontal="true" />
 
     <ImageButton
+        android:id="@+id/imageSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="59dp"
+        android:src="@drawable/save" />
+
+    <ImageButton
         android:id="@+id/imageButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,14 +29,5 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="62dp"
         android:src="@drawable/gar" />
-
-    <ImageButton
-        android:id="@+id/imageSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageButton1"
-        android:layout_marginLeft="55dp"
-        android:layout_toRightOf="@+id/imageButton1"
-        android:src="@drawable/save" />
 
 </RelativeLayout>

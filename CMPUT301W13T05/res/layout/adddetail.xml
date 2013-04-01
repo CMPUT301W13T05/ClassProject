@@ -17,26 +17,6 @@
       
         android:text="@string/Add" />
 
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="103dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/add"
-        android:layout_marginLeft="4dp"
-        android:layout_toRightOf="@+id/save"
-      
-        android:text="@string/Delete" />
-
-    <Button
-        android:id="@+id/save"
-        android:layout_width="103dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/add"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/add"
-     
-        android:text="@string/Save" />
-
     <TextView
         android:id="@+id/text_dishname"
         android:layout_width="wrap_content"
@@ -89,5 +69,22 @@
         android:layout_toLeftOf="@+id/ingredient_text"
         android:text="Amount:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/recipe_save"
+        android:layout_width="103dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/text_dishname"
+        android:layout_centerHorizontal="true"
+        android:text="@string/Save" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="103dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/recipe_save"
+        android:layout_alignBottom="@+id/recipe_save"
+        android:layout_alignParentRight="true"
+        android:text="@string/Delete" />
 
 </RelativeLayout>

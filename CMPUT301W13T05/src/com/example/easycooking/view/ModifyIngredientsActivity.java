@@ -49,7 +49,7 @@ public class ModifyIngredientsActivity extends Activity {
 		final EditText ingredient_name = (EditText)findViewById(R.id.ingredient_text);
 		final EditText ingredient_amount = (EditText)findViewById(R.id.amount_Text);
 		final ListView ingredient_listView= (ListView) findViewById(R.id.listView1);
-		final Button modify_ingredients_save = (Button)findViewById(R.id.save);
+		final Button modify_ingredients_save = (Button)findViewById(R.id.recipe_save);
 		final Button modify_ingredients_add = (Button)findViewById(R.id.add);
 		final Button modify_ingredients_delete = (Button)findViewById(R.id.delete);
 		Bundle mbundle = getIntent().getExtras();

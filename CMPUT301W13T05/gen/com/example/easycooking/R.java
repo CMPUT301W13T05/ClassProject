@@ -31,7 +31,7 @@ public final class R {
         public static final int RelativeLayout1=0x7f070008;
         public static final int Yes=0x7f070020;
         public static final int add=0x7f070009;
-        public static final int amount_Text=0x7f07000e;
+        public static final int amount_Text=0x7f07000c;
         public static final int backtomain=0x7f070029;
         public static final int check_download=0x7f07002a;
         public static final int checklocal=0x7f07002b;
@@ -39,7 +39,7 @@ public final class R {
         public static final int confirm_text=0x7f07001f;
         public static final int continue_to=0x7f070024;
         public static final int creat=0x7f070003;
-        public static final int delete=0x7f07000a;
+        public static final int delete=0x7f07000f;
         public static final int description=0x7f070011;
         public static final int editText1=0x7f070002;
         public static final int gallery1=0x7f070001;
@@ -49,9 +49,9 @@ public final class R {
         public static final int imageButton1=0x7f070022;
         public static final int imageSave=0x7f070026;
         public static final int imageView1=0x7f070031;
-        public static final int ingredient_text=0x7f07000c;
+        public static final int ingredient_text=0x7f07000a;
         public static final int ingredients_view=0x7f070016;
-        public static final int listView1=0x7f07000d;
+        public static final int listView1=0x7f07000b;
         public static final int menu_settings=0x7f070033;
         public static final int modifyingre=0x7f070005;
         public static final int photo=0x7f070013;
@@ -63,15 +63,15 @@ public final class R {
         public static final int pop_onhand=0x7f07001b;
         public static final int profile=0x7f070006;
         public static final int recipe_name=0x7f070014;
+        public static final int recipe_save=0x7f07000e;
         public static final int record=0x7f07002c;
-        public static final int save=0x7f07000b;
         public static final int search=0x7f070007;
         public static final int setup_search=0x7f070004;
         public static final int share_with_me=0x7f070028;
         public static final int steps_view=0x7f070017;
         public static final int takephoto=0x7f070023;
         public static final int textView1=0x7f07002d;
-        public static final int textView2=0x7f07000f;
+        public static final int textView2=0x7f07000d;
         public static final int textView4=0x7f07002f;
         public static final int text_dishname=0x7f070000;
         public static final int text_ingredients=0x7f070030;

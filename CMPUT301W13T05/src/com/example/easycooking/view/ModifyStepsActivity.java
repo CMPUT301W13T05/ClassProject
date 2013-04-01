@@ -36,7 +36,7 @@ public class ModifyStepsActivity extends Activity {
 		setContentView(R.layout.adddetail_steps);
 		myapp = (MyApp)getApplication();
 		final EditText directions = (EditText)findViewById(R.id.editText1);
-		final Button save = (Button)findViewById(R.id.save);
+		final Button save = (Button)findViewById(R.id.recipe_save);
 		Bundle mbundle = getIntent().getExtras();
 		_FROM_WHERE = mbundle.getString("FromWhere");
 		//mrecipe = (Recipe)getIntent().getSerializableExtra("RECIPE_KEY");

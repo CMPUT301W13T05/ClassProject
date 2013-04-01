@@ -97,7 +97,7 @@ public class CreateRecipeActivity extends Activity {
 		/**
 		 * The save button and handle the uncompleted information
 		 */
-		Button add_modify_save = (Button)findViewById(R.id.save);
+		Button add_modify_save = (Button)findViewById(R.id.recipe_save);
 		add_modify_save.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) {
 				if (enter_recipe_name.getText().toString().equals("")){

@@ -207,22 +207,14 @@ public class ModifyImageActivity extends Activity {
             	if (yRatio > 1 || xRatio > 1){
             	 if (yRatio > xRatio) {
             	  bitmapFactoryOptions.inSampleSize = yRatio;
-            	  Toast.makeText(this,
-            	    "yRatio = " + String.valueOf(yRatio),
-            	    Toast.LENGTH_LONG).show();
+            	  
             	 }
             	 else {
             	  bitmapFactoryOptions.inSampleSize = xRatio;
-            	  Toast.makeText(this,
-            	    "xRatio = " + String.valueOf(xRatio),
-            	    Toast.LENGTH_LONG).show();
+            	  
             	 }
             	}
-            	else{
-            	 Toast.makeText(this,
-            	   "inSampleSize = 1",
-            	   Toast.LENGTH_LONG).show();
-            	}
+            	
             	 
             	bitmapFactoryOptions.inJustDecodeBounds = false;
             	ourBMP = BitmapFactory.decodeFile(imageFileUri.getPath(), bitmapFactoryOptions);

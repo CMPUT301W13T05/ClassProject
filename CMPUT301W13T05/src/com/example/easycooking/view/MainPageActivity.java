@@ -139,6 +139,7 @@ public class MainPageActivity extends Activity {
 					for (i=0;i<myapp.get_onhand().size();i++){
 						Temp+=myapp.get_onhand().get(i)+",";
 					}
+					System.out.println(Temp+"---Tem-----phere");
 				}
 				System.out.println(Temp);
 				if ((serching_text.getText().toString()+Temp).isEmpty()) {
@@ -149,8 +150,10 @@ public class MainPageActivity extends Activity {
 					dB_LocalDatabaseManager.open();
 					WEBClient myClient = new WEBClient();
 					ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
+					System.out.println(serching_text.getText().toString()+","+Temp+"---sarching-----phere");
 					String[] String_search = (serching_text.getText().toString()+","+Temp)
 							.split(",");
+					//System.out.println(String_search[0]+"---1herer1---"+String_search[1]);
 					if (if_local) {
 						if (if_dishname) {
 							if (if_ingredient) { // local_name_ingredint
@@ -401,8 +404,8 @@ public class MainPageActivity extends Activity {
 			menuWindow.dismiss();
 			switch (v.getId()) {
 			case R.id.confirm:
-				if (myapp.get_onhand().size()==0){
-					Toast.makeText(MainPageActivity.this,"None Ingredient", Toast.LENGTH_LONG).show();
+				if (myapp.get_onhand().size()==0 && if_on_hand){
+					Toast.makeText(MainPageActivity.this,"None Ingredient", Toast.LENGTH_SHORT).show();
 				}
 				if_local = menuWindow.get_local();
 				if_dishname = menuWindow.get_dish();
@@ -424,8 +427,8 @@ public class MainPageActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_main, menu);
 		menu.add(0, 0, 0,"Query Your Ingredients");
+		menu.add(0, 1, 0,"Review History");
 		menu.getItem(0).setOnMenuItemClickListener(new OnMenuItemClickListener(){
 
 			@Override
@@ -447,6 +450,32 @@ public class MainPageActivity extends Activity {
 				return false;
 			}
 			
+		});
+		menu.getItem(1).setOnMenuItemClickListener(new OnMenuItemClickListener(){
+			@Override
+			public boolean onMenuItemClick(MenuItem arg0) {
+				// TODO Auto-generated method stub
+				DatabaseManager dB_LocalDatabaseManager = DatabaseManager
+							.getInstance(MainPageActivity.this);
+				dB_LocalDatabaseManager.open();	
+				if (dB_LocalDatabaseManager.cachedRecipe().size() == 0){
+					Toast.makeText(MainPageActivity.this,"None History Recipe Cached", Toast.LENGTH_SHORT).show();
+				}
+				else{
+					myapp.setRecipe_list(dB_LocalDatabaseManager.cachedRecipe());
+					dB_LocalDatabaseManager.close();
+					Intent intent = new Intent();
+					intent.setClass(MainPageActivity.this,
+							RecipeResultActivity.class);
+					/**
+					 * start a add entry activity
+					 */
+					startActivity(intent);
+				}
+				dB_LocalDatabaseManager.close();
+				
+				return false;
+			}		
 		});
 		return true;
 	}

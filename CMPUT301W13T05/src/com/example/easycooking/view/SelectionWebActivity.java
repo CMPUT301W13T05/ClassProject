@@ -64,6 +64,8 @@ public class SelectionWebActivity extends Activity {
 		 * get the recipe object from the result view
 		 */
 		mrecipe = myapp.get_mrecipe();
+		DatabaseManager dB_LocalDatabaseManager = DatabaseManager.getInstance(SelectionWebActivity.this);
+		dB_LocalDatabaseManager.addCacheRecipe(mrecipe);
 		/**
 		 * set up all the text_view 
 		 */
