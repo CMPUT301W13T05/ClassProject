@@ -405,6 +405,9 @@ public class DatabaseManager {
 				cursor.close();
 				return true;
 			}
+			else if(cursor.getCount()<=0){
+				return false;
+			}
 			else{
 				cursor.close();
 				return false;
@@ -450,7 +453,7 @@ public class DatabaseManager {
 				deleteCacheRecipe(first_row.getString(0));
 				first_row.close();
 			}
-			if(!inCache(recipe)){
+			if(!inCache(recipe)&&!inDB(recipe)){
 				add_recipe(recipe);
 				add_step(recipe.getSteps());
 				for(int i = 0;i<recipe.getImages().size();i++){
@@ -472,6 +475,7 @@ public class DatabaseManager {
 			ArrayList<Recipe> cache = new ArrayList<Recipe>();
 			Cursor history = db.query("cachedrecipe", null, null, null, null, null, null);
 			history.moveToFirst();
+			System.out.print(history.getString(0));
 			while(!history.isAfterLast()){
 				Cursor cursor_r = db.query("localrecipe", null, "rid = '"+history.getString(0)+"'", null, null, null, null);
 				Recipe recipe = rebuildRecipe(cursor_r);
