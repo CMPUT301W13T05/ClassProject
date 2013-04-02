@@ -194,8 +194,8 @@ public class ModifyImageActivity extends Activity {
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
             	            	
-            	float imagew = 300;
-            	float imageh = 300;
+            	float imagew = 500;
+            	float imageh = 500;
             	 
             	BitmapFactory.Options bitmapFactoryOptions = new BitmapFactory.Options();
             	bitmapFactoryOptions.inJustDecodeBounds = true;
