@@ -1,20 +1,16 @@
 package com.example.easycooking.test;
 
 import static org.junit.Assert.*;
+package com.example.easycooking.test;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import android.provider.ContactsContract.CommonDataKinds.Website;
-import android.test.AndroidTestCase;
-
+import junit.framework.TestCase;
 import com.example.easycooking.controller.WEBClient;
-import com.example.easycooking.model. *;
-
+import com.example.easycooking.model.*;
 import org.apache.http.client.ClientProtocolException;
-import org.junit.Test;
 
-public class webserviceTest  extends AndroidTestCase {
+public class webserviceTest  extends TestCase {
  
 	
 	public Recipe recipe;
