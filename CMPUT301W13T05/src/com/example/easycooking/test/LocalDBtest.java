@@ -5,6 +5,7 @@ package com.example.easycooking.test;
  *
  */
 import static org.junit.Assert.*;
+import junit.framework.TestCase;
 
 import org.junit.Test;
 
@@ -13,7 +14,7 @@ import com.example.easycooking.model.Ingredient;
 import com.example.easycooking.model.Recipe;
 import com.example.easycooking.model.Step;
 
-public class LocalDBtest {
+public class LocalDBtest extends TestCase{
 
 	@Test
 	public void testEquals() {
