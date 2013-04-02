@@ -22,8 +22,8 @@ public class ingredienttest extends TestCase {
 	      
 	@Before
 		 public void setUp()  {
-			  java.util.ArrayList<Ingredient>  v1 = new java.util.ArrayList<Ingredient>(1);
-		          java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>(2);
+			  java.util.ArrayList<Ingredient>  v1 = new java.util.ArrayList<Ingredient>();
+		          java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>();
 		          Step step = new Step();
 	       		  recipe = new Recipe("12345","pizza",v2,v1,step,0);  
 						
