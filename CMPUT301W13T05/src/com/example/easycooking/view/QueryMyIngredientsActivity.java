@@ -74,7 +74,7 @@ public class QueryMyIngredientsActivity extends Activity {
 				long[] ids=ingredient_listView.getCheckItemIds();
 				ArrayList<String> onhand = new ArrayList<String>();
 				for(int i=0;i<ids.length;i++){
-					onhand.add(ingredient_list.get(i));
+					onhand.add(ingredient_list.get((int)ids[i]));
 				}
 				myapp.setOnhand(onhand);
 				System.out.println(onhand);

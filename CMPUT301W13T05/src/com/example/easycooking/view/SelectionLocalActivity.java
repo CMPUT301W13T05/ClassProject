@@ -133,6 +133,7 @@ public class SelectionLocalActivity extends Activity {
 				// TODO Auto-generated method stub
 				//TOD share
 				EmailController myEmail = new EmailController();
+				mrecipe.set_download_upload_own(101);
         		Intent data = null;
 				try {
 					data = myEmail.sentRecipe(mrecipe);
@@ -141,7 +142,6 @@ public class SelectionLocalActivity extends Activity {
 					e.printStackTrace();
 				}
                 startActivity(data); 
-
 				return false;
 			}
         	

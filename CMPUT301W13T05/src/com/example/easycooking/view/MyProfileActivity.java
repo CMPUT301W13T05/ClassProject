@@ -45,6 +45,7 @@ public class MyProfileActivity extends Activity {
 		        		Intent intent = new Intent();
 		        		Bundle mbundle = new Bundle();
 		        		//mbundle.putSerializable("RECIPE_RESULT", result_recipe);
+		        		set_local(result_recipe);
 		        		myapp.setRecipe_list(result_recipe);
 		        		intent.putExtras(mbundle);
 		        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
@@ -70,6 +71,7 @@ public class MyProfileActivity extends Activity {
 	        		Intent intent = new Intent();
 	        		Bundle mbundle = new Bundle();
 	        		//mbundle.putSerializable("RECIPE_RESULT", result_recipe);
+	        		set_local(result_recipe);
 	        		myapp.setRecipe_list(result_recipe);
 	        		intent.putExtras(mbundle);
 	        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
@@ -94,6 +96,7 @@ public class MyProfileActivity extends Activity {
         		if (result_recipe.size()>0){
 	        		Intent intent = new Intent();
 	        		Bundle mbundle = new Bundle();
+	        		set_local(result_recipe);
 	        		myapp.setRecipe_list(result_recipe);
 	        		intent.putExtras(mbundle);
 	        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
@@ -119,6 +122,7 @@ public class MyProfileActivity extends Activity {
 	        		Intent intent = new Intent();
 	        		Bundle mbundle = new Bundle();
 	        		//mbundle.putSerializable("RECIPE_RESULT", result_recipe);
+	        		set_local(result_recipe);
 	        		myapp.setRecipe_list(result_recipe);
 	        		intent.putExtras(mbundle);
 	        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
@@ -156,6 +160,7 @@ public class MyProfileActivity extends Activity {
 	        		Intent intent = new Intent();
 	        		Bundle mbundle = new Bundle();
 	        		//mbundle.putSerializable("RECIPE_RESULT", result_recipe);
+	        		set_local(result_recipe);
 	        		myapp.setRecipe_list(result_recipe);
 	        		intent.putExtras(mbundle);
 	        		intent.setClass(MyProfileActivity.this, RecipeResultActivity.class);
@@ -172,6 +177,13 @@ public class MyProfileActivity extends Activity {
 	//back button pressed
 	public void onBackPressed() {
 	return;
+	}
+	public void set_local(ArrayList<Recipe> list){
+		int i;
+		for (i=0;i<list.size();i++){
+			list.get(i).set_download_upload_own(99);
+		}
+		
 	}
 
 }
