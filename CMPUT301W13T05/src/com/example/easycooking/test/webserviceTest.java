@@ -1,7 +1,6 @@
 package com.example.easycooking.test;
 
 import static org.junit.Assert.*;
-package com.example.easycooking.test;
 
 import java.io.IOException;
 import java.util.ArrayList;
