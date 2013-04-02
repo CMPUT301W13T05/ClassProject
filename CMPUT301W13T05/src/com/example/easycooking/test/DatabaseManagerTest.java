@@ -12,16 +12,16 @@ import com.example.easycooking.controller.DatabaseManager;
 
       public class DatabaseManagerTest extends TestCase{
 	
-		                 protected DatabaseManagerTest(Context context) {
-			               super();
-		              }
-	   	DatabaseManager  dbHelper;
+		       protected DatabaseManagerTest(Context context) {
+			          super();
+		          }
+	   	       DatabaseManager  dbHelper;
    
 	
 	@Before
-	           public void setUp() {
-	                  this.dbHelper.open();
-	            }
+	                public void setUp() {
+	                          this.dbHelper.open();
+	                 }
 	
 	@Test
 	/**
