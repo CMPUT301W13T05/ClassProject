@@ -407,6 +407,7 @@ public class DatabaseManager {
 				return true;
 			}
 			else if(cursor.getCount()<=0){
+				cursor.close();
 				return false;
 			}
 			else{
