@@ -119,16 +119,17 @@ public class RecipeResultActivity extends Activity {
 				 * it is a web recipe or the local recipe
 				 */
 				recipe = recipes.get(i);
-				if (recipes.get(i).get_download_upload_own()==101){
-					if (recipe.getImages().size()>0){
-					result_string.add("WEB--"+recipe.getName());
-					}
-				}
-				else{
-					if (recipe.getImages().size()>0){
-					result_string.add("LOCAL-"+recipe.getName());
-					}
-				}
+				result_string.add(recipe.getName());
+//				if (recipes.get(i).get_download_upload_own()==101){
+//					if (recipe.getImages().size()>0){
+//					result_string.add("WEB--"+recipe.getName());
+//					}
+//				}
+//				else{
+//					if (recipe.getImages().size()>0){
+//					result_string.add("LOCAL-"+recipe.getName());
+//					}
+//				}
 			}
 			return;
 			
