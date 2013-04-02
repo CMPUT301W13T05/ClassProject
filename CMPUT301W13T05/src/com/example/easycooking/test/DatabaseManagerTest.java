@@ -40,7 +40,7 @@ import com.example.easycooking.controller.DatabaseManager;
                   Step step3 = new Step();
                   recipe1 = new Recipe("abc","name1",v4,v1,step1,0); 
                   recipe2 = new Recipe("def","name2",v5,v2,step2,0); 
-                  recipe3 = new Recipe("abc","name3",v6,v3,step3,0); 
+                  recipe3 = new Recipe("xyz","name3",v6,v3,step3,0); 
 	
                   Assert.assertTrue(this.dbHelper.inDB(recipe1));
                   Assert.assertTrue(this.dbHelper.inDB(recipe2));

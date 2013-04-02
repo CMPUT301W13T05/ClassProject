@@ -16,15 +16,17 @@ public class webserviceTest  extends TestCase {
 	
 	public void testWebServiceGetTask() {
 	    	
-		      WEBClient webclient = null;
+		      WEBClient webclient = new WEBClient();
 		      ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
 		      String[] keywords = new String []{ "pizza"};
 		        
-	    	//create new recipe and add to webservice
+	    	//create new recipe and add to web server
 			  java.util.ArrayList<Ingredient>  v1 = new java.util.ArrayList<Ingredient>(1);
 	          java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>(2);
 	          Step step = new Step();
 	          recipe = new Recipe("12345","pizza",v2,v1,step,0);  
+	          String[] key = ["pizza"];
+	          
 	          
 	         try {
 				webclient.UploadRecipe(recipe);
@@ -35,10 +37,10 @@ public class webserviceTest  extends TestCase {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	        //get recipe with same id from webservice
+	        //get recipe with same id from web server
 	         Recipe newRecipe = null;
 			try {
-				newRecipe = webclient.DisplayRecipe();
+				newRecipe = webclient.searchRecipesWithName(key);
 			} catch (ClientProtocolException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
