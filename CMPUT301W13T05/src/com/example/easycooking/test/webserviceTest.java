@@ -7,17 +7,17 @@ import java.util.ArrayList;
 import junit.framework.TestCase;
 import com.example.easycooking.controller.WEBClient;
 import com.example.easycooking.model.*;
+
 import org.apache.http.client.ClientProtocolException;
 
-public class webserviceTest  extends TestCase {
- 
-	
+public class webserviceTest extends TestCase {
+
 	public Recipe recipe;
-	
+
 	public void testWebServiceGetTask() {
 	    	
 		      WEBClient webclient = new WEBClient();
-		      ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
+		//      ArrayList<Recipe> result_recipe = new ArrayList<Recipe>();
 		      String[] keywords = new String []{ "pizza"};
 		        
 	    	//create new recipe and add to web server
@@ -25,7 +25,7 @@ public class webserviceTest  extends TestCase {
 	          java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>(2);
 	          Step step = new Step();
 	          recipe = new Recipe("12345","pizza",v2,v1,step,0);  
-	          String[] key = ["pizza"];
+	          String[] key = new String[]{"pizza"};
 	          
 	          
 	         try {
@@ -38,7 +38,7 @@ public class webserviceTest  extends TestCase {
 				e.printStackTrace();
 			}
 	        //get recipe with same id from web server
-	         Recipe newRecipe = null;
+	         ArrayList<Recipe> newRecipe = null;
 			try {
 				newRecipe = webclient.searchRecipesWithName(key);
 			} catch (ClientProtocolException e) {
@@ -50,13 +50,13 @@ public class webserviceTest  extends TestCase {
 			}
 	        
 	        //test to see if recipes are equal
-	        assertEquals(recipe.getName(),newRecipe.getName());
-	        assertTrue(recipe.getSteps().equals(newRecipe.getSteps()));
-	        assertTrue(recipe.getIngredients().equals(newRecipe.getIngredients()));
+	        assertEquals(recipe.getName(),newRecipe.get(1));
+	        assertTrue(recipe.getSteps().equals(newRecipe.get(4)));
+	        assertTrue(recipe.getIngredients().equals(newRecipe.get(3)));
 	        
 	        //delete recipe
 	        try {
-				webclient.deleteRecipe(newRecipe.getID());
+				webclient.deleteRecipe(recipe.getID());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -73,7 +73,5 @@ public class webserviceTest  extends TestCase {
 	        
 
 	    }
-	
 
-
-	} 
+}
