@@ -5,7 +5,12 @@ import java.util.ArrayList;
 import com.example.easycooking.model.Recipe;
 
 import android.app.Application;
-
+/**
+ * This is a class extends application i add some variables like 
+ * a global condition and also some functions to control them
+ * @author Adonis
+ *
+ */
 	public class MyApp extends Application {
         private ArrayList<Recipe> mrecipe_list;
         private Recipe mrecipe;
