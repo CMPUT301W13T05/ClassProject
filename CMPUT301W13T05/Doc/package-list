@@ -1,1 +1,6 @@
+com.example.easycooking
+com.example.easycooking.application
+com.example.easycooking.controller
+com.example.easycooking.model
+com.example.easycooking.test
 com.example.easycooking.view
