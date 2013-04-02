@@ -25,7 +25,7 @@ public class webserviceTest  extends TestCase {
 	          java.util.ArrayList<Image>  v2 = new java.util.ArrayList<Image>(2);
 	          Step step = new Step();
 	          recipe = new Recipe("12345","pizza",v2,v1,step,0);  
-	          String[] key = ["pizza"];
+	          String key[] = {"pizza"};
 	          
 	          
 	         try {
