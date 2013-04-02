@@ -472,11 +472,10 @@ public class DatabaseManager {
 			ArrayList<Recipe> cache = new ArrayList<Recipe>();
 			Cursor history = db.query("cachedrecipe", null, null, null, null, null, null);
 			history.moveToFirst();
-			System.out.println("This line is reached!!!!!!!!!!!!!!!!");
-			System.out.println(history.getString(0));
 			while(!history.isAfterLast()){
 				Recipe recipe = uf.getJsonFile(history.getString(1));
 				cache.add(recipe);
+				history.moveToNext();
 			}
 			history.close();
 			return cache;

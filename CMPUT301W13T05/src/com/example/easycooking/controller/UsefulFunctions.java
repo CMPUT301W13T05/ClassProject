@@ -83,6 +83,7 @@ public class UsefulFunctions {
 	 * @throws IOException
 	 */
 	public Recipe getJsonFile(String path) throws IOException{
+		System.out.println(path);
 		BufferedReader br = new BufferedReader(new FileReader(path));
 		Recipe recipe = gson.fromJson(br, Recipe.class);
 		return recipe;	
