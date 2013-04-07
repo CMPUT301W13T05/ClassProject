@@ -88,5 +88,34 @@ public class UsefulFunctions {
 		Recipe recipe = gson.fromJson(br, Recipe.class);
 		return recipe;	
 	}
+	
+	/**
+	 * This is just a initialized recipe for testing
+	 * @return Recipe object
+	 */
+	public Recipe initializeRecipe() {
+
+		Recipe r = new Recipe();
+		r.setID("9999");
+		r.setName("Cheese Cake");
+		ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
+		Ingredient ingredient = new Ingredient();
+		ingredient.set_belongto("9999");
+		ingredient.set_name("noodle");
+		ingredient.set_amount("1 bag");
+		ingredients.add(ingredient);
+		ArrayList<Image> images = new ArrayList<Image>();
+		Image image = new Image();
+		image.set_IMAGE_ID("123");
+		image.set_image_belongto("9999");
+		image.set_imageUri("dsfakjlglkj/seaifi123jflja");
+		images.add(image);
+		Step step = new Step();
+		step.set_id(1234);
+		step.set_belong("9999");
+		step.set_detail("cook");
+
+		return r;
+	}
 }                                                                                                                                                                                                                                                                                                                    
 
